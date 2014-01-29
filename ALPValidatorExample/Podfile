@@ -1,0 +1,12 @@
+platform :ios, '7.0'
+
+inhibit_all_warnings!
+
+target :ALPValidator do
+
+end
+
+target :ALPValidatorTests do
+  pod 'Kiwi/XCTest'
+  pod 'OHHTTPStubs'
+end

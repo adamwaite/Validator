@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>3566ADB9-8DD7-470F-984D-23C8892375B8</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ALPValidator</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>1B620F04-A67C-47C5-8845-D1990E928BCF</key>
+		<string>ssh://bitbucket.org/adam_waite/alpacalib.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ALPValidator/ALPValidator/ALPValidator.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>1B620F04-A67C-47C5-8845-D1990E928BCF</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://bitbucket.org/adam_waite/alpacalib.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>1B620F04-A67C-47C5-8845-D1990E928BCF</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1B620F04-A67C-47C5-8845-D1990E928BCF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ALPValidator</string>
+		</dict>
+	</array>
+</dict>
+</plist>
