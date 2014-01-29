@@ -82,6 +82,22 @@
     [remoteValidator validate:@"valid"];
     [remoteValidator validate:@"invalid"];
     
+    // Change handlers
+    ALPValidator *someValidator = [ALPValidator validatorWithType:ALPValidatorTypeString];
+    someValidator.validatorStateChangedHandler = ^(ALPValidatorState newState) {
+        switch (newState) {
+            case ALPValidatorValidationStateValid:
+                // do valid happy things
+                break;
+            case ALPValidatorValidationStateInvalid:
+                // do invalid unhappy things
+                break;
+            case ALPValidatorValidationStateWaitingForRemote:
+                // do loading indicator things
+                break;
+        }
+    };
+    
     return YES;
 }
 							

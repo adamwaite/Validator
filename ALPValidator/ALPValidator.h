@@ -47,6 +47,7 @@ typedef BOOL (^ALPValidatorCustomRuleBlock)(id);
 
 @protocol ALPValidatorDelegate <NSObject>
 
+@optional
 - (void)validator:(ALPValidator *)validator remoteValidationAtURL:(NSURL *)url receivedResult:(BOOL)remoteConditionValid;
 - (void)validator:(ALPValidator *)validator remoteValidationAtURL:(NSURL *)url failedWithError:(NSError *)error;
 
