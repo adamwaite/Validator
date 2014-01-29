@@ -136,7 +136,8 @@
 
 - (void)validator:(ALPValidator *)validator remoteValidationAtURL:(NSURL *)url failedWithError:(NSError *)error
 {
-    NSLog(@"Error: %@", error);
+    NSLog(@"Remote validation error: %@", error);
+    NSLog(@"%@", validator);
 }
 
 @end
