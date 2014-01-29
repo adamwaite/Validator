@@ -63,10 +63,10 @@
     
     // Multiple validations mixed together:
     ALPValidator *mixedValidator = [ALPValidator validatorWithType:ALPValidatorTypeString];
-    [mixedValidator addValidationToEnsureMinimumLength:15 invalidMessage:NSLocalizedString(@"This is too long!", nil)];
+    [mixedValidator addValidationToEnsureMinimumLength:15 invalidMessage:NSLocalizedString(@"This is too short!", nil)];
     [mixedValidator addValidationToEnsureCustomConditionIsSatisfiedWithBlock:^BOOL(NSString *instance) {
         return ([instance rangeOfString:@"A"].location == NSNotFound);
-    } invalidMessage:NSLocalizedString(@"No capital As are allowed", nil)];
+    } invalidMessage:NSLocalizedString(@"No capital As are allowed!", nil)];
     [mixedValidator addValidationToEnsureValidEmailWithInvalidMessage:NSLocalizedString(@"That's not an email address!", nil)];
     [mixedValidator validate:@"invA@lid,com"];
     NSLog(@"%@", mixedValidator);

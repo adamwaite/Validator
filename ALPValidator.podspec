@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.summary      = "Drop in user input validation for your iOS apps."
 
   s.description  = <<-DESC
-ALPValidator provides drop in user input validation for your iOS apps. It's inspired by the [jQuery Validation](https://github.com/jzaefferer/jquery-validation) plug-in but written for native iOS apps.
+ALPValidator provides drop in user input validation for your iOS apps. It's inspired by the [jQuery Validation](https://github.com/jzaefferer/jquery-validation) plug-in.
 
 Validations:
 
@@ -15,8 +15,7 @@ Validations:
 - Regular expression validation
 - Email validation
 - Custom block based validation
-- Remote validation (calls a remote web service)
-      
+- Remote validation (remote web service validation)
 DESC
 
   s.homepage     = "https://github.com/adamwaite/ALPValidator"
