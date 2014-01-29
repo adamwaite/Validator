@@ -20,9 +20,9 @@ Install with [CocoaPods](http://cocoapods.org):
 
 `pod 'ALPValidator'`
 
-### Usage
+## Usage
 
-#### Creating an ALPValidator
+### Creating an ALPValidator
 
 1. Import:
 
@@ -34,7 +34,7 @@ Install with [CocoaPods](http://cocoapods.org):
 
 *Note: There are plans to add validators for other object types, just strings are supported at the moment.*
 
-#### Adding Validation Rules
+### Adding Validation Rules
 
 Validation rules are added with the `addRule` methods. When adding a rule you can supply an error message string as an argument, this will appear in the `errorMessages` array should the validation fail. Some of the `addRule` methods take additional parameters, they should be self explanatory. You can add as many validation rules to a validator as you like.
 
@@ -73,7 +73,7 @@ Validation rules are added with the `addRule` methods. When adding a rule you ca
 - (void)addValidationToEnsureCustomConditionIsSatisfiedWithBlock:(ALPValidatorCustomRuleBlock)block invalidMessage:(NSString *)message;
 ```
 
-#### Validating
+### Validating
 
 Use the `validate:` method to validate an instance:
 
@@ -87,7 +87,7 @@ This will change the `state` property of the validator to `ALPValidatorValidatio
 
 You could for example call `validate:` every time the `text` property of a `UITextField` is changed and update the UI to reflect state.
 
-#### Validation State Changed Handler
+### Validation State Changed Handler
 
 Use the `validatorStateChangedHandler` to be notified for a change in validation state. 
 
@@ -112,7 +112,7 @@ someValidator.validatorStateChangedHandler = ^(ALPValidatorState newState) {
 };
 ```
 
-#### Validation Error Messages
+### Validation Error Messages
 
 When a validator fails, any error messages passed when adding rules are added to the public `errorMessages` array. You could perhaps use this array to notify the user why their inputs aren't up to scratch.
 
@@ -146,7 +146,7 @@ ALPStringValidator 0x10911ddc0: {
 }
 ```
 
-#### More on Remote Validation
+### Remote Validation
 
 As with the [jQuery Validation](https://github.com/jzaefferer/jquery-validation) plug-in, ALPValidator supports remote validations. You can add a remote validation rule to a validator instance to ensure that a server-side condition is satisfied. This may for example be a condition that no two users can sign up to your service with the same username. 
 
@@ -179,7 +179,7 @@ The remote validation request comes in the form of a HTTP POST request with an `
 
 Hopefully this makes sense, please get in touch if you're unsure.
 
-#### Examples
+## Examples
 
 There is an Xcode project in this repository containing an example for each validation rule and other features. It doesn't have a user interface (yet) but it should show how you might set up and use ALPValidator in your apps. To test the remote validation start the [Sinatra](http://www.sinatrarb.com) server with the `ruby demo_server.rb` command.
 
