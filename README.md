@@ -201,7 +201,7 @@ Contributing is encouraged! Before making a pull request please ensure all of th
 
 ## Contact
 
-[@adamwaite](twitter.com/adamwaite)
+[@adamwaite](http://twitter.com/adamwaite)
 
 ##License
 
