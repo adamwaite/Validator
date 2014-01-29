@@ -7,10 +7,10 @@ Current validations:
 - Presence validation
 - Minimum length validation
 - Maximum length validation
-Regular expression validation
+- Regular expression validation
 - Email validation
 - Custom block based validation
-- Remote validation (calls a remote web service)
+- Remote validation (remote web service validation)
 
 ## Installation
 
