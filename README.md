@@ -23,12 +23,12 @@ Install with [CocoaPods](http://cocoapods.org):
 #### Creating an ALPValidator
 
 1. Import:
-```objective-c
+```
 #import "ALPValidator.h"
 ```
 
 2. Create a validator instance using the designated initialiser:
-```objective-c
+```
 ALPValidator *validator = [ALPValidator validatorWithType:ALPValidatorTypeString];
 ```
 
@@ -40,37 +40,37 @@ ALPValidator *validator = [ALPValidator validatorWithType:ALPValidatorTypeString
 Add validation rules with the add rule methods. When adding a rule you can supply an error message string as an argument, this will appear in the `errorMessages` array should the validation fail. Some of the add rule methods take additional parameters, these should be self explanatory. You can add as many validation rules to the validator as you like.
 
 - Presence validation:
-```objective-c
+```
 - (void)addValidationToEnsurePresenceWithInvalidMessage:(NSString *)message;
 ```
 
 - Minimum length validation:
-```objective-c
+```
 - (void)addValidationToEnsureMinimumLength:(NSUInteger)minLength invalidMessage:(NSString message;
 ```
 
 - Maximum length validation:
-```objective-c
+```
 - (void)addValidationToEnsureMaximumLength:(NSUInteger)maxLength invalidMessage:(NSString *)message;
 ```
 
 - Regular expression validation:
-```objective-c
+```
 - (void)addValidationToEnsureRegularExpressionIsMetWithPattern:(NSString *)pattern invalidMessage:(NSString *)message;
 ```
 
 - Valid email address validation:
-```objective-c
+```
 - (void)addValidationToEnsureValidEmailWithInvalidMessage:(NSString *)message;
 ```
 
 - Remote validation:
-```objective-c
+```
 - (void)addValidationToEnsureRemoteConditionIsSatisfiedAtURL:(NSURL *)url invalidMessage:(NSString *)message;
 ```
 
 - Custom block validation (return YES or NO from the block):
-```objective-c
+```
 - (void)addValidationToEnsureCustomConditionIsSatisfiedWithBlock:(ALPValidatorCustomRuleBlock)block invalidMessage:(NSString *)message;
 ```
 
@@ -78,7 +78,7 @@ Add validation rules with the add rule methods. When adding a rule you can suppl
 
 Use the validate method to validate an instance:
 
-```objective-c
+```
 ALPValidator *validator = [ALPValidator validatorWithType:ALPValidatorTypeString];
 [validator addValidationToEnsureValidEmailWithInvalidMessage:NSLocalizedString(@"That's not an email!", nil)];
 [validator validate:@"hey"];
@@ -95,7 +95,7 @@ You could perhaps call `validate:` every time the text in a `UITextField` is cha
 
 Use the `validatorStateChangedHandler` to be notified for a change in validation state. 
 
-```objective-c
+```
 ALPValidator *someValidator = [ALPValidator validatorWithType:ALPValidatorTypeString];
 someValidator.validatorStateChangedHandler = ^(ALPValidatorState newState) {
     switch (newState) {
@@ -120,7 +120,7 @@ someValidator.validatorStateChangedHandler = ^(ALPValidatorState newState) {
 
 When a validator fails, any error messages passed when adding rules are added to the public `errorMessages` array. You could perhaps use this array to notify the user why their inputs aren't up to scratch.
 
-```objective-c
+```
 ALPValidator *mixedValidator = [ALPValidator validatorWithType:ALPValidatorTypeString];
 [mixedValidator addValidationToEnsureMinimumLength:15 invalidMessage:NSLocalizedString(@"This is too long!", nil)];
 [mixedValidator addValidationToEnsureCustomConditionIsSatisfiedWithBlock:^BOOL(NSString *instance) {
@@ -151,7 +151,7 @@ As with the [jQuery Validation](https://github.com/jzaefferer/jquery-validation)
 
 Typically you might make a request to your registration service after a full sign up form has been filled. You would only then notify the user that their chosen username has been taken once the service has returned containing the error in a JSON response or suchlike. This user experience is improved if these requests are made on the fly as the user types and the UI is updated in closer to real time (maybe a red border on the field for username taken).
 
-```objective-c
+```
 ALPValidator *remoteValidator = [ALPValidator validatorWithType:ALPValidatorTypeString];
 [remoteValidator addValidationToEnsureRemoteConditionIsSatisfiedAtURL:[NSURL URLWithString:@"http:mycoolappbackend.com/api/usernameavailable"] invalidMessage:NSLocalizedString(@"That username has been taken", nil)];
 ```
@@ -162,7 +162,7 @@ If the response is JSON "true" then the validation rule passes, if JSON "false' 
 
 Optionally conform to `<ALPValidatorDelegate>` and set the `someValidator.delegate` property to receive notifications on server responding or failing through methods defined in `<ALPValidatorDelegate>`:
 
-```objective-c
+```
 @protocol ALPValidatorDelegate <NSObject>
 
 @optional
