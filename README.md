@@ -15,7 +15,8 @@ Regular expression validation
 ## Installation
 
 Install with [CocoaPods](http://cocoapods.org):
-`pod ALPValidator`
+
+`pod 'ALPValidator'`
 
 ### Usage
 
