@@ -63,14 +63,14 @@ Validation rules are added with the `addRule` methods. When adding a rule you ca
 - (void)addValidationToEnsureValidEmailWithInvalidMessage:(NSString *)message;
 ```
 
+- Custom block validation (return `YES` or `NO` from the block):
+```
+- (void)addValidationToEnsureCustomConditionIsSatisfiedWithBlock:(ALPValidatorCustomRuleBlock)block invalidMessage:(NSString *)message;
+```
+
 - Remote validation:
 ```
 - (void)addValidationToEnsureRemoteConditionIsSatisfiedAtURL:(NSURL *)url invalidMessage:(NSString *)message;
-```
-
-- Custom block validation (return YES or NO from the block):
-```
-- (void)addValidationToEnsureCustomConditionIsSatisfiedWithBlock:(ALPValidatorCustomRuleBlock)block invalidMessage:(NSString *)message;
 ```
 
 ### Validating
