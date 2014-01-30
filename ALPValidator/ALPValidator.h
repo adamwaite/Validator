@@ -45,6 +45,8 @@ typedef NS_ENUM(NSUInteger, ALPValidatorState) {
 typedef void (^ALPValidatorStateChangeHandler)(ALPValidatorState);
 typedef BOOL (^ALPValidatorCustomRuleBlock)(id);
 
+extern NSString * const ALPValidatorRegularExpressionPatternEmail;
+
 @protocol ALPValidatorDelegate <NSObject>
 
 @optional
@@ -59,6 +61,7 @@ typedef BOOL (^ALPValidatorCustomRuleBlock)(id);
 @property (copy, nonatomic) ALPValidatorStateChangeHandler validatorStateChangedHandler;
 
 @property (nonatomic, readonly) ALPValidatorState state;
+@property (readonly) NSUInteger ruleCount;
 @property (copy, nonatomic, readonly) NSArray *errorMessages;
 
 + (instancetype)validatorWithType:(ALPValidatorType)type;

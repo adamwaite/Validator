@@ -28,15 +28,21 @@
  */
 
 #import "ALPValidator.h"
-#import "ALPStringValidator.h"
-#import "ALPNumberValidator.h"
 #import "ALPValidatorRule.h"
 #import "ALPValidatorRequiredRule.h"
+#import "ALPValidatorRemoteRule.h"
+#import "ALPValidatorCustomRule.h"
 #import "ALPValidatorMinimumLengthRule.h"
 #import "ALPValidatorMaximumLengthRule.h"
 #import "ALPValidatorRegularExpressionRule.h"
-#import "ALPValidatorRemoteRule.h"
-#import "ALPValidatorCustomRule.h"
+
+const NSString * NSStringFromALPValidatorType(ALPValidatorType type) {
+    switch (type) {
+        case ALPValidatorTypeString: return @"String";
+        case ALPValidatorTypeNumeric: return @"Numeric";
+        default: return nil;
+    }
+}
 
 const NSString * NSStringFromALPValidatorState(ALPValidatorState state) {
     switch (state) {
@@ -66,18 +72,12 @@ NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(
 
 + (instancetype)validatorWithType:(ALPValidatorType)type
 {
-    switch (type) {
-        case (ALPValidatorTypeString):
-            return [[ALPStringValidator alloc] initWithType:type];
-        case (ALPValidatorTypeNumeric): {
-            return [[ALPNumberValidator alloc] initWithType:type];
-        }
-    }
+    return [[ALPValidator alloc] initWithType:type];
 }
 
 - (id)init
 {
-    [NSException raise:@"ALPStringValidator" format:@"Use the designated initialiser (%@) to create validators, %s", NSStringFromSelector(@selector(validatorWithType:)), __PRETTY_FUNCTION__];
+    [NSException raise:@"ALPStringValidator Error" format:@"Use the designated initialiser (%@) to create validators, %s", NSStringFromSelector(@selector(validatorWithType:)), __PRETTY_FUNCTION__];
     return nil;
 }
 
@@ -112,40 +112,50 @@ NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(
 
 #pragma mark Rule Add/Remove Rules
 
+- (void)addValidationRule:(ALPValidatorRule *)rule
+{
+    [_rules addObject:rule];
+}
+
 - (void)addValidationToEnsurePresenceWithInvalidMessage:(NSString *)message
 {
+    [self ensureValidatorCompatibilityForType:ALPValidatorTypeString];
     ALPValidatorRequiredRule *rule = [[ALPValidatorRequiredRule alloc] initWithType:ALPValidatorRuleTypeRequired invalidMessage:message];
-    [_rules addObject:rule];
+    [self addValidationRule:rule];
 }
 
 - (void)addValidationToEnsureMinimumLength:(NSUInteger)minLength invalidMessage:(NSString *)message
 {
+    [self ensureValidatorCompatibilityForType:ALPValidatorTypeString];
     ALPValidatorMinimumLengthRule *rule = [[ALPValidatorMinimumLengthRule alloc] initWithType:ALPValidatorRuleTypeMinLength invalidMessage:message minLength:minLength];
-    [_rules addObject:rule];
+    [self addValidationRule:rule];
 }
 
 - (void)addValidationToEnsureMaximumLength:(NSUInteger)maxLength invalidMessage:(NSString *)message
 {
+    [self ensureValidatorCompatibilityForType:ALPValidatorTypeString];
     ALPValidatorMaximumLengthRule *rule = [[ALPValidatorMaximumLengthRule alloc] initWithType:ALPValidatorRuleTypeMaxLength invalidMessage:message maxLength:maxLength];
-    [_rules addObject:rule];
+    [self addValidationRule:rule];
 }
 
 - (void)addValidationToEnsureRegularExpressionIsMetWithPattern:(NSString *)pattern invalidMessage:(NSString *)message
 {
+    [self ensureValidatorCompatibilityForType:ALPValidatorTypeString];
     ALPValidatorRegularExpressionRule *rule = [[ALPValidatorRegularExpressionRule alloc] initWithType:ALPValidatorRuleTypeTypeRegex invalidMessage:message pattern:pattern];
-    [_rules addObject:rule];
+    [self addValidationRule:rule];
 }
 
 - (void)addValidationToEnsureValidEmailWithInvalidMessage:(NSString *)message
 {
+    [self ensureValidatorCompatibilityForType:ALPValidatorTypeString];
     ALPValidatorRegularExpressionRule *rule = [[ALPValidatorRegularExpressionRule alloc] initWithType:ALPValidatorRuleTypeTypeEmail invalidMessage:message pattern:ALPValidatorRegularExpressionPatternEmail];
-    [_rules addObject:rule];
+    [self addValidationRule:rule];
 }
 
 - (void)addValidationToEnsureCustomConditionIsSatisfiedWithBlock:(ALPValidatorCustomRuleBlock)block invalidMessage:(NSString *)message
 {
     ALPValidatorCustomRule *rule = [[ALPValidatorCustomRule alloc] initWithType:ALPValidatorRuleTypeCustom block:block invalidMessage:message];
-    [_rules addObject:rule];
+    [self addValidationRule:rule];
 }
 
 - (void)addValidationToEnsureRemoteConditionIsSatisfiedAtURL:(NSURL *)url invalidMessage:(NSString *)message
@@ -190,7 +200,14 @@ NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(
         
     }];
     
-    [_rules addObject:rule];
+    [self addValidationRule:rule];
+}
+
+- (void)ensureValidatorCompatibilityForType:(ALPValidatorType)type
+{
+    if (_type != type) {
+        [NSException raise:@"ALPValidator Error" format:@"Attempted to add validation rule that is not compatible for validator type %@, %s", NSStringFromALPValidatorType(_type), __PRETTY_FUNCTION__];
+    }
 }
 
 #pragma mark Validate
@@ -275,6 +292,13 @@ NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(
 - (void)updatePublicErrorMessages
 {
     self.errorMessages = [NSArray arrayWithArray:_mutableErrorMessages];
+}
+
+#pragma mark Utilty
+
+- (NSUInteger)ruleCount
+{
+    return [_rules count];
 }
 
 @end

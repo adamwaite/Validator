@@ -11,6 +11,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+        
     // Required validation
     ALPValidator *requiredValidator = [ALPValidator validatorWithType:ALPValidatorTypeString];
     [requiredValidator addValidationToEnsurePresenceWithInvalidMessage:NSLocalizedString(@"This is required!", nil)];
@@ -97,10 +98,11 @@
                 break;
         }
     };
-    
+     
     return YES;
+    
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
 

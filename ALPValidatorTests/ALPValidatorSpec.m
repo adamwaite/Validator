@@ -31,12 +31,12 @@
 #import "OHHTTPStubs.h"
 
 #import "ALPValidator.h"
-#import "ALPStringValidator.h"
-#import "ALPNumberValidator.h"
 
 SPEC_BEGIN(ALPValidatorSpec)
 
 describe(@"ALPValidator", ^{
+
+    #pragma mark Initialiser Specs
     
     describe(@"initialiser", ^{
         
@@ -48,123 +48,157 @@ describe(@"ALPValidator", ^{
             });
         });
         
-        context(@"passing string type to designated initialiser", ^{
+        context(@"using the designated initialiser", ^{
             beforeEach(^{
                 subject = [ALPValidator validatorWithType:ALPValidatorTypeString];
             });
             specify(^{
-                [[subject should] beKindOfClass:[ALPStringValidator class]];
-            });
-        });
-
-        context(@"passing numberic type to designated initialiser", ^{
-            beforeEach(^{
-                subject = [ALPValidator validatorWithType:ALPValidatorTypeNumeric];
-            });
-            specify(^{
-                [[subject should] beKindOfClass:[ALPNumberValidator class]];
+                [[subject should] beKindOfClass:[ALPValidator class]];
             });
         });
         
     });
     
-    describe(@"string validator rules", ^{
+    #pragma mark Validator Rule Specs
+    
+    describe(@"validator rules", ^{
         
-        __block ALPValidator *subject;
+        __block ALPValidator *stringValidator;
+        __block ALPValidator *numericValidator;
         
         beforeEach(^{
-            subject = [ALPValidator validatorWithType:ALPValidatorTypeString];
+            stringValidator = [ALPValidator validatorWithType:ALPValidatorTypeString];
+            numericValidator = [ALPValidator validatorWithType:ALPValidatorTypeNumeric];
         });
         
         afterEach(^{
-            subject = nil;
+            stringValidator = nil;
+            numericValidator = nil;
         });
         
-        describe(@"required", ^{
+        #pragma mark Required Rule Specs
+        
+        describe(@"presence", ^{
             
             beforeEach(^{
-                [subject addValidationToEnsurePresenceWithInvalidMessage:nil];
+                [stringValidator addValidationToEnsurePresenceWithInvalidMessage:nil];
+            });
+            
+            specify(^{
+                [[theValue(stringValidator.ruleCount) should] equal:theValue(1)];
+            });
+            
+            specify(^{
+                [[theBlock(^{
+                    [numericValidator addValidationToEnsurePresenceWithInvalidMessage:nil];
+                }) should] raise];
             });
             
             context(@"passing nil", ^{
-                [subject validate:nil];
+                [stringValidator validate:nil];
+                [numericValidator validate:nil];
                 specify(^{
-                    [[theValue(subject.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
+                    [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
                 });
             });
             
             context(@"passing empty string", ^{
                 beforeEach(^{
-                    [subject validate:@""];
+                    [stringValidator validate:@""];
                 });
                 specify(^{
-                    [[theValue(subject.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
+                    [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
                 });
             });
             
             context(@"passing valid string", ^{
                 beforeEach(^{
-                    [subject validate:@"hello"];
+                    [stringValidator validate:@"hello"];
                 });
                 specify(^{
-                    [[theValue(subject.state) should] equal:theValue(ALPValidatorValidationStateValid)];
+                    [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateValid)];
                 });
             });
             
         });
         
+        #pragma mark Minimum Length Rule Specs
         
         describe(@"minimum length", ^{
             
             beforeEach(^{
-                [subject addValidationToEnsureMinimumLength:3 invalidMessage:nil];
+                [stringValidator addValidationToEnsureMinimumLength:3 invalidMessage:nil];
+            });
+            
+            specify(^{
+                [[theValue(stringValidator.ruleCount) should] equal:theValue(1)];
+            });
+            
+            specify(^{
+                [[theBlock(^{
+                    [numericValidator addValidationToEnsurePresenceWithInvalidMessage:nil];
+                }) should] raise];
             });
             
             context(@"failing to satisfy the minimum length condition", ^{
                 beforeEach(^{
-                    [subject validate:@"ab"];
+                    [stringValidator validate:@"ab"];
                 });
                 specify(^{
-                    [[theValue(subject.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
+                    [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
                 });
             });
             
             context(@"satisfying the minimum length condition", ^{
                 beforeEach(^{
-                    [subject validate:@"abcd"];
+                    [stringValidator validate:@"abcd"];
                 });
                 specify(^{
-                    [[theValue(subject.state) should] equal:theValue(ALPValidatorValidationStateValid)];
+                    [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateValid)];
                 });
             });
             
         });
         
+        #pragma mark Maximum Length Rule Specs
+        
         describe(@"maximum length", ^{
             
             beforeEach(^{
-                [subject addValidationToEnsureMaximumLength:5 invalidMessage:nil];
+                [stringValidator addValidationToEnsureMaximumLength:5 invalidMessage:nil];
+            });
+            
+            specify(^{
+                [[theValue(stringValidator.ruleCount) should] equal:theValue(1)];
+            });
+            
+            specify(^{
+                [[theBlock(^{
+                    [numericValidator addValidationToEnsurePresenceWithInvalidMessage:nil];
+                }) should] raise];
             });
             
             context(@"exceeding the maximum length condition", ^{
                 beforeEach(^{
-                    [subject validate:@"abcdef"];
+                    [stringValidator validate:@"abcdef"];
                 });
                 specify(^{
-                    [[theValue(subject.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
+                    [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
                 });
             });
             
             context(@"satisfying the maximum length condition", ^{
                 beforeEach(^{
-                    [subject validate:@"abc"];
+                    [stringValidator validate:@"abc"];
                 });
                 specify(^{
-                    [[theValue(subject.state) should] equal:theValue(ALPValidatorValidationStateValid)];
+                    [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateValid)];
                 });
             });
             
         });
+        
+        #pragma mark Regex Rule Specs
         
         describe(@"regular expression", ^{
         
@@ -172,28 +206,40 @@ describe(@"ALPValidator", ^{
             NSString *invalid = @"hey";
         
             beforeEach(^{
-                [subject addValidationToEnsureRegularExpressionIsMetWithPattern:pattern invalidMessage:nil];
+                [stringValidator addValidationToEnsureRegularExpressionIsMetWithPattern:pattern invalidMessage:nil];
+            });
+            
+            specify(^{
+                [[theValue(stringValidator.ruleCount) should] equal:theValue(1)];
+            });
+            
+            specify(^{
+                [[theBlock(^{
+                    [numericValidator addValidationToEnsurePresenceWithInvalidMessage:nil];
+                }) should] raise];
             });
             
             context(@"input does not satisfy the regular expression", ^{
                 beforeEach(^{
-                    [subject validate:invalid];
+                    [stringValidator validate:invalid];
                 });
                 specify(^{
-                    [[theValue(subject.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
+                    [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
                 });
             });
             
             context(@"input satisfies the regular expression", ^{
                 beforeEach(^{
-                    [subject validate:pattern];
+                    [stringValidator validate:pattern];
                 });
                 specify(^{
-                    [[theValue(subject.state) should] equal:theValue(ALPValidatorValidationStateValid)];
+                    [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateValid)];
                 });
             });
             
         });
+        
+        #pragma mark Email Rule Specs
         
         describe(@"email", ^{
             
@@ -201,28 +247,40 @@ describe(@"ALPValidator", ^{
             NSString *validEmailAddress = @"user@valid.com";
             
             beforeEach(^{
-                [subject addValidationToEnsureValidEmailWithInvalidMessage:nil];
+                [stringValidator addValidationToEnsureValidEmailWithInvalidMessage:nil];
+            });
+            
+            specify(^{
+                [[theValue(stringValidator.ruleCount) should] equal:theValue(1)];
+            });
+            
+            specify(^{
+                [[theBlock(^{
+                    [numericValidator addValidationToEnsurePresenceWithInvalidMessage:nil];
+                }) should] raise];
             });
             
             context(@"with invalid email addresses", ^{
                 it(@"should be invalid", ^{
                     [invalidEmailAddresses enumerateObjectsUsingBlock:^(NSString *invalidEmailAddress, NSUInteger idx, BOOL *stop) {
-                        [subject validate:invalidEmailAddress];
-                        [[theValue(subject.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
+                        [stringValidator validate:invalidEmailAddress];
+                        [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
                     }];
                 });
             });
             
             context(@"with a valid email address", ^{
                 beforeEach(^{
-                    [subject validate:validEmailAddress];
+                    [stringValidator validate:validEmailAddress];
                 });
                 specify(^{
-                    [[theValue(subject.state) should] equal:theValue(ALPValidatorValidationStateValid)];
+                    [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateValid)];
                 });
             });
             
         });
+        
+        #pragma mark Custom Rule Specs
         
         describe(@"custom", ^{
             
@@ -230,29 +288,52 @@ describe(@"ALPValidator", ^{
                 return ([instance rangeOfString:@"A"].location == NSNotFound);
             };
             
+            ALPValidatorCustomRuleBlock numberIsFive = ^BOOL(NSNumber *instance){
+                return ([instance isEqual:@5]);
+            };
+            
             beforeEach(^{
-                [subject addValidationToEnsureCustomConditionIsSatisfiedWithBlock:noLetterACustomRule invalidMessage:nil];
+                [stringValidator addValidationToEnsureCustomConditionIsSatisfiedWithBlock:noLetterACustomRule invalidMessage:nil];
+                [numericValidator addValidationToEnsureCustomConditionIsSatisfiedWithBlock:numberIsFive invalidMessage:nil];
+            });
+            
+            specify(^{
+                [[theValue(stringValidator.ruleCount) should] equal:theValue(1)];
+            });
+            
+            specify(^{
+                [[theValue(numericValidator.ruleCount) should] equal:theValue(1)];
             });
             
             context(@"custom condition is not satisfied", ^{
                 beforeEach(^{
-                    [subject validate:@"hAllo"];
+                    [stringValidator validate:@"hAllo"];
+                    [numericValidator validate:@1];
                 });
                 specify(^{
-                    [[theValue(subject.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
+                    [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
+                });
+                specify(^{
+                    [[theValue(numericValidator.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
                 });
             });
             
             context(@"custom condition is satisfied", ^{
                 beforeEach(^{
-                    [subject validate:@"hello"];
+                    [stringValidator validate:@"hello"];
+                    [numericValidator validate:@5];
                 });
                 specify(^{
-                    [[theValue(subject.state) should] equal:theValue(ALPValidatorValidationStateValid)];
+                    [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateValid)];
+                });
+                specify(^{
+                    [[theValue(numericValidator.state) should] equal:theValue(ALPValidatorValidationStateValid)];
                 });
             });
             
         });
+        
+        #pragma mark Remote Rule Specs
         
         describe(@"remote service validation", ^{
             
@@ -260,7 +341,16 @@ describe(@"ALPValidator", ^{
             __block id delegateMock = [KWMock mockForProtocol:@protocol(ALPValidatorDelegate)];
             
             beforeEach(^{
-                [subject addValidationToEnsureRemoteConditionIsSatisfiedAtURL:service invalidMessage:nil];
+                [stringValidator addValidationToEnsureRemoteConditionIsSatisfiedAtURL:service invalidMessage:nil];
+                [numericValidator addValidationToEnsureRemoteConditionIsSatisfiedAtURL:service invalidMessage:nil];
+            });
+            
+            specify(^{
+                [[theValue(stringValidator.ruleCount) should] equal:theValue(1)];
+            });
+            
+            specify(^{
+                [[theValue(numericValidator.ruleCount) should] equal:theValue(1)];
             });
             
             context(@"service returns false", ^{
@@ -276,23 +366,23 @@ describe(@"ALPValidator", ^{
                 
                 describe(@"state", ^{
                     beforeEach(^{
-                        [subject validate:@"any"];
+                        [stringValidator validate:@"any"];
                     });
                     specify(^{
-                        [[theValue(subject.state) should] equal:theValue(ALPValidatorValidationStateWaitingForRemote)];
+                        [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateWaitingForRemote)];
                     });
                     specify(^{
-                        [[expectFutureValue(theValue(subject.state)) shouldEventually] equal:theValue(ALPValidatorValidationStateInvalid)];
+                        [[expectFutureValue(theValue(stringValidator.state)) shouldEventually] equal:theValue(ALPValidatorValidationStateInvalid)];
                     });
                 });
                 
                 describe(@"delegate", ^{
                     beforeEach(^{
-                        subject.delegate = delegateMock;
+                        stringValidator.delegate = delegateMock;
                     });
                     it(@"should be notified", ^{
                         [[delegateMock shouldEventually] receive:@selector(validator:remoteValidationAtURL:receivedResult:)];
-                        [subject validate:@"any"];
+                        [stringValidator validate:@"any"];
                     });
                 });
                 
@@ -311,20 +401,20 @@ describe(@"ALPValidator", ^{
                 
                 describe(@"state", ^{
                     beforeEach(^{
-                        [subject validate:@"any"];
+                        [stringValidator validate:@"any"];
                     });
                     specify(^{
-                        [[expectFutureValue(theValue(subject.state)) shouldEventually] equal:theValue(ALPValidatorValidationStateValid)];
+                        [[expectFutureValue(theValue(stringValidator.state)) shouldEventually] equal:theValue(ALPValidatorValidationStateValid)];
                     });
                 });
                 
                 describe(@"delegate", ^{
                     beforeEach(^{
-                        subject.delegate = delegateMock;
+                        stringValidator.delegate = delegateMock;
                     });
                     it(@"should be notified", ^{
                         [[delegateMock shouldEventually] receive:@selector(validator:remoteValidationAtURL:receivedResult:)];
-                        [subject validate:@"any"];
+                        [stringValidator validate:@"any"];
                     });
                 });
                 
@@ -343,20 +433,20 @@ describe(@"ALPValidator", ^{
                 
                 describe(@"state", ^{
                     beforeEach(^{
-                        [subject validate:@"any"];
+                        [stringValidator validate:@"any"];
                     });
                     specify(^{
-                        [[expectFutureValue(theValue(subject.state)) shouldEventually] equal:theValue(ALPValidatorValidationStateInvalid)];
+                        [[expectFutureValue(theValue(stringValidator.state)) shouldEventually] equal:theValue(ALPValidatorValidationStateInvalid)];
                     });
                 });
                 
                 describe(@"delegate", ^{
                     beforeEach(^{
-                        subject.delegate = delegateMock;
+                        stringValidator.delegate = delegateMock;
                     });
                     it(@"should be notified", ^{
                         [[delegateMock shouldEventually] receive:@selector(validator:remoteValidationAtURL:receivedResult:)];
-                        [subject validate:@"any"];
+                        [stringValidator validate:@"any"];
                     });
                 });
                 
@@ -365,6 +455,69 @@ describe(@"ALPValidator", ^{
         });
         
     });
+    
+    #pragma mark Multiple Validations Specs
+    
+    describe(@"multiple validation rules", ^{
+        
+        __block ALPValidator *subject;
+        
+        beforeEach(^{
+            subject = [ALPValidator validatorWithType:ALPValidatorTypeString];
+            [subject addValidationToEnsureMinimumLength:5 invalidMessage:nil];
+            [subject addValidationToEnsureValidEmailWithInvalidMessage:nil];
+            [subject addValidationToEnsureCustomConditionIsSatisfiedWithBlock:^BOOL(NSString *instance) {
+                return ([instance rangeOfString:@"A"].location == NSNotFound);
+            } invalidMessage:nil];
+        });
+        
+        afterEach(^{
+            subject = nil;
+        });
+        
+        specify(^{
+            [[theValue(subject.ruleCount) should] equal:theValue(3)];
+        });
+        
+        context(@"invalid", ^{
+            beforeEach(^{
+                [subject validate:@"hAhA"];
+            });
+            specify(^{
+                [[theValue(subject.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
+            });
+            specify(^{
+                [[theValue([subject.errorMessages count]) should] equal:theValue(3)];
+            });
+        });
+        
+        context(@"failing just one condition", ^{
+            beforeEach(^{
+                [subject validate:@"Almostvalid@string.com"];
+            });
+            specify(^{
+                [[theValue(subject.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
+            });
+            specify(^{
+                [[theValue([subject.errorMessages count]) should] equal:theValue(1)];
+            });
+        });
+        
+        context(@"valid", ^{
+            beforeEach(^{
+                [subject validate:@"valid@string.com"];
+            });
+            specify(^{
+                [[theValue(subject.state) should] equal:theValue(ALPValidatorValidationStateValid)];
+            });
+            specify(^{
+                [[theValue([subject.errorMessages count]) should] equal:theValue(0)];
+            });
+        });
+        
+    });
+    
+    #pragma mark Validation Messages Specs
     
     describe(@"Messages", ^{
         
@@ -387,9 +540,11 @@ describe(@"ALPValidator", ^{
             });
             
             context(@"with a satisfied rule", ^{
-                specify(^{
+                beforeEach(^{
                     [subject addValidationToEnsureMinimumLength:4 invalidMessage:@"string not long enough"];
                     [subject validate:@"abcde"];
+                });
+                specify(^{
                     [[theValue([subject.errorMessages count]) should] equal:theValue(0)];
                 });
             });
@@ -399,29 +554,36 @@ describe(@"ALPValidator", ^{
         context(@"when invalid", ^{
             
             context(@"default messages (nil passed with rule)", ^{
-                specify(^{
+                beforeEach(^{
                     [subject addValidationToEnsureMinimumLength:4 invalidMessage:nil];
                     [subject validate:@"abc"];
+                });
+                specify(^{
                     [[theValue([subject.errorMessages count]) should] equal:theValue(1)];
                 });
             });
 
             context(@"rule supplied with validation add", ^{
                 NSString *errorMessage = @"that's not an email address, silly user";
-                specify(^{
+                beforeEach(^{
                     [subject addValidationToEnsureValidEmailWithInvalidMessage:errorMessage];
                     [subject validate:@"inv@lid,co,uk"];
+                });
+                specify(^{
                     [[theValue([subject.errorMessages count]) should] equal:theValue(1)];
+                });
+                specify(^{
                     [[[subject.errorMessages lastObject] should] equal:errorMessage];
                 });
             });
             
             describe(@"errors clear when changed", ^{
-                specify(^{
+                beforeEach(^{
                     [subject addValidationToEnsureValidEmailWithInvalidMessage:nil];
                     [subject validate:@"inv@lid,co,uk"];
-                    [[theValue([subject.errorMessages count]) should] equal:theValue(1)];
                     [subject validate:@"inv@lid.co.uk"];
+                });
+                specify(^{
                     [[theValue([subject.errorMessages count]) should] equal:theValue(0)];
                 });
             });
@@ -429,6 +591,8 @@ describe(@"ALPValidator", ^{
         });
         
     });
+    
+    #pragma mark State Change Handler Specs
     
     describe(@"state change handler", ^{
         
@@ -443,6 +607,7 @@ describe(@"ALPValidator", ^{
                     thingToWatch++;
                 }
             };
+            [subject validate:@"valid"];
         });
         
         afterEach(^{
@@ -450,11 +615,6 @@ describe(@"ALPValidator", ^{
         });
         
         specify(^{
-            [[theValue(thingToWatch) should] equal:theValue(0)];
-        });
-        
-        specify(^{
-            [subject validate:@"valid"];
             [[theValue(thingToWatch) should] equal:theValue(1)];
         });
         
