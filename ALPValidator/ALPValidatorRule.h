@@ -33,9 +33,11 @@ typedef NS_ENUM(NSUInteger, ALPValidatorRuleType) {
     ALPValidatorRuleTypeRequired,
     ALPValidatorRuleTypeMinLength,
     ALPValidatorRuleTypeMaxLength,
-    ALPValidatorRuleTypeTypeEmail,
-    ALPValidatorRuleTypeTypeRegex,
-    ALPValidatorRuleTypeTypeRemote,
+    ALPValidatorRuleTypeStringRange,
+    ALPValidatorRuleTypeNumericRange,
+    ALPValidatorRuleTypeEmail,
+    ALPValidatorRuleTypeRegex,
+    ALPValidatorRuleTypeRemote,
     ALPValidatorRuleTypeCustom
 };
 

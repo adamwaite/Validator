@@ -69,6 +69,7 @@ extern NSString * const ALPValidatorRegularExpressionPatternEmail;
 - (void)addValidationToEnsurePresenceWithInvalidMessage:(NSString *)message;
 - (void)addValidationToEnsureMinimumLength:(NSUInteger)minLength invalidMessage:(NSString *)message;
 - (void)addValidationToEnsureMaximumLength:(NSUInteger)maxLength invalidMessage:(NSString *)message;
+- (void)addValidationToEnsureRangeWithMinimum:(NSNumber *)min maximum:(NSNumber *)max invalidMessage:(NSString *)message;
 - (void)addValidationToEnsureRegularExpressionIsMetWithPattern:(NSString *)pattern invalidMessage:(NSString *)message;
 - (void)addValidationToEnsureValidEmailWithInvalidMessage:(NSString *)message;
 - (void)addValidationToEnsureRemoteConditionIsSatisfiedAtURL:(NSURL *)url invalidMessage:(NSString *)message;

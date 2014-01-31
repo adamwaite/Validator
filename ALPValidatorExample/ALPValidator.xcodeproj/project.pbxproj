@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5D53B550AFBA411388680FFD /* libPods-ALPValidatorTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B2E1104D44447A9B2625AE /* libPods-ALPValidatorTests.a */; };
+		9908D564189BCB5300539E7B /* ALPValidatorRangeRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 9908D563189BCB5300539E7B /* ALPValidatorRangeRule.m */; };
 		99333FB01897C74100BA81F5 /* ALPValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 99333FA11897C74100BA81F5 /* ALPValidator.m */; };
 		99333FB11897C74100BA81F5 /* ALPValidatorMaximumLengthRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 99333FA31897C74100BA81F5 /* ALPValidatorMaximumLengthRule.m */; };
 		99333FB21897C74100BA81F5 /* ALPValidatorMinimumLengthRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 99333FA51897C74100BA81F5 /* ALPValidatorMinimumLengthRule.m */; };
@@ -43,6 +44,8 @@
 /* Begin PBXFileReference section */
 		49B2E1104D44447A9B2625AE /* libPods-ALPValidatorTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ALPValidatorTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		65EBC2426EE8480EA88DDF00 /* Pods-ALPValidatorTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ALPValidatorTests.xcconfig"; path = "Pods/Pods-ALPValidatorTests.xcconfig"; sourceTree = "<group>"; };
+		9908D562189BCB5300539E7B /* ALPValidatorRangeRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALPValidatorRangeRule.h; sourceTree = "<group>"; };
+		9908D563189BCB5300539E7B /* ALPValidatorRangeRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALPValidatorRangeRule.m; sourceTree = "<group>"; };
 		99333F981897C71300BA81F5 /* ALPValidatorSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ALPValidatorSpec.m; path = ../../ALPValidatorTests/ALPValidatorSpec.m; sourceTree = "<group>"; };
 		99333FA01897C74100BA81F5 /* ALPValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALPValidator.h; sourceTree = "<group>"; };
 		99333FA11897C74100BA81F5 /* ALPValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALPValidator.m; sourceTree = "<group>"; };
@@ -112,10 +115,12 @@
 				99333FAD1897C74100BA81F5 /* ALPValidatorRule.m */,
 				99333FAA1897C74100BA81F5 /* ALPValidatorRequiredRule.h */,
 				99333FAB1897C74100BA81F5 /* ALPValidatorRequiredRule.m */,
-				99333FA21897C74100BA81F5 /* ALPValidatorMaximumLengthRule.h */,
-				99333FA31897C74100BA81F5 /* ALPValidatorMaximumLengthRule.m */,
 				99333FA41897C74100BA81F5 /* ALPValidatorMinimumLengthRule.h */,
 				99333FA51897C74100BA81F5 /* ALPValidatorMinimumLengthRule.m */,
+				99333FA21897C74100BA81F5 /* ALPValidatorMaximumLengthRule.h */,
+				99333FA31897C74100BA81F5 /* ALPValidatorMaximumLengthRule.m */,
+				9908D562189BCB5300539E7B /* ALPValidatorRangeRule.h */,
+				9908D563189BCB5300539E7B /* ALPValidatorRangeRule.m */,
 				99333FA61897C74100BA81F5 /* ALPValidatorRegularExpressionRule.h */,
 				99333FA71897C74100BA81F5 /* ALPValidatorRegularExpressionRule.m */,
 				99EA8FA31897F5550063DD9F /* ALPValidatorCustomRule.h */,
@@ -336,6 +341,7 @@
 				99333FB21897C74100BA81F5 /* ALPValidatorMinimumLengthRule.m in Sources */,
 				999C70761897C45A008CAEE4 /* AppDelegate.m in Sources */,
 				99333FB31897C74100BA81F5 /* ALPValidatorRegularExpressionRule.m in Sources */,
+				9908D564189BCB5300539E7B /* ALPValidatorRangeRule.m in Sources */,
 				99333FB01897C74100BA81F5 /* ALPValidator.m in Sources */,
 				99EA8FA51897F5550063DD9F /* ALPValidatorCustomRule.m in Sources */,
 				999C70721897C45A008CAEE4 /* main.m in Sources */,

@@ -31,13 +31,15 @@
 
 const NSString * ALPValidatorRuleDefaultErrorMessageForType(ALPValidatorRuleType type) {
     switch (type) {
-        case ALPValidatorRuleTypeRequired: return @"String is required.";
-        case ALPValidatorRuleTypeMinLength: return @"String is too short.";
-        case ALPValidatorRuleTypeMaxLength: return @"String is too long.";
-        case ALPValidatorRuleTypeTypeEmail: return @"String isn't a valid email address.";
-        case ALPValidatorRuleTypeTypeRegex: return @"String doesn't match a pattern.";
-        case ALPValidatorRuleTypeTypeRemote: return @"String doesn't satisfy a remote condition.";
-        case ALPValidatorRuleTypeCustom: return @"String doesn't satisfy a custom condition.";
+        case ALPValidatorRuleTypeRequired:      return @"String is required.";
+        case ALPValidatorRuleTypeMinLength:     return @"String is too short.";
+        case ALPValidatorRuleTypeMaxLength:     return @"String is too long.";
+        case ALPValidatorRuleTypeEmail:         return @"String isn't a valid email address.";
+        case ALPValidatorRuleTypeRegex:         return @"String doesn't match a pattern.";
+        case ALPValidatorRuleTypeRemote:        return @"String doesn't satisfy a remote condition.";
+        case ALPValidatorRuleTypeCustom:        return @"String doesn't satisfy a custom condition.";
+        case ALPValidatorRuleTypeStringRange:   return @"String character length is not in the correct range.";
+        case ALPValidatorRuleTypeNumericRange:  return @"Number is not in the correct range..";
         default: return nil;
     }
 }

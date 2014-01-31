@@ -30,11 +30,12 @@
 #import "ALPValidator.h"
 #import "ALPValidatorRule.h"
 #import "ALPValidatorRequiredRule.h"
-#import "ALPValidatorRemoteRule.h"
-#import "ALPValidatorCustomRule.h"
 #import "ALPValidatorMinimumLengthRule.h"
 #import "ALPValidatorMaximumLengthRule.h"
+#import "ALPValidatorRangeRule.h"
 #import "ALPValidatorRegularExpressionRule.h"
+#import "ALPValidatorCustomRule.h"
+#import "ALPValidatorRemoteRule.h"
 
 const NSString * NSStringFromALPValidatorType(ALPValidatorType type) {
     switch (type) {
@@ -138,17 +139,31 @@ NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(
     [self addValidationRule:rule];
 }
 
+- (void)addValidationToEnsureRangeWithMinimum:(NSNumber *)min maximum:(NSNumber *)max invalidMessage:(NSString *)message
+{
+    ALPValidatorRangeRule *rule;
+    switch (_type) {
+        case ALPValidatorTypeString:
+            rule = [[ALPValidatorRangeRule alloc] initWithType:ALPValidatorRuleTypeStringRange invalidMessage:message minimum:min maximum:max];
+            break;
+        case ALPValidatorTypeNumeric:
+            rule = [[ALPValidatorRangeRule alloc] initWithType:ALPValidatorRuleTypeNumericRange invalidMessage:message minimum:min maximum:max];
+            break;
+    }
+    [self addValidationRule:rule];
+}
+
 - (void)addValidationToEnsureRegularExpressionIsMetWithPattern:(NSString *)pattern invalidMessage:(NSString *)message
 {
     [self ensureValidatorCompatibilityForType:ALPValidatorTypeString];
-    ALPValidatorRegularExpressionRule *rule = [[ALPValidatorRegularExpressionRule alloc] initWithType:ALPValidatorRuleTypeTypeRegex invalidMessage:message pattern:pattern];
+    ALPValidatorRegularExpressionRule *rule = [[ALPValidatorRegularExpressionRule alloc] initWithType:ALPValidatorRuleTypeRegex invalidMessage:message pattern:pattern];
     [self addValidationRule:rule];
 }
 
 - (void)addValidationToEnsureValidEmailWithInvalidMessage:(NSString *)message
 {
     [self ensureValidatorCompatibilityForType:ALPValidatorTypeString];
-    ALPValidatorRegularExpressionRule *rule = [[ALPValidatorRegularExpressionRule alloc] initWithType:ALPValidatorRuleTypeTypeEmail invalidMessage:message pattern:ALPValidatorRegularExpressionPatternEmail];
+    ALPValidatorRegularExpressionRule *rule = [[ALPValidatorRegularExpressionRule alloc] initWithType:ALPValidatorRuleTypeEmail invalidMessage:message pattern:ALPValidatorRegularExpressionPatternEmail];
     [self addValidationRule:rule];
 }
 
@@ -163,7 +178,7 @@ NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(
     
     __typeof__(self) __weak weakSelf = self;
     
-    ALPValidatorRemoteRule *rule = [[ALPValidatorRemoteRule alloc] initWithType:ALPValidatorRuleTypeTypeRemote serviceURL:(NSURL *)url invalidMessage:message completionHandler:^(BOOL remoteConditionSatisfied, NSError *error) {
+    ALPValidatorRemoteRule *rule = [[ALPValidatorRemoteRule alloc] initWithType:ALPValidatorRuleTypeRemote serviceURL:(NSURL *)url invalidMessage:message completionHandler:^(BOOL remoteConditionSatisfied, NSError *error) {
         
         if (!error) {
             
@@ -234,7 +249,7 @@ NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(
         
         switch (rule.type) {
             
-            case ALPValidatorRuleTypeTypeRemote: {
+            case ALPValidatorRuleTypeRemote: {
                 ALPValidatorRemoteRule *remoteRule = (ALPValidatorRemoteRule *)rule;
                 self.state = ALPValidatorValidationStateWaitingForRemote;
                 [self addErrorMessageForRule:rule];
