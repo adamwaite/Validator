@@ -106,13 +106,21 @@ static NSTimeInterval const kOneMinute = 60.0;
             NSString *response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             BOOL isValid = [response isEqualToString:@"true"];
             _responseState.isValidResponse = isValid;
-            if (_requestCompletionHandler) _requestCompletionHandler(isValid, nil);
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (_requestCompletionHandler) _requestCompletionHandler(isValid, nil);
+            });
+            
+            
         
         } else {
             
             _responseState.isValidResponse = NO;
-            if (_requestCompletionHandler) _requestCompletionHandler(NO, error);
-        
+
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (_requestCompletionHandler) _requestCompletionHandler(NO, error);
+            });
+            
         }
         
     }];

@@ -240,8 +240,8 @@ NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(
 
     [self clearErrorMessages];
     
-    self.state = ALPValidatorValidationStateValid;
     self.localConditionsSatisfied = YES;
+    __block ALPValidatorState newState = ALPValidatorValidationStateValid;
     
     [_rules enumerateObjectsUsingBlock:^(ALPValidatorRule *rule, NSUInteger idx, BOOL *stop) {
         
@@ -250,7 +250,7 @@ NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(
             case ALPValidatorRuleTypeRemote: {
                 ALPValidatorRemoteRule *remoteRule = (ALPValidatorRemoteRule *)rule;
                 [self addErrorMessageForRule:rule];
-                self.state = ALPValidatorValidationStateWaitingForRemote;
+                newState = ALPValidatorValidationStateWaitingForRemote;
                 [remoteRule startRequestToValidateInstance:instance withParams:parameters];
                 break;
             }
@@ -259,23 +259,25 @@ NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(
                 if (![rule isValidationRuleSatisfied:instance]) {
                     [self addErrorMessageForRule:rule];
                     self.localConditionsSatisfied = NO;
-                    self.state = ALPValidatorValidationStateInvalid;
+                    newState = ALPValidatorValidationStateInvalid;
                 }
                 break;
             }
         }
     }];
+    
+    [self updatePublicErrorMessages];
+    self.state = newState;
+    
 }
 
 #pragma mark State Change
 
 - (void)setState:(ALPValidatorState)state
 {
-    if (_state != state) {
-        _state = state;
-        if (_validatorStateChangedHandler) {
-            _validatorStateChangedHandler(_state);
-        }
+    _state = state;
+    if (_validatorStateChangedHandler) {
+        _validatorStateChangedHandler(_state);
     }
 }
 
@@ -284,7 +286,6 @@ NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(
 - (void)addErrorMessageForRule:(ALPValidatorRule *)rule
 {
     [_mutableErrorMessages addObject:rule.errorMessage];
-    [self updatePublicErrorMessages];
 }
 
 - (void)clearErrorMessages
