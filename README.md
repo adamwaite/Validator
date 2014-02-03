@@ -211,14 +211,11 @@ An Xcode project has been included in this repository containing an example for 
 
 ## Roadmap
 
-- Add a numeric validator type (for age ranges, terms and conditions agreement etc)
-- Identical to other string rule (for password repeat and such)
 - Phone number validation
 - Credit card validation
 - Postal code validation
-- Input is contained in a collection validation (for select/picker type inputs)
-- Improved error handling on remote validation
-- Maybe add an ALPValidatorRemoteRule instance using NSURLConnection for <iOS7 support
+- Input exists in a collection validation (for select type inputs)
+- Add an ALPValidatorRemoteRule instance using NSURLConnection for <iOS7 support (pull request for this)
 
 ## Contributing
 
