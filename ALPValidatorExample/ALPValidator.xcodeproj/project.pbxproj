@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5D53B550AFBA411388680FFD /* libPods-ALPValidatorTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B2E1104D44447A9B2625AE /* libPods-ALPValidatorTests.a */; };
 		9908D564189BCB5300539E7B /* ALPValidatorRangeRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 9908D563189BCB5300539E7B /* ALPValidatorRangeRule.m */; };
+		99258E6218A004D900F4407A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 99258E6118A004D900F4407A /* README.md */; };
 		99333FB01897C74100BA81F5 /* ALPValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 99333FA11897C74100BA81F5 /* ALPValidator.m */; };
 		99333FB11897C74100BA81F5 /* ALPValidatorMaximumLengthRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 99333FA31897C74100BA81F5 /* ALPValidatorMaximumLengthRule.m */; };
 		99333FB21897C74100BA81F5 /* ALPValidatorMinimumLengthRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 99333FA51897C74100BA81F5 /* ALPValidatorMinimumLengthRule.m */; };
@@ -50,6 +51,7 @@
 		65EBC2426EE8480EA88DDF00 /* Pods-ALPValidatorTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ALPValidatorTests.xcconfig"; path = "Pods/Pods-ALPValidatorTests.xcconfig"; sourceTree = "<group>"; };
 		9908D562189BCB5300539E7B /* ALPValidatorRangeRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALPValidatorRangeRule.h; sourceTree = "<group>"; };
 		9908D563189BCB5300539E7B /* ALPValidatorRangeRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALPValidatorRangeRule.m; sourceTree = "<group>"; };
+		99258E6118A004D900F4407A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		99333F981897C71300BA81F5 /* ALPValidatorSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ALPValidatorSpec.m; path = ../../ALPValidatorTests/ALPValidatorSpec.m; sourceTree = "<group>"; };
 		99333FA01897C74100BA81F5 /* ALPValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALPValidator.h; sourceTree = "<group>"; };
 		99333FA11897C74100BA81F5 /* ALPValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALPValidator.m; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 		999C70591897C45A008CAEE4 = {
 			isa = PBXGroup;
 			children = (
+				99258E6118A004D900F4407A /* README.md */,
 				99333F9B1897C74100BA81F5 /* ALPValidator */,
 				999C706B1897C45A008CAEE4 /* ALPValidatorExample */,
 				999C708A1897C45A008CAEE4 /* ALPValidatorTests */,
@@ -321,6 +324,7 @@
 			files = (
 				999C707E1897C45A008CAEE4 /* Images.xcassets in Resources */,
 				99DC274F189F9DB800F23EC8 /* ALPValidatorDemo.storyboard in Resources */,
+				99258E6218A004D900F4407A /* README.md in Resources */,
 				999C70701897C45A008CAEE4 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

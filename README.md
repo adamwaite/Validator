@@ -9,11 +9,12 @@ Validations:
 - Minimum length validation
 - Maximum length validation 
 - Range validation (string character length and numeric)
-- Regular expression validation
-- Email validation
-- Custom block based validation
+- Equality validation (for password confirmation and such)
+- Regular expression match validation
+- Email address validation
+- Custom block validation
 - Remote validation (remote web service validation)
-- *More to come as encountered*.
+- *More to come as encountered!*.
 
 ## Installation
 
@@ -54,6 +55,16 @@ Validation rules are added with the `addRule` methods. When adding a rule you ca
 - (void)addValidationToEnsureMaximumLength:(NSUInteger)maxLength invalidMessage:(NSString *)message;
 ```
 
+- Range validation:
+```
+- (void)addValidationToEnsureRangeWithMinimum:(NSNumber *)min maximum:(NSNumber *)max invalidMessage:(NSString *)message;
+```
+
+- Equality validation:
+```
+- (void)addValidationToEnsureInstanceIsTheSameAs:(id)otherInstance invalidMessage:(NSString *)message;
+```
+
 - Regular expression validation:
 ```
 - (void)addValidationToEnsureRegularExpressionIsMetWithPattern:(NSString *)pattern invalidMessage:(NSString *)message;
@@ -86,15 +97,29 @@ ALPValidator *validator = [ALPValidator validatorWithType:ALPValidatorTypeString
 
 This will change the `state` property of the validator to `ALPValidatorValidationStateInvalid` and the `isValid` method will return `NO`.
 
-You could for example call `validate:` every time the `text` property of a `UITextField` is changed and update the UI to reflect state.
+To validate as the user types into a control you might do something such as this:
+
+```
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [_someTextField addTarget:self action:@selector(textFieldTextChanged:) forControlEvents:UIControlEventEditingChanged];
+}
+
+- (void)textFieldTextChanged:(UITextField *)sender
+{
+    [_someValidator validate:sender.text];
+}
+
+```
 
 ### Validation State Changed Handler
 
-Use the `validatorStateChangedHandler` to be notified for a change in validation state. 
+Use the `validatorStateChangedHandler` to be notified for a change in validation state.
 
 ```
-ALPValidator *someValidator = [ALPValidator validatorWithType:ALPValidatorTypeString];
-someValidator.validatorStateChangedHandler = ^(ALPValidatorState newState) {
+self.someValidator = [ALPValidator validatorWithType:ALPValidatorTypeString];
+_someValidator.validatorStateChangedHandler = ^(ALPValidatorState newState) {
     switch (newState) {
         
         case ALPValidatorValidationStateValid:
@@ -112,6 +137,8 @@ someValidator.validatorStateChangedHandler = ^(ALPValidatorState newState) {
     }
 };
 ```
+
+See the example included in this repo for an idea on how to use the state change handler to update the UI with validation state as the user types into a control.
 
 ### Validation Error Messages
 
@@ -178,11 +205,9 @@ You may want to supply extra parameters with the request, you can do such with t
 
 The remote validation request comes in the form of a HTTP POST request with an `application/json` content type. The HTTP body contains a JSON string containing the `"instance":` property (whatever you wish to validate) and an `"extras":` property (containing any additional parameters if an `NSDictionary` was passed). You should be able to grab these on your server side code and respond after some conditions have been evaluated.
 
-Hopefully this makes sense, please get in touch if you're unsure.
-
 ## Examples
 
-There is an Xcode project in this repository containing an example for each validation rule and other features. It doesn't have a user interface (yet) but it should show how you might set up and use ALPValidator in your apps. To test the remote validation start the [Sinatra](http://www.sinatrarb.com) server with the `ruby demo_server.rb` command.
+An Xcode project has been included in this repository containing an example for each validation rule and some other features. To test the remote validation start the [Sinatra](http://www.sinatrarb.com) server with the `ruby demo_server.rb` command.
 
 ## Roadmap
 
