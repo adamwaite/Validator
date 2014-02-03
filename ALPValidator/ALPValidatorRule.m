@@ -40,6 +40,7 @@ const NSString * ALPValidatorRuleDefaultErrorMessageForType(ALPValidatorRuleType
         case ALPValidatorRuleTypeCustom:        return @"String doesn't satisfy a custom condition.";
         case ALPValidatorRuleTypeStringRange:   return @"String character length is not in the correct range.";
         case ALPValidatorRuleTypeNumericRange:  return @"Number is not in the correct range..";
+        case ALPValidatorRuleTypeEqual:         return @"Instance should be identical to another instance";
         default: return nil;
     }
 }

@@ -8,6 +8,7 @@ Validations:
 - Presence validation
 - Minimum length validation
 - Maximum length validation 
+- Range validation (string character length and numeric)
 - Regular expression validation
 - Email validation
 - Custom block based validation
@@ -186,7 +187,6 @@ There is an Xcode project in this repository containing an example for each vali
 ## Roadmap
 
 - Add a numeric validator type (for age ranges, terms and conditions agreement etc)
-- NSRange validation rule (combining minimum and max validations)
 - Identical to other string rule (for password repeat and such)
 - Phone number validation
 - Credit card validation

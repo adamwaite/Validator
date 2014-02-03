@@ -33,6 +33,7 @@
 #import "ALPValidatorMinimumLengthRule.h"
 #import "ALPValidatorMaximumLengthRule.h"
 #import "ALPValidatorRangeRule.h"
+#import "ALPValidatorEqualRule.h"
 #import "ALPValidatorRegularExpressionRule.h"
 #import "ALPValidatorCustomRule.h"
 #import "ALPValidatorRemoteRule.h"
@@ -153,6 +154,12 @@ NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(
     [self addValidationRule:rule];
 }
 
+- (void)addValidationToEnsureInstanceIsTheSameAs:(id)otherInstance invalidMessage:(NSString *)message
+{
+    ALPValidatorEqualRule *rule = [[ALPValidatorEqualRule alloc] initWithType:ALPValidatorRuleTypeEqual invalidMessage:message otherInstance:otherInstance];
+    [self addValidationRule:rule];
+}
+
 - (void)addValidationToEnsureRegularExpressionIsMetWithPattern:(NSString *)pattern invalidMessage:(NSString *)message
 {
     [self ensureValidatorCompatibilityForType:ALPValidatorTypeString];
@@ -181,18 +188,14 @@ NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(
     ALPValidatorRemoteRule *rule = [[ALPValidatorRemoteRule alloc] initWithType:ALPValidatorRuleTypeRemote serviceURL:(NSURL *)url invalidMessage:message completionHandler:^(BOOL remoteConditionSatisfied, NSError *error) {
         
         if (!error) {
-            
             if (remoteConditionSatisfied) {
-                
                 [weakSelf removeValidationMessage:message];
-                
                 if (weakSelf.localConditionsSatisfied) {
                     weakSelf.state = ALPValidatorValidationStateValid;
                 }
                 else {
                     weakSelf.state = ALPValidatorValidationStateInvalid;
                 }
-            
             }
             else {
                 weakSelf.state = ALPValidatorValidationStateInvalid;
@@ -201,18 +204,13 @@ NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(
             if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(validator:remoteValidationAtURL:receivedResult:)]) {
                 [weakSelf.delegate validator:self remoteValidationAtURL:url receivedResult:remoteConditionSatisfied];
             }
-            
         }
         else {
-            
             weakSelf.state = ALPValidatorValidationStateInvalid;
-            
             if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(validator:remoteValidationAtURL:failedWithError:)]) {
                 [weakSelf.delegate validator:self remoteValidationAtURL:url failedWithError:error];
             }
-        
         }
-        
     }];
     
     [self addValidationRule:rule];
@@ -251,27 +249,22 @@ NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(
             
             case ALPValidatorRuleTypeRemote: {
                 ALPValidatorRemoteRule *remoteRule = (ALPValidatorRemoteRule *)rule;
-                self.state = ALPValidatorValidationStateWaitingForRemote;
                 [self addErrorMessageForRule:rule];
+                self.state = ALPValidatorValidationStateWaitingForRemote;
                 [remoteRule startRequestToValidateInstance:instance withParams:parameters];
                 break;
             }
                 
             default: {
                 if (![rule isValidationRuleSatisfied:instance]) {
-                    self.state = ALPValidatorValidationStateInvalid;
-                    self.localConditionsSatisfied = NO;
                     [self addErrorMessageForRule:rule];
+                    self.localConditionsSatisfied = NO;
+                    self.state = ALPValidatorValidationStateInvalid;
                 }
                 break;
             }
-            
         }
-        
     }];
-    
-    [self updatePublicErrorMessages];
-    
 }
 
 #pragma mark State Change
@@ -291,6 +284,7 @@ NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(
 - (void)addErrorMessageForRule:(ALPValidatorRule *)rule
 {
     [_mutableErrorMessages addObject:rule.errorMessage];
+    [self updatePublicErrorMessages];
 }
 
 - (void)clearErrorMessages

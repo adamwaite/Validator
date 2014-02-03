@@ -22,12 +22,16 @@
 		999C706A1897C45A008CAEE4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 999C70691897C45A008CAEE4 /* UIKit.framework */; };
 		999C70701897C45A008CAEE4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 999C706E1897C45A008CAEE4 /* InfoPlist.strings */; };
 		999C70721897C45A008CAEE4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 999C70711897C45A008CAEE4 /* main.m */; };
-		999C70761897C45A008CAEE4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 999C70751897C45A008CAEE4 /* AppDelegate.m */; };
+		999C70761897C45A008CAEE4 /* ALPValidatorDemoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 999C70751897C45A008CAEE4 /* ALPValidatorDemoAppDelegate.m */; };
 		999C707E1897C45A008CAEE4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 999C707D1897C45A008CAEE4 /* Images.xcassets */; };
 		999C70851897C45A008CAEE4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 999C70841897C45A008CAEE4 /* XCTest.framework */; };
 		999C70861897C45A008CAEE4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 999C70651897C45A008CAEE4 /* Foundation.framework */; };
 		999C70871897C45A008CAEE4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 999C70691897C45A008CAEE4 /* UIKit.framework */; };
 		999C708F1897C45A008CAEE4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 999C708D1897C45A008CAEE4 /* InfoPlist.strings */; };
+		99B16B8D189BD736001DBA64 /* ALPValidatorEqualRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B16B8C189BD736001DBA64 /* ALPValidatorEqualRule.m */; };
+		99DC274F189F9DB800F23EC8 /* ALPValidatorDemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99DC274E189F9DB800F23EC8 /* ALPValidatorDemo.storyboard */; };
+		99DC2752189F9DD700F23EC8 /* ALPValidatorDemoSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DC2751189F9DD700F23EC8 /* ALPValidatorDemoSelectViewController.m */; };
+		99DC2755189F9DFA00F23EC8 /* ALPValidatorDemoTextFieldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DC2754189F9DFA00F23EC8 /* ALPValidatorDemoTextFieldViewController.m */; };
 		99EA8FA51897F5550063DD9F /* ALPValidatorCustomRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 99EA8FA41897F5550063DD9F /* ALPValidatorCustomRule.m */; };
 /* End PBXBuildFile section */
 
@@ -70,13 +74,20 @@
 		999C706F1897C45A008CAEE4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		999C70711897C45A008CAEE4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		999C70731897C45A008CAEE4 /* ALPValidator-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ALPValidator-Prefix.pch"; sourceTree = "<group>"; };
-		999C70741897C45A008CAEE4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		999C70751897C45A008CAEE4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		999C70741897C45A008CAEE4 /* ALPValidatorDemoAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALPValidatorDemoAppDelegate.h; sourceTree = "<group>"; };
+		999C70751897C45A008CAEE4 /* ALPValidatorDemoAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ALPValidatorDemoAppDelegate.m; sourceTree = "<group>"; };
 		999C707D1897C45A008CAEE4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		999C70831897C45A008CAEE4 /* ALPValidatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ALPValidatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		999C70841897C45A008CAEE4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		999C708C1897C45A008CAEE4 /* ALPValidatorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ALPValidatorTests-Info.plist"; sourceTree = "<group>"; };
 		999C708E1897C45A008CAEE4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		99B16B8B189BD736001DBA64 /* ALPValidatorEqualRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALPValidatorEqualRule.h; sourceTree = "<group>"; };
+		99B16B8C189BD736001DBA64 /* ALPValidatorEqualRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALPValidatorEqualRule.m; sourceTree = "<group>"; };
+		99DC274E189F9DB800F23EC8 /* ALPValidatorDemo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ALPValidatorDemo.storyboard; sourceTree = "<group>"; };
+		99DC2750189F9DD700F23EC8 /* ALPValidatorDemoSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALPValidatorDemoSelectViewController.h; sourceTree = "<group>"; };
+		99DC2751189F9DD700F23EC8 /* ALPValidatorDemoSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALPValidatorDemoSelectViewController.m; sourceTree = "<group>"; };
+		99DC2753189F9DFA00F23EC8 /* ALPValidatorDemoTextFieldViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALPValidatorDemoTextFieldViewController.h; sourceTree = "<group>"; };
+		99DC2754189F9DFA00F23EC8 /* ALPValidatorDemoTextFieldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALPValidatorDemoTextFieldViewController.m; sourceTree = "<group>"; };
 		99EA8FA31897F5550063DD9F /* ALPValidatorCustomRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALPValidatorCustomRule.h; sourceTree = "<group>"; };
 		99EA8FA41897F5550063DD9F /* ALPValidatorCustomRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALPValidatorCustomRule.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,6 +132,8 @@
 				99333FA31897C74100BA81F5 /* ALPValidatorMaximumLengthRule.m */,
 				9908D562189BCB5300539E7B /* ALPValidatorRangeRule.h */,
 				9908D563189BCB5300539E7B /* ALPValidatorRangeRule.m */,
+				99B16B8B189BD736001DBA64 /* ALPValidatorEqualRule.h */,
+				99B16B8C189BD736001DBA64 /* ALPValidatorEqualRule.m */,
 				99333FA61897C74100BA81F5 /* ALPValidatorRegularExpressionRule.h */,
 				99333FA71897C74100BA81F5 /* ALPValidatorRegularExpressionRule.m */,
 				99EA8FA31897F5550063DD9F /* ALPValidatorCustomRule.h */,
@@ -169,8 +182,10 @@
 		999C706B1897C45A008CAEE4 /* ALPValidatorExample */ = {
 			isa = PBXGroup;
 			children = (
-				999C70741897C45A008CAEE4 /* AppDelegate.h */,
-				999C70751897C45A008CAEE4 /* AppDelegate.m */,
+				999C70741897C45A008CAEE4 /* ALPValidatorDemoAppDelegate.h */,
+				999C70751897C45A008CAEE4 /* ALPValidatorDemoAppDelegate.m */,
+				99DC275B189F9F3200F23EC8 /* Storyboard */,
+				99DC275A189F9F2600F23EC8 /* Controllers */,
 				999C707D1897C45A008CAEE4 /* Images.xcassets */,
 				999C706C1897C45A008CAEE4 /* Supporting Files */,
 			);
@@ -205,6 +220,25 @@
 				999C708D1897C45A008CAEE4 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		99DC275A189F9F2600F23EC8 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				99DC2750189F9DD700F23EC8 /* ALPValidatorDemoSelectViewController.h */,
+				99DC2751189F9DD700F23EC8 /* ALPValidatorDemoSelectViewController.m */,
+				99DC2753189F9DFA00F23EC8 /* ALPValidatorDemoTextFieldViewController.h */,
+				99DC2754189F9DFA00F23EC8 /* ALPValidatorDemoTextFieldViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		99DC275B189F9F3200F23EC8 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				99DC274E189F9DB800F23EC8 /* ALPValidatorDemo.storyboard */,
+			);
+			name = Storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,6 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				999C707E1897C45A008CAEE4 /* Images.xcassets in Resources */,
+				99DC274F189F9DB800F23EC8 /* ALPValidatorDemo.storyboard in Resources */,
 				999C70701897C45A008CAEE4 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,15 +374,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				99333FB21897C74100BA81F5 /* ALPValidatorMinimumLengthRule.m in Sources */,
-				999C70761897C45A008CAEE4 /* AppDelegate.m in Sources */,
+				999C70761897C45A008CAEE4 /* ALPValidatorDemoAppDelegate.m in Sources */,
 				99333FB31897C74100BA81F5 /* ALPValidatorRegularExpressionRule.m in Sources */,
 				9908D564189BCB5300539E7B /* ALPValidatorRangeRule.m in Sources */,
 				99333FB01897C74100BA81F5 /* ALPValidator.m in Sources */,
+				99DC2752189F9DD700F23EC8 /* ALPValidatorDemoSelectViewController.m in Sources */,
 				99EA8FA51897F5550063DD9F /* ALPValidatorCustomRule.m in Sources */,
 				999C70721897C45A008CAEE4 /* main.m in Sources */,
 				99333FB61897C74100BA81F5 /* ALPValidatorRule.m in Sources */,
 				99333FB11897C74100BA81F5 /* ALPValidatorMaximumLengthRule.m in Sources */,
+				99B16B8D189BD736001DBA64 /* ALPValidatorEqualRule.m in Sources */,
 				99333FB41897C74100BA81F5 /* ALPValidatorRemoteRule.m in Sources */,
+				99DC2755189F9DFA00F23EC8 /* ALPValidatorDemoTextFieldViewController.m in Sources */,
 				99333FB51897C74100BA81F5 /* ALPValidatorRequiredRule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

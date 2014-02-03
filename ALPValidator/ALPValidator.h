@@ -38,8 +38,8 @@ typedef NS_ENUM(NSUInteger, ALPValidatorType) {
 
 typedef NS_ENUM(NSUInteger, ALPValidatorState) {
     ALPValidatorValidationStateInvalid,
-    ALPValidatorValidationStateWaitingForRemote,
-    ALPValidatorValidationStateValid
+    ALPValidatorValidationStateValid,
+    ALPValidatorValidationStateWaitingForRemote
 };
 
 typedef void (^ALPValidatorStateChangeHandler)(ALPValidatorState);
@@ -70,6 +70,7 @@ extern NSString * const ALPValidatorRegularExpressionPatternEmail;
 - (void)addValidationToEnsureMinimumLength:(NSUInteger)minLength invalidMessage:(NSString *)message;
 - (void)addValidationToEnsureMaximumLength:(NSUInteger)maxLength invalidMessage:(NSString *)message;
 - (void)addValidationToEnsureRangeWithMinimum:(NSNumber *)min maximum:(NSNumber *)max invalidMessage:(NSString *)message;
+- (void)addValidationToEnsureInstanceIsTheSameAs:(id)otherInstance invalidMessage:(NSString *)message;
 - (void)addValidationToEnsureRegularExpressionIsMetWithPattern:(NSString *)pattern invalidMessage:(NSString *)message;
 - (void)addValidationToEnsureValidEmailWithInvalidMessage:(NSString *)message;
 - (void)addValidationToEnsureRemoteConditionIsSatisfiedAtURL:(NSURL *)url invalidMessage:(NSString *)message;
