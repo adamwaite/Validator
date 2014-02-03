@@ -30,12 +30,14 @@ Install with [CocoaPods](http://cocoapods.org):
 
     `#import "ALPValidator.h"`
 
-2. Create a validator instance using the designated initialiser:
+2. Create a string validator instance using the designated initialiser:
 
     `ALPValidator *validator = [ALPValidator validatorWithType:ALPValidatorTypeString];`
 
-*Note: There are plans to add validators for other object types, just strings are supported at the moment.*
+or a numeric validator:
 
+    `ALPValidator *validator = [ALPValidator validatorWithType:ALPValidatorTypeNumeric];`
+    
 ### Adding Validation Rules
 
 Validation rules are added with the `addRule` methods. When adding a rule you can supply an error message string as an argument, this will appear in the `errorMessages` array should the validation fail. Some of the `addRule` methods take additional parameters, they should be self explanatory. You can add as many validation rules to a validator as you like.
