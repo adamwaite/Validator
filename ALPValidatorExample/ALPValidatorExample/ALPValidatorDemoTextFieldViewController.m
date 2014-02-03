@@ -109,13 +109,7 @@
 
 - (void)handleWaiting
 {
-    _textField.backgroundColor = [[UIColor yellowColor] colorWithAlphaComponent:0.3];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-}
-
-- (void)handleResponse
-{
-    
 }
 
 #pragma mark UITextFieldDelegate
@@ -140,12 +134,22 @@
 
 - (void)validator:(ALPValidator *)validator remoteValidationAtURL:(NSURL *)url receivedResult:(BOOL)remoteConditionValid
 {
-    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
 - (void)validator:(ALPValidator *)validator remoteValidationAtURL:(NSURL *)url failedWithError:(NSError *)error
 {
     
+    NSLog(@"Remote service could not be contacted: %@. Hace you started the sinatra server?", error);
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSString *errorMessage = [NSString stringWithFormat:@"The remote service could not be contacted: %@. Have you started the Sinatra server bundled with the demo?", error];
+        UIAlertView *alertOnce = [[UIAlertView alloc] initWithTitle:@"Remote service error" message:errorMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertOnce show];
+    });
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
 @end

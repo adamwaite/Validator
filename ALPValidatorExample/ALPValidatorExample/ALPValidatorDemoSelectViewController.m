@@ -72,7 +72,7 @@ static NSString * const kTableDataKeyValidator = @"kTableDataKeyValidator";
         },
         @{
             kTableDataKeyTitle: NSLocalizedString(@"Remote validation", nil),
-            kTableDataKeyDescription: NSLocalizedString(@"Validates at localhost:4567 (start the included Sinatra server) to ensure the input doesn't contain the word 'invalid'.", nil),
+            kTableDataKeyDescription: NSLocalizedString(@"Validates at http://localhost:4567 to ensure the input doesn't contain the word 'invalid' (start the included Sinatra server).", nil),
             kTableDataKeyValidator: [self demoRemoteValidator]
         }
     ];
