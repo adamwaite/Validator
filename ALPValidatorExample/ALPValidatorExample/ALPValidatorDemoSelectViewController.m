@@ -38,17 +38,22 @@ static NSString * const kTableDataKeyValidator = @"kTableDataKeyValidator";
         @{
             kTableDataKeyTitle: NSLocalizedString(@"Required", nil),
             kTableDataKeyDescription: NSLocalizedString(@"Validates to ensure the text field contains a non-empty value.", nil),
-            kTableDataKeyValidator: [self demoValidatorRequired]
+            kTableDataKeyValidator: [self demoRequiredValidator]
         },
         @{
             kTableDataKeyTitle: NSLocalizedString(@"Minimum length", nil),
             kTableDataKeyDescription: NSLocalizedString(@"Validates to ensure the text field contains at least 6 characters.", nil),
-            kTableDataKeyValidator: [self demoMinLengthValidation]
+            kTableDataKeyValidator: [self demoMinLengthValidator]
         },
         @{
             kTableDataKeyTitle: NSLocalizedString(@"Maximum length", nil),
             kTableDataKeyDescription: NSLocalizedString(@"Validates to ensure the text field contains at most 8 characters.", nil),
-            kTableDataKeyValidator: [self demoMaxLengthValidation]
+            kTableDataKeyValidator: [self demoMaxLengthValidator]
+        },
+        @{
+            kTableDataKeyTitle: NSLocalizedString(@"Range", nil),
+            kTableDataKeyDescription: NSLocalizedString(@"Validates to ensure the text field contains min 3 and max 8 characters.", nil),
+            kTableDataKeyValidator: [self demoRangeValidator]
         },
         @{
             kTableDataKeyTitle: NSLocalizedString(@"Regular expression", nil),
@@ -59,6 +64,11 @@ static NSString * const kTableDataKeyValidator = @"kTableDataKeyValidator";
             kTableDataKeyTitle: NSLocalizedString(@"Email address", nil),
             kTableDataKeyDescription: NSLocalizedString(@"Validates to ensure the text field contains a valid email address.", nil),
             kTableDataKeyValidator: [self demoEmailValidator]
+        },
+        @{
+            kTableDataKeyTitle: NSLocalizedString(@"Equality validation", nil),
+            kTableDataKeyDescription: NSLocalizedString(@"Validates to ensure the input field contains 'password'", nil),
+            kTableDataKeyValidator: [self demoEqualityValidator]
         },
         @{
             kTableDataKeyTitle: NSLocalizedString(@"Custom validation", nil),
@@ -78,21 +88,23 @@ static NSString * const kTableDataKeyValidator = @"kTableDataKeyValidator";
     ];
 }
 
-- (ALPValidator *)demoValidatorRequired
+#pragma mark Example Validators
+
+- (ALPValidator *)demoRequiredValidator
 {
     ALPValidator *validator = [ALPValidator validatorWithType:ALPValidatorTypeString];
     [validator addValidationToEnsurePresenceWithInvalidMessage:NSLocalizedString(@"This is required!", nil)];
     return validator;
 }
 
-- (ALPValidator *)demoMinLengthValidation
+- (ALPValidator *)demoMinLengthValidator
 {
     ALPValidator *validator = [ALPValidator validatorWithType:ALPValidatorTypeString];
     [validator addValidationToEnsureMinimumLength:6 invalidMessage:NSLocalizedString(@"Min length is 6 characters!", nil)];
     return validator;
 }
 
-- (ALPValidator *)demoMaxLengthValidation
+- (ALPValidator *)demoMaxLengthValidator
 {
     ALPValidator *validator = [ALPValidator validatorWithType:ALPValidatorTypeString];
     [validator addValidationToEnsureMaximumLength:8 invalidMessage:NSLocalizedString(@"Max length is 8 characters!", nil)];
@@ -135,6 +147,20 @@ static NSString * const kTableDataKeyValidator = @"kTableDataKeyValidator";
 {
     ALPValidator *validator = [ALPValidator validatorWithType:ALPValidatorTypeString];
     [validator addValidationToEnsureRemoteConditionIsSatisfiedAtURL:[NSURL URLWithString:@"http:127.0.0.1:4567/validate"] invalidMessage:NSLocalizedString(@"Remote condition has not been satisfied", nil)];
+    return validator;
+}
+
+- (ALPValidator *)demoEqualityValidator
+{
+    ALPValidator *validator = [ALPValidator validatorWithType:ALPValidatorTypeString];
+    [validator addValidationToEnsureInstanceIsTheSameAs:@"password" invalidMessage:NSLocalizedString(@"Should be equal to 'password'", nil)];
+    return validator;
+}
+
+- (ALPValidator *)demoRangeValidator
+{
+    ALPValidator *validator = [ALPValidator validatorWithType:ALPValidatorTypeString];
+    [validator addValidationToEnsureRangeWithMinimum:@3 maximum:@8 invalidMessage:NSLocalizedString(@"Should be between 3 and 8 characters", nil)];
     return validator;
 }
 
