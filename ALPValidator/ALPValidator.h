@@ -31,21 +31,66 @@
 
 @class ALPValidator;
 
+/**
+ *  Validator type.
+ */
 typedef NS_ENUM(NSUInteger, ALPValidatorType) {
+    /**
+     *  Validates string instances
+     */
     ALPValidatorTypeString,
-    ALPValidatorTypeNumeric
+    /**
+     *  Validates numeric instances
+     */
+    ALPValidatorTypeNumeric,
+    /**
+     *  Validates files (images for example)
+     */
+    ALPValidatorTypeFile
 };
 
+
+/**
+ *  Describes validation state
+ */
 typedef NS_ENUM(NSUInteger, ALPValidatorState) {
+    /**
+     *  Invalid state
+     */
     ALPValidatorValidationStateInvalid,
+    /**
+     *  Valid state
+     */
     ALPValidatorValidationStateValid,
+    /**
+     *  Waiting on a remote response to determine validation state
+     */
     ALPValidatorValidationStateWaitingForRemote
 };
 
+/**
+ *  Block called on validation state change
+ *
+ *  @see validatorStateChangedHandler
+ *
+ *  @param ALPValidatorState state of the validation
+ */
 typedef void (^ALPValidatorStateChangeHandler)(ALPValidatorState);
+
+/**
+ *  Block added to a custom rule
+ *
+ *  @param id Instance to validate
+ *
+ *  @return BOOL YES for valid, NO for invalid
+ */
 typedef BOOL (^ALPValidatorCustomRuleBlock)(id);
 
+/**
+ *  Regular expression for validating email addresses.
+ */
 extern NSString * const ALPValidatorRegularExpressionPatternEmail;
+
 
 @protocol ALPValidatorDelegate <NSObject>
 
@@ -59,12 +104,12 @@ extern NSString * const ALPValidatorRegularExpressionPatternEmail;
 
 @property (weak, nonatomic) id <ALPValidatorDelegate> delegate;
 @property (copy, nonatomic) ALPValidatorStateChangeHandler validatorStateChangedHandler;
-
 @property (nonatomic, readonly) ALPValidatorState state;
 @property (readonly) NSUInteger ruleCount;
 @property (copy, nonatomic, readonly) NSArray *errorMessages;
 
 + (instancetype)validatorWithType:(ALPValidatorType)type;
+- (id)initWithType:(ALPValidatorType)type;
 
 - (void)addValidationToEnsurePresenceWithInvalidMessage:(NSString *)message;
 - (void)addValidationToEnsureMinimumLength:(NSUInteger)minLength invalidMessage:(NSString *)message;

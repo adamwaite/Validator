@@ -28,6 +28,9 @@
  */
 
 #import "ALPValidator.h"
+#import "ALPStringValidator.h"
+#import "ALPNumericValidator.h"
+#import "ALPFileValidator.h"
 #import "ALPValidatorRule.h"
 #import "ALPValidatorRequiredRule.h"
 #import "ALPValidatorMinimumLengthRule.h"
@@ -42,6 +45,7 @@ const NSString * NSStringFromALPValidatorType(ALPValidatorType type) {
     switch (type) {
         case ALPValidatorTypeString: return @"String";
         case ALPValidatorTypeNumeric: return @"Numeric";
+        case ALPValidatorTypeFile: return @"File";
         default: return nil;
     }
 }
@@ -74,7 +78,14 @@ NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(
 
 + (instancetype)validatorWithType:(ALPValidatorType)type
 {
-    return [[ALPValidator alloc] initWithType:type];
+    switch (type) {
+        case ALPValidatorTypeString:
+            return [[ALPStringValidator alloc] init];
+        case ALPValidatorTypeNumeric:
+            return [[ALPNumericValidator alloc] init];
+        case ALPValidatorTypeFile:
+            return [[ALPFileValidator alloc] init];
+    }
 }
 
 - (id)init
@@ -149,6 +160,9 @@ NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(
             break;
         case ALPValidatorTypeNumeric:
             rule = [[ALPValidatorRangeRule alloc] initWithType:ALPValidatorRuleTypeNumericRange invalidMessage:message minimum:min maximum:max];
+            break;
+        default:
+            rule = [[ALPValidatorRangeRule alloc] initWithType:ALPValidatorRuleTypeStringRange invalidMessage:message minimum:min maximum:max];
             break;
     }
     [self addValidationRule:rule];
