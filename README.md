@@ -34,7 +34,7 @@ Install with [CocoaPods](http://cocoapods.org):
 
     `ALPValidator *validator = [ALPValidator validatorWithType:ALPValidatorTypeString];`
 
-or a numeric validator:
+    or a numeric validator:
 
     `ALPValidator *validator = [ALPValidator validatorWithType:ALPValidatorTypeNumeric];`
     
