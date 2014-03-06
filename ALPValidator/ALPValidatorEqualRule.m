@@ -31,7 +31,7 @@
 
 - (BOOL)isValidationRuleSatisfied:(id)instance
 {
-    return [instance isEqual:_otherInstance];
+    return [instance isEqual:self.otherInstance];
 }
 
 @end

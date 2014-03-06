@@ -52,7 +52,7 @@
 
 - (BOOL)isValidationRuleSatisfied:(NSString *)instance
 {
-    return [[NSPredicate predicateWithFormat:@"SELF MATCHES %@", _pattern] evaluateWithObject:instance];
+    return [[NSPredicate predicateWithFormat:@"SELF MATCHES %@", self.pattern] evaluateWithObject:instance];
 }
 
 @end

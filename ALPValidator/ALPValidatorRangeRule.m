@@ -36,13 +36,13 @@
     switch (self.type) {
         case ALPValidatorRuleTypeNumericRange: {
             float numberToValidate = [(NSNumber *)instance floatValue];
-            float minVal = [_min floatValue];
-            float maxVal = [_max floatValue];
+            float minVal = [self.min floatValue];
+            float maxVal = [self.max floatValue];
             return ((numberToValidate >= minVal) && (numberToValidate <= maxVal));
         }
         case ALPValidatorRuleTypeStringRange: {
-            NSUInteger minChars = [_min integerValue];
-            NSUInteger maxChars = [_max integerValue];
+            NSUInteger minChars = [self.min integerValue];
+            NSUInteger maxChars = [self.max integerValue];
             NSString *stringToValidate = (NSString *)instance;
             return (([stringToValidate length] >= minChars) && ([stringToValidate length] <= maxChars));
         }

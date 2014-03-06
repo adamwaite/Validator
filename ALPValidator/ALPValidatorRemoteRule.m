@@ -118,7 +118,7 @@ static NSTimeInterval const kOneMinute = 60.0;
             _responseState.isValidResponse = NO;
 
             dispatch_async(dispatch_get_main_queue(), ^{
-                if (_requestCompletionHandler) _requestCompletionHandler(NO, error);
+                if (self.requestCompletionHandler) self.requestCompletionHandler(NO, error);
             });
             
         }

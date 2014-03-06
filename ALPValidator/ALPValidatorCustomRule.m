@@ -52,7 +52,7 @@
 
 - (BOOL)isValidationRuleSatisfied:(id)instance
 {
-    return _block(instance);
+    return self.block(instance);
 }
 
 @end

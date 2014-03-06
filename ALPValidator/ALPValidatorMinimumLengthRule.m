@@ -52,7 +52,7 @@
 
 - (BOOL)isValidationRuleSatisfied:(NSString *)instance
 {
-    return ([instance length] >= _minLength);
+    return ([instance length] >= self.minLength);
 }
 
 @end

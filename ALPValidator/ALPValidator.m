@@ -65,7 +65,7 @@ NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(
 
 @property (nonatomic) ALPValidatorType type;
 @property (nonatomic) ALPValidatorState state;
-@property (strong, nonatomic) NSMutableArray *rules;
+@property (copy, nonatomic) NSMutableArray *rules;
 @property (nonatomic) BOOL localConditionsSatisfied;
 @property (copy, nonatomic) NSArray *errorMessages;
 @property (copy, nonatomic) NSMutableArray *mutableErrorMessages;
@@ -110,9 +110,9 @@ NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(
 - (NSString *)description
 {
     NSDictionary *output = @{
-        @"_state": @(_state),
-        @"state as string": NSStringFromALPValidatorState(_state),
-        @"errorMessages": _errorMessages
+        @"state": @(self.state),
+        @"state as string": NSStringFromALPValidatorState(self.state),
+        @"errorMessages": self.errorMessages
     };
     
     return [NSString stringWithFormat:@"%@ %p: %@", [self class], self, output];
@@ -127,7 +127,7 @@ NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(
 
 - (void)addValidationRule:(ALPValidatorRule *)rule
 {
-    [_rules addObject:rule];
+    [self.rules addObject:rule];
 }
 
 - (void)addValidationToEnsurePresenceWithInvalidMessage:(NSString *)message
@@ -154,7 +154,7 @@ NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(
 - (void)addValidationToEnsureRangeWithMinimum:(NSNumber *)min maximum:(NSNumber *)max invalidMessage:(NSString *)message
 {
     ALPValidatorRangeRule *rule;
-    switch (_type) {
+    switch (self.type) {
         case ALPValidatorTypeString:
             rule = [[ALPValidatorRangeRule alloc] initWithType:ALPValidatorRuleTypeStringRange invalidMessage:message minimum:min maximum:max];
             break;
@@ -232,8 +232,8 @@ NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(
 
 - (void)ensureValidatorCompatibilityForType:(ALPValidatorType)type
 {
-    if (_type != type) {
-        [NSException raise:@"ALPValidator Error" format:@"Attempted to add validation rule that is not compatible for validator type %@, %s", NSStringFromALPValidatorType(_type), __PRETTY_FUNCTION__];
+    if (self.type != type) {
+        [NSException raise:@"ALPValidator Error" format:@"Attempted to add validation rule that is not compatible for validator type %@, %s", NSStringFromALPValidatorType(self.type), __PRETTY_FUNCTION__];
     }
 }
 
@@ -241,7 +241,7 @@ NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(
 
 - (BOOL)isValid
 {
-    return (_state == ALPValidatorValidationStateValid);
+    return (self.state == ALPValidatorValidationStateValid);
 }
 
 - (void)validate:(id)instance
@@ -257,7 +257,7 @@ NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(
     self.localConditionsSatisfied = YES;
     __block ALPValidatorState newState = ALPValidatorValidationStateValid;
     
-    [_rules enumerateObjectsUsingBlock:^(ALPValidatorRule *rule, NSUInteger idx, BOOL *stop) {
+    [self.rules enumerateObjectsUsingBlock:^(ALPValidatorRule *rule, NSUInteger idx, BOOL *stop) {
         
         switch (rule.type) {
             
@@ -290,8 +290,8 @@ NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(
 - (void)setState:(ALPValidatorState)state
 {
     _state = state;
-    if (_validatorStateChangedHandler) {
-        _validatorStateChangedHandler(_state);
+    if (self.validatorStateChangedHandler) {
+        self.validatorStateChangedHandler(state);
     }
 }
 
@@ -299,30 +299,30 @@ NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(
 
 - (void)addErrorMessageForRule:(ALPValidatorRule *)rule
 {
-    [_mutableErrorMessages addObject:rule.errorMessage];
+    [self.mutableErrorMessages addObject:rule.errorMessage];
 }
 
 - (void)clearErrorMessages
 {
-    [_mutableErrorMessages removeAllObjects];
+    [self.mutableErrorMessages removeAllObjects];
 }
 
 - (void)removeValidationMessage:(NSString *)message
 {
-    [_mutableErrorMessages removeObjectIdenticalTo:message];
+    [self.mutableErrorMessages removeObjectIdenticalTo:message];
     [self updatePublicErrorMessages];
 }
 
 - (void)updatePublicErrorMessages
 {
-    self.errorMessages = [NSArray arrayWithArray:_mutableErrorMessages];
+    self.errorMessages = [NSArray arrayWithArray:self.mutableErrorMessages];
 }
 
 #pragma mark Utilty
 
 - (NSUInteger)ruleCount
 {
-    return [_rules count];
+    return [self.rules count];
 }
 
 @end
