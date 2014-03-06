@@ -77,6 +77,7 @@
 		9977469918C8876E00DF8C31 /* ALPNumericValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALPNumericValidator.m; sourceTree = "<group>"; };
 		9977469B18C8878500DF8C31 /* ALPFileValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALPFileValidator.h; sourceTree = "<group>"; };
 		9977469C18C8878500DF8C31 /* ALPFileValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALPFileValidator.m; sourceTree = "<group>"; };
+		9977469E18C88F0100DF8C31 /* ALPValidator+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALPValidator+Private.h"; sourceTree = "<group>"; };
 		999C70621897C45A008CAEE4 /* ALPValidator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ALPValidator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		999C70651897C45A008CAEE4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		999C70671897C45A008CAEE4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -133,6 +134,7 @@
 			children = (
 				99333FA01897C74100BA81F5 /* ALPValidator.h */,
 				99333FA11897C74100BA81F5 /* ALPValidator.m */,
+				9977469E18C88F0100DF8C31 /* ALPValidator+Private.h */,
 				9977469518C8876000DF8C31 /* ALPStringValidator.h */,
 				9977469618C8876000DF8C31 /* ALPStringValidator.m */,
 				9977469818C8876E00DF8C31 /* ALPNumericValidator.h */,

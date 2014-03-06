@@ -91,37 +91,167 @@ typedef BOOL (^ALPValidatorCustomRuleBlock)(id);
  */
 extern NSString * const ALPValidatorRegularExpressionPatternEmail;
 
-
+/**
+ *  Optionally conform to ALPValidatorDelegate to receive notifications when a server responds successfully or a request fails
+ */
 @protocol ALPValidatorDelegate <NSObject>
 
 @optional
+
+/**
+ *  Successful response
+ *
+ *  @param validator            Validator instance
+ *  @param url                  Remote location
+ *  @param remoteConditionValid Valid or invalid
+ */
 - (void)validator:(ALPValidator *)validator remoteValidationAtURL:(NSURL *)url receivedResult:(BOOL)remoteConditionValid;
+
+/**
+ *  Failed response
+ *
+ *  @param validator Validator instance
+ *  @param url       Remote location
+ *  @param error     Response error
+ */
 - (void)validator:(ALPValidator *)validator remoteValidationAtURL:(NSURL *)url failedWithError:(NSError *)error;
 
 @end
 
+/**
+ *  Validation for iOS
+ */
 @interface ALPValidator : NSObject
 
+/**
+ *  ALPValidatorDelegate delegate property
+ *  
+ *  @see ALPValidatorDelegate
+ */
 @property (weak, nonatomic) id <ALPValidatorDelegate> delegate;
+
+/**
+ *  If set, the block runs when validation state changes
+ */
 @property (copy, nonatomic) ALPValidatorStateChangeHandler validatorStateChangedHandler;
+
+/**
+ *  Describes the last state of the validation
+ *
+ *  @see ALPValidatorState
+ */
 @property (nonatomic, readonly) ALPValidatorState state;
+
+/**
+ *  Returns the number of rules the validator has
+ */
 @property (readonly) NSUInteger ruleCount;
+
+/**
+ *  An array of validation error messages for failed validations
+ */
 @property (copy, nonatomic, readonly) NSArray *errorMessages;
 
+/**
+ *  Designated initialiser
+ *
+ *  @param type Type of instance you would like to validate
+ *
+ *  @return ALPValidator instance
+ */
 + (instancetype)validatorWithType:(ALPValidatorType)type;
-- (id)initWithType:(ALPValidatorType)type;
 
+/**
+ *  Add a validation rule to ensure presence
+ *
+ *  @param message message to add to errorMessages if invalid
+ */
 - (void)addValidationToEnsurePresenceWithInvalidMessage:(NSString *)message;
+
+/**
+ *  Add a validation rule to ensure a minimum length is met
+ *
+ *  @param minLength minimum length
+ *  @param message   message message to add to errorMessages if invalid
+ */
 - (void)addValidationToEnsureMinimumLength:(NSUInteger)minLength invalidMessage:(NSString *)message;
+
+/**
+ *  Add a validation rule to ensure a maximum length hasn't been exceeded
+ *
+ *  @param maxLength max lenth
+ *  @param message   message message to add to errorMessages if invalid
+ */
 - (void)addValidationToEnsureMaximumLength:(NSUInteger)maxLength invalidMessage:(NSString *)message;
+
+/**
+ *  Add a validation rule to ensure the input length is between a range
+ *
+ *  @param min     minimum length
+ *  @param max     maximum length
+ *  @param message message message to add to errorMessages if invalid
+ */
 - (void)addValidationToEnsureRangeWithMinimum:(NSNumber *)min maximum:(NSNumber *)max invalidMessage:(NSString *)message;
+
+/**
+ *  Add a validation rule to check equality
+ *
+ *  @param otherInstance other instance to check validated instance against
+ *  @param message       message message to add to errorMessages if invalid
+ */
 - (void)addValidationToEnsureInstanceIsTheSameAs:(id)otherInstance invalidMessage:(NSString *)message;
+
+/**
+ *  Add a validation rule to ensure the input matches a pattern defined by a regular expression
+ *
+ *  @param pattern regular expression
+ *  @param message message message to add to errorMessages if invalid
+ */
 - (void)addValidationToEnsureRegularExpressionIsMetWithPattern:(NSString *)pattern invalidMessage:(NSString *)message;
+
+/**
+ *  a validation rule to ensure the input is a valid email address
+ *
+ *  @param message message message to add to errorMessages if invalid
+ */
 - (void)addValidationToEnsureValidEmailWithInvalidMessage:(NSString *)message;
+
+/**
+ *  a validation rule to ensure a remote server-side condition is satisfied
+ *
+ *  @param url     URL to the condition
+ *  @param message message message to add to errorMessages if invalid
+ */
 - (void)addValidationToEnsureRemoteConditionIsSatisfiedAtURL:(NSURL *)url invalidMessage:(NSString *)message;
+
+/**
+ *  Add a validation rule that evaluates a custom condition
+ *
+ *  @param block   the custom rule
+ *  @param message message message to add to errorMessages if invalid
+ */
 - (void)addValidationToEnsureCustomConditionIsSatisfiedWithBlock:(ALPValidatorCustomRuleBlock)block invalidMessage:(NSString *)message;
+
+/**
+ *  Validates the instance and changes the state property
+ *
+ *  @param instance instance to validate (typically a user input)
+ */
 - (void)validate:(id)instance;
+
+/**
+ *  Validates an instance and the state property, additional params can be passed in a dicitonary
+ *
+ *  @param instance   instance to validate
+ *  @param parameters any additional parameters required for the validation
+ */
 - (void)validate:(id)instance parameters:(NSDictionary *)parameters;
+
+/**
+ *  Return YES if last instance validated was deemed valid based on the added rules
+ *
+ *  @return YES for valid, no otherwise
+ */
 - (BOOL)isValid;
 
 @end

@@ -7,6 +7,10 @@
 //
 
 #import "ALPStringValidator.h"
+#import "ALPValidator+Private.h"
+
+@interface ALPStringValidator ()
+@end
 
 @implementation ALPStringValidator
 
@@ -14,7 +18,7 @@
 
 - (id)init
 {
-    self = [super initWithType:ALPValidatorTypeString];
+    self = [self initWithType:ALPValidatorTypeString];
     if (self) {
         
     }

@@ -7,6 +7,7 @@
 //
 
 #import "ALPFileValidator.h"
+#import "ALPValidator+Private.h"
 
 @implementation ALPFileValidator
 
