@@ -27,14 +27,22 @@
  
  */
 
-
 #import <UIKit/UIKit.h>
 
 @class ALPValidator;
 
 @interface UIControl (ALPValidator)
 
+/**
+ *  Adds a validator to the control instance and validates on value change
+ *
+ *  @param validator to add
+ */
 - (void)attachValidator:(ALPValidator *)validator;
+
+/**
+ *  Removes all attached validators
+ */
 - (void)removeValidators;
 
 @end
