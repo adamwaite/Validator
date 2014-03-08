@@ -89,4 +89,10 @@
     [self addValidationRule:rule];
 }
 
+- (void)addValidationToEnsureStringContainsNumberWithInvalidMessage:(NSString *)message
+{
+    ALPValidatorRegularExpressionRule *rule = [[ALPValidatorRegularExpressionRule alloc] initWithType:ALPValidatorRuleTypeStringContainsNumber invalidMessage:message pattern:ALPValidatorRegularExpressionPatternContainsNumber];
+    [self addValidationRule:rule];
+}
+
 @end

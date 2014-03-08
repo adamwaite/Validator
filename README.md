@@ -3,7 +3,7 @@ ALPValidator
 
 ALPValidator provides drop in user input validation for your iOS apps. It's inspired by the [jQuery Validation](https://github.com/jzaefferer/jquery-validation) plug-in.
 
-Validations:
+Built in validations:
 
 - Presence validation
 - Minimum length validation
@@ -14,9 +14,19 @@ Validations:
 - Email address validation
 - Custom block validation
 - Remote validation (remote web service validation)
-- *More to come as encountered!*.
+- Ensure string contains at least one digit
+- *More to come as encountered!*
 
-The `UIControl+ALPValidor` category extends UIControl to allow automatic validation of input on the change event.
+Features:
+
+- Single import
+- Intuitive API
+- String validation
+- Numeric validation
+- File validation
+- ALPValidator provides validation only, styling and handling is not opinionated and up to you
+- Validation state handler block
+- Register to validate on input change using the `UIControl+ALPValidor` category
 
 ## Installation
 
@@ -87,6 +97,11 @@ Validation rules are added with the `addRule` methods. When adding a rule you ca
 - Remote validation:
 ```
 - (void)addValidationToEnsureRemoteConditionIsSatisfiedAtURL:(NSURL *)url invalidMessage:(NSString *)message;
+```
+
+- String contains digit validation:
+```
+- (void)addValidationToEnsureStringContainsNumberWithInvalidMessage:(NSString *)message;
 ```
 
 ### Validating
@@ -183,6 +198,20 @@ ALPStringValidator 0x10911ddc0: {
     "state as string" = Invalid;
 }
 ```
+
+### UIControl+ALPValidator
+
+The `UIControl+ALPValidator` category extends `UIControl` to provide validation on the fly as the user changes the value of the control.
+
+Use the `attachValidator:` to automatically configure the validator to call `validate:` (which fires the state change block) as the input changed.
+
+```
+[self.textField attachValidator:self.validator];
+```
+
+Remove auto-validation with `removeValidators`. 
+
+See the example project which uses the UIControl category to validate as you type.
 
 ### Remote Validation
 

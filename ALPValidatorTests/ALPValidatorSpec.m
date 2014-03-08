@@ -607,6 +607,44 @@ describe(@"ALPValidator", ^{
             
         });
         
+        #pragma mark String Contains Number Rule Specs
+        
+        describe(@"string contains numer", ^{
+            
+            beforeEach(^{
+                [stringValidator addValidationToEnsureStringContainsNumberWithInvalidMessage:nil];
+            });
+            
+            specify(^{
+                [[theValue(stringValidator.ruleCount) should] equal:theValue(1)];
+            });
+            
+            specify(^{
+                [[theBlock(^{
+                    [numericValidator addValidationToEnsurePresenceWithInvalidMessage:nil];
+                }) should] raise];
+            });
+            
+            context(@"input does not contain a number", ^{
+                beforeEach(^{
+                    [stringValidator validate:@"password"];
+                });
+                specify(^{
+                    [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
+                });
+            });
+            
+            context(@"input contains a number", ^{
+                beforeEach(^{
+                    [stringValidator validate:@"password1"];
+                });
+                specify(^{
+                    [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateValid)];
+                });
+            });
+            
+        });
+        
     });
     
     #pragma mark Multiple Validations Specs

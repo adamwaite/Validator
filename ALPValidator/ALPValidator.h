@@ -93,6 +93,11 @@ typedef BOOL (^ALPValidatorCustomRuleBlock)(id);
 extern NSString * const ALPValidatorRegularExpressionPatternEmail;
 
 /**
+ *  Regular expression for ensuring a numeric character.
+ */
+extern NSString * const ALPValidatorRegularExpressionPatternContainsNumber;
+
+/**
  *  Optionally conform to ALPValidatorDelegate to receive notifications when a server responds successfully or a request fails
  */
 @protocol ALPValidatorDelegate <NSObject>
@@ -232,6 +237,13 @@ extern NSString * const ALPValidatorRegularExpressionPatternEmail;
  *  @param message message message to add to errorMessages if invalid
  */
 - (void)addValidationToEnsureCustomConditionIsSatisfiedWithBlock:(ALPValidatorCustomRuleBlock)block invalidMessage:(NSString *)message;
+
+/**
+ *  Add a validation rule to ensure that the input contains a number
+ *
+ *  @param message message message to add to errorMessages if invalid
+ */
+- (void)addValidationToEnsureStringContainsNumberWithInvalidMessage:(NSString *)message;
 
 /**
  *  Validates the instance and changes the state property

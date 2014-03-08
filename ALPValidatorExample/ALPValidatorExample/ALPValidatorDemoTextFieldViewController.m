@@ -26,38 +26,28 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    _descriptionLabel.text = _descriptionText;
-
-    _textField.delegate = self;
-    [_textField addTarget:self action:@selector(textFieldTextChanged:) forControlEvents:UIControlEventEditingChanged];
-
+    self.descriptionLabel.text = self.descriptionText;
+    self.textField.delegate = self;
+    [self.textField attachValidator:self.validator];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [_validator validate:_textField.text];
+    [self.validator validate:self.textField.text];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [_textField becomeFirstResponder];
-}
-
-#pragma mark Change Handle
-
-- (void)textFieldTextChanged:(UITextField *)sender
-{
-    [_validator validate:sender.text];
+    [self.textField becomeFirstResponder];
 }
 
 #pragma mark Configure
 
 - (void)configureWithDescription:(NSString *)desc validator:(ALPValidator *)validator
 {
-    _descriptionText = desc;
+    self.descriptionText = desc;
     self.validator = validator;
 }
 
@@ -94,17 +84,17 @@
 - (void)handleValid
 {
     UIColor *validGreen = [UIColor colorWithRed:0.27 green:0.63 blue:0.27 alpha:1];
-    _textField.backgroundColor = [validGreen colorWithAlphaComponent:0.3];
-    _errorsTextView.text = NSLocalizedString(@"No errors :D", nil);
-    _errorsTextView.textColor = validGreen;
+    self.textField.backgroundColor = [validGreen colorWithAlphaComponent:0.3];
+    self.errorsTextView.text = NSLocalizedString(@"No errors 😃", nil);
+    self.errorsTextView.textColor = validGreen;
 }
 
 - (void)handleInvalid
 {
     UIColor *invalidRed = [UIColor colorWithRed:0.89 green:0.18 blue:0.16 alpha:1];
-    _textField.backgroundColor = [invalidRed colorWithAlphaComponent:0.3];
-    _errorsTextView.text = [_validator.errorMessages componentsJoinedByString:@"\n"];
-    _errorsTextView.textColor = invalidRed;
+    self.textField.backgroundColor = [invalidRed colorWithAlphaComponent:0.3];
+    self.errorsTextView.text = [self.validator.errorMessages componentsJoinedByString:@" 💣\n"];
+    self.errorsTextView.textColor = invalidRed;
 }
 
 - (void)handleWaiting
@@ -140,7 +130,7 @@
 - (void)validator:(ALPValidator *)validator remoteValidationAtURL:(NSURL *)url failedWithError:(NSError *)error
 {
     
-    NSLog(@"Remote service could not be contacted: %@. Hace you started the sinatra server?", error);
+    NSLog(@"Remote service could not be contacted: %@. Have you started the sinatra server?", error);
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{

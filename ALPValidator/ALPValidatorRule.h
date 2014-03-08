@@ -39,7 +39,8 @@ typedef NS_ENUM(NSUInteger, ALPValidatorRuleType) {
     ALPValidatorRuleTypeEmail,
     ALPValidatorRuleTypeRegex,
     ALPValidatorRuleTypeRemote,
-    ALPValidatorRuleTypeCustom
+    ALPValidatorRuleTypeCustom,
+    ALPValidatorRuleTypeStringContainsNumber
 };
 
 extern NSString * ALPValidatorRuleDefaultErrorMessageForType(ALPValidatorRuleType name);

@@ -56,6 +56,8 @@ const NSString * NSStringFromALPValidatorState(ALPValidatorState state) {
 
 NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(\\.[_A-Za-z0-9-+]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z‌​]{2,4})$";
 
+NSString * const ALPValidatorRegularExpressionPatternContainsNumber = @".*\\d.*";
+
 @interface ALPValidator ()
 
 @property (nonatomic) ALPValidatorType type;
@@ -201,6 +203,11 @@ NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(
     }];
     
     [self addValidationRule:rule];
+}
+
+- (void)addValidationToEnsureStringContainsNumberWithInvalidMessage:(NSString *)message
+{
+    [self raiseIncompatibilityException];
 }
 
 - (void)raiseIncompatibilityException

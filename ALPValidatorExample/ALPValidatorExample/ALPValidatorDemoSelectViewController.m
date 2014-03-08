@@ -84,7 +84,12 @@ static NSString * const kTableDataKeyValidator = @"kTableDataKeyValidator";
             kTableDataKeyTitle: NSLocalizedString(@"Remote validation", nil),
             kTableDataKeyDescription: NSLocalizedString(@"Validates at http://localhost:4567 to ensure the input doesn't contain the word 'invalid' (start the included Sinatra server).", nil),
             kTableDataKeyValidator: [self demoRemoteValidator]
-        }
+        },
+        @{
+            kTableDataKeyTitle: NSLocalizedString(@"String contains number", nil),
+            kTableDataKeyDescription: NSLocalizedString(@"Validates to ensure the text field contains at least one digit.", nil),
+            kTableDataKeyValidator: [self demoStringContainsNumberValidator]
+        },
     ];
 }
 
@@ -161,6 +166,13 @@ static NSString * const kTableDataKeyValidator = @"kTableDataKeyValidator";
 {
     ALPValidator *validator = [ALPValidator validatorWithType:ALPValidatorTypeString];
     [validator addValidationToEnsureRangeWithMinimum:@3 maximum:@8 invalidMessage:NSLocalizedString(@"Should be between 3 and 8 characters", nil)];
+    return validator;
+}
+
+- (ALPValidator *)demoStringContainsNumberValidator
+{
+    ALPValidator *validator = [ALPValidator validatorWithType:ALPValidatorTypeString];
+    [validator addValidationToEnsureStringContainsNumberWithInvalidMessage:NSLocalizedString(@"Please add a digit to your entry", nil)];
     return validator;
 }
 
