@@ -221,6 +221,7 @@ An Xcode project has been included in this repository containing an example for 
 
 ## Roadmap
 
+- File type validator (max size on images etc)
 - Phone number validation
 - Credit card validation
 - Postal code validation
@@ -229,7 +230,7 @@ An Xcode project has been included in this repository containing an example for 
 
 ## Contributing
 
-Contributing is encouraged! Before making a pull request please ensure all of the [Kiwi](https://github.com/allending/Kiwi) specs pass if you're changing existing code, or you back new features up with new specs. Thanks.
+Contributiion welcome. Before making a pull request please ensure all of the [Kiwi](https://github.com/allending/Kiwi) specs pass if you're changing existing code, or you back new features up with new specs. Please also update the README with any new features. Thanks.
 
 ## Contact
 

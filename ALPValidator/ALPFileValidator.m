@@ -43,4 +43,11 @@
     return self;
 }
 
+#pragma mark Add Rules
+
+- (void)addValidationToEnsureRemoteConditionIsSatisfiedAtURL:(NSURL *)url invalidMessage:(NSString *)message
+{
+    [self raiseIncompatibilityException];
+}
+
 @end

@@ -29,6 +29,7 @@
 
 #import "ALPNumericValidator.h"
 #import "ALPValidator+Private.h"
+#import "ALPValidatorRangeRule.h"
 
 @implementation ALPNumericValidator
 
@@ -41,6 +42,14 @@
         
     }
     return self;
+}
+
+#pragma mark Add Rules
+
+- (void)addValidationToEnsureRangeWithMinimum:(NSNumber *)min maximum:(NSNumber *)max invalidMessage:(NSString *)message
+{
+    ALPValidatorRangeRule *rule = [[ALPValidatorRangeRule alloc] initWithType:ALPValidatorRuleTypeNumericRange invalidMessage:message minimum:min maximum:max];
+    [self addValidationRule:rule];
 }
 
 @end

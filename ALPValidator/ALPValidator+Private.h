@@ -30,8 +30,12 @@
 
 #import "ALPValidator.h"
 
+@class ALPValidatorRule;
+
 @interface ALPValidator (Private)
 
 - (id)initWithType:(ALPValidatorType)type;
+- (void)addValidationRule:(ALPValidatorRule *)rule;
+- (void)raiseIncompatibilityException;
 
 @end

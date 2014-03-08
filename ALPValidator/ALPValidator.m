@@ -32,12 +32,7 @@
 #import "ALPNumericValidator.h"
 #import "ALPFileValidator.h"
 #import "ALPValidatorRule.h"
-#import "ALPValidatorRequiredRule.h"
-#import "ALPValidatorMinimumLengthRule.h"
-#import "ALPValidatorMaximumLengthRule.h"
-#import "ALPValidatorRangeRule.h"
 #import "ALPValidatorEqualRule.h"
-#import "ALPValidatorRegularExpressionRule.h"
 #import "ALPValidatorCustomRule.h"
 #import "ALPValidatorRemoteRule.h"
 
@@ -123,7 +118,7 @@ NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(
     return [self description];
 }
 
-#pragma mark Add/Remove Rules
+#pragma mark Add Rules
 
 - (void)addValidationRule:(ALPValidatorRule *)rule
 {
@@ -132,40 +127,22 @@ NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(
 
 - (void)addValidationToEnsurePresenceWithInvalidMessage:(NSString *)message
 {
-    [self ensureValidatorCompatibilityForType:ALPValidatorTypeString];
-    ALPValidatorRequiredRule *rule = [[ALPValidatorRequiredRule alloc] initWithType:ALPValidatorRuleTypeRequired invalidMessage:message];
-    [self addValidationRule:rule];
+    [self raiseIncompatibilityException];
 }
 
 - (void)addValidationToEnsureMinimumLength:(NSUInteger)minLength invalidMessage:(NSString *)message
 {
-    [self ensureValidatorCompatibilityForType:ALPValidatorTypeString];
-    ALPValidatorMinimumLengthRule *rule = [[ALPValidatorMinimumLengthRule alloc] initWithType:ALPValidatorRuleTypeMinLength invalidMessage:message minLength:minLength];
-    [self addValidationRule:rule];
+    [self raiseIncompatibilityException];
 }
 
 - (void)addValidationToEnsureMaximumLength:(NSUInteger)maxLength invalidMessage:(NSString *)message
 {
-    [self ensureValidatorCompatibilityForType:ALPValidatorTypeString];
-    ALPValidatorMaximumLengthRule *rule = [[ALPValidatorMaximumLengthRule alloc] initWithType:ALPValidatorRuleTypeMaxLength invalidMessage:message maxLength:maxLength];
-    [self addValidationRule:rule];
+    [self raiseIncompatibilityException];
 }
 
 - (void)addValidationToEnsureRangeWithMinimum:(NSNumber *)min maximum:(NSNumber *)max invalidMessage:(NSString *)message
 {
-    ALPValidatorRangeRule *rule;
-    switch (self.type) {
-        case ALPValidatorTypeString:
-            rule = [[ALPValidatorRangeRule alloc] initWithType:ALPValidatorRuleTypeStringRange invalidMessage:message minimum:min maximum:max];
-            break;
-        case ALPValidatorTypeNumeric:
-            rule = [[ALPValidatorRangeRule alloc] initWithType:ALPValidatorRuleTypeNumericRange invalidMessage:message minimum:min maximum:max];
-            break;
-        default:
-            rule = [[ALPValidatorRangeRule alloc] initWithType:ALPValidatorRuleTypeStringRange invalidMessage:message minimum:min maximum:max];
-            break;
-    }
-    [self addValidationRule:rule];
+    [self raiseIncompatibilityException];
 }
 
 - (void)addValidationToEnsureInstanceIsTheSameAs:(id)otherInstance invalidMessage:(NSString *)message
@@ -176,16 +153,12 @@ NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(
 
 - (void)addValidationToEnsureRegularExpressionIsMetWithPattern:(NSString *)pattern invalidMessage:(NSString *)message
 {
-    [self ensureValidatorCompatibilityForType:ALPValidatorTypeString];
-    ALPValidatorRegularExpressionRule *rule = [[ALPValidatorRegularExpressionRule alloc] initWithType:ALPValidatorRuleTypeRegex invalidMessage:message pattern:pattern];
-    [self addValidationRule:rule];
+    [self raiseIncompatibilityException];
 }
 
 - (void)addValidationToEnsureValidEmailWithInvalidMessage:(NSString *)message
 {
-    [self ensureValidatorCompatibilityForType:ALPValidatorTypeString];
-    ALPValidatorRegularExpressionRule *rule = [[ALPValidatorRegularExpressionRule alloc] initWithType:ALPValidatorRuleTypeEmail invalidMessage:message pattern:ALPValidatorRegularExpressionPatternEmail];
-    [self addValidationRule:rule];
+    [self raiseIncompatibilityException];
 }
 
 - (void)addValidationToEnsureCustomConditionIsSatisfiedWithBlock:(ALPValidatorCustomRuleBlock)block invalidMessage:(NSString *)message
@@ -230,11 +203,9 @@ NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(
     [self addValidationRule:rule];
 }
 
-- (void)ensureValidatorCompatibilityForType:(ALPValidatorType)type
+- (void)raiseIncompatibilityException
 {
-    if (self.type != type) {
-        [NSException raise:@"ALPValidator Error" format:@"Attempted to add validation rule that is not compatible for validator type %@, %s", NSStringFromALPValidatorType(self.type), __PRETTY_FUNCTION__];
-    }
+    [NSException raise:@"ALPValidator Error" format:@"Attempted to add validation rule that is not compatible for validator type %@, %s", NSStringFromALPValidatorType(self.type), __PRETTY_FUNCTION__];
 }
 
 #pragma mark Validate

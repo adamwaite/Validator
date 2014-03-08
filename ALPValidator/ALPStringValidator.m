@@ -29,6 +29,11 @@
 
 #import "ALPStringValidator.h"
 #import "ALPValidator+Private.h"
+#import "ALPValidatorRequiredRule.h"
+#import "ALPValidatorMinimumLengthRule.h"
+#import "ALPValidatorMaximumLengthRule.h"
+#import "ALPValidatorRangeRule.h"
+#import "ALPValidatorRegularExpressionRule.h"
 
 @interface ALPStringValidator ()
 @end
@@ -44,6 +49,44 @@
         
     }
     return self;
+}
+
+#pragma mark Add Rules
+
+- (void)addValidationToEnsurePresenceWithInvalidMessage:(NSString *)message
+{
+    ALPValidatorRequiredRule *rule = [[ALPValidatorRequiredRule alloc] initWithType:ALPValidatorRuleTypeRequired invalidMessage:message];
+    [self addValidationRule:rule];
+}
+
+- (void)addValidationToEnsureMinimumLength:(NSUInteger)minLength invalidMessage:(NSString *)message
+{
+    ALPValidatorMinimumLengthRule *rule = [[ALPValidatorMinimumLengthRule alloc] initWithType:ALPValidatorRuleTypeMinLength invalidMessage:message minLength:minLength];
+    [self addValidationRule:rule];
+}
+
+- (void)addValidationToEnsureMaximumLength:(NSUInteger)maxLength invalidMessage:(NSString *)message
+{
+    ALPValidatorMaximumLengthRule *rule = [[ALPValidatorMaximumLengthRule alloc] initWithType:ALPValidatorRuleTypeMaxLength invalidMessage:message maxLength:maxLength];
+    [self addValidationRule:rule];
+}
+
+- (void)addValidationToEnsureRangeWithMinimum:(NSNumber *)min maximum:(NSNumber *)max invalidMessage:(NSString *)message
+{
+    ALPValidatorRangeRule *rule = [[ALPValidatorRangeRule alloc] initWithType:ALPValidatorRuleTypeStringRange invalidMessage:message minimum:min maximum:max];
+    [self addValidationRule:rule];
+}
+
+- (void)addValidationToEnsureRegularExpressionIsMetWithPattern:(NSString *)pattern invalidMessage:(NSString *)message
+{
+    ALPValidatorRegularExpressionRule *rule = [[ALPValidatorRegularExpressionRule alloc] initWithType:ALPValidatorRuleTypeRegex invalidMessage:message pattern:pattern];
+    [self addValidationRule:rule];
+}
+
+- (void)addValidationToEnsureValidEmailWithInvalidMessage:(NSString *)message
+{
+    ALPValidatorRegularExpressionRule *rule = [[ALPValidatorRegularExpressionRule alloc] initWithType:ALPValidatorRuleTypeEmail invalidMessage:message pattern:ALPValidatorRegularExpressionPatternEmail];
+    [self addValidationRule:rule];
 }
 
 @end
