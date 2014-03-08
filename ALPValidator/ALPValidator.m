@@ -90,7 +90,7 @@ NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(
 
 - (id)init
 {
-    [NSException raise:@"ALPStringValidator Error" format:@"Use the designated initialiser (%@) to create validators, %s", NSStringFromSelector(@selector(validatorWithType:)), __PRETTY_FUNCTION__];
+    [NSException raise:@"ALPValidator Error" format:@"Use the designated initialiser (%@) to create validators, %s", NSStringFromSelector(@selector(validatorWithType:)), __PRETTY_FUNCTION__];
     return nil;
 }
 
@@ -123,7 +123,7 @@ NSString * const ALPValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(
     return [self description];
 }
 
-#pragma mark Rule Add/Remove Rules
+#pragma mark Add/Remove Rules
 
 - (void)addValidationRule:(ALPValidatorRule *)rule
 {
