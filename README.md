@@ -16,6 +16,8 @@ Validations:
 - Remote validation (remote web service validation)
 - *More to come as encountered!*.
 
+The `UIControl+ALPValidor` category extends UIControl to allow automatic validation of input on the change event.
+
 ## Installation
 
 Install with [CocoaPods](http://cocoapods.org):
@@ -105,14 +107,20 @@ To validate as the user types into a control you might do something such as this
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [_someTextField addTarget:self action:@selector(textFieldTextChanged:) forControlEvents:UIControlEventEditingChanged];
+    [self.someTextField addTarget:self action:@selector(textFieldTextChanged:) forControlEvents:UIControlEventEditingChanged];
 }
 
 - (void)textFieldTextChanged:(UITextField *)sender
 {
-    [_someValidator validate:sender.text];
+    [self.someValidator validate:sender.text];
 }
 
+```
+
+Or alternatively use the `attachValidator:` method defined in the `UIControl+ALPValidor` category to automatically configure validate-on-change functionality.
+
+```
+[self.someTextField attachValidator:someStringValidator];
 ```
 
 ### Validation State Changed Handler
@@ -121,7 +129,7 @@ Use the `validatorStateChangedHandler` to be notified for a change in validation
 
 ```
 self.someValidator = [ALPValidator validatorWithType:ALPValidatorTypeString];
-_someValidator.validatorStateChangedHandler = ^(ALPValidatorState newState) {
+self.someValidator.validatorStateChangedHandler = ^(ALPValidatorState newState) {
     switch (newState) {
         
         case ALPValidatorValidationStateValid:
