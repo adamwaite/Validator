@@ -31,9 +31,9 @@ DESC
   s.social_media_url = "http://twitter.com/AdamWaite"
 
   s.platform     = :ios
-  s.platform     = :ios, '7.0'
+  s.platform     = :ios, '6.0'
 
-  s.source       = { :git => "https://github.com/adamwaite/ALPValidator.git", :tag => "v0.0.2" }
+  s.source       = { :git => "https://github.com/adamwaite/ALPValidator.git", :tag => "v0.0.3" }
   s.source_files  = 'ALPValidator', 'ALPValidator/**/*.{h,m}'
   s.public_header_files = 'ALPValidator/ALPValidator.h'
 
