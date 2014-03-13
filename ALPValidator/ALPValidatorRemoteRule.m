@@ -89,7 +89,7 @@ static NSTimeInterval const kOneMinute = 60.0;
     NSError *error;
     
     NSMutableDictionary *requestParameters = [NSMutableDictionary dictionary];
-    requestParameters[@"instance"] = instance;
+    requestParameters[@"instance"] = instance ?: @""; // pre iOS 7, UITextField.text is nil by default
     if (params) requestParameters[@"extra"] = params;
     NSData *postData = [NSJSONSerialization dataWithJSONObject:requestParameters options:kNilOptions error:&error];
     
@@ -97,8 +97,8 @@ static NSTimeInterval const kOneMinute = 60.0;
     request.HTTPMethod = @"POST";
     request.HTTPBody = postData;
     
-    NSURLSessionDataTask *validateTask = [[ALPValidatorRemoteRule validatorSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-
+    void (^block)(NSData *, NSError *) = ^(NSData *data, NSError *error) {
+        
         _responseState.isWaitingForResponse = NO;
         
         if (!error) {
@@ -112,21 +112,32 @@ static NSTimeInterval const kOneMinute = 60.0;
             });
             
             
-        
+            
         } else {
             
             _responseState.isValidResponse = NO;
-
+            
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (self.requestCompletionHandler) self.requestCompletionHandler(NO, error);
             });
             
         }
         
-    }];
+    };
     
-    [validateTask resume];
-    
+    if ([[UIDevice currentDevice].systemVersion hasPrefix:@"7"]) {
+        NSURLSessionDataTask *validateTask = [[ALPValidatorRemoteRule validatorSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            block(data, error);
+        }];
+        
+        [validateTask resume];
+    }
+    else {
+        NSOperationQueue *queue = [NSOperationQueue new];
+        [NSURLConnection sendAsynchronousRequest: request queue: queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+            block(data, error);
+        }];
+    }
 }
 
 @end
