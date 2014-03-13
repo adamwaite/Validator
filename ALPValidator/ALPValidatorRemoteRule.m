@@ -125,7 +125,7 @@ static NSTimeInterval const kOneMinute = 60.0;
         
     };
     
-    if ([[UIDevice currentDevice].systemVersion hasPrefix:@"7"]) {
+    if (NSClassFromString(@"NSURLSession")) {
         NSURLSessionDataTask *validateTask = [[ALPValidatorRemoteRule validatorSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
             block(data, error);
         }];

@@ -17,16 +17,7 @@ Built in validations:
 - Ensure string contains at least one digit
 - *More to come as encountered!*
 
-Features:
-
-- Single import
-- Intuitive API
-- String validation
-- Numeric validation
-- File validation
-- ALPValidator provides validation only, styling and handling is not opinionated and up to you
-- Validation state handler block
-- Register to validate on input change using the `UIControl+ALPValidor` category
+Use the UIControl+ALPValidator category to validate your user's input as it's input.
 
 ## Installation
 

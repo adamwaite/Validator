@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "ALPValidator"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "Drop in user input validation for your iOS apps."
 
   s.description  = <<-DESC
@@ -21,16 +21,6 @@ Built in validations:
 - Ensure string contains at least one digit
 - *More to come as encountered!*
 
-Features:
-
-- Single import
-- Intuitive API
-- String validation
-- Numeric validation
-- File validation
-- ALPValidator provides validation only, styling and handling is not opinionated and up to you
-- Validation state handler block
-- Register to validate on input change using the `UIControl+ALPValidor` category
 DESC
 
   s.homepage     = "https://github.com/adamwaite/ALPValidator"
