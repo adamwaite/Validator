@@ -34,8 +34,6 @@ typedef struct {
     BOOL isValidResponse;
 } ALPTextFieldRemoteValidationRuleResponseState;
 
-static NSTimeInterval const kOneMinute = 60.0;
-
 @interface ALPValidatorRemoteRule ()
 
 @property (strong, nonatomic) NSURL *serviceURL;
@@ -73,6 +71,8 @@ static NSTimeInterval const kOneMinute = 60.0;
         };
         validatorConfiguration.timeoutIntervalForRequest = 60.0;
         validatorConfiguration.requestCachePolicy = NSURLRequestReloadIgnoringLocalAndRemoteCacheData;
+        
+        
         
         ValidatorSession = [NSURLSession sessionWithConfiguration:validatorConfiguration];
     
