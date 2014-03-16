@@ -70,9 +70,7 @@ typedef struct {
             @"Content-Type": @"application/json"
         };
         validatorConfiguration.timeoutIntervalForRequest = 60.0;
-        validatorConfiguration.requestCachePolicy = NSURLRequestReloadIgnoringLocalAndRemoteCacheData;
-        
-        
+        validatorConfiguration.requestCachePolicy = NSURLRequestReloadIgnoringLocalAndRemoteCacheData;       
         
         ValidatorSession = [NSURLSession sessionWithConfiguration:validatorConfiguration];
     

@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "ALPValidator"
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
   s.summary      = "Drop in user input validation for your iOS apps."
 
   s.description  = <<-DESC
@@ -33,9 +33,9 @@ DESC
   s.platform     = :ios
   s.platform     = :ios, '6.0'
 
-  s.source       = { :git => "https://github.com/adamwaite/ALPValidator.git", :tag => "v0.0.3" }
+  s.source       = { :git => "https://github.com/adamwaite/ALPValidator.git", :tag => "v0.0.4" }
   s.source_files  = 'ALPValidator', 'ALPValidator/**/*.{h,m}'
-  s.public_header_files = 'ALPValidator/ALPValidator.h'
+  s.public_header_files = 'ALPValidator/ALPValidator.h', 'ALPValidator/UIControl+ALPValidator.h'
 
   s.requires_arc = true
 
