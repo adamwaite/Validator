@@ -247,7 +247,6 @@ An Xcode project has been included in this repository containing an example for 
 - Credit card validation
 - Postal code validation
 - Input exists in a collection validation (for select type inputs)
-- Add an ALPValidatorRemoteRule instance using NSURLConnection for <iOS7 support (pull request for this)
 
 ## Contributing
 
