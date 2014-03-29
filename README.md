@@ -20,6 +20,10 @@ Use the UIControl+ALPValidator category to validate your user's input as it's in
 
 It's inspired by the [jQuery Validation](https://github.com/jzaefferer/jquery-validation) plug-in.
 
+Demo:
+
+![demo-vid](resources/demo.mp4.gif)
+
 ## Installation
 
 Install with [CocoaPods](http://cocoapods.org):

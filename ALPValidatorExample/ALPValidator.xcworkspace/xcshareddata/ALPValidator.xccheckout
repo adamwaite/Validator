@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>2C7B94DF-8116-4391-B1AF-A490F876F828</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ALPValidator</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>07276347-D1F9-41A2-80F7-532F55445A0A</key>
+		<string>ssh://github.com/adamwaite/ALPValidator.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ALPValidatorExample/ALPValidator.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>07276347-D1F9-41A2-80F7-532F55445A0A</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/adamwaite/ALPValidator.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>07276347-D1F9-41A2-80F7-532F55445A0A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>07276347-D1F9-41A2-80F7-532F55445A0A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ALPValidator</string>
+		</dict>
+	</array>
+</dict>
+</plist>
