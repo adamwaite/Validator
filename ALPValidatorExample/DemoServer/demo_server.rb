@@ -5,9 +5,9 @@ require 'json'
 post '/validate', provides: :json do
   pass unless request.accept? 'application/json'
   json_params = JSON.parse request.body.read
-	is_invalid = (json_params["instance"].nil?) ? false : !(json_params["instance"].include? "invalid")
-	puts "Input valid - returning JSON true" if is_invalid
-  puts "Input invalid - returning JSON false" if is_invalid
+	is_valid = (json_params["instance"].nil?) ? false : !(json_params["instance"].include? "invalid")
+	puts "Input valid - returning JSON true" if is_valid
+  puts "Input invalid - returning JSON false" unless is_valid
   content_type :json
-	is_invalid.to_json
+	is_valid.to_json
 end
