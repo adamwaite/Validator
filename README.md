@@ -1,6 +1,6 @@
 ![header](resources/header.png)
 
-ALPValidator provides drop in user input validation for your iOS apps.
+ALPValidator provides drop in user input validation for your iOS apps. ALPValidator is flexible - it provides validation and validation only, it's up to you when you validate an input and how you handle validation errors on the UI level.
 
 Built in validations:
 
@@ -16,13 +16,9 @@ Built in validations:
 - Ensure string contains at least one digit
 - *More to come as encountered!*
 
-Use the UIControl+ALPValidator category to validate your user's input as it's input.
-
-It's inspired by the [jQuery Validation](https://github.com/jzaefferer/jquery-validation) plug-in.
-
-Demo:
-
 ![demo-vid](resources/demo.mp4.gif)
+
+*Note: the UI shown in the demo is nothing to do with the library, it's just some of the functionality on display.*
 
 ## Installation
 
@@ -259,6 +255,10 @@ Contributiion welcome. Before making a pull request please ensure all of the [Ki
 ## Contact
 
 [@adamwaite](http://twitter.com/adamwaite)
+
+## Thanks
+
+ALPValidator is inspired by the [jQuery Validation](https://github.com/jzaefferer/jquery-validation) plug-in, thanks.
 
 ##License
 
