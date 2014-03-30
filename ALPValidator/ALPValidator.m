@@ -30,7 +30,6 @@
 #import "ALPValidator.h"
 #import "ALPStringValidator.h"
 #import "ALPNumericValidator.h"
-#import "ALPFileValidator.h"
 #import "ALPValidatorRule.h"
 #import "ALPValidatorEqualRule.h"
 #import "ALPValidatorCustomRule.h"
@@ -40,7 +39,6 @@ const NSString * NSStringFromALPValidatorType(ALPValidatorType type) {
     switch (type) {
         case ALPValidatorTypeString: return @"String";
         case ALPValidatorTypeNumeric: return @"Numeric";
-        case ALPValidatorTypeFile: return @"File";
         default: return nil;
     }
 }
@@ -80,8 +78,6 @@ NSString * const ALPValidatorRegularExpressionPatternContainsNumber = @".*\\d.*"
             return [[ALPStringValidator alloc] init];
         case ALPValidatorTypeNumeric:
             return [[ALPNumericValidator alloc] init];
-        case ALPValidatorTypeFile:
-            return [[ALPFileValidator alloc] init];
     }
 }
 
@@ -209,6 +205,8 @@ NSString * const ALPValidatorRegularExpressionPatternContainsNumber = @".*\\d.*"
 {
     [self raiseIncompatibilityException];
 }
+
+#pragma mark Incompatible Rules
 
 - (void)raiseIncompatibilityException
 {

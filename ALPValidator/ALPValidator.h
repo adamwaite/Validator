@@ -43,11 +43,7 @@ typedef NS_ENUM(NSUInteger, ALPValidatorType) {
     /**
      *  Validates numeric instances
      */
-    ALPValidatorTypeNumeric,
-    /**
-     *  Validates files (images for example)
-     */
-    ALPValidatorTypeFile
+    ALPValidatorTypeNumeric
 };
 
 
@@ -125,7 +121,7 @@ extern NSString * const ALPValidatorRegularExpressionPatternContainsNumber;
 @end
 
 /**
- *  Validation for iOS
+ *  ALPValidator validates user input based on added validaton rules, manages error messages and handles input state change.
  */
 @interface ALPValidator : NSObject
 
@@ -216,14 +212,14 @@ extern NSString * const ALPValidatorRegularExpressionPatternContainsNumber;
 - (void)addValidationToEnsureRegularExpressionIsMetWithPattern:(NSString *)pattern invalidMessage:(NSString *)message;
 
 /**
- *  a validation rule to ensure the input is a valid email address
+ *  Add a validation rule to ensure the input is a valid email address
  *
  *  @param message message message to add to errorMessages if invalid
  */
 - (void)addValidationToEnsureValidEmailWithInvalidMessage:(NSString *)message;
 
 /**
- *  a validation rule to ensure a remote server-side condition is satisfied
+ *  Add a validation rule to ensure a remote server-side condition is satisfied
  *
  *  @param url     URL to the condition
  *  @param message message message to add to errorMessages if invalid
@@ -233,7 +229,7 @@ extern NSString * const ALPValidatorRegularExpressionPatternContainsNumber;
 /**
  *  Add a validation rule that evaluates a custom condition
  *
- *  @param block   the custom rule
+ *  @param block   should return YES for valid and NO for invalid
  *  @param message message message to add to errorMessages if invalid
  */
 - (void)addValidationToEnsureCustomConditionIsSatisfiedWithBlock:(ALPValidatorCustomRuleBlock)block invalidMessage:(NSString *)message;
