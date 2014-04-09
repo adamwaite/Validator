@@ -1,6 +1,6 @@
 ![header](resources/header.png)
 
-ALPValidator provides drop in user input validation for your iOS apps. It's flexible - it provides validation and validation only, it's up to you when you validate and how you handle validation errors on the UI level.
+ALPValidator provides drop in user input validation for your iOS apps. It features a number of built in validation rules, some convenience methods to verify user input, a validation state change handler block, a public error messages collection, and a category on UIControl to provide validate-as-input functionality. It's not opinionated, it's your app and it's up to you how you want handle validation errors on the UI. 
 
 Built in validations:
 
