@@ -250,7 +250,7 @@ An Xcode project has been included in this repository containing an example for 
 
 ## Contributing
 
-Contributiion welcome. Before making a pull request please ensure all of the [Kiwi](https://github.com/allending/Kiwi) specs pass if you're changing existing code, or you back new features up with new specs. Please also update the README with any new features. Thanks.
+Contributions welcome. Before making a pull request please ensure all of the [Kiwi](https://github.com/allending/Kiwi) specs pass if you're changing existing code, or you back new features up with new specs. Please also update the README with any new features. Thanks.
 
 ## Contact
 
