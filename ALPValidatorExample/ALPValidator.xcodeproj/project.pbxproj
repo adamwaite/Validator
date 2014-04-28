@@ -21,8 +21,6 @@
 		9951643F1897D17700E73735 /* ALPValidatorSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 99333F981897C71300BA81F5 /* ALPValidatorSpec.m */; };
 		9977469718C8876000DF8C31 /* ALPStringValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9977469618C8876000DF8C31 /* ALPStringValidator.m */; };
 		9977469A18C8876E00DF8C31 /* ALPNumericValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9977469918C8876E00DF8C31 /* ALPNumericValidator.m */; };
-		997B097E18E847E5006CE109 /* alpvalidator-fixture-large-file.png in Resources */ = {isa = PBXBuildFile; fileRef = 997B097C18E847E5006CE109 /* alpvalidator-fixture-large-file.png */; };
-		997B097F18E847E5006CE109 /* alpvalidator-fixture-small-file.png in Resources */ = {isa = PBXBuildFile; fileRef = 997B097D18E847E5006CE109 /* alpvalidator-fixture-small-file.png */; };
 		999C70661897C45A008CAEE4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 999C70651897C45A008CAEE4 /* Foundation.framework */; };
 		999C70681897C45A008CAEE4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 999C70671897C45A008CAEE4 /* CoreGraphics.framework */; };
 		999C706A1897C45A008CAEE4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 999C70691897C45A008CAEE4 /* UIKit.framework */; };
@@ -88,8 +86,6 @@
 		9977469818C8876E00DF8C31 /* ALPNumericValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALPNumericValidator.h; sourceTree = "<group>"; };
 		9977469918C8876E00DF8C31 /* ALPNumericValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALPNumericValidator.m; sourceTree = "<group>"; };
 		9977469E18C88F0100DF8C31 /* ALPValidator+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALPValidator+Private.h"; sourceTree = "<group>"; };
-		997B097C18E847E5006CE109 /* alpvalidator-fixture-large-file.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alpvalidator-fixture-large-file.png"; sourceTree = "<group>"; };
-		997B097D18E847E5006CE109 /* alpvalidator-fixture-small-file.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alpvalidator-fixture-small-file.png"; sourceTree = "<group>"; };
 		999C70621897C45A008CAEE4 /* ALPValidator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ALPValidator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		999C70651897C45A008CAEE4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		999C70671897C45A008CAEE4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -210,15 +206,6 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
-		997B097B18E847E5006CE109 /* fixtures */ = {
-			isa = PBXGroup;
-			children = (
-				997B097C18E847E5006CE109 /* alpvalidator-fixture-large-file.png */,
-				997B097D18E847E5006CE109 /* alpvalidator-fixture-small-file.png */,
-			);
-			path = fixtures;
-			sourceTree = "<group>";
-		};
 		999C70591897C45A008CAEE4 = {
 			isa = PBXGroup;
 			children = (
@@ -281,7 +268,6 @@
 		999C708A1897C45A008CAEE4 /* ALPValidatorTests */ = {
 			isa = PBXGroup;
 			children = (
-				997B097B18E847E5006CE109 /* fixtures */,
 				99333F981897C71300BA81F5 /* ALPValidatorSpec.m */,
 				99BCA2D718E72D6800D8C57C /* Rules */,
 				999C708B1897C45A008CAEE4 /* Supporting Files */,
@@ -412,8 +398,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				997B097F18E847E5006CE109 /* alpvalidator-fixture-small-file.png in Resources */,
-				997B097E18E847E5006CE109 /* alpvalidator-fixture-large-file.png in Resources */,
 				999C707E1897C45A008CAEE4 /* Images.xcassets in Resources */,
 				99DC274F189F9DB800F23EC8 /* ALPValidatorDemo.storyboard in Resources */,
 				99258E6218A004D900F4407A /* README.md in Resources */,
