@@ -37,6 +37,10 @@
  */
 typedef NS_ENUM(NSUInteger, ALPValidatorType) {
     /**
+     *  Validates any instance, many rules incompatible
+     */
+    ALPValidatorTypeGeneric,
+    /**
      *  Validates string instances
      */
     ALPValidatorTypeString,
@@ -155,7 +159,14 @@ extern NSString * const ALPValidatorRegularExpressionPatternContainsNumber;
 @property (copy, nonatomic, readonly) NSArray *errorMessages;
 
 /**
- *  Designated initialiser
+ *  Creates and returns a generic validator
+ *
+ *  @return ALPValidator instance
+ */
++ (instancetype)validator;
+
+/**
+ *  Initialiser with type (recommended)
  *
  *  @param type Type of instance you would like to validate
  *

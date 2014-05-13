@@ -34,13 +34,17 @@ Install with [CocoaPods](http://cocoapods.org):
 
     `#import "ALPValidator.h"`
 
-2. Create a string validator instance using the designated initialiser:
+2. Create a string validator instance using:
 
     `ALPValidator *validator = [ALPValidator validatorWithType:ALPValidatorTypeString];`
 
     or a numeric validator:
 
     `ALPValidator *validator = [ALPValidator validatorWithType:ALPValidatorTypeNumeric];`
+    
+    or a generic validator:
+    
+    `ALPValidator *validator = [ALPValidator validator];
     
 ### Adding Validation Rules
 

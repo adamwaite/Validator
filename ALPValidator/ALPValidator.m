@@ -71,9 +71,16 @@ NSString * const ALPValidatorRegularExpressionPatternContainsNumber = @".*\\d.*"
 
 #pragma mark Init
 
++ (instancetype)validator
+{
+    return [[ALPValidator alloc] initWithType:ALPValidatorTypeGeneric];
+}
+
 + (instancetype)validatorWithType:(ALPValidatorType)type
 {
     switch (type) {
+        case ALPValidatorTypeGeneric:
+            return [ALPValidator validator];
         case ALPValidatorTypeString:
             return [[ALPStringValidator alloc] init];
         case ALPValidatorTypeNumeric:
@@ -167,7 +174,6 @@ NSString * const ALPValidatorRegularExpressionPatternContainsNumber = @".*\\d.*"
 
 - (void)addValidationToEnsureRemoteConditionIsSatisfiedAtURL:(NSURL *)url invalidMessage:(NSString *)message
 {
-    
     __typeof__(self) __weak weakSelf = self;
     
     ALPValidatorRemoteRule *rule = [[ALPValidatorRemoteRule alloc] initWithType:ALPValidatorRuleTypeRemote serviceURL:(NSURL *)url invalidMessage:message completionHandler:^(BOOL remoteConditionSatisfied, NSError *error) {
