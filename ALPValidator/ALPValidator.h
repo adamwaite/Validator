@@ -28,7 +28,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "UIControl+ALPValidator.h"
+#import "UIView+ALPValidator.h"
 
 @class ALPValidator;
 
