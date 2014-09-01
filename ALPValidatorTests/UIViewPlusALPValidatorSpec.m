@@ -9,9 +9,9 @@
 #import "Kiwi.h"
 #import "ALPValidator.h"
 
-SPEC_BEGIN(UIControlPlusALPValidatorSpec)
+SPEC_BEGIN(UIViewPlusALPValidatorSpec)
 
-describe(@"UIControl+ALPValidator", ^{
+describe(@"View+ALPValidator", ^{
     
     UIControl *control = [[UIControl alloc] initWithFrame:CGRectZero];
     
@@ -33,19 +33,19 @@ describe(@"UIControl+ALPValidator", ^{
         
         specify(^{
             [[theBlock(^{
-                [supported attachValidator:nil];
+                [supported alp_attachValidator:nil];
             }) should] raise];
         });
         
         specify(^{
             [[theBlock(^{
-                [unsupported attachValidator:validator];
+                [unsupported alp_attachValidator:validator];
             }) should] raise];
         });
         
         specify(^{
             [[theBlock(^{
-                [supported attachValidator:validator];
+                [supported alp_attachValidator:validator];
             }) shouldNot] raise];
         });
         
@@ -69,7 +69,7 @@ describe(@"UIControl+ALPValidator", ^{
                 }
             };
             
-            [field attachValidator:validator];
+            [field alp_attachValidator:validator];
             
         });
         

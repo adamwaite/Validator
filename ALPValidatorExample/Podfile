@@ -7,6 +7,6 @@ target :ALPValidator do
 end
 
 target :ALPValidatorTests do
-  pod 'Kiwi/XCTest'
+  pod 'Kiwi'
   pod 'OHHTTPStubs'
 end

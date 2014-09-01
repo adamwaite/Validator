@@ -17,11 +17,16 @@
  *
  *  @param validator to add
  */
-- (void)attachValidator:(ALPValidator *)validator;
+- (void)alp_attachValidator:(ALPValidator *)validator;
 
 /**
  *  Removes all attached validators
  */
-- (void)removeValidators;
+- (void)alp_removeValidators;
+
+#pragma mark Deprected
+
+- (void)attachValidator:(ALPValidator *)validator __attribute__((deprecated));
+- (void)removeValidators __attribute__((deprecated));
 
 @end

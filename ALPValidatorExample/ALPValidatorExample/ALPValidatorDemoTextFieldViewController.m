@@ -49,7 +49,7 @@
     [super viewDidLoad];
     self.descriptionLabel.text = self.descriptionText;
     self.textField.delegate = self;
-    [self.textField attachValidator:self.validator];
+    [self.textField alp_attachValidator:self.validator];
 }
 
 - (void)viewWillAppear:(BOOL)animated

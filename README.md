@@ -1,6 +1,6 @@
 ![header](resources/header.png)
 
-ALPValidator provides drop in user input validation for your iOS apps. It features a number of built in validation rules, some convenience methods to verify user input, a validation state change handler block, a public error messages collection, and a category on UIControl to provide validate-as-input functionality. It's not opinionated, it's your app and it's up to you how you want handle validation errors on the UI. 
+ALPValidator provides drop in user input validation for your iOS apps. It features a number of built in validation rules, some convenience methods to verify user input, a validation state change handler block, a public error messages collection, and a category on UIView to provide validate-as-input functionality to supported input view types. It's not opinionated, it's your app and it's up to you how you want handle validation errors on the UI. 
 
 Built in validations:
 
@@ -195,19 +195,24 @@ ALPStringValidator 0x10911ddc0: {
 }
 ```
 
-### UIControl+ALPValidator
+### UIView+ALPValidator
 
-The `UIControl+ALPValidator` category extends `UIControl` to provide validation on the fly as the user changes the value of the control.
+The `UIView+ALPValidator` category extends `UIView` to provide validation on the fly as the user changes the value of the input.
 
-Use the `attachValidator:` to automatically configure the validator to call `validate:` (which fires the state change block) as the input changed.
+Use the `alp_attachValidator:` to automatically configure the validator to call `validate:` (which fires the state change block) as the input changed.
 
 ```
-[self.textField attachValidator:self.validator];
+[self.textField alp_attachValidator:self.validator];
 ```
 
-Remove auto-validation with `removeValidators`. 
+Remove auto-validation with `alp_removeValidators`. 
 
-See the example project which uses the UIControl category to validate as you type.
+See the example project which uses the UIView category to validate as you type.
+
+#### Supported
+
+- `UITextField` 
+- `UITextView`
 
 ### Remote Validation
 
@@ -262,7 +267,7 @@ Contributions welcome. Before making a pull request please ensure all of the [Ki
 
 ## Thanks
 
-ALPValidator is inspired by the [jQuery Validation](https://github.com/jzaefferer/jquery-validation) plug-in, thanks.
+ALPValidator is inspired by [jQuery Validation](https://github.com/jzaefferer/jquery-validation) and [ParsleyJS](http://parsleyjs.org), thanks.
 
 ##License
 
