@@ -3,7 +3,7 @@
 //  ALPValidator
 //
 //  Created by Michael Gaylord on 2014/08/28.
-//  Copyright (c) 2014 Alpaca Labs. All rights reserved.
+//  Copyright (c) 2014 Adam Waite. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

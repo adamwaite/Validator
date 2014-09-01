@@ -374,8 +374,9 @@
 		999C705A1897C45A008CAEE4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = ALP;
 				LastUpgradeCheck = 0510;
-				ORGANIZATIONNAME = "Alpaca Labs";
+				ORGANIZATIONNAME = adamjwaite.co.uk;
 				TargetAttributes = {
 					999C70821897C45A008CAEE4 = {
 						TestTargetID = 999C70611897C45A008CAEE4;

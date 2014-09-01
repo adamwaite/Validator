@@ -3,7 +3,7 @@
 //  ALPValidator
 //
 //  Created by Adam Waite on 29/03/2014.
-//  Copyright (c) 2014 Alpaca Labs. All rights reserved.
+//  Copyright (c) 2014 Adam Waite. All rights reserved.
 //
 
 #import "Kiwi.h"
