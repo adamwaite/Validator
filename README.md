@@ -128,10 +128,10 @@ To validate as the user types into a control you might do something such as this
 
 ```
 
-Or alternatively use the `attachValidator:` method defined in the `UIControl+ALPValidor` category to automatically configure validate-on-change functionality.
+Or alternatively use the `alp_attachValidator:` method defined in the `UIView+ALPValidor` category to automatically configure validate-on-change functionality.
 
 ```
-[self.someTextField attachValidator:someStringValidator];
+[self.someTextField alp_attachValidator:someStringValidator];
 ```
 
 ### Validation State Changed Handler
