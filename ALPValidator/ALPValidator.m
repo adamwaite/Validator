@@ -62,7 +62,6 @@ NSString * const ALPValidatorRegularExpressionPatternContainsNumber = @".*\\d.*"
 @property (nonatomic) ALPValidatorState state;
 @property (copy, nonatomic) NSMutableArray *rules;
 @property (nonatomic) BOOL localConditionsSatisfied;
-@property (copy, nonatomic) NSArray *errorMessages;
 @property (copy, nonatomic) NSMutableArray *mutableErrorMessages;
 
 @end
@@ -82,9 +81,9 @@ NSString * const ALPValidatorRegularExpressionPatternContainsNumber = @".*\\d.*"
         case ALPValidatorTypeGeneric:
             return [ALPValidator validator];
         case ALPValidatorTypeString:
-            return [[ALPStringValidator alloc] init];
+            return [ALPStringValidator new];
         case ALPValidatorTypeNumeric:
-            return [[ALPNumericValidator alloc] init];
+            return [ALPNumericValidator new];
     }
 }
 
@@ -110,10 +109,9 @@ NSString * const ALPValidatorRegularExpressionPatternContainsNumber = @".*\\d.*"
 - (NSString *)description
 {
     NSDictionary *output = @{
-        @"state": @(self.state),
-        @"state as string": NSStringFromALPValidatorState(self.state),
-        @"errorMessages": self.errorMessages
-    };
+                             @"state": NSStringFromALPValidatorState(self.state),
+                             @"errorMessages": self.errorMessages
+                             };
     
     return [NSString stringWithFormat:@"%@ %p: %@", [self class], self, output];
 }
@@ -228,12 +226,21 @@ NSString * const ALPValidatorRegularExpressionPatternContainsNumber = @".*\\d.*"
 
 - (void)validate:(id)instance
 {
-    [self validate:instance parameters:nil];
+    [self alpValidate:instance];
+}
+
+- (void)alpValidate:(id)instance
+{
+    [self alpValidate:instance parameters:nil];
 }
 
 - (void)validate:(id)instance parameters:(NSDictionary *)parameters
 {
+    [self alpValidate:instance parameters:parameters];
+}
 
+- (void)alpValidate:(id)instance parameters:(NSDictionary *)parameters
+{
     [self clearErrorMessages];
     
     self.localConditionsSatisfied = YES;
@@ -242,7 +249,7 @@ NSString * const ALPValidatorRegularExpressionPatternContainsNumber = @".*\\d.*"
     [self.rules enumerateObjectsUsingBlock:^(ALPValidatorRule *rule, NSUInteger idx, BOOL *stop) {
         
         switch (rule.type) {
-            
+                
             case ALPValidatorRuleTypeRemote: {
                 ALPValidatorRemoteRule *remoteRule = (ALPValidatorRemoteRule *)rule;
                 [self addErrorMessageForRule:rule];
@@ -262,9 +269,7 @@ NSString * const ALPValidatorRegularExpressionPatternContainsNumber = @".*\\d.*"
         }
     }];
     
-    [self updatePublicErrorMessages];
     self.state = newState;
-    
 }
 
 #pragma mark State Change
@@ -279,6 +284,11 @@ NSString * const ALPValidatorRegularExpressionPatternContainsNumber = @".*\\d.*"
 
 #pragma mark Messages
 
+- (NSArray *)errorMessages
+{
+    return [NSArray arrayWithArray:self.mutableErrorMessages];
+}
+
 - (void)addErrorMessageForRule:(ALPValidatorRule *)rule
 {
     [self.mutableErrorMessages addObject:rule.errorMessage];
@@ -292,12 +302,6 @@ NSString * const ALPValidatorRegularExpressionPatternContainsNumber = @".*\\d.*"
 - (void)removeValidationMessage:(NSString *)message
 {
     [self.mutableErrorMessages removeObjectIdenticalTo:message];
-    [self updatePublicErrorMessages];
-}
-
-- (void)updatePublicErrorMessages
-{
-    self.errorMessages = [NSArray arrayWithArray:self.mutableErrorMessages];
 }
 
 #pragma mark Utilty

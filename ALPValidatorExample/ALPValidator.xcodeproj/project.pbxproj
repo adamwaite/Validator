@@ -59,10 +59,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		11A54FF8F51E128C3144B94E /* Pods-ALPValidatorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ALPValidatorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ALPValidatorTests/Pods-ALPValidatorTests.release.xcconfig"; sourceTree = "<group>"; };
 		49B2E1104D44447A9B2625AE /* libPods-ALPValidatorTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ALPValidatorTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CEF8E0819AF4F3800EE77DE /* UIView+ALPValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ALPValidator.h"; sourceTree = "<group>"; };
 		4CEF8E0919AF4F3800EE77DE /* UIView+ALPValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ALPValidator.m"; sourceTree = "<group>"; };
-		65EBC2426EE8480EA88DDF00 /* Pods-ALPValidatorTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ALPValidatorTests.xcconfig"; path = "Pods/Pods-ALPValidatorTests.xcconfig"; sourceTree = "<group>"; };
 		9901AAD418E7359A004CFB20 /* UIViewPlusALPValidatorSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIViewPlusALPValidatorSpec.m; path = ../../ALPValidatorTests/UIViewPlusALPValidatorSpec.m; sourceTree = "<group>"; };
 		9908D562189BCB5300539E7B /* ALPValidatorRangeRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALPValidatorRangeRule.h; sourceTree = "<group>"; };
 		9908D563189BCB5300539E7B /* ALPValidatorRangeRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALPValidatorRangeRule.m; sourceTree = "<group>"; };
@@ -120,6 +120,7 @@
 		99DC2754189F9DFA00F23EC8 /* ALPValidatorDemoTextFieldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALPValidatorDemoTextFieldViewController.m; sourceTree = "<group>"; };
 		99EA8FA31897F5550063DD9F /* ALPValidatorCustomRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALPValidatorCustomRule.h; sourceTree = "<group>"; };
 		99EA8FA41897F5550063DD9F /* ALPValidatorCustomRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALPValidatorCustomRule.m; sourceTree = "<group>"; };
+		C472476B7991A8B7B8DA04CA /* Pods-ALPValidatorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ALPValidatorTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ALPValidatorTests/Pods-ALPValidatorTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +148,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B03FC614758CB9BBFD4E431 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C472476B7991A8B7B8DA04CA /* Pods-ALPValidatorTests.debug.xcconfig */,
+				11A54FF8F51E128C3144B94E /* Pods-ALPValidatorTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		99333F9B1897C74100BA81F5 /* ALPValidator */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,7 +225,7 @@
 				999C708A1897C45A008CAEE4 /* ALPValidatorTests */,
 				999C70641897C45A008CAEE4 /* Frameworks */,
 				999C70631897C45A008CAEE4 /* Products */,
-				65EBC2426EE8480EA88DDF00 /* Pods-ALPValidatorTests.xcconfig */,
+				7B03FC614758CB9BBFD4E431 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -437,7 +447,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-ALPValidatorTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ALPValidatorTests/Pods-ALPValidatorTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		82852173BDC54D1AA94DD4F4 /* Check Pods Manifest.lock */ = {
@@ -631,7 +641,7 @@
 		};
 		999C70981897C45A008CAEE4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 65EBC2426EE8480EA88DDF00 /* Pods-ALPValidatorTests.xcconfig */;
+			baseConfigurationReference = C472476B7991A8B7B8DA04CA /* Pods-ALPValidatorTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ALPValidator.app/ALPValidator";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -660,7 +670,7 @@
 		};
 		999C70991897C45A008CAEE4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 65EBC2426EE8480EA88DDF00 /* Pods-ALPValidatorTests.xcconfig */;
+			baseConfigurationReference = 11A54FF8F51E128C3144B94E /* Pods-ALPValidatorTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ALPValidator.app/ALPValidator";
 				FRAMEWORK_SEARCH_PATHS = (

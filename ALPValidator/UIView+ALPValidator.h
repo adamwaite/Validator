@@ -1,5 +1,5 @@
 //
-//  UITextInput+ALPValidator.h
+//  UIView+ALPValidator.h
 //  ALPValidator
 //
 //  Created by Michael Gaylord on 2014/08/28.

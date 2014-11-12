@@ -260,12 +260,22 @@ extern NSString * const ALPValidatorRegularExpressionPatternContainsNumber;
 - (void)validate:(id)instance;
 
 /**
+ *  Alias for validate:
+ */
+- (void)alpValidate:(id)instance;
+
+/**
  *  Validates an instance and the state property, additional params can be passed in a dicitonary
  *
  *  @param instance   instance to validate
  *  @param parameters any additional parameters required for the validation
  */
 - (void)validate:(id)instance parameters:(NSDictionary *)parameters;
+
+/**
+ *  Alias for validate:parameters:
+ */
+- (void)alpValidate:(id)instance parameters:(NSDictionary *)parameters;
 
 /**
  *  Return YES if last instance validated was deemed valid based on the added rules

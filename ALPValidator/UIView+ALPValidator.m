@@ -10,12 +10,12 @@
 #import "ALPValidator.h"
 #import <objc/runtime.h>
 
-static char ALPValidatorUIViewValidators;
+static char ALPValidators;
 
-typedef NS_ENUM(NSUInteger, ALPValidatorUIViewValidatorsType) {
-    ALPValidatorUIViewValidatorsTypeUnsupported,
-    ALPValidatorUIViewValidatorsTypeUITextField,
-    ALPValidatorUIViewValidatorsTypeUITextView
+typedef NS_ENUM(NSUInteger, ALPValidatorInputType) {
+    ALPValidatorInputTypeUnsupported,
+    ALPValidatorInputTypeUITextField,
+    ALPValidatorInputTypeUITextView
 };
 
 @implementation UIView (ALPValidator)
@@ -24,22 +24,22 @@ typedef NS_ENUM(NSUInteger, ALPValidatorUIViewValidatorsType) {
 
 - (NSMutableArray *)alp_validators
 {
-    return objc_getAssociatedObject(self, &ALPValidatorUIViewValidators);
+    return objc_getAssociatedObject(self, &ALPValidators);
 }
 
 #pragma mark Supported Input Views
 
-- (ALPValidatorUIViewValidatorsType)alp_validatorType
+- (ALPValidatorInputType)alp_validatorType
 {
     if ([self isKindOfClass:[UITextField class]]) {
-        return ALPValidatorUIViewValidatorsTypeUITextField;
+        return ALPValidatorInputTypeUITextField;
     }
     
     if ([self isKindOfClass:[UITextView class]]) {
-        return ALPValidatorUIViewValidatorsTypeUITextView;
+        return ALPValidatorInputTypeUITextView;
     }
     
-    return ALPValidatorUIViewValidatorsTypeUnsupported;
+    return ALPValidatorInputTypeUnsupported;
 }
 
 #pragma mark Attach/Remove
@@ -49,19 +49,19 @@ typedef NS_ENUM(NSUInteger, ALPValidatorUIViewValidatorsType) {
     NSParameterAssert(validator);
     
     switch ([self alp_validatorType]) {
-        case ALPValidatorUIViewValidatorsTypeUITextField:
+        case ALPValidatorInputTypeUITextField:
             [self alp_attachTextFieldValidator];
             break;
-        case ALPValidatorUIViewValidatorsTypeUITextView:
+        case ALPValidatorInputTypeUITextView:
             [self alp_attachTextViewValidator];
             break;
-        case ALPValidatorUIViewValidatorsTypeUnsupported:
+        case ALPValidatorInputTypeUnsupported:
             NSLog(@"Tried to add ALPValidator to unsupported control type of class %@. %s.", [self class], __PRETTY_FUNCTION__);
-            return;
+            NSAssert(NO, nil);
     }
     
     if (![self alp_validators]) {
-        objc_setAssociatedObject(self, &ALPValidatorUIViewValidators, [NSMutableArray array], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        objc_setAssociatedObject(self, &ALPValidators, [NSMutableArray array], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     
     [[self alp_validators] addObject:validator];
