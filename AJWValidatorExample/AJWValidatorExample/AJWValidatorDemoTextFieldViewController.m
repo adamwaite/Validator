@@ -150,7 +150,6 @@
 
 - (void)validator:(AJWValidator *)validator remoteValidationAtURL:(NSURL *)url failedWithError:(NSError *)error
 {
-    
     NSLog(@"Remote service could not be contacted: %@. Have you started the sinatra server?", error);
     
     static dispatch_once_t onceToken;
