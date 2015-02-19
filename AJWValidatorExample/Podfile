@@ -1,0 +1,8 @@
+platform :ios, '7.0'
+
+inhibit_all_warnings!
+
+target :AJWValidatorTests do
+  pod 'Kiwi'
+  pod 'OHHTTPStubs'
+end

@@ -1,6 +1,6 @@
 ![header](resources/header.png)
 
-ALPValidator provides drop in user input validation for your iOS apps. It features a number of built in validation rules, some convenience methods to verify user input, a validation state change handler block, a public error messages collection, and a category on UIView to provide validate-as-input functionality to supported input view types. It's not opinionated, it's your app and it's up to you how you want handle validation errors on the UI. 
+AJWValidator provides drop in user input validation for your iOS apps. It features a number of built in validation rules, some convenience methods to verify user input, a validation state change handler block, a public error messages collection, and a category on UIView to provide validate-as-input functionality to supported input view types. It's not opinionated, it's your app and it's up to you how you want handle validation errors on the UI. 
 
 Built in validations:
 
@@ -24,27 +24,27 @@ Built in validations:
 
 Install with [CocoaPods](http://cocoapods.org):
 
-`pod 'ALPValidator'`
+`pod 'AJWValidator'`
 
 ## Usage
 
-### Creating an ALPValidator
+### Creating an AJWValidator
 
 1. Import:
 
-    `#import "ALPValidator.h"`
+    `#import "AJWValidator.h"`
 
 2. Create a string validator instance using:
 
-    `ALPValidator *validator = [ALPValidator validatorWithType:ALPValidatorTypeString];`
+    `AJWValidator *validator = [AJWValidator validatorWithType:AJWValidatorTypeString];`
 
     or a numeric validator:
 
-    `ALPValidator *validator = [ALPValidator validatorWithType:ALPValidatorTypeNumeric];`
+    `AJWValidator *validator = [AJWValidator validatorWithType:AJWValidatorTypeNumeric];`
     
     or a generic validator:
     
-    `ALPValidator *validator = [ALPValidator validator];
+    `AJWValidator *validator = [AJWValidator validator];
     
 ### Adding Validation Rules
 
@@ -87,7 +87,7 @@ Validation rules are added with the `addRule` methods. When adding a rule you ca
 
 - Custom block validation (return `YES` or `NO` from the block):
 ```
-- (void)addValidationToEnsureCustomConditionIsSatisfiedWithBlock:(ALPValidatorCustomRuleBlock)block invalidMessage:(NSString *)message;
+- (void)addValidationToEnsureCustomConditionIsSatisfiedWithBlock:(AJWValidatorCustomRuleBlock)block invalidMessage:(NSString *)message;
 ```
 
 - Remote validation:
@@ -105,12 +105,12 @@ Validation rules are added with the `addRule` methods. When adding a rule you ca
 Use the `validate:` method to validate an instance:
 
 ```
-ALPValidator *validator = [ALPValidator validatorWithType:ALPValidatorTypeString];
+AJWValidator *validator = [AJWValidator validatorWithType:AJWValidatorTypeString];
 [validator addValidationToEnsureValidEmailWithInvalidMessage:NSLocalizedString(@"That's not an email!", nil)];
 [validator validate:@"hey"];
 ```
 
-This will change the `state` property of the validator to `ALPValidatorValidationStateInvalid` and the `isValid` method will return `NO`.
+This will change the `state` property of the validator to `AJWValidatorValidationStateInvalid` and the `isValid` method will return `NO`.
 
 To validate as the user types into a control you might do something such as this:
 
@@ -128,10 +128,10 @@ To validate as the user types into a control you might do something such as this
 
 ```
 
-Or alternatively use the `alp_attachValidator:` method defined in the `UIView+ALPValidor` category to automatically configure validate-on-change functionality.
+Or alternatively use the `AJW_attachValidator:` method defined in the `UIView+AJWValidor` category to automatically configure validate-on-change functionality.
 
 ```
-[self.someTextField alp_attachValidator:someStringValidator];
+[self.someTextField AJW_attachValidator:someStringValidator];
 ```
 
 ### Validation State Changed Handler
@@ -139,19 +139,19 @@ Or alternatively use the `alp_attachValidator:` method defined in the `UIView+AL
 Use the `validatorStateChangedHandler` to be notified for a change in validation state.
 
 ```
-self.someValidator = [ALPValidator validatorWithType:ALPValidatorTypeString];
-self.someValidator.validatorStateChangedHandler = ^(ALPValidatorState newState) {
+self.someValidator = [AJWValidator validatorWithType:AJWValidatorTypeString];
+self.someValidator.validatorStateChangedHandler = ^(AJWValidatorState newState) {
     switch (newState) {
         
-        case ALPValidatorValidationStateValid:
+        case AJWValidatorValidationStateValid:
             // do happy things
             break;
             
-        case ALPValidatorValidationStateInvalid:
+        case AJWValidatorValidationStateInvalid:
             // do unhappy things
             break;
             
-        case ALPValidatorValidationStateWaitingForRemote:
+        case AJWValidatorValidationStateWaitingForRemote:
             // do loading indicator things
             break;
             
@@ -166,7 +166,7 @@ See the example included in this repo for an idea on how to use the state change
 When a validator fails, any error messages passed when adding rules are added to the public `errorMessages` array. You could perhaps use this array to notify the user why their inputs aren't up to scratch.
 
 ```
-ALPValidator *mixedValidator = [ALPValidator validatorWithType:ALPValidatorTypeString];
+AJWValidator *mixedValidator = [AJWValidator validatorWithType:AJWValidatorTypeString];
 
 [mixedValidator addValidationToEnsureMinimumLength:15 invalidMessage:NSLocalizedString(@"This is too short!", nil)];
 
@@ -184,7 +184,7 @@ NSLog(@"%@", mixedValidator);
 The above will NSLog something similar to the following:
 
 ```
-ALPStringValidator 0x10911ddc0: {
+AJWStringValidator 0x10911ddc0: {
     "_state" = 0;
     errorMessages =     (
         "This is too short!",
@@ -195,17 +195,17 @@ ALPStringValidator 0x10911ddc0: {
 }
 ```
 
-### UIView+ALPValidator
+### UIView+AJWValidator
 
-The `UIView+ALPValidator` category extends `UIView` to provide validation on the fly as the user changes the value of the input.
+The `UIView+AJWValidator` category extends `UIView` to provide validation on the fly as the user changes the value of the input.
 
-Use the `alp_attachValidator:` to automatically configure the validator to call `validate:` (which fires the state change block) as the input changed.
+Use the `AJW_attachValidator:` to automatically configure the validator to call `validate:` (which fires the state change block) as the input changed.
 
 ```
-[self.textField alp_attachValidator:self.validator];
+[self.textField AJW_attachValidator:self.validator];
 ```
 
-Remove auto-validation with `alp_removeValidators`. 
+Remove auto-validation with `AJW_removeValidators`. 
 
 See the example project which uses the UIView category to validate as you type.
 
@@ -216,27 +216,27 @@ See the example project which uses the UIView category to validate as you type.
 
 ### Remote Validation
 
-As with the [jQuery Validation](https://github.com/jzaefferer/jquery-validation) plug-in, ALPValidator supports remote validations. You can add a remote validation rule to a validator instance to ensure that a server-side condition is satisfied. This may for example be a condition that no two users can sign up to your service with the same username. 
+As with the [jQuery Validation](https://github.com/jzaefferer/jquery-validation) plug-in, AJWValidator supports remote validations. You can add a remote validation rule to a validator instance to ensure that a server-side condition is satisfied. This may for example be a condition that no two users can sign up to your service with the same username. 
 
 Typically you might make a request to your registration service after a full sign up form has been populated and a button has been tapped. You would only then notify the user that their chosen username has been taken once the service has returned containing the error in a JSON response or suchlike. This experience is improved if these requests are made asynchronously as the user types and the UI is updated to tell the user in closer to real-time.
 
 ```
-ALPValidator *remoteValidator = [ALPValidator validatorWithType:ALPValidatorTypeString];
+AJWValidator *remoteValidator = [AJWValidator validatorWithType:AJWValidatorTypeString];
 [remoteValidator addValidationToEnsureRemoteConditionIsSatisfiedAtURL:[NSURL URLWithString:@"http://app-backend.com/api/usernameavailable"] invalidMessage:NSLocalizedString(@"That username has been taken", nil)];
 ```
 
-Now when `validate:` is called the validator will change the `state` property to `ALPValidatorValidationStateWaitingForRemote` until the server responds. It will then change to `ALPValidatorValidationStateValid` or `ALPValidatorValidationStateInvalid` based on the response.
+Now when `validate:` is called the validator will change the `state` property to `AJWValidatorValidationStateWaitingForRemote` until the server responds. It will then change to `AJWValidatorValidationStateValid` or `AJWValidatorValidationStateInvalid` based on the response.
 
 If the response is JSON `true` then the validation rule passes, if JSON `false` or anything else it will fail. The validation will also fail if the server fails to respond through an error. 
 
-Optionally conform to `<ALPValidatorDelegate>` and set the `delegate` property to receive notifications when a server responds successfully or a request fails. The delegate methods you should implement for this information are defined in `<ALPValidatorDelegate>`:
+Optionally conform to `<AJWValidatorDelegate>` and set the `delegate` property to receive notifications when a server responds successfully or a request fails. The delegate methods you should implement for this information are defined in `<AJWValidatorDelegate>`:
 
 ```
-@protocol ALPValidatorDelegate <NSObject>
+@protocol AJWValidatorDelegate <NSObject>
 
 @optional
-- (void)validator:(ALPValidator *)validator remoteValidationAtURL:(NSURL *)url receivedResult:(BOOL)remoteConditionValid;
-- (void)validator:(ALPValidator *)validator remoteValidationAtURL:(NSURL *)url failedWithError:(NSError *)error;
+- (void)validator:(AJWValidator *)validator remoteValidationAtURL:(NSURL *)url receivedResult:(BOOL)remoteConditionValid;
+- (void)validator:(AJWValidator *)validator remoteValidationAtURL:(NSURL *)url failedWithError:(NSError *)error;
 
 @end
 ```
@@ -267,7 +267,7 @@ Contributions welcome. Before making a pull request please ensure all of the [Ki
 
 ## Thanks
 
-ALPValidator is inspired by [jQuery Validation](https://github.com/jzaefferer/jquery-validation) and [ParsleyJS](http://parsleyjs.org), thanks.
+AJWValidator is inspired by [jQuery Validation](https://github.com/jzaefferer/jquery-validation) and [ParsleyJS](http://parsleyjs.org), thanks.
 
 ##License
 
