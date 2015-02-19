@@ -1,12 +1,12 @@
-![header](resources/header.png)
+# AJWValidator
 
-AJWValidator provides drop in user input validation for your iOS apps. It features a number of built in validation rules, some convenience methods to verify user input, a validation state change handler block, a public error messages collection, and a category on UIView to provide validate-as-input functionality to supported input view types. It's not opinionated, it's your app and it's up to you how you want handle validation errors on the UI. 
+AJWValidator provides drop in user input validation for your iOS apps. It features a number of built in validation rules, some convenience methods to verify user input, a validation state change handler block, a public error messages collection, and a category on UIView to provide validate-as-input functionality to supported input view types. It's not opinionated, it's your app and it's up to you how you want handle validation errors on the UI.
 
 Built in validations:
 
 - Presence validation
 - Minimum length validation
-- Maximum length validation 
+- Maximum length validation
 - Range validation (string character length and numeric)
 - Equality validation (for password confirmation and such)
 - Regular expression match validation
@@ -41,11 +41,11 @@ Install with [CocoaPods](http://cocoapods.org):
     or a numeric validator:
 
     `AJWValidator *validator = [AJWValidator validatorWithType:AJWValidatorTypeNumeric];`
-    
+
     or a generic validator:
-    
+
     `AJWValidator *validator = [AJWValidator validator];
-    
+
 ### Adding Validation Rules
 
 Validation rules are added with the `addRule` methods. When adding a rule you can supply an error message string as an argument, this will appear in the `errorMessages` array should the validation fail. Some of the `addRule` methods take additional parameters, they should be self explanatory. You can add as many validation rules to a validator as you like.
@@ -142,19 +142,19 @@ Use the `validatorStateChangedHandler` to be notified for a change in validation
 self.someValidator = [AJWValidator validatorWithType:AJWValidatorTypeString];
 self.someValidator.validatorStateChangedHandler = ^(AJWValidatorState newState) {
     switch (newState) {
-        
+
         case AJWValidatorValidationStateValid:
             // do happy things
             break;
-            
+
         case AJWValidatorValidationStateInvalid:
             // do unhappy things
             break;
-            
+
         case AJWValidatorValidationStateWaitingForRemote:
             // do loading indicator things
             break;
-            
+
     }
 };
 ```
@@ -205,18 +205,18 @@ Use the `AJW_attachValidator:` to automatically configure the validator to call 
 [self.textField AJW_attachValidator:self.validator];
 ```
 
-Remove auto-validation with `AJW_removeValidators`. 
+Remove auto-validation with `AJW_removeValidators`.
 
 See the example project which uses the UIView category to validate as you type.
 
 #### Supported
 
-- `UITextField` 
+- `UITextField`
 - `UITextView`
 
 ### Remote Validation
 
-As with the [jQuery Validation](https://github.com/jzaefferer/jquery-validation) plug-in, AJWValidator supports remote validations. You can add a remote validation rule to a validator instance to ensure that a server-side condition is satisfied. This may for example be a condition that no two users can sign up to your service with the same username. 
+As with the [jQuery Validation](https://github.com/jzaefferer/jquery-validation) plug-in, AJWValidator supports remote validations. You can add a remote validation rule to a validator instance to ensure that a server-side condition is satisfied. This may for example be a condition that no two users can sign up to your service with the same username.
 
 Typically you might make a request to your registration service after a full sign up form has been populated and a button has been tapped. You would only then notify the user that their chosen username has been taken once the service has returned containing the error in a JSON response or suchlike. This experience is improved if these requests are made asynchronously as the user types and the UI is updated to tell the user in closer to real-time.
 
@@ -227,7 +227,7 @@ AJWValidator *remoteValidator = [AJWValidator validatorWithType:AJWValidatorType
 
 Now when `validate:` is called the validator will change the `state` property to `AJWValidatorValidationStateWaitingForRemote` until the server responds. It will then change to `AJWValidatorValidationStateValid` or `AJWValidatorValidationStateInvalid` based on the response.
 
-If the response is JSON `true` then the validation rule passes, if JSON `false` or anything else it will fail. The validation will also fail if the server fails to respond through an error. 
+If the response is JSON `true` then the validation rule passes, if JSON `false` or anything else it will fail. The validation will also fail if the server fails to respond through an error.
 
 Optionally conform to `<AJWValidatorDelegate>` and set the `delegate` property to receive notifications when a server responds successfully or a request fails. The delegate methods you should implement for this information are defined in `<AJWValidatorDelegate>`:
 
@@ -272,7 +272,7 @@ AJWValidator is inspired by [jQuery Validation](https://github.com/jzaefferer/jq
 ##License
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- 
+
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- 
+
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
