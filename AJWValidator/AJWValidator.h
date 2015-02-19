@@ -262,7 +262,7 @@ extern NSString * const AJWValidatorRegularExpressionPatternContainsNumber;
 /**
  *  Alias for validate:
  */
-- (void)AJWValidate:(id)instance;
+- (void)ajwValidate:(id)instance;
 
 /**
  *  Validates an instance and the state property, additional params can be passed in a dicitonary
@@ -275,7 +275,7 @@ extern NSString * const AJWValidatorRegularExpressionPatternContainsNumber;
 /**
  *  Alias for validate:parameters:
  */
-- (void)AJWValidate:(id)instance parameters:(NSDictionary *)parameters;
+- (void)ajwValidate:(id)instance parameters:(NSDictionary *)parameters;
 
 /**
  *  Return YES if last instance validated was deemed valid based on the added rules

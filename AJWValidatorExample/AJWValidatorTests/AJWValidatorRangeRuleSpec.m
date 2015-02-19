@@ -1,16 +1,16 @@
 #import "Kiwi.h"
-#import "ALPValidator.h"
+#import "AJWValidator.h"
 
-SPEC_BEGIN(ALPValidatorRangeRuleSpec)
+SPEC_BEGIN(AJWValidatorRangeRuleSpec)
 
-describe(@"ALPValidatorRangeRule", ^{
+describe(@"AJWValidatorRangeRule", ^{
     
-    __block ALPValidator *stringValidator;
-    __block ALPValidator *numericValidator;
+    __block AJWValidator *stringValidator;
+    __block AJWValidator *numericValidator;
     
     beforeEach(^{
-        stringValidator = [ALPValidator validatorWithType:ALPValidatorTypeString];
-        numericValidator = [ALPValidator validatorWithType:ALPValidatorTypeNumeric];
+        stringValidator = [AJWValidator validatorWithType:AJWValidatorTypeString];
+        numericValidator = [AJWValidator validatorWithType:AJWValidatorTypeNumeric];
 
         [stringValidator addValidationToEnsureRangeWithMinimum:@3 maximum:@10 invalidMessage:nil];
         [numericValidator addValidationToEnsureRangeWithMinimum:@3 maximum:@10 invalidMessage:nil];
@@ -29,7 +29,7 @@ describe(@"ALPValidatorRangeRule", ^{
             [stringValidator validate:@"ab"];
         });
         specify(^{
-            [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
+            [[theValue(stringValidator.state) should] equal:theValue(AJWValidatorValidationStateInvalid)];
         });
     });
     
@@ -38,7 +38,7 @@ describe(@"ALPValidatorRangeRule", ^{
             [stringValidator validate:@"abcdefghijklmnop"];
         });
         specify(^{
-            [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
+            [[theValue(stringValidator.state) should] equal:theValue(AJWValidatorValidationStateInvalid)];
         });
     });
     
@@ -47,7 +47,7 @@ describe(@"ALPValidatorRangeRule", ^{
             [stringValidator validate:@"abcde"];
         });
         specify(^{
-            [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateValid)];
+            [[theValue(stringValidator.state) should] equal:theValue(AJWValidatorValidationStateValid)];
         });
     });
     
@@ -56,7 +56,7 @@ describe(@"ALPValidatorRangeRule", ^{
             [numericValidator validate:@2.999];
         });
         specify(^{
-            [[theValue(numericValidator.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
+            [[theValue(numericValidator.state) should] equal:theValue(AJWValidatorValidationStateInvalid)];
         });
     });
     
@@ -65,7 +65,7 @@ describe(@"ALPValidatorRangeRule", ^{
             [numericValidator validate:@10.001];
         });
         specify(^{
-            [[theValue(numericValidator.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
+            [[theValue(numericValidator.state) should] equal:theValue(AJWValidatorValidationStateInvalid)];
         });
     });
     
@@ -74,7 +74,7 @@ describe(@"ALPValidatorRangeRule", ^{
             [numericValidator validate:@5];
         });
         specify(^{
-            [[theValue(numericValidator.state) should] equal:theValue(ALPValidatorValidationStateValid)];
+            [[theValue(numericValidator.state) should] equal:theValue(AJWValidatorValidationStateValid)];
         });
     });
     

@@ -44,7 +44,7 @@ typedef NS_ENUM(NSUInteger, AJWValidatorInputType) {
 
 #pragma mark Attach/Remove
 
-- (void)AJW_attachValidator:(AJWValidator *)validator
+- (void)ajw_attachValidator:(AJWValidator *)validator
 {
     NSParameterAssert(validator);
     
@@ -68,7 +68,7 @@ typedef NS_ENUM(NSUInteger, AJWValidatorInputType) {
     
 }
 
-- (void)AJW_removeValidators
+- (void)ajw_removeValidators
 {
     [[self AJW_validators] removeAllObjects];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -107,12 +107,12 @@ typedef NS_ENUM(NSUInteger, AJWValidatorInputType) {
 
 - (void)attachValidator:(AJWValidator *)validator
 {
-    [self AJW_attachValidator:validator];
+    [self ajw_attachValidator:validator];
 }
 
 - (void)removeValidators
 {
-    [self AJW_removeValidators];
+    [self ajw_removeValidators];
 }
 
 @end

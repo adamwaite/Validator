@@ -1,16 +1,16 @@
 #import "Kiwi.h"
-#import "ALPValidator.h"
+#import "AJWValidator.h"
 
-SPEC_BEGIN(ALPValidatorRegularExpressionRuleSpec)
+SPEC_BEGIN(AJWValidatorRegularExpressionRuleSpec)
 
-describe(@"ALPValidatorRegularExpressionRule", ^{
+describe(@"AJWValidatorRegularExpressionRule", ^{
     
-    __block ALPValidator *stringValidator;
-    __block ALPValidator *numericValidator;
+    __block AJWValidator *stringValidator;
+    __block AJWValidator *numericValidator;
     
     beforeEach(^{
-        stringValidator = [ALPValidator validatorWithType:ALPValidatorTypeString];
-        numericValidator = [ALPValidator validatorWithType:ALPValidatorTypeNumeric];
+        stringValidator = [AJWValidator validatorWithType:AJWValidatorTypeString];
+        numericValidator = [AJWValidator validatorWithType:AJWValidatorTypeNumeric];
     });
     
     specify(^{
@@ -37,7 +37,7 @@ describe(@"ALPValidatorRegularExpressionRule", ^{
                 [stringValidator validate:invalid];
             });
             specify(^{
-                [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
+                [[theValue(stringValidator.state) should] equal:theValue(AJWValidatorValidationStateInvalid)];
             });
         });
         
@@ -46,7 +46,7 @@ describe(@"ALPValidatorRegularExpressionRule", ^{
                 [stringValidator validate:pattern];
             });
             specify(^{
-                [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateValid)];
+                [[theValue(stringValidator.state) should] equal:theValue(AJWValidatorValidationStateValid)];
             });
         });
         
@@ -75,7 +75,7 @@ describe(@"ALPValidatorRegularExpressionRule", ^{
             it(@"should be invalid", ^{
                 [invalidEmailAddresses enumerateObjectsUsingBlock:^(NSString *invalidEmailAddress, NSUInteger idx, BOOL *stop) {
                     [stringValidator validate:invalidEmailAddress];
-                    [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
+                    [[theValue(stringValidator.state) should] equal:theValue(AJWValidatorValidationStateInvalid)];
                 }];
             });
         });
@@ -85,7 +85,7 @@ describe(@"ALPValidatorRegularExpressionRule", ^{
                 [stringValidator validate:validEmailAddress];
             });
             specify(^{
-                [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateValid)];
+                [[theValue(stringValidator.state) should] equal:theValue(AJWValidatorValidationStateValid)];
             });
         });
         
@@ -112,7 +112,7 @@ describe(@"ALPValidatorRegularExpressionRule", ^{
                 [stringValidator validate:@"password"];
             });
             specify(^{
-                [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
+                [[theValue(stringValidator.state) should] equal:theValue(AJWValidatorValidationStateInvalid)];
             });
         });
         
@@ -121,7 +121,7 @@ describe(@"ALPValidatorRegularExpressionRule", ^{
                 [stringValidator validate:@"password1"];
             });
             specify(^{
-                [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateValid)];
+                [[theValue(stringValidator.state) should] equal:theValue(AJWValidatorValidationStateValid)];
             });
         });
         

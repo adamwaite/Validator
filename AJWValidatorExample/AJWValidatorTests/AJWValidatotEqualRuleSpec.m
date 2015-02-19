@@ -1,16 +1,16 @@
 #import "Kiwi.h"
-#import "ALPValidator.h"
+#import "AJWValidator.h"
 
 SPEC_BEGIN(ALPValidatotEqualRuleSpec)
 
 describe(@"ALPValidatotEqualRule", ^{
     
-    __block ALPValidator *stringValidator;
-    __block ALPValidator *numericValidator;
+    __block AJWValidator *stringValidator;
+    __block AJWValidator *numericValidator;
     
     beforeEach(^{
-        stringValidator = [ALPValidator validatorWithType:ALPValidatorTypeString];
-        numericValidator = [ALPValidator validatorWithType:ALPValidatorTypeNumeric];
+        stringValidator = [AJWValidator validatorWithType:AJWValidatorTypeString];
+        numericValidator = [AJWValidator validatorWithType:AJWValidatorTypeNumeric];
         [stringValidator addValidationToEnsureInstanceIsTheSameAs:@"p4ssword" invalidMessage:nil];
         [numericValidator addValidationToEnsureInstanceIsTheSameAs:@5 invalidMessage:nil];
     });
@@ -28,7 +28,7 @@ describe(@"ALPValidatotEqualRule", ^{
             [stringValidator validate:@"password"];
         });
         specify(^{
-            [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
+            [[theValue(stringValidator.state) should] equal:theValue(AJWValidatorValidationStateInvalid)];
         });
     });
     
@@ -37,7 +37,7 @@ describe(@"ALPValidatotEqualRule", ^{
             [stringValidator validate:@"p4ssword"];
         });
         specify(^{
-            [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateValid)];
+            [[theValue(stringValidator.state) should] equal:theValue(AJWValidatorValidationStateValid)];
         });
     });
     
@@ -46,7 +46,7 @@ describe(@"ALPValidatotEqualRule", ^{
             [numericValidator validate:@4.9];
         });
         specify(^{
-            [[theValue(numericValidator.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
+            [[theValue(numericValidator.state) should] equal:theValue(AJWValidatorValidationStateInvalid)];
         });
     });
     
@@ -55,13 +55,13 @@ describe(@"ALPValidatotEqualRule", ^{
             [numericValidator validate:@5];
         });
         specify(^{
-            [[theValue(numericValidator.state) should] equal:theValue(ALPValidatorValidationStateValid)];
+            [[theValue(numericValidator.state) should] equal:theValue(AJWValidatorValidationStateValid)];
         });
     });
     
     describe(@"changing string", ^{
         
-        ALPValidator *textFieldValidator = [ALPValidator validatorWithType:ALPValidatorTypeString];
+        AJWValidator *textFieldValidator = [AJWValidator validatorWithType:AJWValidatorTypeString];
         NSMutableString *changingString = [NSMutableString string];
         changingString = [NSMutableString stringWithString:@"hey"];
         
@@ -71,7 +71,7 @@ describe(@"ALPValidatotEqualRule", ^{
         });
         
         specify(^{
-            [[theValue(textFieldValidator.state) should] equal:theValue(ALPValidatorValidationStateValid)];
+            [[theValue(textFieldValidator.state) should] equal:theValue(AJWValidatorValidationStateValid)];
         });
         
         context(@"when the string chnages", ^{
@@ -80,7 +80,7 @@ describe(@"ALPValidatotEqualRule", ^{
                 [textFieldValidator validate:@"hey"];
             });
             specify(^{
-                [[theValue(textFieldValidator.state) shouldNot] equal:theValue(ALPValidatorValidationStateValid)];
+                [[theValue(textFieldValidator.state) shouldNot] equal:theValue(AJWValidatorValidationStateValid)];
             });
         });
         

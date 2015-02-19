@@ -1,17 +1,17 @@
 //
-//  UIControlPlusALPValidatorSpec.m
-//  ALPValidator
+//  UIControlPlusAJWValidatorSpec.m
+//  AJWValidator
 //
 //  Created by Adam Waite on 29/03/2014.
 //  Copyright (c) 2014 Adam Waite. All rights reserved.
 //
 
 #import "Kiwi.h"
-#import "ALPValidator.h"
+#import "AJWValidator.h"
 
-SPEC_BEGIN(UIViewPlusALPValidatorSpec)
+SPEC_BEGIN(UIViewPlusAJWValidatorSpec)
 
-describe(@"View+ALPValidator", ^{
+describe(@"View+AJWValidator", ^{
     
     UIControl *control = [[UIControl alloc] initWithFrame:CGRectZero];
     
@@ -27,25 +27,25 @@ describe(@"View+ALPValidator", ^{
     
     describe(@"Attaching a validator", ^{
         
-        ALPValidator *validator = [ALPValidator validatorWithType:ALPValidatorTypeString];
+        AJWValidator *validator = [AJWValidator validatorWithType:AJWValidatorTypeString];
         UITextField *supported = [[UITextField alloc] initWithFrame:CGRectZero];
         UIStepper *unsupported = [[UIStepper alloc] initWithFrame:CGRectZero];
         
         specify(^{
             [[theBlock(^{
-                [supported alp_attachValidator:nil];
+                [supported ajw_attachValidator:nil];
             }) should] raise];
         });
         
         specify(^{
             [[theBlock(^{
-                [unsupported alp_attachValidator:validator];
+                [unsupported ajw_attachValidator:validator];
             }) should] raise];
         });
         
         specify(^{
             [[theBlock(^{
-                [supported alp_attachValidator:validator];
+                [supported ajw_attachValidator:validator];
             }) shouldNot] raise];
         });
         
@@ -54,22 +54,22 @@ describe(@"View+ALPValidator", ^{
     context(@"UITextField automatic validation", ^{
         
         __block UITextField *field;
-        __block ALPValidator *validator;
+        __block AJWValidator *validator;
         
         beforeEach(^{
             
             field = [[UITextField alloc] initWithFrame:CGRectZero];
             field.backgroundColor = [UIColor greenColor];
             
-            validator  = [ALPValidator validatorWithType:ALPValidatorTypeString];
+            validator  = [AJWValidator validatorWithType:AJWValidatorTypeString];
             [validator addValidationToEnsureMaximumLength:3 invalidMessage:nil];
-            validator.validatorStateChangedHandler = ^(ALPValidatorState state){
-                if (state == ALPValidatorValidationStateInvalid) {
+            validator.validatorStateChangedHandler = ^(AJWValidatorState state){
+                if (state == AJWValidatorValidationStateInvalid) {
                     field.backgroundColor = [UIColor redColor];
                 }
             };
             
-            [field alp_attachValidator:validator];
+            [field ajw_attachValidator:validator];
             
         });
         

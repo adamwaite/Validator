@@ -1,16 +1,16 @@
 #import "Kiwi.h"
-#import "ALPValidator.h"
+#import "AJWValidator.h"
 
-SPEC_BEGIN(ALPValidatorMaximumLengthRuleSpec)
+SPEC_BEGIN(AJWValidatorMaximumLengthRuleSpec)
 
-describe(@"ALPValidatorMaximumLengthRule", ^{
+describe(@"AJWValidatorMaximumLengthRule", ^{
     
-    __block ALPValidator *stringValidator;
-    __block ALPValidator *numericValidator;
+    __block AJWValidator *stringValidator;
+    __block AJWValidator *numericValidator;
     
     beforeEach(^{
-        stringValidator = [ALPValidator validatorWithType:ALPValidatorTypeString];
-        numericValidator = [ALPValidator validatorWithType:ALPValidatorTypeNumeric];
+        stringValidator = [AJWValidator validatorWithType:AJWValidatorTypeString];
+        numericValidator = [AJWValidator validatorWithType:AJWValidatorTypeNumeric];
         [stringValidator addValidationToEnsureMaximumLength:5 invalidMessage:nil];
     });
     
@@ -29,7 +29,7 @@ describe(@"ALPValidatorMaximumLengthRule", ^{
             [stringValidator validate:@"abcdef"];
         });
         specify(^{
-            [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
+            [[theValue(stringValidator.state) should] equal:theValue(AJWValidatorValidationStateInvalid)];
         });
     });
     
@@ -38,7 +38,7 @@ describe(@"ALPValidatorMaximumLengthRule", ^{
             [stringValidator validate:@"abc"];
         });
         specify(^{
-            [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateValid)];
+            [[theValue(stringValidator.state) should] equal:theValue(AJWValidatorValidationStateValid)];
         });
     });
     

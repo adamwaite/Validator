@@ -1,16 +1,16 @@
 #import "Kiwi.h"
-#import "ALPValidator.h"
+#import "AJWValidator.h"
 
-SPEC_BEGIN(ALPValidatorMinimumLengthRuleSpec)
+SPEC_BEGIN(AJWValidatorMinimumLengthRuleSpec)
 
-describe(@"ALPValidatorMinimumLengthRule", ^{
+describe(@"AJWValidatorMinimumLengthRule", ^{
     
-    __block ALPValidator *stringValidator;
-    __block ALPValidator *numericValidator;
+    __block AJWValidator *stringValidator;
+    __block AJWValidator *numericValidator;
     
     beforeEach(^{
-        stringValidator = [ALPValidator validatorWithType:ALPValidatorTypeString];
-        numericValidator = [ALPValidator validatorWithType:ALPValidatorTypeNumeric];
+        stringValidator = [AJWValidator validatorWithType:AJWValidatorTypeString];
+        numericValidator = [AJWValidator validatorWithType:AJWValidatorTypeNumeric];
         [stringValidator addValidationToEnsureMinimumLength:3 invalidMessage:nil];
     });
     
@@ -29,7 +29,7 @@ describe(@"ALPValidatorMinimumLengthRule", ^{
             [stringValidator validate:@"ab"];
         });
         specify(^{
-            [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
+            [[theValue(stringValidator.state) should] equal:theValue(AJWValidatorValidationStateInvalid)];
         });
     });
     
@@ -38,7 +38,7 @@ describe(@"ALPValidatorMinimumLengthRule", ^{
             [stringValidator validate:@"abcd"];
         });
         specify(^{
-            [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateValid)];
+            [[theValue(stringValidator.state) should] equal:theValue(AJWValidatorValidationStateValid)];
         });
     });
     

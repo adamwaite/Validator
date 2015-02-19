@@ -1,20 +1,20 @@
 #import "Kiwi.h"
-#import "ALPValidator.h"
+#import "AJWValidator.h"
 #import "OHHTTPStubs.h"
 
-SPEC_BEGIN(ALPValidatorRemoteRuleSpecSpec)
+SPEC_BEGIN(AJWValidatorRemoteRuleSpecSpec)
 
-describe(@"ALPValidatorRemoteRuleSpec", ^{
+describe(@"AJWValidatorRemoteRuleSpec", ^{
     
     NSURL *service = [NSURL URLWithString:@"http://app-back-end.com/validate"];
-    __block id delegateMock = [KWMock mockForProtocol:@protocol(ALPValidatorDelegate)];
+    __block id delegateMock = [KWMock mockForProtocol:@protocol(AJWValidatorDelegate)];
     
-    __block ALPValidator *stringValidator;
-    __block ALPValidator *numericValidator;
+    __block AJWValidator *stringValidator;
+    __block AJWValidator *numericValidator;
     
     beforeEach(^{
-        stringValidator = [ALPValidator validatorWithType:ALPValidatorTypeString];
-        numericValidator = [ALPValidator validatorWithType:ALPValidatorTypeNumeric];
+        stringValidator = [AJWValidator validatorWithType:AJWValidatorTypeString];
+        numericValidator = [AJWValidator validatorWithType:AJWValidatorTypeNumeric];
         [stringValidator addValidationToEnsureRemoteConditionIsSatisfiedAtURL:service invalidMessage:nil];
         [numericValidator addValidationToEnsureRemoteConditionIsSatisfiedAtURL:service invalidMessage:nil];
     });
@@ -43,10 +43,10 @@ describe(@"ALPValidatorRemoteRuleSpec", ^{
                 [stringValidator validate:@"any"];
             });
             specify(^{
-                [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateWaitingForRemote)];
+                [[theValue(stringValidator.state) should] equal:theValue(AJWValidatorValidationStateWaitingForRemote)];
             });
             specify(^{
-                [[expectFutureValue(theValue(stringValidator.state)) shouldEventually] equal:theValue(ALPValidatorValidationStateInvalid)];
+                [[expectFutureValue(theValue(stringValidator.state)) shouldEventually] equal:theValue(AJWValidatorValidationStateInvalid)];
             });
         });
         
@@ -78,7 +78,7 @@ describe(@"ALPValidatorRemoteRuleSpec", ^{
                 [stringValidator validate:@"any"];
             });
             specify(^{
-                [[expectFutureValue(theValue(stringValidator.state)) shouldEventually] equal:theValue(ALPValidatorValidationStateValid)];
+                [[expectFutureValue(theValue(stringValidator.state)) shouldEventually] equal:theValue(AJWValidatorValidationStateValid)];
             });
         });
         
@@ -110,7 +110,7 @@ describe(@"ALPValidatorRemoteRuleSpec", ^{
                 [stringValidator validate:@"any"];
             });
             specify(^{
-                [[expectFutureValue(theValue(stringValidator.state)) shouldEventually] equal:theValue(ALPValidatorValidationStateInvalid)];
+                [[expectFutureValue(theValue(stringValidator.state)) shouldEventually] equal:theValue(AJWValidatorValidationStateInvalid)];
             });
         });
         

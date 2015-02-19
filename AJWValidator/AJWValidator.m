@@ -226,20 +226,20 @@ NSString * const AJWValidatorRegularExpressionPatternContainsNumber = @".*\\d.*"
 
 - (void)validate:(id)instance
 {
-    [self AJWValidate:instance];
+    [self ajwValidate:instance];
 }
 
-- (void)AJWValidate:(id)instance
+- (void)ajwValidate:(id)instance
 {
-    [self AJWValidate:instance parameters:nil];
+    [self ajwValidate:instance parameters:nil];
 }
 
 - (void)validate:(id)instance parameters:(NSDictionary *)parameters
 {
-    [self AJWValidate:instance parameters:parameters];
+    [self ajwValidate:instance parameters:parameters];
 }
 
-- (void)AJWValidate:(id)instance parameters:(NSDictionary *)parameters
+- (void)ajwValidate:(id)instance parameters:(NSDictionary *)parameters
 {
     [self clearErrorMessages];
     

@@ -1,24 +1,24 @@
 #import "Kiwi.h"
-#import "ALPValidator.h"
+#import "AJWValidator.h"
 
-SPEC_BEGIN(ALPValidatorCustomRuleSpec)
+SPEC_BEGIN(AJWValidatorCustomRuleSpec)
 
-describe(@"ALPValidatorCustomRule", ^{
+describe(@"AJWValidatorCustomRule", ^{
     
-    ALPValidatorCustomRuleBlock noLetterACustomRule = ^BOOL(NSString *instance){
+    AJWValidatorCustomRuleBlock noLetterACustomRule = ^BOOL(NSString *instance){
         return ([instance rangeOfString:@"A"].location == NSNotFound);
     };
     
-    ALPValidatorCustomRuleBlock numberIsFive = ^BOOL(NSNumber *instance){
+    AJWValidatorCustomRuleBlock numberIsFive = ^BOOL(NSNumber *instance){
         return ([instance isEqual:@5]);
     };
     
-    __block ALPValidator *stringValidator;
-    __block ALPValidator *numericValidator;
+    __block AJWValidator *stringValidator;
+    __block AJWValidator *numericValidator;
     
     beforeEach(^{
-        stringValidator = [ALPValidator validatorWithType:ALPValidatorTypeString];
-        numericValidator = [ALPValidator validatorWithType:ALPValidatorTypeNumeric];
+        stringValidator = [AJWValidator validatorWithType:AJWValidatorTypeString];
+        numericValidator = [AJWValidator validatorWithType:AJWValidatorTypeNumeric];
         [stringValidator addValidationToEnsureCustomConditionIsSatisfiedWithBlock:noLetterACustomRule invalidMessage:nil];
         [numericValidator addValidationToEnsureCustomConditionIsSatisfiedWithBlock:numberIsFive invalidMessage:nil];
     });
@@ -37,10 +37,10 @@ describe(@"ALPValidatorCustomRule", ^{
             [numericValidator validate:@1];
         });
         specify(^{
-            [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
+            [[theValue(stringValidator.state) should] equal:theValue(AJWValidatorValidationStateInvalid)];
         });
         specify(^{
-            [[theValue(numericValidator.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
+            [[theValue(numericValidator.state) should] equal:theValue(AJWValidatorValidationStateInvalid)];
         });
     });
     
@@ -50,10 +50,10 @@ describe(@"ALPValidatorCustomRule", ^{
             [numericValidator validate:@5];
         });
         specify(^{
-            [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateValid)];
+            [[theValue(stringValidator.state) should] equal:theValue(AJWValidatorValidationStateValid)];
         });
         specify(^{
-            [[theValue(numericValidator.state) should] equal:theValue(ALPValidatorValidationStateValid)];
+            [[theValue(numericValidator.state) should] equal:theValue(AJWValidatorValidationStateValid)];
         });
     });
     

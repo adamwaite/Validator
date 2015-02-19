@@ -1,9 +1,9 @@
 #import "Kiwi.h"
-#import "ALPValidator.h"
+#import "AJWValidator.h"
 
-SPEC_BEGIN(ALPValidatorSpec)
+SPEC_BEGIN(AJWValidatorSpec)
 
-describe(@"ALPValidator", ^{
+describe(@"AJWValidator", ^{
 
     #pragma mark Initialiser Specs
     
@@ -13,16 +13,16 @@ describe(@"ALPValidator", ^{
         
         context(@"not using the designated initialiser", ^{
             specify(^{
-                [[theBlock(^{ subject = [[ALPValidator alloc] init]; }) should] raise];
+                [[theBlock(^{ subject = [[AJWValidator alloc] init]; }) should] raise];
             });
         });
         
         context(@"using the designated initialiser", ^{
             beforeEach(^{
-                subject = [ALPValidator validatorWithType:ALPValidatorTypeString];
+                subject = [AJWValidator validatorWithType:AJWValidatorTypeString];
             });
             specify(^{
-                [[subject should] beKindOfClass:[ALPValidator class]];
+                [[subject should] beKindOfClass:[AJWValidator class]];
             });
         });
         
@@ -30,10 +30,10 @@ describe(@"ALPValidator", ^{
     
     describe(@"multiple validations", ^{
         
-        __block ALPValidator *subject;
+        __block AJWValidator *subject;
         
         beforeEach(^{
-            subject = [ALPValidator validatorWithType:ALPValidatorTypeString];
+            subject = [AJWValidator validatorWithType:AJWValidatorTypeString];
             [subject addValidationToEnsureMinimumLength:5 invalidMessage:nil];
             [subject addValidationToEnsureValidEmailWithInvalidMessage:nil];
             [subject addValidationToEnsureCustomConditionIsSatisfiedWithBlock:^BOOL(NSString *instance) {
@@ -54,7 +54,7 @@ describe(@"ALPValidator", ^{
                 [subject validate:@"hAhA"];
             });
             specify(^{
-                [[theValue(subject.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
+                [[theValue(subject.state) should] equal:theValue(AJWValidatorValidationStateInvalid)];
             });
             specify(^{
                 [[theValue([subject.errorMessages count]) should] equal:theValue(3)];
@@ -66,7 +66,7 @@ describe(@"ALPValidator", ^{
                 [subject validate:@"Almostvalid@string.com"];
             });
             specify(^{
-                [[theValue(subject.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
+                [[theValue(subject.state) should] equal:theValue(AJWValidatorValidationStateInvalid)];
             });
             specify(^{
                 [[theValue([subject.errorMessages count]) should] equal:theValue(1)];
@@ -78,7 +78,7 @@ describe(@"ALPValidator", ^{
                 [subject validate:@"valid@string.com"];
             });
             specify(^{
-                [[theValue(subject.state) should] equal:theValue(ALPValidatorValidationStateValid)];
+                [[theValue(subject.state) should] equal:theValue(AJWValidatorValidationStateValid)];
             });
             specify(^{
                 [[theValue([subject.errorMessages count]) should] equal:theValue(0)];
@@ -89,10 +89,10 @@ describe(@"ALPValidator", ^{
     
     describe(@"messages", ^{
         
-        __block ALPValidator *subject;
+        __block AJWValidator *subject;
         
         beforeEach(^{
-            subject = [ALPValidator validatorWithType:ALPValidatorTypeString];
+            subject = [AJWValidator validatorWithType:AJWValidatorTypeString];
         });
         
         afterEach(^{
@@ -164,14 +164,14 @@ describe(@"ALPValidator", ^{
     
     describe(@"state change handler", ^{
         
-        __block ALPValidator *subject;
+        __block AJWValidator *subject;
         __block NSUInteger thingToWatch = 0;
         
         beforeEach(^{
-            subject = [ALPValidator validatorWithType:ALPValidatorTypeString];
+            subject = [AJWValidator validatorWithType:AJWValidatorTypeString];
             [subject addValidationToEnsurePresenceWithInvalidMessage:nil];
-            subject.validatorStateChangedHandler = ^(ALPValidatorState newState) {
-                if (newState == ALPValidatorValidationStateValid) {
+            subject.validatorStateChangedHandler = ^(AJWValidatorState newState) {
+                if (newState == AJWValidatorValidationStateValid) {
                     thingToWatch++;
                 }
             };
@@ -188,7 +188,7 @@ describe(@"ALPValidator", ^{
         
     });
     
-    #pragma mark UIControl+ALPValidator
+    #pragma mark UIControl+AJWValidator
     
     
     

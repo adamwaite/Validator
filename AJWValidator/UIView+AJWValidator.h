@@ -17,12 +17,12 @@
  *
  *  @param validator to add
  */
-- (void)AJW_attachValidator:(AJWValidator *)validator;
+- (void)ajw_attachValidator:(AJWValidator *)validator;
 
 /**
  *  Removes all attached validators
  */
-- (void)AJW_removeValidators;
+- (void)ajw_removeValidators;
 
 #pragma mark Deprected
 

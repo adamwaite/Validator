@@ -1,16 +1,16 @@
 #import "Kiwi.h"
-#import "ALPValidator.h"
+#import "AJWValidator.h"
 
-SPEC_BEGIN(ALPValidatorRequiredRuleSpec)
+SPEC_BEGIN(AJWValidatorRequiredRuleSpec)
 
-describe(@"ALPValidatorRequiredRule", ^{
+describe(@"AJWValidatorRequiredRule", ^{
     
-    __block ALPValidator *stringValidator;
-    __block ALPValidator *numericValidator;
+    __block AJWValidator *stringValidator;
+    __block AJWValidator *numericValidator;
     
     beforeEach(^{
-        stringValidator = [ALPValidator validatorWithType:ALPValidatorTypeString];
-        numericValidator = [ALPValidator validatorWithType:ALPValidatorTypeNumeric];
+        stringValidator = [AJWValidator validatorWithType:AJWValidatorTypeString];
+        numericValidator = [AJWValidator validatorWithType:AJWValidatorTypeNumeric];
         [stringValidator addValidationToEnsurePresenceWithInvalidMessage:nil];
     });
     
@@ -28,7 +28,7 @@ describe(@"ALPValidatorRequiredRule", ^{
         [stringValidator validate:nil];
         [numericValidator validate:nil];
         specify(^{
-            [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
+            [[theValue(stringValidator.state) should] equal:theValue(AJWValidatorValidationStateInvalid)];
         });
     });
         
@@ -37,7 +37,7 @@ describe(@"ALPValidatorRequiredRule", ^{
             [stringValidator validate:@""];
         });
         specify(^{
-            [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateInvalid)];
+            [[theValue(stringValidator.state) should] equal:theValue(AJWValidatorValidationStateInvalid)];
         });
     });
         
@@ -46,7 +46,7 @@ describe(@"ALPValidatorRequiredRule", ^{
             [stringValidator validate:@"hello"];
         });
         specify(^{
-            [[theValue(stringValidator.state) should] equal:theValue(ALPValidatorValidationStateValid)];
+            [[theValue(stringValidator.state) should] equal:theValue(AJWValidatorValidationStateValid)];
         });
     });
 
