@@ -1,17 +1,17 @@
 Pod::Spec.new do |s|
 
-  s.name         = "ALPValidator"
-  s.version      = "0.0.6"
+  s.name         = "AJWValidator"
+  s.version      = "0.0.7"
   s.summary      = "Drop in user input validation for your iOS apps."
 
   s.description  = <<-DESC
-ALPValidator provides drop in user input validation for your iOS apps.
+AJWValidator provides drop in user input validation for your iOS apps.
 
 Built in validations:
 
 - Presence validation
 - Minimum length validation
-- Maximum length validation 
+- Maximum length validation
 - Range validation (string character length and numeric)
 - Equality validation (for password confirmation and such)
 - Regular expression match validation
@@ -23,7 +23,7 @@ Built in validations:
 
 DESC
 
-  s.homepage     = "https://github.com/adamwaite/ALPValidator"
+  s.homepage     = "https://github.com/adamwaite/AJWValidator"
 
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
 
@@ -33,9 +33,9 @@ DESC
   s.platform     = :ios
   s.platform     = :ios, '6.0'
 
-  s.source       = { :git => "https://github.com/adamwaite/ALPValidator.git", :tag => "v0.0.6" }
-  s.source_files  = 'ALPValidator', 'ALPValidator/**/*.{h,m}'
-  s.public_header_files = 'ALPValidator/ALPValidator.h', 'ALPValidator/UIView+ALPValidator.h'
+  s.source       = { :git => "https://github.com/adamwaite/AJWValidator.git", :tag => "v0.0.7" }
+  s.source_files  = 'AJWValidator', 'AJWValidator/**/*.{h,m}'
+  s.public_header_files = 'AJWValidator/AJWValidator.h', 'AJWValidator/UIView+AJWValidator.h'
 
   s.requires_arc = true
 
