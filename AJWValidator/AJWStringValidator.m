@@ -35,9 +35,6 @@
 #import "AJWValidatorRangeRule.h"
 #import "AJWValidatorRegularExpressionRule.h"
 
-@interface AJWStringValidator ()
-@end
-
 @implementation AJWStringValidator
 
 #pragma mark Init
@@ -55,43 +52,59 @@
 
 - (void)addValidationToEnsurePresenceWithInvalidMessage:(NSString *)message
 {
-    AJWValidatorRequiredRule *rule = [[AJWValidatorRequiredRule alloc] initWithType:AJWValidatorRuleTypeRequired invalidMessage:message];
+    AJWValidatorRequiredRule *rule = [[AJWValidatorRequiredRule alloc] initWithType:AJWValidatorRuleTypeRequired
+                                                                     invalidMessage:message];
     [self addValidationRule:rule];
 }
 
 - (void)addValidationToEnsureMinimumLength:(NSUInteger)minLength invalidMessage:(NSString *)message
 {
-    AJWValidatorMinimumLengthRule *rule = [[AJWValidatorMinimumLengthRule alloc] initWithType:AJWValidatorRuleTypeMinLength invalidMessage:message minLength:minLength];
+    AJWValidatorRangeRule *rule = [[AJWValidatorRangeRule alloc] initWithType:AJWValidatorRuleTypeStringRange
+                                                               invalidMessage:message
+                                                                      minimum:@(minLength)
+                                                                      maximum:@(NSUIntegerMax)];
     [self addValidationRule:rule];
 }
 
 - (void)addValidationToEnsureMaximumLength:(NSUInteger)maxLength invalidMessage:(NSString *)message
 {
-    AJWValidatorMaximumLengthRule *rule = [[AJWValidatorMaximumLengthRule alloc] initWithType:AJWValidatorRuleTypeMaxLength invalidMessage:message maxLength:maxLength];
+    AJWValidatorRangeRule *rule = [[AJWValidatorRangeRule alloc] initWithType:AJWValidatorRuleTypeStringRange
+                                                               invalidMessage:message
+                                                                      minimum:@(0)
+                                                                      maximum:@(maxLength)];
     [self addValidationRule:rule];
 }
 
 - (void)addValidationToEnsureRangeWithMinimum:(NSNumber *)min maximum:(NSNumber *)max invalidMessage:(NSString *)message
 {
-    AJWValidatorRangeRule *rule = [[AJWValidatorRangeRule alloc] initWithType:AJWValidatorRuleTypeStringRange invalidMessage:message minimum:min maximum:max];
+    AJWValidatorRangeRule *rule = [[AJWValidatorRangeRule alloc] initWithType:AJWValidatorRuleTypeStringRange
+                                                               invalidMessage:message
+                                                                      minimum:min
+                                                                      maximum:max];
     [self addValidationRule:rule];
 }
 
 - (void)addValidationToEnsureRegularExpressionIsMetWithPattern:(NSString *)pattern invalidMessage:(NSString *)message
 {
-    AJWValidatorRegularExpressionRule *rule = [[AJWValidatorRegularExpressionRule alloc] initWithType:AJWValidatorRuleTypeRegex invalidMessage:message pattern:pattern];
+    AJWValidatorRegularExpressionRule *rule = [[AJWValidatorRegularExpressionRule alloc] initWithType:AJWValidatorRuleTypeRegex
+                                                                                       invalidMessage:message
+                                                                                              pattern:pattern];
     [self addValidationRule:rule];
 }
 
 - (void)addValidationToEnsureValidEmailWithInvalidMessage:(NSString *)message
 {
-    AJWValidatorRegularExpressionRule *rule = [[AJWValidatorRegularExpressionRule alloc] initWithType:AJWValidatorRuleTypeEmail invalidMessage:message pattern:AJWValidatorRegularExpressionPatternEmail];
+    AJWValidatorRegularExpressionRule *rule = [[AJWValidatorRegularExpressionRule alloc] initWithType:AJWValidatorRuleTypeEmail
+                                                                                       invalidMessage:message
+                                                                                              pattern:AJWValidatorRegularExpressionPatternEmail];
     [self addValidationRule:rule];
 }
 
 - (void)addValidationToEnsureStringContainsNumberWithInvalidMessage:(NSString *)message
 {
-    AJWValidatorRegularExpressionRule *rule = [[AJWValidatorRegularExpressionRule alloc] initWithType:AJWValidatorRuleTypeStringContainsNumber invalidMessage:message pattern:AJWValidatorRegularExpressionPatternContainsNumber];
+    AJWValidatorRegularExpressionRule *rule = [[AJWValidatorRegularExpressionRule alloc] initWithType:AJWValidatorRuleTypeStringContainsNumber
+                                                                                       invalidMessage:message
+                                                                                              pattern:AJWValidatorRegularExpressionPatternContainsNumber];
     [self addValidationRule:rule];
 }
 
