@@ -13,8 +13,6 @@
 		996564C61A96038E00102D94 /* AJWValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 996564AF1A96038E00102D94 /* AJWValidator.m */; };
 		996564C71A96038E00102D94 /* AJWValidatorCustomRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 996564B11A96038E00102D94 /* AJWValidatorCustomRule.m */; };
 		996564C81A96038E00102D94 /* AJWValidatorEqualRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 996564B31A96038E00102D94 /* AJWValidatorEqualRule.m */; };
-		996564C91A96038E00102D94 /* AJWValidatorMaximumLengthRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 996564B51A96038E00102D94 /* AJWValidatorMaximumLengthRule.m */; };
-		996564CA1A96038E00102D94 /* AJWValidatorMinimumLengthRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 996564B71A96038E00102D94 /* AJWValidatorMinimumLengthRule.m */; };
 		996564CB1A96038E00102D94 /* AJWValidatorRangeRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 996564B91A96038E00102D94 /* AJWValidatorRangeRule.m */; };
 		996564CC1A96038E00102D94 /* AJWValidatorRegularExpressionRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 996564BB1A96038E00102D94 /* AJWValidatorRegularExpressionRule.m */; };
 		996564CD1A96038E00102D94 /* AJWValidatorRemoteRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 996564BD1A96038E00102D94 /* AJWValidatorRemoteRule.m */; };
@@ -78,10 +76,6 @@
 		996564B11A96038E00102D94 /* AJWValidatorCustomRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJWValidatorCustomRule.m; sourceTree = "<group>"; };
 		996564B21A96038E00102D94 /* AJWValidatorEqualRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJWValidatorEqualRule.h; sourceTree = "<group>"; };
 		996564B31A96038E00102D94 /* AJWValidatorEqualRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJWValidatorEqualRule.m; sourceTree = "<group>"; };
-		996564B41A96038E00102D94 /* AJWValidatorMaximumLengthRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJWValidatorMaximumLengthRule.h; sourceTree = "<group>"; };
-		996564B51A96038E00102D94 /* AJWValidatorMaximumLengthRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJWValidatorMaximumLengthRule.m; sourceTree = "<group>"; };
-		996564B61A96038E00102D94 /* AJWValidatorMinimumLengthRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJWValidatorMinimumLengthRule.h; sourceTree = "<group>"; };
-		996564B71A96038E00102D94 /* AJWValidatorMinimumLengthRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJWValidatorMinimumLengthRule.m; sourceTree = "<group>"; };
 		996564B81A96038E00102D94 /* AJWValidatorRangeRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJWValidatorRangeRule.h; sourceTree = "<group>"; };
 		996564B91A96038E00102D94 /* AJWValidatorRangeRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJWValidatorRangeRule.m; sourceTree = "<group>"; };
 		996564BA1A96038E00102D94 /* AJWValidatorRegularExpressionRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJWValidatorRegularExpressionRule.h; sourceTree = "<group>"; };
@@ -171,33 +165,12 @@
 		996564A81A96038E00102D94 /* AJWValidator */ = {
 			isa = PBXGroup;
 			children = (
-				996564A91A96038E00102D94 /* AJWNumericValidator.h */,
-				996564AA1A96038E00102D94 /* AJWNumericValidator.m */,
-				996564AB1A96038E00102D94 /* AJWStringValidator.h */,
-				996564AC1A96038E00102D94 /* AJWStringValidator.m */,
-				996564AD1A96038E00102D94 /* AJWValidator+Private.h */,
 				996564AE1A96038E00102D94 /* AJWValidator.h */,
 				996564AF1A96038E00102D94 /* AJWValidator.m */,
-				996564B01A96038E00102D94 /* AJWValidatorCustomRule.h */,
-				996564B11A96038E00102D94 /* AJWValidatorCustomRule.m */,
-				996564B21A96038E00102D94 /* AJWValidatorEqualRule.h */,
-				996564B31A96038E00102D94 /* AJWValidatorEqualRule.m */,
-				996564B41A96038E00102D94 /* AJWValidatorMaximumLengthRule.h */,
-				996564B51A96038E00102D94 /* AJWValidatorMaximumLengthRule.m */,
-				996564B61A96038E00102D94 /* AJWValidatorMinimumLengthRule.h */,
-				996564B71A96038E00102D94 /* AJWValidatorMinimumLengthRule.m */,
-				996564B81A96038E00102D94 /* AJWValidatorRangeRule.h */,
-				996564B91A96038E00102D94 /* AJWValidatorRangeRule.m */,
-				996564BA1A96038E00102D94 /* AJWValidatorRegularExpressionRule.h */,
-				996564BB1A96038E00102D94 /* AJWValidatorRegularExpressionRule.m */,
-				996564BC1A96038E00102D94 /* AJWValidatorRemoteRule.h */,
-				996564BD1A96038E00102D94 /* AJWValidatorRemoteRule.m */,
-				996564BE1A96038E00102D94 /* AJWValidatorRequiredRule.h */,
-				996564BF1A96038E00102D94 /* AJWValidatorRequiredRule.m */,
-				996564C01A96038E00102D94 /* AJWValidatorRule.h */,
-				996564C11A96038E00102D94 /* AJWValidatorRule.m */,
-				996564C21A96038E00102D94 /* UIView+AJWValidator.h */,
-				996564C31A96038E00102D94 /* UIView+AJWValidator.m */,
+				996564AD1A96038E00102D94 /* AJWValidator+Private.h */,
+				998EC9A51A9DC89B0033B9B2 /* Validators */,
+				998EC9A61A9DC8C70033B9B2 /* Rules */,
+				998EC9A71A9DC8D90033B9B2 /* Categories */,
 			);
 			name = AJWValidator;
 			path = ../AJWValidator;
@@ -230,6 +203,47 @@
 				997DC6C81A966F88008CA151 /* ajwvalidator-fixture-small-file.png */,
 			);
 			path = fixtures;
+			sourceTree = "<group>";
+		};
+		998EC9A51A9DC89B0033B9B2 /* Validators */ = {
+			isa = PBXGroup;
+			children = (
+				996564AB1A96038E00102D94 /* AJWStringValidator.h */,
+				996564AC1A96038E00102D94 /* AJWStringValidator.m */,
+				996564A91A96038E00102D94 /* AJWNumericValidator.h */,
+				996564AA1A96038E00102D94 /* AJWNumericValidator.m */,
+			);
+			name = Validators;
+			sourceTree = "<group>";
+		};
+		998EC9A61A9DC8C70033B9B2 /* Rules */ = {
+			isa = PBXGroup;
+			children = (
+				996564C01A96038E00102D94 /* AJWValidatorRule.h */,
+				996564C11A96038E00102D94 /* AJWValidatorRule.m */,
+				996564BE1A96038E00102D94 /* AJWValidatorRequiredRule.h */,
+				996564BF1A96038E00102D94 /* AJWValidatorRequiredRule.m */,
+				996564B81A96038E00102D94 /* AJWValidatorRangeRule.h */,
+				996564B91A96038E00102D94 /* AJWValidatorRangeRule.m */,
+				996564B21A96038E00102D94 /* AJWValidatorEqualRule.h */,
+				996564B31A96038E00102D94 /* AJWValidatorEqualRule.m */,
+				996564BA1A96038E00102D94 /* AJWValidatorRegularExpressionRule.h */,
+				996564BB1A96038E00102D94 /* AJWValidatorRegularExpressionRule.m */,
+				996564B01A96038E00102D94 /* AJWValidatorCustomRule.h */,
+				996564B11A96038E00102D94 /* AJWValidatorCustomRule.m */,
+				996564BC1A96038E00102D94 /* AJWValidatorRemoteRule.h */,
+				996564BD1A96038E00102D94 /* AJWValidatorRemoteRule.m */,
+			);
+			name = Rules;
+			sourceTree = "<group>";
+		};
+		998EC9A71A9DC8D90033B9B2 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				996564C21A96038E00102D94 /* UIView+AJWValidator.h */,
+				996564C31A96038E00102D94 /* UIView+AJWValidator.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 		999C70591897C45A008CAEE4 = {
@@ -442,7 +456,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				996564CE1A96038E00102D94 /* AJWValidatorRequiredRule.m in Sources */,
-				996564C91A96038E00102D94 /* AJWValidatorMaximumLengthRule.m in Sources */,
 				996564C51A96038E00102D94 /* AJWStringValidator.m in Sources */,
 				996564C61A96038E00102D94 /* AJWValidator.m in Sources */,
 				999C70761897C45A008CAEE4 /* AJWValidatorDemoAppDelegate.m in Sources */,
@@ -451,7 +464,6 @@
 				99DC2752189F9DD700F23EC8 /* AJWValidatorDemoSelectViewController.m in Sources */,
 				999C70721897C45A008CAEE4 /* main.m in Sources */,
 				996564C71A96038E00102D94 /* AJWValidatorCustomRule.m in Sources */,
-				996564CA1A96038E00102D94 /* AJWValidatorMinimumLengthRule.m in Sources */,
 				996564D01A96038E00102D94 /* UIView+AJWValidator.m in Sources */,
 				99DC2755189F9DFA00F23EC8 /* AJWValidatorDemoTextFieldViewController.m in Sources */,
 				996564CD1A96038E00102D94 /* AJWValidatorRemoteRule.m in Sources */,

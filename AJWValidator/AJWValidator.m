@@ -107,12 +107,10 @@ NSString * const AJWValidatorRegularExpressionPatternContainsNumber = @".*\\d.*"
 
 - (NSString *)description
 {
-    NSDictionary *output = @{
-                             @"state": NSStringFromAJWValidatorState(self.state),
-                             @"errorMessages": self.errorMessages
-                             };
-    
-    return [NSString stringWithFormat:@"%@ %p: %@", [self class], self, output];
+    return [NSString stringWithFormat:@"%@ %p: %@", [self class], self, @{
+        @"state": NSStringFromAJWValidatorState(self.state),
+        @"errorMessages": self.errorMessages
+    }];
 }
 
 #pragma mark Add Rules
@@ -144,11 +142,14 @@ NSString * const AJWValidatorRegularExpressionPatternContainsNumber = @".*\\d.*"
 
 - (void)addValidationToEnsureInstanceIsTheSameAs:(id)otherInstance invalidMessage:(NSString *)message
 {
-    AJWValidatorEqualRule *rule = [[AJWValidatorEqualRule alloc] initWithType:AJWValidatorRuleTypeEqual invalidMessage:message otherInstance:otherInstance];
+    AJWValidatorEqualRule *rule = [[AJWValidatorEqualRule alloc] initWithType:AJWValidatorRuleTypeEqual
+                                                               invalidMessage:message
+                                                                otherInstance:otherInstance];
     [self addValidationRule:rule];
 }
 
-- (void)addValidationToEnsureRegularExpressionIsMetWithPattern:(NSString *)pattern invalidMessage:(NSString *)message
+- (void)addValidationToEnsureRegularExpressionIsMetWithPattern:(NSString *)pattern
+                                                invalidMessage:(NSString *)message
 {
     [self raiseIncompatibilityException];
 }
@@ -158,42 +159,66 @@ NSString * const AJWValidatorRegularExpressionPatternContainsNumber = @".*\\d.*"
     [self raiseIncompatibilityException];
 }
 
-- (void)addValidationToEnsureCustomConditionIsSatisfiedWithBlock:(AJWValidatorCustomRuleBlock)block invalidMessage:(NSString *)message
+- (void)addValidationToEnsureCustomConditionIsSatisfiedWithBlock:(AJWValidatorCustomRuleBlock)block
+                                                  invalidMessage:(NSString *)message
 {
-    AJWValidatorCustomRule *rule = [[AJWValidatorCustomRule alloc] initWithType:AJWValidatorRuleTypeCustom block:block invalidMessage:message];
+    AJWValidatorCustomRule *rule = [[AJWValidatorCustomRule alloc] initWithType:AJWValidatorRuleTypeCustom
+                                                                          block:block
+                                                                 invalidMessage:message];
     [self addValidationRule:rule];
 }
 
-- (void)addValidationToEnsureRemoteConditionIsSatisfiedAtURL:(NSURL *)url invalidMessage:(NSString *)message
+- (void)addValidationToEnsureRemoteConditionIsSatisfiedAtURL:(NSURL *)url
+                                              invalidMessage:(NSString *)message
 {
     __typeof__(self) __weak weakSelf = self;
     
-    AJWValidatorRemoteRule *rule = [[AJWValidatorRemoteRule alloc] initWithType:AJWValidatorRuleTypeRemote serviceURL:(NSURL *)url invalidMessage:message completionHandler:^(BOOL remoteConditionSatisfied, NSError *error) {
+    AJWValidatorRemoteRule *rule = [[AJWValidatorRemoteRule alloc] initWithType:AJWValidatorRuleTypeRemote
+                                                                     serviceURL:(NSURL *)url
+                                                                 invalidMessage:message
+                                                              completionHandler:^(BOOL remoteConditionSatisfied, NSError *error) {
         
         if (!error) {
+            
             if (remoteConditionSatisfied) {
+                
                 [weakSelf removeValidationMessage:message];
+                
                 if (weakSelf.localConditionsSatisfied) {
                     weakSelf.state = AJWValidatorValidationStateValid;
                 }
+                
                 else {
                     weakSelf.state = AJWValidatorValidationStateInvalid;
                 }
+                
             }
+            
             else {
                 weakSelf.state = AJWValidatorValidationStateInvalid;
             }
             
-            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(validator:remoteValidationAtURL:receivedResult:)]) {
-                [weakSelf.delegate validator:self remoteValidationAtURL:url receivedResult:remoteConditionSatisfied];
+            if ([weakSelf.delegate respondsToSelector:@selector(validator:remoteValidationAtURL:receivedResult:)]) {
+                
+                [weakSelf.delegate validator:self
+                       remoteValidationAtURL:url
+                              receivedResult:remoteConditionSatisfied];
+            
             }
         }
+                                                                  
         else {
+            
             weakSelf.state = AJWValidatorValidationStateInvalid;
-            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(validator:remoteValidationAtURL:failedWithError:)]) {
-                [weakSelf.delegate validator:self remoteValidationAtURL:url failedWithError:error];
+            
+            if ([weakSelf.delegate respondsToSelector:@selector(validator:remoteValidationAtURL:failedWithError:)]) {
+                [weakSelf.delegate validator:self
+                       remoteValidationAtURL:url
+                             failedWithError:error];
             }
+            
         }
+                                                                  
     }];
     
     [self addValidationRule:rule];
@@ -208,7 +233,8 @@ NSString * const AJWValidatorRegularExpressionPatternContainsNumber = @".*\\d.*"
 
 - (void)raiseIncompatibilityException
 {
-    [NSException raise:@"AJWValidator Error" format:@"Attempted to add validation rule that is not compatible for validator type %@, %s", NSStringFromAJWValidatorType(self.type), __PRETTY_FUNCTION__];
+    [NSException raise:@"AJWValidator Error"
+                format:@"Attempted to add validation rule that is not compatible for validator type %@, %s", NSStringFromAJWValidatorType(self.type), __PRETTY_FUNCTION__];
 }
 
 #pragma mark Validate
@@ -225,19 +251,23 @@ NSString * const AJWValidatorRegularExpressionPatternContainsNumber = @".*\\d.*"
 
 - (void)ajwValidate:(id)instance
 {
-    [self ajwValidate:instance parameters:nil];
+    [self ajwValidate:instance
+           parameters:nil];
 }
 
 - (void)validate:(id)instance parameters:(NSDictionary *)parameters
 {
-    [self ajwValidate:instance parameters:parameters];
+    [self ajwValidate:instance
+           parameters:parameters];
 }
 
-- (void)ajwValidate:(id)instance parameters:(NSDictionary *)parameters
+- (void)ajwValidate:(id)instance
+         parameters:(NSDictionary *)parameters
 {
     [self clearErrorMessages];
     
     self.localConditionsSatisfied = YES;
+    
     __block AJWValidatorState newState = AJWValidatorValidationStateValid;
     
     [self.rules enumerateObjectsUsingBlock:^(AJWValidatorRule *rule, NSUInteger idx, BOOL *stop) {
@@ -245,22 +275,29 @@ NSString * const AJWValidatorRegularExpressionPatternContainsNumber = @".*\\d.*"
         switch (rule.type) {
                 
             case AJWValidatorRuleTypeRemote: {
+                
                 AJWValidatorRemoteRule *remoteRule = (AJWValidatorRemoteRule *)rule;
                 [self addErrorMessageForRule:rule];
                 newState = AJWValidatorValidationStateWaitingForRemote;
-                [remoteRule startRequestToValidateInstance:instance withParams:parameters];
+                [remoteRule startRequestToValidateInstance:instance
+                                                withParams:parameters];
                 break;
+            
             }
                 
             default: {
+                
                 if (![rule isValidationRuleSatisfied:instance]) {
                     [self addErrorMessageForRule:rule];
                     self.localConditionsSatisfied = NO;
                     newState = AJWValidatorValidationStateInvalid;
                 }
+                
                 break;
             }
+                
         }
+        
     }];
     
     self.state = newState;
@@ -271,6 +308,7 @@ NSString * const AJWValidatorRegularExpressionPatternContainsNumber = @".*\\d.*"
 - (void)setState:(AJWValidatorState)state
 {
     _state = state;
+    
     if (self.validatorStateChangedHandler) {
         self.validatorStateChangedHandler(state);
     }

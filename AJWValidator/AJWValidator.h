@@ -111,7 +111,9 @@ extern NSString * const AJWValidatorRegularExpressionPatternContainsNumber;
  *  @param url                  Remote location
  *  @param remoteConditionValid Valid or invalid
  */
-- (void)validator:(AJWValidator *)validator remoteValidationAtURL:(NSURL *)url receivedResult:(BOOL)remoteConditionValid;
+- (void)validator:(AJWValidator *)validator
+remoteValidationAtURL:(NSURL *)url
+   receivedResult:(BOOL)remoteConditionValid;
 
 /**
  *  Failed response
@@ -120,7 +122,9 @@ extern NSString * const AJWValidatorRegularExpressionPatternContainsNumber;
  *  @param url       Remote location
  *  @param error     Response error
  */
-- (void)validator:(AJWValidator *)validator remoteValidationAtURL:(NSURL *)url failedWithError:(NSError *)error;
+- (void)validator:(AJWValidator *)validator
+remoteValidationAtURL:(NSURL *)url
+  failedWithError:(NSError *)error;
 
 @end
 
@@ -187,7 +191,8 @@ extern NSString * const AJWValidatorRegularExpressionPatternContainsNumber;
  *  @param minLength minimum length
  *  @param message   message message to add to errorMessages if invalid
  */
-- (void)addValidationToEnsureMinimumLength:(NSUInteger)minLength invalidMessage:(NSString *)message;
+- (void)addValidationToEnsureMinimumLength:(NSUInteger)minLength
+                            invalidMessage:(NSString *)message;
 
 /**
  *  Add a validation rule to ensure a maximum length hasn't been exceeded
@@ -195,7 +200,8 @@ extern NSString * const AJWValidatorRegularExpressionPatternContainsNumber;
  *  @param maxLength max lenth
  *  @param message   message message to add to errorMessages if invalid
  */
-- (void)addValidationToEnsureMaximumLength:(NSUInteger)maxLength invalidMessage:(NSString *)message;
+- (void)addValidationToEnsureMaximumLength:(NSUInteger)maxLength
+                            invalidMessage:(NSString *)message;
 
 /**
  *  Add a validation rule to ensure the input length is between a range
@@ -204,7 +210,9 @@ extern NSString * const AJWValidatorRegularExpressionPatternContainsNumber;
  *  @param max     maximum length
  *  @param message message message to add to errorMessages if invalid
  */
-- (void)addValidationToEnsureRangeWithMinimum:(NSNumber *)min maximum:(NSNumber *)max invalidMessage:(NSString *)message;
+- (void)addValidationToEnsureRangeWithMinimum:(NSNumber *)min
+                                      maximum:(NSNumber *)max
+                               invalidMessage:(NSString *)message;
 
 /**
  *  Add a validation rule to check equality
@@ -212,7 +220,8 @@ extern NSString * const AJWValidatorRegularExpressionPatternContainsNumber;
  *  @param otherInstance other instance to check validated instance against
  *  @param message       message message to add to errorMessages if invalid
  */
-- (void)addValidationToEnsureInstanceIsTheSameAs:(id)otherInstance invalidMessage:(NSString *)message;
+- (void)addValidationToEnsureInstanceIsTheSameAs:(id)otherInstance
+                                  invalidMessage:(NSString *)message;
 
 /**
  *  Add a validation rule to ensure the input matches a pattern defined by a regular expression
@@ -220,7 +229,8 @@ extern NSString * const AJWValidatorRegularExpressionPatternContainsNumber;
  *  @param pattern regular expression
  *  @param message message message to add to errorMessages if invalid
  */
-- (void)addValidationToEnsureRegularExpressionIsMetWithPattern:(NSString *)pattern invalidMessage:(NSString *)message;
+- (void)addValidationToEnsureRegularExpressionIsMetWithPattern:(NSString *)pattern
+                                                invalidMessage:(NSString *)message;
 
 /**
  *  Add a validation rule to ensure the input is a valid email address
@@ -235,7 +245,8 @@ extern NSString * const AJWValidatorRegularExpressionPatternContainsNumber;
  *  @param url     URL to the condition
  *  @param message message message to add to errorMessages if invalid
  */
-- (void)addValidationToEnsureRemoteConditionIsSatisfiedAtURL:(NSURL *)url invalidMessage:(NSString *)message;
+- (void)addValidationToEnsureRemoteConditionIsSatisfiedAtURL:(NSURL *)url
+                                              invalidMessage:(NSString *)message;
 
 /**
  *  Add a validation rule that evaluates a custom condition
@@ -243,7 +254,8 @@ extern NSString * const AJWValidatorRegularExpressionPatternContainsNumber;
  *  @param block   should return YES for valid and NO for invalid
  *  @param message message message to add to errorMessages if invalid
  */
-- (void)addValidationToEnsureCustomConditionIsSatisfiedWithBlock:(AJWValidatorCustomRuleBlock)block invalidMessage:(NSString *)message;
+- (void)addValidationToEnsureCustomConditionIsSatisfiedWithBlock:(AJWValidatorCustomRuleBlock)block
+                                                  invalidMessage:(NSString *)message;
 
 /**
  *  Add a validation rule to ensure that the input contains a number
