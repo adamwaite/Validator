@@ -351,7 +351,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = AJW;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = adamjwaite.co.uk;
 				TargetAttributes = {
 					999C70821897C45A008CAEE4 = {
@@ -526,6 +526,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -589,6 +590,7 @@
 				GCC_PREFIX_HEADER = "$(inherited)";
 				INFOPLIST_FILE = "AJWValidatorExample/AJWValidator-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "adamjwaite.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = AJWValidator;
 				WRAPPER_EXTENSION = app;
 			};
@@ -603,6 +605,7 @@
 				GCC_PREFIX_HEADER = "$(inherited)";
 				INFOPLIST_FILE = "AJWValidatorExample/AJWValidator-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "adamjwaite.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = AJWValidator;
 				WRAPPER_EXTENSION = app;
 			};
@@ -631,6 +634,7 @@
 					"-framework",
 					XCTest,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Alpaca-Labs.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = AJWValidatorTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -660,6 +664,7 @@
 					"-framework",
 					XCTest,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Alpaca-Labs.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = AJWValidatorTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

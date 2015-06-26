@@ -35,12 +35,9 @@
 
 #pragma mark Init
 
-- (id)init
+- (instancetype)initWithType:(AJWValidatorType)type
 {
     self = [super initWithType:AJWValidatorTypeNumeric];
-    if (self) {
-        
-    }
     return self;
 }
 

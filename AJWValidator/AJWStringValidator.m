@@ -42,12 +42,9 @@
 
 #pragma mark Init
 
-- (id)init
+- (id)initWithType:(AJWValidatorType)type
 {
-    self = [self initWithType:AJWValidatorTypeString];
-    if (self) {
-        
-    }
+    self = [super initWithType:AJWValidatorTypeString];
     return self;
 }
 

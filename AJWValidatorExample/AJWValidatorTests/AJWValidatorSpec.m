@@ -11,12 +11,6 @@ describe(@"AJWValidator", ^{
         
         __block id subject;
         
-        context(@"not using the designated initialiser", ^{
-            specify(^{
-                [[theBlock(^{ subject = [[AJWValidator alloc] init]; }) should] raise];
-            });
-        });
-        
         context(@"using the designated initialiser", ^{
             beforeEach(^{
                 subject = [AJWValidator validatorWithType:AJWValidatorTypeString];

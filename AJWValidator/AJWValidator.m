@@ -60,9 +60,9 @@ NSString * const AJWValidatorRegularExpressionPatternContainsNumber = @".*\\d.*"
 
 @property (nonatomic) AJWValidatorType type;
 @property (nonatomic) AJWValidatorState state;
-@property (copy, nonatomic) NSMutableArray *rules;
+@property (strong, nonatomic) NSMutableArray *rules;
 @property (nonatomic) BOOL localConditionsSatisfied;
-@property (copy, nonatomic) NSMutableArray *mutableErrorMessages;
+@property (strong, nonatomic) NSMutableArray *mutableErrorMessages;
 
 @end
 
@@ -87,13 +87,12 @@ NSString * const AJWValidatorRegularExpressionPatternContainsNumber = @".*\\d.*"
     }
 }
 
-- (id)init
+- (instancetype)init
 {
-    [NSException raise:@"AJWValidator Error" format:@"Use the designated initialiser (%@) to create validators, %s", NSStringFromSelector(@selector(validatorWithType:)), __PRETTY_FUNCTION__];
-    return nil;
+    return [self initWithType:AJWValidatorTypeGeneric];
 }
 
-- (id)initWithType:(AJWValidatorType)type
+- (instancetype)initWithType:(AJWValidatorType)type
 {
     self = [super init];
     if (self) {
@@ -114,11 +113,6 @@ NSString * const AJWValidatorRegularExpressionPatternContainsNumber = @".*\\d.*"
                              };
     
     return [NSString stringWithFormat:@"%@ %p: %@", [self class], self, output];
-}
-
-- (NSString *)debugDescription
-{
-    return [self description];
 }
 
 #pragma mark Add Rules
