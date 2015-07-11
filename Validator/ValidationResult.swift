@@ -11,12 +11,10 @@ import Foundation
 enum ValidationResult {
     case Valid
     case Invalid([String])
-
     var isValid: Bool { return self == .Valid }
 }
 
 extension ValidationResult: Equatable {}
-
 func ==(lhs: ValidationResult, rhs: ValidationResult) -> Bool {
     switch (lhs, rhs) {
     case (.Valid, .Valid): return true

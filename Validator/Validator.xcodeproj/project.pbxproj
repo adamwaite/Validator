@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		9915CE7A1B519F1E00A033CD /* ValidationRuleEquality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9915CE791B519F1E00A033CD /* ValidationRuleEquality.swift */; };
 		9915CE7C1B51A10700A033CD /* ValidationRuleEqualityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9915CE7B1B51A10700A033CD /* ValidationRuleEqualityTests.swift */; };
+		9915CE7E1B51A33C00A033CD /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9915CE7D1B51A33C00A033CD /* ListViewController.swift */; };
+		9915CE801B51A34400A033CD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9915CE7F1B51A34400A033CD /* DetailViewController.swift */; };
+		9915CE821B51A36B00A033CD /* ValidatorExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9915CE811B51A36B00A033CD /* ValidatorExample.swift */; };
 		995D0FC01B511DEC004E2D4D /* ValidationRulePattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D0FBF1B511DEC004E2D4D /* ValidationRulePattern.swift */; };
 		995D0FC31B519AC5004E2D4D /* ValidationRulePatternTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D0FC21B519AC5004E2D4D /* ValidationRulePatternTests.swift */; };
 		99845C861B4E76F1002F82A2 /* ValidatableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99845C851B4E76F1002F82A2 /* ValidatableExtensions.swift */; };
 		999F539B1B4E736900143184 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999F539A1B4E736900143184 /* AppDelegate.swift */; };
-		999F539D1B4E736900143184 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999F539C1B4E736900143184 /* ViewController.swift */; };
 		999F53A01B4E736900143184 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 999F539E1B4E736900143184 /* Main.storyboard */; };
 		999F53A21B4E736900143184 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 999F53A11B4E736900143184 /* Assets.xcassets */; };
 		999F53A51B4E736900143184 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 999F53A31B4E736900143184 /* LaunchScreen.storyboard */; };
@@ -40,12 +42,14 @@
 /* Begin PBXFileReference section */
 		9915CE791B519F1E00A033CD /* ValidationRuleEquality.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleEquality.swift; sourceTree = "<group>"; };
 		9915CE7B1B51A10700A033CD /* ValidationRuleEqualityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleEqualityTests.swift; sourceTree = "<group>"; };
+		9915CE7D1B51A33C00A033CD /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		9915CE7F1B51A34400A033CD /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		9915CE811B51A36B00A033CD /* ValidatorExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatorExample.swift; sourceTree = "<group>"; };
 		995D0FBF1B511DEC004E2D4D /* ValidationRulePattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRulePattern.swift; sourceTree = "<group>"; };
 		995D0FC21B519AC5004E2D4D /* ValidationRulePatternTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRulePatternTests.swift; sourceTree = "<group>"; };
 		99845C851B4E76F1002F82A2 /* ValidatableExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatableExtensions.swift; sourceTree = "<group>"; };
 		999F53971B4E736900143184 /* Validator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Validator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		999F539A1B4E736900143184 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		999F539C1B4E736900143184 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		999F539F1B4E736900143184 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		999F53A11B4E736900143184 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		999F53A41B4E736900143184 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -114,7 +118,9 @@
 			isa = PBXGroup;
 			children = (
 				999F539A1B4E736900143184 /* AppDelegate.swift */,
-				999F539C1B4E736900143184 /* ViewController.swift */,
+				9915CE7D1B51A33C00A033CD /* ListViewController.swift */,
+				9915CE7F1B51A34400A033CD /* DetailViewController.swift */,
+				9915CE811B51A36B00A033CD /* ValidatorExample.swift */,
 				999F539E1B4E736900143184 /* Main.storyboard */,
 				999F53A11B4E736900143184 /* Assets.xcassets */,
 				999F53A31B4E736900143184 /* LaunchScreen.storyboard */,
@@ -257,15 +263,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				999F539D1B4E736900143184 /* ViewController.swift in Sources */,
 				999F53BC1B4E73AB00143184 /* Validatable.swift in Sources */,
 				9915CE7A1B519F1E00A033CD /* ValidationRuleEquality.swift in Sources */,
 				99B8EFE81B505BF700B1F323 /* ValidationRuleCondition.swift in Sources */,
+				9915CE801B51A34400A033CD /* DetailViewController.swift in Sources */,
 				999F53BE1B4E740700143184 /* ValidationRule.swift in Sources */,
 				99B8EFE61B504CE500B1F323 /* ValidatableNumeric.swift in Sources */,
+				9915CE7E1B51A33C00A033CD /* ListViewController.swift in Sources */,
 				995D0FC01B511DEC004E2D4D /* ValidationRulePattern.swift in Sources */,
 				99845C861B4E76F1002F82A2 /* ValidatableExtensions.swift in Sources */,
 				999F53C01B4E744200143184 /* ValidationResult.swift in Sources */,
+				9915CE821B51A36B00A033CD /* ValidatorExample.swift in Sources */,
 				99B8EFE31B5044D700B1F323 /* ValidationRuleRange.swift in Sources */,
 				999F539B1B4E736900143184 /* AppDelegate.swift in Sources */,
 			);
