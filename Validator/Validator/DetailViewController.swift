@@ -10,12 +10,17 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    @IBOutlet weak var summaryLabel: UILabel!
+    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var validationStateLabel: UILabel!
+    
     var example: String!
     
     override func viewDidLoad() {
         assert(example != nil)
         super.viewDidLoad()
         title = example
+        textField.becomeFirstResponder()
     }
     
 }

@@ -20,12 +20,7 @@ extension Validatable {
     }
     
     func validate<R: ValidationRule>(rules rules: [R]) -> ValidationResult {
-        var errors = [String]()
-        for rule in rules {
-            if !rule.validateInput(self as! R.InputType) {
-                errors.append(rule.failureMessage)
-            }
-        }
+        let errors = rules.filter { !$0.validateInput(self as! R.InputType) }.map { $0.failureMessage }
         return errors.isEmpty ? .Valid : .Invalid(errors)
     }
     
