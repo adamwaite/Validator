@@ -9,7 +9,9 @@
 import Foundation
 import Darwin
 
-struct ValidationRuleRange: ValidationRule {
+struct ValidationRuleRange<T>: ValidationRule {
+    
+    typealias InputType = T
     
     let min: Float
     let max: Float
@@ -21,12 +23,16 @@ struct ValidationRuleRange: ValidationRule {
         self.failureMessage = failureMessage
     }
     
-    func validateInput(input: Validatable) -> Bool {
+    func validateInput(input: T) -> Bool {
         switch input {
-        case let s as String: return Float(s.characters.count) >= min && Float(s.characters.count) <= max
-        case let numeric as ValidatableNumeric: return numeric.floatValue >= min && numeric.floatValue <= max
+        case let s as String: return inRange(s.characters.count)
+        case let n as ValidatableNumeric: return inRange(n)
         default: return false
         }
+    }
+    
+    private func inRange(n: ValidatableNumeric) -> Bool {
+        return n.floatValue >= min && n.floatValue <= max
     }
 
 }

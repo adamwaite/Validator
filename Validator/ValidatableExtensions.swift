@@ -12,3 +12,4 @@ extension String: Validatable { }
 extension Int: Validatable { }
 extension Double: Validatable { }
 extension Float: Validatable { }
+extension Array: Validatable { }

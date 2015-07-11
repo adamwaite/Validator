@@ -7,14 +7,14 @@
 //
 
 import XCTest
-@testable import Validator;
+@testable import Validator
 
 class ValidationRuleRangeTests: XCTestCase {
     
-    let rule = ValidationRuleRange(min: 5, max: 10, failureMessage: "Invalid!")
-    
     func testThatItCanValidateStringLength() {
-        
+
+        let rule = ValidationRuleRange<String>(min: 5, max: 10, failureMessage: "Invalid!")
+    
         let tooShort = "aaaa".validate(rule: rule)
         XCTAssertFalse(tooShort.isValid)
 
@@ -29,6 +29,8 @@ class ValidationRuleRangeTests: XCTestCase {
     }
     
     func testThatItCanValidateNumericRange() {
+        
+        let rule = ValidationRuleRange<ValidatableNumeric>(min: 5, max: 10, failureMessage: "Invalid!")
         
         let tooSmall = 4.validate(rule: rule);
         XCTAssertFalse(tooSmall.isValid)

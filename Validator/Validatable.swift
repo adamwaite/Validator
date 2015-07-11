@@ -9,20 +9,20 @@
 import Foundation
 
 protocol Validatable {
-    func validate(rule rule: ValidationRule) -> ValidationResult
-    func validate(rules rules: [ValidationRule]) -> ValidationResult
+    func validate<R: ValidationRule>(rule rule: R) -> ValidationResult
+    func validate<R: ValidationRule>(rules rules: [R]) -> ValidationResult
 }
 
 extension Validatable {
     
-    func validate(rule rule: ValidationRule) -> ValidationResult {
+    func validate<R: ValidationRule>(rule rule: R) -> ValidationResult {
         return validate(rules: [rule])
     }
     
-    func validate(rules rules: [ValidationRule]) -> ValidationResult {
+    func validate<R: ValidationRule>(rules rules: [R]) -> ValidationResult {
         var errors = [String]()
         for rule in rules {
-            if !rule.validateInput(self) {
+            if !rule.validateInput(self as! R.InputType) {
                 errors.append(rule.failureMessage)
             }
         }
