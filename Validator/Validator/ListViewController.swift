@@ -14,11 +14,11 @@ class ListViewController: UIViewController {
     
     let examples = ["Hello", "Hi", "Yo"]
     
-    override func performSegueWithIdentifier(identifier: String, sender: AnyObject?) {
-        super.performSegueWithIdentifier(identifier, sender: sender)
-        if identifier == "List->Detail" {
-            
-        }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        super.prepareForSegue(segue, sender: sender)
+        let example = examples[tableView.indexPathForSelectedRow!.row]
+        let dest: DetailViewController = segue.destinationViewController as! DetailViewController
+        dest.example = example
     }
     
 }

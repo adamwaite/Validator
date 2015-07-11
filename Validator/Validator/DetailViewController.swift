@@ -10,6 +10,12 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    var example: String!
     
+    override func viewDidLoad() {
+        assert(example != nil)
+        super.viewDidLoad()
+        title = example
+    }
     
 }
