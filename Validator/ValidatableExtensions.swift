@@ -8,8 +8,24 @@
 
 import Foundation
 
-extension String: Validatable { }
-extension Int: Validatable { }
-extension Double: Validatable { }
-extension Float: Validatable { }
-extension Array: Validatable { }
+// TODO: Is there a way to so this in the protocol extension?
+
+extension String: Validatable {
+    typealias ValidatableType = String
+}
+
+extension Int: Validatable {
+    typealias ValidatableType = Int
+}
+
+extension Double: Validatable {
+    typealias ValidatableType = Double
+}
+
+extension Float: Validatable {
+    typealias ValidatableType = Float
+}
+
+extension Array: Validatable {
+    typealias ValidatableType = Array
+}

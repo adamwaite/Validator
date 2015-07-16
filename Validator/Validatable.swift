@@ -9,18 +9,19 @@
 import Foundation
 
 protocol Validatable {
-    func validate<R: ValidationRule>(rule rule: R) -> ValidationResult
-    func validate<R: ValidationRule>(rules rules: [R]) -> ValidationResult
+    typealias ValidatableType
+    func validate<R: ValidationRule where R.ValidatableType == Self>(rule rule: R) -> ValidationResult
+    func validate<R: ValidationRule where R.ValidatableType == Self>(rules rules: [R]) -> ValidationResult
 }
 
 extension Validatable {
-    
-    func validate<R: ValidationRule>(rule rule: R) -> ValidationResult {
+        
+    func validate<R: ValidationRule where R.ValidatableType == Self>(rule rule: R) -> ValidationResult {
         return validate(rules: [rule])
     }
     
-    func validate<R: ValidationRule>(rules rules: [R]) -> ValidationResult {
-        let errors = rules.filter { !$0.validateInput(self as! R.InputType) }.map { $0.failureMessage }
+    func validate<R: ValidationRule where R.ValidatableType == Self>(rules rules: [R]) -> ValidationResult {
+        let errors = rules.filter { !$0.validateInput(self) }.map { $0.failureMessage }
         return errors.isEmpty ? .Valid : .Invalid(errors)
     }
     

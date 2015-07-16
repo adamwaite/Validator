@@ -10,7 +10,7 @@ import Foundation
 
 struct ValidationRuleEquality<T: Equatable>: ValidationRule {
     
-    typealias InputType = [T]
+    typealias ValidatableType = [T]
     
     let failureMessage: String
     

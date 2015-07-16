@@ -21,6 +21,9 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         title = example
         textField.becomeFirstResponder()
+        
+        // let rule = ValidationRulePattern(pattern: .EmailAddress, failureMessage: "💣")
+        
     }
     
 }

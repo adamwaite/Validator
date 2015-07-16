@@ -10,7 +10,7 @@ import Foundation
 
 struct ValidationRuleCondition<T>: ValidationRule {
     
-    typealias InputType = T
+    typealias ValidatableType = T
     
     let condition: T -> Bool
     let failureMessage: String

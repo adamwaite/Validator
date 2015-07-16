@@ -9,7 +9,6 @@
 import Foundation
 
 //protocol ValidatableUIComponent {
-//    typealias InputType T
-//    var inputValue: T { get }
-//    func validateOnChangeWith<T: ValidationRule>(rules rules: [T], result: (ValidationResult -> Void))
+//    typealias ValidatableType
+//    var inputValue: ValidatableType { get }
 //}

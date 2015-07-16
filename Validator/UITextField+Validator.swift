@@ -9,9 +9,6 @@
 import UIKit
 
 //extension UITextField: ValidatableUIComponent {
-//    
-//    var inputValue: Validatable { return text ?? "" }
-//    
-//    
-//    
+//    typealias ValidatableType = String
+//    var validatableValue: String { return text ?? "" }
 //}

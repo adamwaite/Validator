@@ -9,7 +9,7 @@
 import Foundation
 
 protocol ValidationRule {
-    typealias InputType
-    func validateInput(input: InputType) -> Bool
+    typealias ValidatableType
+    func validateInput(input: ValidatableType) -> Bool
     var failureMessage: String { get }
 }
