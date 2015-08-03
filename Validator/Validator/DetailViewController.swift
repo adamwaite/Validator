@@ -14,12 +14,14 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var validationStateLabel: UILabel!
     
-    var example: String!
+    var example: ValidatorExample<String>!
     
     override func viewDidLoad() {
-        assert(example != nil)
         super.viewDidLoad()
-        title = example
+        
+        title = example.name
+        summaryLabel.text = example.summary
+        
         textField.becomeFirstResponder()
         
         // let rule = ValidationRulePattern(pattern: .EmailAddress, failureMessage: "💣")

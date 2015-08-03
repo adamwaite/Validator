@@ -2,16 +2,16 @@
 //  ValidatorExample.swift
 //  Validator
 //
-//  Created by Adam Waite on 11/07/2015.
+//  Created by Adam Waite on 03/08/2015.
 //  Copyright © 2015 adamjwaite.co.uk. All rights reserved.
 //
 
 import Foundation
 
-struct ValidatorExample<R: ValidationRule> {
+struct ValidatorExample<InputType> {
     
-    let rule: R
-    let title: String
+    let name: String
     let summary: String
+    let rules: ValidationRuleSet<InputType>
     
 }

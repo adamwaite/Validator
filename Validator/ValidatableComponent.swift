@@ -8,7 +8,7 @@
 
 import Foundation
 
-//protocol ValidatableUIComponent {
-//    typealias ValidatableType
-//    var inputValue: ValidatableType { get }
-//}
+protocol ValidatableInterface {
+    typealias InputType
+    var inputValue: InputType { get }
+}

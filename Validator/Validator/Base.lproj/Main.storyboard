@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8121.20" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Vde-HG-Mcr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8164.2" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Vde-HG-Mcr">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.16"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8135.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -25,11 +25,11 @@
                                         <rect key="frame" x="0.0" y="86" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2fM-gj-F8v" id="Wpf-EI-wh5">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="wfe-Ua-sKg" kind="show" identifier="List-&gt;Detail" id="LkN-J3-33G"/>
+                                            <segue destination="wfe-Ua-sKg" kind="show" identifier="List -&gt; Detail" id="LkN-J3-33G"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -69,20 +69,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKb-o7-xom">
-                                <rect key="frame" x="20" y="84" width="554.5" height="142.5"/>
+                                <rect key="frame" x="20" y="84" width="554" height="143"/>
                                 <string key="text">This label will contain a description about the example... Bacon ipsum dolor sit amet prosciutto t-bone salami fatback frankfurter rump shank pork boudin. Andouille t-bone drumstick pastrami kielbasa tenderloin shank pancetta beef ribs pork loin capicola pig ham hock pork. Pastrami cow swine, ground round ball tip spare ribs turkey. Sausage pig ball tip venison bresaola short loin, pork loin cow filet mignon tail tri-tip. Biltong strip steak pork, pork chop pig ham spare ribs swine short loin.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😊" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHU-Bp-t5Y">
-                                <rect key="frame" x="558" y="300" width="22" height="20.5"/>
+                                <rect key="frame" x="558" y="292" width="22" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Write something" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rep-6a-cVd">
-                                <rect key="frame" x="20" y="242" width="560" height="50"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Write something" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rep-6a-cVd">
+                                <rect key="frame" x="20" y="234" width="560" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="pkm-Ef-yv4"/>
                                 </constraints>
@@ -94,7 +94,7 @@
                         <constraints>
                             <constraint firstItem="PHU-Bp-t5Y" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="90O-0d-hjG" secondAttribute="leadingMargin" id="8J7-Ma-bis"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rep-6a-cVd" secondAttribute="trailing" id="Gas-b5-bvQ"/>
-                            <constraint firstItem="rep-6a-cVd" firstAttribute="top" secondItem="bKb-o7-xom" secondAttribute="bottom" constant="16" id="I0Q-Gs-KMZ"/>
+                            <constraint firstItem="rep-6a-cVd" firstAttribute="top" secondItem="bKb-o7-xom" secondAttribute="bottom" constant="8" id="I0Q-Gs-KMZ"/>
                             <constraint firstItem="PHU-Bp-t5Y" firstAttribute="top" secondItem="rep-6a-cVd" secondAttribute="bottom" constant="8" id="ILp-rx-ZyV"/>
                             <constraint firstAttribute="leadingMargin" secondItem="bKb-o7-xom" secondAttribute="leading" id="Yxl-NQ-raZ"/>
                             <constraint firstAttribute="leadingMargin" secondItem="rep-6a-cVd" secondAttribute="leading" id="k9T-qr-o7H"/>
