@@ -10,7 +10,7 @@ import Foundation
 
 struct ValidationRuleComparison<T: Comparable>: ValidationRule {
     
-    typealias ValidatableType = T
+    typealias InputType = T
     
     let min: T
     let max: T

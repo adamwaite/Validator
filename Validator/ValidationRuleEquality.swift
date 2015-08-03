@@ -9,15 +9,15 @@
 import Foundation
 
 struct ValidationRuleEquality<T: Equatable>: ValidationRule {
-    
-    typealias ValidatableType = [T]
+
+    typealias InputType = [T]
     
     let failureMessage: String
     
     init(failureMessage: String) {
         self.failureMessage = failureMessage
     }
-    
+        
     func validateInput(input: [T]) -> Bool {
         switch input {
         case let input where input.count >= 2: return input.filter { $0 == input.first! }.count > 1

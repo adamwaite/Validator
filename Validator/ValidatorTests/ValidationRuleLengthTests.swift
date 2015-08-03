@@ -12,17 +12,17 @@ import XCTest
 class ValidationRuleLengthTests: XCTestCase {
     
     func testThatItCanValidateStringLength() {
-
+        
         let rule = ValidationRuleLength(min: 5, max: 10, failureMessage: "Invalid!")
-    
-        let tooShort = "aaaa".validate(rule: rule)
+        
+        let tooShort = Validator.validate(input: "aaaa", rule: rule)
         XCTAssertFalse(tooShort.isValid)
-
-        let tooLong = "aaaaaaaaaaa".validate(rule: rule)
+    
+        let tooLong = Validator.validate(input: "aaaaaaaaaaa", rule: rule)
         XCTAssertFalse(tooLong.isValid)
         
-        for s in ["aaaaa", "aaaaaaaaaa", "aaaaaaaa"] {
-            let valid = s.validate(rule: rule)
+        for input in ["aaaaa", "aaaaaaaaaa", "aaaaaaaa"] {
+            let valid = Validator.validate(input: input, rule: rule)
             XCTAssertTrue(valid.isValid)
         }
         

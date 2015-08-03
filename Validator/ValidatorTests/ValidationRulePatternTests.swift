@@ -16,12 +16,12 @@ class ValidationRulePatternTests: XCTestCase {
         let rule = ValidationRulePattern(pattern: .EmailAddress, failureMessage: "💣")
 
         for invalidEmail in ["user@invalid,com", "userinvalid.com", "invalid", "user@invalid@example.com", "user@in+valid.com"] {
-            let invalid = invalidEmail.validate(rule: rule)
+            let invalid = Validator.validate(input: invalidEmail, rule: rule)
             XCTAssertFalse(invalid.isValid)
         }
         
         for validEmail in ["user@valid.com", "user_1@valid.co.uk"] {
-            let valid = validEmail.validate(rule: rule)
+            let valid = Validator.validate(input: validEmail, rule: rule)
             XCTAssertTrue(valid.isValid)
         }
         
@@ -32,12 +32,12 @@ class ValidationRulePatternTests: XCTestCase {
         let rule = ValidationRulePattern(pattern: .ContainsNumber, failureMessage: "💣")
         
         for noDigitString in ["invalid", "invali_d", "inv+alid"] {
-            let invalid = noDigitString.validate(rule: rule)
+            let invalid = Validator.validate(input: noDigitString, rule: rule)
             XCTAssertFalse(invalid.isValid)
         }
         
         for digitString in ["valid1", "9valid"] {
-            let valid = digitString.validate(rule: rule)
+            let valid = Validator.validate(input: digitString, rule: rule)
             XCTAssertTrue(valid.isValid)
         }
         

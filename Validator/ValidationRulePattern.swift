@@ -15,7 +15,7 @@ enum ValidationPattern: String {
 
 struct ValidationRulePattern: ValidationRule {
     
-    typealias ValidatableType = String
+    typealias InputType = String
     
     let pattern: String
     var failureMessage: String

@@ -9,7 +9,23 @@
 import Foundation
 
 protocol ValidationRule {
-    typealias ValidatableType
-    func validateInput(input: ValidatableType) -> Bool
+    typealias InputType
+    func validateInput(input: InputType) -> Bool
     var failureMessage: String { get }
+}
+
+struct AnyValidationRule<InputType>: ValidationRule {
+    
+    private let baseValidateInput: (InputType) -> Bool
+    let failureMessage: String
+    
+    init<R: ValidationRule where R.InputType == InputType>(base: R) {
+        baseValidateInput = base.validateInput
+        failureMessage = base.failureMessage
+    }
+    
+    func validateInput(input: InputType) -> Bool {
+        return baseValidateInput(input)
+    }
+    
 }

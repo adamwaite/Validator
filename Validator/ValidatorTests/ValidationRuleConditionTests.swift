@@ -15,18 +15,18 @@ class ValidationRuleConditionTests: XCTestCase {
 
         let ruleA = ValidationRuleCondition<String>(failureMessage: "💣") { $0.rangeOfString("A") == nil }
         
-        let invalidA = "invAlid".validate(rule: ruleA)
+        let invalidA = Validator.validate(input: "invAlid", rule: ruleA)
         XCTAssertFalse(invalidA.isValid)
         
-        let validA = "😀".validate(rule: ruleA)
+        let validA = Validator.validate(input: "😀", rule: ruleA)
         XCTAssertTrue(validA.isValid)
         
         let ruleB = ValidationRuleCondition<[Int]>(failureMessage: "💣") { $0.reduce(0, combine: +) > 50 }
         
-        let invalidB = [40, 1, 5].validate(rule: ruleB)
+        let invalidB = Validator.validate(input: [40, 1, 5], rule: ruleB)
         XCTAssertFalse(invalidB.isValid)
         
-        let validB = [45, 1, 5].validate(rule: ruleB)
+        let validB = Validator.validate(input: [45, 1, 5], rule: ruleB)
         XCTAssertTrue(validB.isValid)
         
     }

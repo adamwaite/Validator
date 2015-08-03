@@ -15,10 +15,10 @@ class ValidationRuleEqualityTests: XCTestCase {
         
         let rule = ValidationRuleEquality<String>(failureMessage: "💣")
         
-        let invalid = ["password", "p@ssword"].validate(rule: rule)
+        let invalid = Validator.validate(input: ["password", "p@ssword"], rule: rule)
         XCTAssertFalse(invalid.isValid)
 
-        let valid = ["password", "password"].validate(rule: rule)
+        let valid = Validator.validate(input: ["password", "password"], rule: rule)
         XCTAssertTrue(valid.isValid)
         
     }
@@ -27,10 +27,10 @@ class ValidationRuleEqualityTests: XCTestCase {
         
         let rule = ValidationRuleEquality<Double>(failureMessage: "💣")
         
-        let invalid = [1.0, 2.0].validate(rule: rule)
+        let invalid = Validator.validate(input: [1.0, 2.0], rule: rule)
         XCTAssertFalse(invalid.isValid)
         
-        let valid = [1.0, 1.0].validate(rule: rule)
+        let valid = Validator.validate(input: [1.0, 1.0], rule: rule)
         XCTAssertTrue(valid.isValid)
         
     }

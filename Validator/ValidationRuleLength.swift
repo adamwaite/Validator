@@ -10,7 +10,7 @@ import Foundation
 
 struct ValidationRuleLength: ValidationRule {
     
-    typealias ValidatableType = String
+    typealias InputType = String
     
     let min: Int
     let max: Int
