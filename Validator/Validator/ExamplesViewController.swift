@@ -21,12 +21,13 @@ class ExamplesViewController: UITableViewController {
 extension ExamplesViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
 
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0: return "String Examples"
+        case 1: return "Numeric Examples"
         default: return nil
         }
     }
@@ -34,6 +35,7 @@ extension ExamplesViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return 6
+        case 1: return 1
         default: return 0
         }
     }
@@ -79,18 +81,38 @@ extension ExamplesViewController {
             case 4:
                 stringCell.titleLabel.text = "Contains Digit"
                 stringCell.summaryLabel.text = "Ensures the input contains a digit using ValidationRulePattern"
-                let minLengthRule = ValidationRulePattern(pattern: .ContainsNumber, failureMessage: "😫")
-                stringCell.validationRuleSet?.addRule(minLengthRule)
+                let digitRule = ValidationRulePattern(pattern: .ContainsNumber, failureMessage: "😫")
+                stringCell.validationRuleSet?.addRule(digitRule)
                 
             case 5:
                 stringCell.titleLabel.text = "Is a Greeting"
                 stringCell.summaryLabel.text = "Ensures the input is one of the greetings 'Hello', 'Hey' or 'Hi' using ValidationRuleConditiom"
-                let minLengthRule = ValidationRuleCondition<String>(failureMessage: "😫") { ["Hello", "Hey", "Hi"].contains($0) }
-                stringCell.validationRuleSet?.addRule(minLengthRule)
-            
+                let conditionRule = ValidationRuleCondition<String>(failureMessage: "😫") { ["Hello", "Hey", "Hi"].contains($0) }
+                stringCell.validationRuleSet?.addRule(conditionRule)
+
             default:
                 break
             }
+            
+        case 1:
+            
+            let numericCell = tableView.dequeueReusableCellWithIdentifier("NumericExample", forIndexPath: indexPath) as! NumericExampleTableViewCell
+            numericCell.validationRuleSet = ValidationRuleSet<Float>()
+            cell = numericCell
+            
+            switch indexPath.row {
+                
+            case 0:
+                numericCell.titleLabel.text = "Comparison"
+                numericCell.summaryLabel.text = "Ensures the input is between 2 and 7 using ValidationRuleComparison"
+                let comparisonRule = ValidationRuleComparison<Float>(min: 5, max: 7, failureMessage: "😫")
+                numericCell.validationRuleSet?.addRule(comparisonRule)
+
+            default:
+                break
+            }
+
+            
             
         default:
             break

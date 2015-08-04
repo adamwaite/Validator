@@ -29,7 +29,7 @@ class ValidatableInterfaceObserver: NSObject {
         guard let ruleEvaluation = observations[elementIdentifier(element)] else {
             return
         }
-
+        
         let rules: ValidationRuleSet<E.InputType> = ruleEvaluation.rules as! ValidationRuleSet<E.InputType>
         let change: ValidationResult -> () = ruleEvaluation.change
         let result = Validator.validate(input: element.inputValue, rules: rules)

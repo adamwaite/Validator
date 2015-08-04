@@ -8,12 +8,9 @@
 
 import UIKit
 
-class StringExampleTableViewCell: UITableViewCell {
+class StringExampleTableViewCell: ExampleTableViewCell {
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var summaryLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
-    @IBOutlet weak var stateLabel: UILabel!
     
     var validationRuleSet: ValidationRuleSet<String>? {
         didSet {
@@ -27,14 +24,5 @@ class StringExampleTableViewCell: UITableViewCell {
             }
         }
     }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        stateLabel.text = "😐"
-    }
-    
-    override func prepareForReuse() {
-        stateLabel.text = "😐"
-    }
-    
+        
 }
