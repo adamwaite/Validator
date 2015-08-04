@@ -13,7 +13,7 @@ class ValidationRuleComparisonTests: XCTestCase {
 
     func testThatItCanValidateUsingAnIntegerRange() {
 
-        let rule = ValidationRuleComparison<Int>(min: 5, max: 10, failureMessage: "Invalid!")
+        let rule = ValidationRuleComparison<Int>(min: 5, max: 10, failureMessage: "💣")
 
         let tooSmall = Validator.validate(input: 4, rule: rule)
         XCTAssertFalse(tooSmall.isValid)
@@ -30,7 +30,7 @@ class ValidationRuleComparisonTests: XCTestCase {
 
     func testThatItCanValidateUsingADoubleRange() {
 
-        let rule = ValidationRuleComparison<Double>(min: 5.0, max: 10.0, failureMessage: "Invalid!")
+        let rule = ValidationRuleComparison<Double>(min: 5.0, max: 10.0, failureMessage: "💣")
 
         let tooSmall = Validator.validate(input: 4.0, rule: rule)
         XCTAssertFalse(tooSmall.isValid)
