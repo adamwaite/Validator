@@ -8,7 +8,19 @@
 
 import UIKit
 
-extension UITextField: ValidatableInterface {
+extension UITextField: ValidatableInterfaceElement {
+    
     typealias InputType = String
+    
     var inputValue: String { return text ?? "" }
+    
+    func validateOnChangeWithRules(rules: ValidationRuleSet<InputType>, change: ValidationResult -> ()) {
+        ValidatableInterfaceObserver.instance.observeInterfaceElement(self, rules: rules, change: change)
+        addTarget(self, action: "validateInterfaceElement:", forControlEvents: .EditingChanged)
+    }
+    
+    @objc private func validateInterfaceElement(sender: UITextField) {
+        ValidatableInterfaceObserver.instance.validateInterfaceElement(sender)
+    }
+
 }

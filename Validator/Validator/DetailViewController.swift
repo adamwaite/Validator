@@ -20,11 +20,22 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         title = example.name
+        
         summaryLabel.text = example.summary
         
-        textField.becomeFirstResponder()
+        textField.validateOnChangeWithRules(example.rules) { result in
+            
+            switch result {
+            case .Valid:
+                self.validationStateLabel.text = "😁"
+            case .Invalid(let failureMessages):
+                self.validationStateLabel.text = failureMessages.first
+            }
+            
+        }
         
-        // let rule = ValidationRulePattern(pattern: .EmailAddress, failureMessage: "💣")
+        
+        textField.becomeFirstResponder()
         
     }
     

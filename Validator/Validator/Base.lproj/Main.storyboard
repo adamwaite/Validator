@@ -107,6 +107,7 @@
                     <connections>
                         <outlet property="summaryLabel" destination="bKb-o7-xom" id="XtO-Te-23Y"/>
                         <outlet property="textField" destination="rep-6a-cVd" id="AcJ-Np-RK7"/>
+                        <outlet property="validationStateLabel" destination="PHU-Bp-t5Y" id="3Gn-e4-38S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lAb-Un-MG8" userLabel="First Responder" sceneMemberID="firstResponder"/>

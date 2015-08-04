@@ -21,14 +21,21 @@ class ListViewController: UIViewController {
         var stringExamples = [ValidatorExample<String>]()
         
         // Minimum Length
-        var minLengthRules = ValidationRuleSet<String>()
-        minLengthRules.addRule(ValidationRuleLength(min: 5, failureMessage: "Input must be 5 or more characters"))
-        let minLengthExample = ValidatorExample(
+        var rules = ValidationRuleSet<String>()
+        
+        let minLengthRule = ValidationRuleLength(min: 5, failureMessage: "Input must be 5 or more characters")
+        rules.addRule(minLengthRule)
+        
+        let conditionRule = ValidationRuleCondition<String>(failureMessage: "No capital A's") { $0.rangeOfString("A") == nil }
+        rules.addRule(conditionRule)
+
+        let example = ValidatorExample(
             name: "Minimum Length",
             summary: "Validates the input is 5 characters or more",
-            rules: minLengthRules)
-        stringExamples.append(minLengthExample)
+            rules: rules)
         
+        stringExamples.append(example)
+
         return stringExamples
         
         }()

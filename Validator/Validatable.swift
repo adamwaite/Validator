@@ -9,8 +9,11 @@
 import Foundation
 
 protocol Validatable {
+    
     func validate<R: ValidationRule where R.InputType == Self>(rule r: R) -> ValidationResult
+    
     func validate(rules rs: ValidationRuleSet<Self>) -> ValidationResult
+    
 }
 
 extension Validatable {
