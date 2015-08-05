@@ -34,7 +34,7 @@ extension ExamplesViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0: return 6
+        case 0: return 7
         case 1: return 1
         default: return 0
         }
@@ -90,6 +90,12 @@ extension ExamplesViewController {
                 let conditionRule = ValidationRuleCondition<String>(failureMessage: "😫") { ["Hello", "Hey", "Hi"].contains($0) }
                 stringCell.validationRuleSet?.addRule(conditionRule)
 
+            case 6:
+                stringCell.titleLabel.text = "Dynamic Equality"
+                stringCell.summaryLabel.text = "Ensures the input is equal to a dynamic value (in this case just 'Password') using ValidationRuleEquality"
+                let equalityRule = ValidationRuleEquality<String>(dynamicTarget: { return "Password" }, failureMessage: "😫")
+                stringCell.validationRuleSet?.addRule(equalityRule)
+
             default:
                 break
             }
@@ -108,6 +114,12 @@ extension ExamplesViewController {
                 let comparisonRule = ValidationRuleComparison<Float>(min: 5, max: 7, failureMessage: "😫")
                 numericCell.validationRuleSet?.addRule(comparisonRule)
 
+            case 1:
+                numericCell.titleLabel.text = "Equal"
+                numericCell.summaryLabel.text = "Ensures the input is equal to 5.0 using ValidationRuleEquality"
+                let comparisonRule = ValidationRuleEquality<Float>(target: 5.0, failureMessage: "😫")
+                numericCell.validationRuleSet?.addRule(comparisonRule)
+                
             default:
                 break
             }

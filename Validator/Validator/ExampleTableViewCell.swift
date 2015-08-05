@@ -18,9 +18,14 @@ class ExampleTableViewCell: UITableViewCell {
         super.awakeFromNib()
         stateLabel.text = "😐"
     }
-    
-    override func prepareForReuse() {
-        stateLabel.text = "😐"
+        
+    func updateValidationState(result: ValidationResult) {
+        switch result {
+        case .Valid:
+            stateLabel.text = "😀"
+        case .Invalid(let failureMessages):
+            stateLabel.text = ", ".join(failureMessages)
+        }
     }
     
 }

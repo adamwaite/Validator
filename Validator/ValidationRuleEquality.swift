@@ -10,19 +10,29 @@ import Foundation
 
 struct ValidationRuleEquality<T: Equatable>: ValidationRule {
 
-    typealias InputType = [T]
+    typealias InputType = T
     
+    let target: T
+    let dynamicTarget: (() -> T)?
     let failureMessage: String
     
-    init(failureMessage: String) {
+    init(target: T, failureMessage: String) {
+        self.target = target
+        self.failureMessage = failureMessage
+        self.dynamicTarget = nil
+    }
+    
+    init(dynamicTarget: (() -> T), failureMessage: String) {
+        self.target = dynamicTarget()
+        self.dynamicTarget = dynamicTarget
         self.failureMessage = failureMessage
     }
-        
-    func validateInput(input: [T]) -> Bool {
-        switch input {
-        case let input where input.count >= 2: return input.filter { $0 == input.first! }.count > 1
-        default: return false
+    
+    func validateInput(input: T) -> Bool {
+        if let dT = dynamicTarget {
+            return input == dT()
         }
+        return input == target
     }
     
 }
