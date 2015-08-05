@@ -15,12 +15,12 @@ extension UISlider: ValidatableInterfaceElement {
     var inputValue: Float { return value ?? 0 }
     
     func validateOnChangeWithRules(rules: ValidationRuleSet<InputType>, change: ValidationResult -> ()) {
-        ValidatableInterfaceObserver.instance.observeInterfaceElement(self, rules: rules, change: change)
-        addTarget(self, action: "validateInterfaceElement:", forControlEvents: .ValueChanged)
+        validatorEvaluation = ValidatableInterfaceEvaluation(rules: rules, change: change)
+        addTarget(self, action: "validateSlider:", forControlEvents: .ValueChanged)
     }
     
-    @objc private func validateInterfaceElement(sender: UITextField) {
-        ValidatableInterfaceObserver.instance.validateInterfaceElement(sender)
+    @objc private func validateSlider(sender: UISlider) {
+        sender.validateInputValue()
     }
     
 }

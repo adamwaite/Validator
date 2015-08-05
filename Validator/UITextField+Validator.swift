@@ -15,12 +15,12 @@ extension UITextField: ValidatableInterfaceElement {
     var inputValue: String { return text ?? "" }
     
     func validateOnChangeWithRules(rules: ValidationRuleSet<InputType>, change: ValidationResult -> ()) {
-        ValidatableInterfaceObserver.instance.observeInterfaceElement(self, rules: rules, change: change)
-        addTarget(self, action: "validateInterfaceElement:", forControlEvents: .EditingChanged)
+        validatorEvaluation = ValidatableInterfaceEvaluation(rules: rules, change: change)
+        addTarget(self, action: "validateUITextField:", forControlEvents: .EditingChanged)
     }
     
-    @objc private func validateInterfaceElement(sender: UITextField) {
-        ValidatableInterfaceObserver.instance.validateInterfaceElement(sender)
+    @objc private func validateUITextField(sender: UITextField) {
+        sender.validateInputValue()
     }
 
 }
