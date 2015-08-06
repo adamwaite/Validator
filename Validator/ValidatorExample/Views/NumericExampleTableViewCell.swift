@@ -13,17 +13,14 @@ class NumericExampleTableViewCell: ExampleTableViewCell {
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var sliderValueLabel: UILabel!
     
-    var validationRuleSet: ValidationRuleSet<Float>?
+    var validationRuleSet: ValidationRuleSet<Float>? {
+        didSet { slider.validationRules = validationRuleSet }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        slider.addTarget(self, action: "valueChanged:", forControlEvents: .ValueChanged)
+        slider.validateOnInputChange(true)
+        slider.validationHandler = { result in self.updateValidationState(result) }
     }
     
-    @objc private func valueChanged(sender: UISlider) {
-        guard let rules = validationRuleSet else { return }
-        let result = sender.value.validate(rules: rules)
-        updateValidationState(result)        
-    }
-
 }

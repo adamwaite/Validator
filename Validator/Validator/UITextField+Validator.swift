@@ -14,4 +14,15 @@ extension UITextField: ValidatableInterfaceElement {
     
     var inputValue: String { return text ?? "" }
     
+    func validateOnInputChange(validationEnabled: Bool) {
+        switch validationEnabled {
+        case true: addTarget(self, action: "validateInputChange:", forControlEvents: .EditingChanged)
+        case false: removeTarget(self, action: "validateInputChange:", forControlEvents: .EditingChanged)
+        }
+    }
+    
+    @objc private func validateInputChange(sender: UITextField) {
+        sender.validate()
+    }
+    
 }

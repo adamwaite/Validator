@@ -12,19 +12,14 @@ class StringExampleTableViewCell: ExampleTableViewCell {
     
     @IBOutlet weak var textField: UITextField!
     
-    var validationRuleSet: ValidationRuleSet<String>?
+    var validationRuleSet: ValidationRuleSet<String>? {
+        didSet { textField.validationRules = validationRuleSet }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        textField.addTarget(self, action: "editingChanged:", forControlEvents: .EditingChanged)
-        
-    }
-    
-    @objc private func editingChanged(sender: UITextField) {
-        guard let rules = validationRuleSet else { return }
-        guard let input = sender.text else { return }
-        let result = input.validate(rules: rules)
-        updateValidationState(result)
+        textField.validateOnInputChange(true)
+        textField.validationHandler = { result in self.updateValidationState(result) }
     }
     
 }

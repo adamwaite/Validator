@@ -21,10 +21,8 @@ class ExampleTableViewCell: UITableViewCell {
         
     func updateValidationState(result: ValidationResult) {
         switch result {
-        case .Valid:
-            stateLabel.text = "😀"
-        case .Invalid(let failureMessages):
-            stateLabel.text = ", ".join(failureMessages)
+        case .Valid: stateLabel.text = "😀"
+        case .Invalid(let failureMessages): stateLabel.text = ", ".join(failureMessages)
         }
     }
     

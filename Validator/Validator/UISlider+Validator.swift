@@ -14,4 +14,15 @@ extension UISlider: ValidatableInterfaceElement {
     
     var inputValue: Float { return value }
     
+    func validateOnInputChange(validationEnabled: Bool) {
+        switch validationEnabled {
+        case true: addTarget(self, action: "validateInputChange:", forControlEvents: .ValueChanged)
+        case false: removeTarget(self, action: "validateInputChange:", forControlEvents: .ValueChanged)
+        }
+    }
+    
+    @objc private func validateInputChange(sender: UISlider) {
+        sender.validate()
+    }
+    
 }

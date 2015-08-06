@@ -52,4 +52,26 @@ class ValidatableInterfaceElementTests: XCTestCase {
         
     }
     
+    func testThatItCanValidateWithRulesAttachedToIt() {
+        
+        let textField = UITextField()
+        
+        var rules = ValidationRuleSet<String>()
+        rules.addRule(ValidationRuleLength(min: 5, failureMessage: "💣"))
+        rules.addRule(ValidationRuleCondition<String>(failureMessage: "💣") { $0.characters.contains("A") })
+        
+        textField.validationRules = rules
+        
+        textField.text = "Hi adam"
+        
+        let invalid = textField.validate()
+        XCTAssertFalse(invalid.isValid)
+        
+        textField.text = "Hi Adam"
+
+        let valid = textField.validate()
+        XCTAssertTrue(valid.isValid)
+        
+    }
+        
 }
