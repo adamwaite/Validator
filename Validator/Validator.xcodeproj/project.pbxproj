@@ -49,6 +49,7 @@
 		990DD5C61B6CE074009EAC19 /* ValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatorTests.swift; sourceTree = "<group>"; };
 		9915CE791B519F1E00A033CD /* ValidationRuleEquality.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleEquality.swift; sourceTree = "<group>"; };
 		9915CE7B1B51A10700A033CD /* ValidationRuleEqualityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleEqualityTests.swift; sourceTree = "<group>"; };
+		992FD35E1B73541F009DE772 /* Valdator.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Valdator.playground; sourceTree = "<group>"; };
 		9945DF8E1B582F37001F9B7D /* ValidatableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatableTests.swift; sourceTree = "<group>"; };
 		994C19D21B585C8C009CE742 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		994C74701B715A040024D1CD /* ExamplesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamplesViewController.swift; sourceTree = "<group>"; };
@@ -101,7 +102,7 @@
 				994C74721B715C870024D1CD /* StringExampleTableViewCell.swift */,
 				999A3E191B716FCA0059EE9A /* NumericExampleTableViewCell.swift */,
 			);
-			name = Views;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		990ACA5F1B725CDB0067C5C7 /* Controllers */ = {
@@ -109,7 +110,7 @@
 			children = (
 				994C74701B715A040024D1CD /* ExamplesViewController.swift */,
 			);
-			name = Controllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		990ACA611B725D070067C5C7 /* Supporting Files */ = {
@@ -119,7 +120,7 @@
 				999F53A31B4E736900143184 /* LaunchScreen.storyboard */,
 				999F53A11B4E736900143184 /* Assets.xcassets */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		990ACA621B725D190067C5C7 /* Storyboards */ = {
@@ -127,7 +128,7 @@
 			children = (
 				999F539E1B4E736900143184 /* Main.storyboard */,
 			);
-			name = Storyboards;
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		990DD5C41B6CE050009EAC19 /* Validatable */ = {
@@ -135,7 +136,7 @@
 			children = (
 				9945DF8E1B582F37001F9B7D /* ValidatableTests.swift */,
 			);
-			name = Validatable;
+			path = Validatable;
 			sourceTree = "<group>";
 		};
 		990DD5C51B6CE05A009EAC19 /* Validator */ = {
@@ -143,7 +144,7 @@
 			children = (
 				990DD5C61B6CE074009EAC19 /* ValidatorTests.swift */,
 			);
-			name = Validator;
+			path = Validator;
 			sourceTree = "<group>";
 		};
 		995D0FC11B519A9F004E2D4D /* Rules */ = {
@@ -155,12 +156,13 @@
 				995D0FC21B519AC5004E2D4D /* ValidationRulePatternTests.swift */,
 				9915CE7B1B51A10700A033CD /* ValidationRuleEqualityTests.swift */,
 			);
-			name = Rules;
+			path = Rules;
 			sourceTree = "<group>";
 		};
 		999F538E1B4E736900143184 = {
 			isa = PBXGroup;
 			children = (
+				992FD35E1B73541F009DE772 /* Valdator.playground */,
 				999F53BA1B4E737500143184 /* Validator */,
 				999F53991B4E736900143184 /* ValidatorExample */,
 				999F53AE1B4E736900143184 /* ValidatorTests */,
@@ -186,8 +188,7 @@
 				990ACA5E1B725CD50067C5C7 /* Views */,
 				990ACA611B725D070067C5C7 /* Supporting Files */,
 			);
-			name = ValidatorExample;
-			path = Validator;
+			path = ValidatorExample;
 			sourceTree = "<group>";
 		};
 		999F53AE1B4E736900143184 /* ValidatorTests */ = {
@@ -211,7 +212,7 @@
 				999F53BF1B4E744200143184 /* ValidationResult.swift */,
 				99B8EFE11B50415B00B1F323 /* Rules */,
 			);
-			name = Validator;
+			path = Validator;
 			sourceTree = "<group>";
 		};
 		99B8EFE11B50415B00B1F323 /* Rules */ = {
@@ -223,7 +224,7 @@
 				99B8EFE71B505BF700B1F323 /* ValidationRuleCondition.swift */,
 				995D0FBF1B511DEC004E2D4D /* ValidationRulePattern.swift */,
 			);
-			name = Rules;
+			path = Rules;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -375,6 +376,7 @@
 				999F539F1B4E736900143184 /* Base */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		999F53A31B4E736900143184 /* LaunchScreen.storyboard */ = {
@@ -383,6 +385,7 @@
 				999F53A41B4E736900143184 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -476,7 +479,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Validator/Info.plist;
+				INFOPLIST_FILE = "ValidatorExample/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = adamjwaite.co.uk.Validator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -488,7 +491,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				INFOPLIST_FILE = Validator/Info.plist;
+				INFOPLIST_FILE = "ValidatorExample/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = adamjwaite.co.uk.Validator;
 				PRODUCT_NAME = "$(TARGET_NAME)";

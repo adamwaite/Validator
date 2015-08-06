@@ -18,7 +18,7 @@ protocol ValidationRule {
 
 }
 
-struct AnyValidationRule<InputType>: ValidationRule {
+internal struct AnyValidationRule<InputType>: ValidationRule {
     
     private let baseValidateInput: (InputType) -> Bool
     
