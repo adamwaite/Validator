@@ -11,6 +11,9 @@
 		990DD5C71B6CE074009EAC19 /* ValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DD5C61B6CE074009EAC19 /* ValidatorTests.swift */; };
 		9915CE7A1B519F1E00A033CD /* ValidationRuleEquality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9915CE791B519F1E00A033CD /* ValidationRuleEquality.swift */; };
 		9915CE7C1B51A10700A033CD /* ValidationRuleEqualityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9915CE7B1B51A10700A033CD /* ValidationRuleEqualityTests.swift */; };
+		992FD3611B735592009DE772 /* ValidatableInterfaceElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992FD3601B735592009DE772 /* ValidatableInterfaceElement.swift */; };
+		992FD3641B735722009DE772 /* UITextField+ValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992FD3631B735722009DE772 /* UITextField+ValidatorTests.swift */; };
+		992FD3661B73576A009DE772 /* UITextField+Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992FD3651B73576A009DE772 /* UITextField+Validator.swift */; };
 		9945DF8F1B582F37001F9B7D /* ValidatableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9945DF8E1B582F37001F9B7D /* ValidatableTests.swift */; };
 		994C19D31B585C8C009CE742 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C19D21B585C8C009CE742 /* Validator.swift */; };
 		994C74711B715A040024D1CD /* ExamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C74701B715A040024D1CD /* ExamplesViewController.swift */; };
@@ -50,6 +53,9 @@
 		9915CE791B519F1E00A033CD /* ValidationRuleEquality.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleEquality.swift; sourceTree = "<group>"; };
 		9915CE7B1B51A10700A033CD /* ValidationRuleEqualityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleEqualityTests.swift; sourceTree = "<group>"; };
 		992FD35E1B73541F009DE772 /* Valdator.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Valdator.playground; sourceTree = "<group>"; };
+		992FD3601B735592009DE772 /* ValidatableInterfaceElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatableInterfaceElement.swift; sourceTree = "<group>"; };
+		992FD3631B735722009DE772 /* UITextField+ValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+ValidatorTests.swift"; sourceTree = "<group>"; };
+		992FD3651B73576A009DE772 /* UITextField+Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Validator.swift"; sourceTree = "<group>"; };
 		9945DF8E1B582F37001F9B7D /* ValidatableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatableTests.swift; sourceTree = "<group>"; };
 		994C19D21B585C8C009CE742 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		994C74701B715A040024D1CD /* ExamplesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamplesViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +153,23 @@
 			path = Validator;
 			sourceTree = "<group>";
 		};
+		992FD35F1B735560009DE772 /* UIKit+Validator */ = {
+			isa = PBXGroup;
+			children = (
+				992FD3601B735592009DE772 /* ValidatableInterfaceElement.swift */,
+				992FD3651B73576A009DE772 /* UITextField+Validator.swift */,
+			);
+			name = "UIKit+Validator";
+			sourceTree = "<group>";
+		};
+		992FD3621B735705009DE772 /* UIKit+Validator */ = {
+			isa = PBXGroup;
+			children = (
+				992FD3631B735722009DE772 /* UITextField+ValidatorTests.swift */,
+			);
+			name = "UIKit+Validator";
+			sourceTree = "<group>";
+		};
 		995D0FC11B519A9F004E2D4D /* Rules */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +220,7 @@
 				999F53B11B4E736900143184 /* Info.plist */,
 				990DD5C51B6CE05A009EAC19 /* Validator */,
 				990DD5C41B6CE050009EAC19 /* Validatable */,
+				992FD3621B735705009DE772 /* UIKit+Validator */,
 				995D0FC11B519A9F004E2D4D /* Rules */,
 			);
 			path = ValidatorTests;
@@ -211,6 +235,7 @@
 				9995A5271B6F6753000D5105 /* ValidationRuleSet.swift */,
 				999F53BF1B4E744200143184 /* ValidationResult.swift */,
 				99B8EFE11B50415B00B1F323 /* Rules */,
+				992FD35F1B735560009DE772 /* UIKit+Validator */,
 			);
 			path = Validator;
 			sourceTree = "<group>";
@@ -327,10 +352,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				992FD3611B735592009DE772 /* ValidatableInterfaceElement.swift in Sources */,
 				994C19D31B585C8C009CE742 /* Validator.swift in Sources */,
 				9995A5281B6F6753000D5105 /* ValidationRuleSet.swift in Sources */,
 				99904A9E1B583C9500DBD266 /* ValidationRuleComparison.swift in Sources */,
 				990DD5C31B6CDFC9009EAC19 /* Validatable.swift in Sources */,
+				992FD3661B73576A009DE772 /* UITextField+Validator.swift in Sources */,
 				9915CE7A1B519F1E00A033CD /* ValidationRuleEquality.swift in Sources */,
 				99B8EFE81B505BF700B1F323 /* ValidationRuleCondition.swift in Sources */,
 				994C74731B715C870024D1CD /* StringExampleTableViewCell.swift in Sources */,
@@ -353,6 +380,7 @@
 				990DD5C71B6CE074009EAC19 /* ValidatorTests.swift in Sources */,
 				999F53B01B4E736900143184 /* ValidationRuleLengthTests.swift in Sources */,
 				99904AA01B583FE300DBD266 /* ValidationRuleComparisonTests.swift in Sources */,
+				992FD3641B735722009DE772 /* UITextField+ValidatorTests.swift in Sources */,
 				99B8EFEA1B505F8200B1F323 /* ValidationRuleConditionTests.swift in Sources */,
 				9945DF8F1B582F37001F9B7D /* ValidatableTests.swift in Sources */,
 				995D0FC31B519AC5004E2D4D /* ValidationRulePatternTests.swift in Sources */,
