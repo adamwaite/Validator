@@ -1,10 +1,31 @@
-//
-//  ExamplesViewController.swift
-//  Validator
-//
-//  Created by Adam Waite on 04/08/2015.
-//  Copyright © 2015 adamjwaite.co.uk. All rights reserved.
-//
+/*
+
+ ExamplesViewController.swift
+ Validator
+
+ Created by @adamwaite.
+
+ Copyright (c) 2015 Adam Waite. All rights reserved.
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+
+*/
 
 import UIKit
 
@@ -34,7 +55,7 @@ extension ExamplesViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0: return 7
+        case 0: return 8
         case 1: return 1
         default: return 0
         }
@@ -68,7 +89,7 @@ extension ExamplesViewController {
                 
             case 2:
                 stringCell.titleLabel.text = "Range Length"
-                stringCell.summaryLabel.text = "Ensures the input is between 5 and 10 characters long using ValidationRuleLength"
+                stringCell.summaryLabel.text = "Ensures the input is between 5 and 20 characters long using ValidationRuleLength"
                 let rangeLengthRule = ValidationRuleLength(min: 5, max: 10, failureMessage: "😫")
                 stringCell.validationRuleSet?.addRule(rangeLengthRule)
                 
@@ -96,6 +117,16 @@ extension ExamplesViewController {
                 let equalityRule = ValidationRuleEquality<String>(dynamicTarget: { return "Password" }, failureMessage: "😫")
                 stringCell.validationRuleSet?.addRule(equalityRule)
 
+            case 7:
+                stringCell.titleLabel.text = "Multiple Rules"
+                stringCell.summaryLabel.text = "Combines multiple validations into one rule set - range length, valid email and contains greeting"
+                let emailRule = ValidationRulePattern(pattern: .EmailAddress, failureMessage: "😫")
+                let rangeLengthRule = ValidationRuleLength(min: 5, max: 30, failureMessage: "😥")
+                let conditionRule = ValidationRuleCondition<String>(failureMessage: "😔") { input in ["Hello", "Hey", "Hi"].filter { input.rangeOfString($0) != nil }.count > 0 }
+                stringCell.validationRuleSet?.addRule(emailRule)
+                stringCell.validationRuleSet?.addRule(rangeLengthRule)
+                stringCell.validationRuleSet?.addRule(conditionRule)
+                
             default:
                 break
             }
@@ -115,7 +146,7 @@ extension ExamplesViewController {
                 numericCell.validationRuleSet?.addRule(comparisonRule)
 
             case 1:
-                numericCell.titleLabel.text = "Equal"
+                numericCell.titleLabel.text = "Equality"
                 numericCell.summaryLabel.text = "Ensures the input is equal to 5.0 using ValidationRuleEquality"
                 let comparisonRule = ValidationRuleEquality<Float>(target: 5.0, failureMessage: "😫")
                 numericCell.validationRuleSet?.addRule(comparisonRule)
