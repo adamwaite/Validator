@@ -11,6 +11,15 @@ import XCTest
 
 class UITextFieldValidatorTests: XCTestCase {
     
+    func testThatItProvidesAnInputValue() {
+
+        let textField = UITextField()
+        textField.text = "Hello"
+        
+        XCTAssertTrue(textField.inputValue == "Hello")
+        
+    }
+    
     func testThatItCanValidateInputText() {
         
         let textField = UITextField()
@@ -20,36 +29,13 @@ class UITextFieldValidatorTests: XCTestCase {
         
         let invalid = textField.validate(rule: rule)
         XCTAssertFalse(invalid.isValid)
-
+        
         textField.text = "Hello Adam"
         
         let valid = textField.validate(rule: rule)
         XCTAssertTrue(valid.isValid)
         
     }
+
     
-    func testThatItCanValidateInputTextWithMultipleRules() {
-        
-        let textField = UITextField()
-        textField.text = "Hi"
-        
-        var rules = ValidationRuleSet<String>()
-        rules.addRule(ValidationRuleLength(min: 5, failureMessage: "💣"))
-        rules.addRule(ValidationRuleCondition<String>(failureMessage: "💣") { $0.characters.contains("A") })
-        
-        let definitelyInvalid = textField.validate(rules: rules)
-        XCTAssertFalse(definitelyInvalid.isValid)
-
-        textField.text = "Hi adam"
-        
-        let partiallyInvalid = textField.validate(rules: rules)
-        XCTAssertFalse(partiallyInvalid.isValid)
-
-        textField.text = "Hi Adam"
-        
-        let valid = textField.validate(rules: rules)
-        XCTAssertTrue(valid.isValid)
-        
-    }
-
 }

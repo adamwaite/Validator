@@ -14,6 +14,9 @@
 		992FD3611B735592009DE772 /* ValidatableInterfaceElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992FD3601B735592009DE772 /* ValidatableInterfaceElement.swift */; };
 		992FD3641B735722009DE772 /* UITextField+ValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992FD3631B735722009DE772 /* UITextField+ValidatorTests.swift */; };
 		992FD3661B73576A009DE772 /* UITextField+Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992FD3651B73576A009DE772 /* UITextField+Validator.swift */; };
+		992FD3681B735BD0009DE772 /* ValidatableInterfaceElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992FD3671B735BD0009DE772 /* ValidatableInterfaceElementTests.swift */; };
+		992FD36A1B735D09009DE772 /* UISlider+ValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992FD3691B735D09009DE772 /* UISlider+ValidatorTests.swift */; };
+		992FD36C1B735D42009DE772 /* UISlider+Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992FD36B1B735D42009DE772 /* UISlider+Validator.swift */; };
 		9945DF8F1B582F37001F9B7D /* ValidatableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9945DF8E1B582F37001F9B7D /* ValidatableTests.swift */; };
 		994C19D31B585C8C009CE742 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C19D21B585C8C009CE742 /* Validator.swift */; };
 		994C74711B715A040024D1CD /* ExamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C74701B715A040024D1CD /* ExamplesViewController.swift */; };
@@ -56,6 +59,9 @@
 		992FD3601B735592009DE772 /* ValidatableInterfaceElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatableInterfaceElement.swift; sourceTree = "<group>"; };
 		992FD3631B735722009DE772 /* UITextField+ValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+ValidatorTests.swift"; sourceTree = "<group>"; };
 		992FD3651B73576A009DE772 /* UITextField+Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Validator.swift"; sourceTree = "<group>"; };
+		992FD3671B735BD0009DE772 /* ValidatableInterfaceElementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatableInterfaceElementTests.swift; sourceTree = "<group>"; };
+		992FD3691B735D09009DE772 /* UISlider+ValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISlider+ValidatorTests.swift"; sourceTree = "<group>"; };
+		992FD36B1B735D42009DE772 /* UISlider+Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISlider+Validator.swift"; sourceTree = "<group>"; };
 		9945DF8E1B582F37001F9B7D /* ValidatableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatableTests.swift; sourceTree = "<group>"; };
 		994C19D21B585C8C009CE742 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		994C74701B715A040024D1CD /* ExamplesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamplesViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +164,7 @@
 			children = (
 				992FD3601B735592009DE772 /* ValidatableInterfaceElement.swift */,
 				992FD3651B73576A009DE772 /* UITextField+Validator.swift */,
+				992FD36B1B735D42009DE772 /* UISlider+Validator.swift */,
 			);
 			name = "UIKit+Validator";
 			sourceTree = "<group>";
@@ -165,7 +172,9 @@
 		992FD3621B735705009DE772 /* UIKit+Validator */ = {
 			isa = PBXGroup;
 			children = (
+				992FD3671B735BD0009DE772 /* ValidatableInterfaceElementTests.swift */,
 				992FD3631B735722009DE772 /* UITextField+ValidatorTests.swift */,
+				992FD3691B735D09009DE772 /* UISlider+ValidatorTests.swift */,
 			);
 			name = "UIKit+Validator";
 			sourceTree = "<group>";
@@ -369,6 +378,7 @@
 				999A3E181B716E8E0059EE9A /* ExampleTableViewCell.swift in Sources */,
 				99B8EFE31B5044D700B1F323 /* ValidationRuleLength.swift in Sources */,
 				999F539B1B4E736900143184 /* AppDelegate.swift in Sources */,
+				992FD36C1B735D42009DE772 /* UISlider+Validator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,7 +387,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9915CE7C1B51A10700A033CD /* ValidationRuleEqualityTests.swift in Sources */,
+				992FD3681B735BD0009DE772 /* ValidatableInterfaceElementTests.swift in Sources */,
 				990DD5C71B6CE074009EAC19 /* ValidatorTests.swift in Sources */,
+				992FD36A1B735D09009DE772 /* UISlider+ValidatorTests.swift in Sources */,
 				999F53B01B4E736900143184 /* ValidationRuleLengthTests.swift in Sources */,
 				99904AA01B583FE300DBD266 /* ValidationRuleComparisonTests.swift in Sources */,
 				992FD3641B735722009DE772 /* UITextField+ValidatorTests.swift in Sources */,
