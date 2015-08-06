@@ -16,7 +16,7 @@ protocol ValidatableInterfaceElement {
     
     func validate<R: ValidationRule where R.InputType == InputType>(rule r: R) -> ValidationResult
     
-    func validate(rules: ValidationRuleSet<InputType>) -> ValidationResult
+    func validate(rules rs: ValidationRuleSet<InputType>) -> ValidationResult
 
 }
 
@@ -26,8 +26,8 @@ extension ValidatableInterfaceElement {
         return inputValue.validate(rule: r)
     }
     
-    func validate(rules: ValidationRuleSet<InputType>) -> ValidationResult {
-        return inputValue.validate(rules: rules)
+    func validate(rules rs: ValidationRuleSet<InputType>) -> ValidationResult {
+        return inputValue.validate(rules: rs)
     }
     
 }
