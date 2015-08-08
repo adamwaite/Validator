@@ -28,6 +28,7 @@ Install Validator with [CocoaPods](http://cocoapods.org)
 
 `pod ‘Validator’`
 
+
 > Embedded frameworks require a minimum deployment target of iOS 8.
 
 ## Validation Rules
@@ -60,7 +61,7 @@ let minLengthRule = ValidationRuleLength(min: 5, failureMessage: “Input must b
 let maxLengthRule = ValidationRuleLength(max: 5, failureMessage: “Input must be at most 5 characters”)
 
 let rangeLengthRule = ValidationRuleLength(min: 5, max: 10, failureMessage: “Input must be between 5 and 10 characters”)
-
+```
 
 ### Pattern
 
