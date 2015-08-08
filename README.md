@@ -109,7 +109,7 @@ struct HappyRule {
 
 > If your custom rule doesn’t already exist in the library and you think it might be useful for other people, then it’d be great if you added it in with a [pull request](https://github.com/adamwaite/AJWValidator/pulls).
 
-## Combining Validation Rules (ValidationRuleSet)
+## Multiple Validation Rules (`ValidationRuleSet`)
 
 Validation rules can be combined into a `ValidationRuleSet` containing a collection of rules that validate a type.
 
@@ -123,15 +123,17 @@ let digitRule = ValidationRulePattern(pattern: .ContainsDigit, failureMessage: �
 passwordRules.addRule(digitRule)
 ```
 
-## Validate A Type
+## Validate Types
 
 Any type that conforms to the `Validatable` protocol can be validated using the `validate:` method.
 
 ```
-// Validate with a single rule
+// Validate with a single rule:
+
 let result = “some string”.validate(rule: aRule)
 
-// Validate with a collection of rules
+// Validate with a collection of rules:
+
 let result = 42.validate(rules: aRuleSet)
 ```
 
@@ -140,7 +142,7 @@ The `validate:` method returns a `ValidationResult` enum. `ValidationResult` can
 1. `.Valid`: The input satisfies the validation rules. 
 2. `.Invalid`: The input fails the validation rules. An `.Invalid` result has an associated array of strings containing the failure messages defined in the rules (in the `failureMessage`s).
 
-### Extend A Type As Validatable
+### Extend Types As Validatable
 
 Extend the `Validatable` protocol to make a new type validatable.
 
@@ -148,7 +150,7 @@ Extend the `Validatable` protocol to make a new type validatable.
 
 The implementation inside the protocol extension should mean that you don’t need to implement anything yourself.
 
-## Validate A UIKit Element
+## Validate UIKit Elements
 
 UIKit elements that conform to `ValidatableInterfaceElement` can have their input validated with the `validate:` method.
 
@@ -159,10 +161,12 @@ textField.text = “I’m going to be validated”
 let slider = UISlider()
 slider.value = 0.3
 
-// Validate with a single rule
+// Validate with a single rule:
+
 let result = textField.validate(rule: aRule)
 
-// Validate with a collection of rules
+// Validate with a collection of rules:
+
 let result = slider.validate(rules: aRuleSet)
 ```
 
@@ -199,7 +203,7 @@ textField.validationHandler = { result in
 
 Note - Use `.validateOnInputChange(false)` to end observation.
 
-### Extend A UI Element As Validatable
+### Extend UI Elements As Validatable
 
 Extend the `ValidatableInterfaceElement` protocol to make an interface element validatable.
 
