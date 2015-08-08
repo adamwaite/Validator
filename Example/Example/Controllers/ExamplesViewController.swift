@@ -108,8 +108,8 @@ extension ExamplesViewController {
                 
             case 5:
                 stringCell.titleLabel.text = "Is a Greeting"
-                stringCell.summaryLabel.text = "Ensures the input is one of the greetings 'Hello', 'Hey' or 'Hi' using ValidationRuleConditiom"
-                let conditionRule = ValidationRuleCondition<String>(failureMessage: "😫") { ["Hello", "Hey", "Hi"].contains($0) }
+                stringCell.summaryLabel.text = "Ensures the input is one of the greetings 'hello', 'hey' or 'hi' using ValidationRuleConditiom"
+                let conditionRule = ValidationRuleCondition<String>(failureMessage: "😫") { ["hello", "hey", "hi"].contains($0) }
                 stringCell.validationRuleSet?.addRule(conditionRule)
 
             case 6:
@@ -123,7 +123,7 @@ extension ExamplesViewController {
                 stringCell.summaryLabel.text = "Combines multiple validations into one rule set - range length, valid email and contains greeting"
                 let emailRule = ValidationRulePattern(pattern: .EmailAddress, failureMessage: "😫")
                 let rangeLengthRule = ValidationRuleLength(min: 5, max: 30, failureMessage: "😥")
-                let conditionRule = ValidationRuleCondition<String>(failureMessage: "😔") { input in ["Hello", "Hey", "Hi"].filter { input.rangeOfString($0) != nil }.count > 0 }
+                let conditionRule = ValidationRuleCondition<String>(failureMessage: "😔") { input in ["hello", "hey", "hi"].filter { input.rangeOfString($0) != nil }.count > 0 }
                 stringCell.validationRuleSet?.addRule(emailRule)
                 stringCell.validationRuleSet?.addRule(rangeLengthRule)
                 stringCell.validationRuleSet?.addRule(conditionRule)

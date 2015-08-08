@@ -8,17 +8,17 @@
         <!--Validator Examples-->
         <scene sceneID="XEg-Ol-plU">
             <objects>
-                <tableViewController id="60c-Af-NN5" customClass="ExamplesViewController" customModule="Validator" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="60c-Af-NN5" customClass="ExamplesViewController" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="127" sectionHeaderHeight="10" sectionFooterHeight="10" id="7jg-he-xLK">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StringExample" rowHeight="127" id="kYR-Rf-ayC" customClass="StringExampleTableViewCell" customModule="Validator" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="114" width="600" height="127"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StringExample" rowHeight="127" id="kYR-Rf-ayC" customClass="StringExampleTableViewCell" customModule="Example" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="113.5" width="600" height="127"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kYR-Rf-ayC" id="Dy1-FA-o4g">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="127"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="126.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ngo-az-iTs">
@@ -36,7 +36,7 @@
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I75-Kf-PAs">
                                             <rect key="frame" x="16" y="62" width="538" height="30"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                         </textField>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😐" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0M-uF-btV">
                                             <rect key="frame" x="562" y="68" width="22" height="21"/>
@@ -66,11 +66,11 @@
                                     <outlet property="titleLabel" destination="Ngo-az-iTs" id="ZXR-QT-37D"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NumericExample" rowHeight="127" id="DzL-gp-YCL" customClass="NumericExampleTableViewCell" customModule="Validator" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="241" width="600" height="127"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NumericExample" rowHeight="127" id="DzL-gp-YCL" customClass="NumericExampleTableViewCell" customModule="Example" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="240.5" width="600" height="127"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DzL-gp-YCL" id="iG2-m9-uYf">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="127"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="126.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OK6-US-xYG">
