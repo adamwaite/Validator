@@ -13,14 +13,14 @@ case .Invalid(let failures): print(failures.first?)
 }
 ```
 
-[DEMO]
+![demo-vid](resources/demo.mp4.gif)
 
 ## Features
 
 - [x] Validation rules
 - [x] Swift type extensions
 - [x] UIKit element extensions
-- [x] An easily-extended protocol-oriented implementation
+- [x] An easily extended protocol-oriented implementation
 
 ## Installation
 
@@ -113,7 +113,7 @@ struct HappyRule {
 Validation rules can be combined into a `ValidationRuleSet` containing a collection of rules that validate a type.
 
 ```
-var passwordConfirmationRules = ValidationRuleSet<String>()
+var passwordRules = ValidationRuleSet<String>()
 
 let minLengthRule = ValidationRuleLength(min: 5, failureMessage: “Input must be at least 5 characters”)
 passwordRules.addRule(minLengthRule)
@@ -137,11 +137,11 @@ let result = 42.validate(rules: aRuleSet)
 The `validate:` method returns a `ValidationResult` enum. `ValidationResult` can take one of two forms:
 
 1. `.Valid`: The input satisfies the validation rules. 
-2. `.Invalid`: The input fails the validation rules. An `.Invalid` result has an associated array of strings containing the failure messages defined in the rules (the `failureMessage` var).
+2. `.Invalid`: The input fails the validation rules. An `.Invalid` result has an associated array of strings containing the failure messages defined in the rules (in the `failureMessage`s).
 
 ### Extend A Type As Validatable
 
-Extend the `Validatable` protocol to make a new type validatable:
+Extend the `Validatable` protocol to make a new type validatable.
 
 `extension Thing : Validatable { }`
 
@@ -167,7 +167,7 @@ let result = slider.validate(rules: aRuleSet)
 
 ### Validate On Input Change
 
-A `ValidatableInterfaceElement` can be configured to automatically validate when the input changes in 3 steps:
+A `ValidatableInterfaceElement` can be configured to automatically validate when the input changes in 3 steps.
 
 1. Attach a set of default rules:
 
@@ -196,14 +196,16 @@ textField.validationHandler = { result in
 
 `textField.validateOnInputChange(true)`
 
-Note: Use `.validateOnInputChange(false)` to end observation.
+Note - Use `.validateOnInputChange(false)` to end observation.
 
 ### Extend A UI Element As Validatable
 
 Extend the `ValidatableInterfaceElement` protocol to make an interface element validatable.
 
+Example:
+
 ```
-extension UIElement: ValidatableInterfaceElement {
+extension UITextField: ValidatableInterfaceElement {
     
     typealias InputType = String
     
@@ -216,7 +218,7 @@ extension UIElement: ValidatableInterfaceElement {
         }
     }
     
-    @objc private func validateInputChange(sender: UIElement) {
+    @objc private func validateInputChange(sender: UITextField) {
         sender.validate()
     }
     

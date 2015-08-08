@@ -166,7 +166,7 @@
 				992FD3651B73576A009DE772 /* UITextField+Validator.swift */,
 				992FD36B1B735D42009DE772 /* UISlider+Validator.swift */,
 			);
-			name = "UIKit+Validator";
+			path = "UIKit+Validator";
 			sourceTree = "<group>";
 		};
 		992FD3621B735705009DE772 /* UIKit+Validator */ = {
@@ -176,7 +176,7 @@
 				992FD3631B735722009DE772 /* UITextField+ValidatorTests.swift */,
 				992FD3691B735D09009DE772 /* UISlider+ValidatorTests.swift */,
 			);
-			name = "UIKit+Validator";
+			path = "UIKit+Validator";
 			sourceTree = "<group>";
 		};
 		995D0FC11B519A9F004E2D4D /* Rules */ = {

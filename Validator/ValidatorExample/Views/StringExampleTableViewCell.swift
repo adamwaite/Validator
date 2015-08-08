@@ -43,4 +43,8 @@ class StringExampleTableViewCell: ExampleTableViewCell {
         textField.validationHandler = { result in self.updateValidationState(result) }
     }
     
+    override func prepareForReuse() {
+        textField.text = ""
+    }
+    
 }
