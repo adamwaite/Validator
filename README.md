@@ -24,12 +24,11 @@ case .Invalid(let failures): print(failures.first?)
 
 ## Installation
 
-Install Validator with [CocoaPods](http://cocoapods.org)
+Install Validator with [CocoaPods](http://cocoapods.org):
 
 `pod ‘Validator’`
 
-
-> Embedded frameworks require a minimum deployment target of iOS 8.
+Note - Embedded frameworks require a minimum deployment target of iOS 8.
 
 ## Validation Rules
 
