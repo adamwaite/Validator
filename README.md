@@ -1,5 +1,7 @@
 # AJWValidator
 
+> 👀 This library has been rewritten in Swift 2.0 (See [swift](https://github.com/adamwaite/AJWValidator/tree/feature/swift)). It’s going to be merged with the release of iOS 9.
+
 AJWValidator provides drop in user input validation for your iOS apps. It features a number of built in validation rules, some convenience methods to verify user input, a validation state change handler block, a public error messages collection, and a category on UIView to provide validate-as-input functionality to supported input view types. It's not opinionated, it's your app and it's up to you how you want handle validation errors on the UI.
 
 Built in validations:
