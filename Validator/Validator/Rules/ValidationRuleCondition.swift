@@ -29,19 +29,19 @@
 
 import Foundation
 
-struct ValidationRuleCondition<T>: ValidationRule {
+public struct ValidationRuleCondition<T>: ValidationRule {
     
-    typealias InputType = T
+    public typealias InputType = T
     
-    let condition: T -> Bool
-    let failureMessage: String
+    public let condition: T -> Bool
+    public let failureMessage: String
         
-    init(failureMessage: String, condition: (T -> Bool)) {
+    public init(failureMessage: String, condition: (T -> Bool)) {
         self.condition = condition
         self.failureMessage = failureMessage
     }
     
-    func validateInput(input: T) -> Bool {
+    public func validateInput(input: T) -> Bool {
         return condition(input)
     }
     

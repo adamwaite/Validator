@@ -1,6 +1,6 @@
 /*
 
- StringExampleTableViewCell.swift
+ NumericExampleTableViewCell.swift
  Validator
 
  Created by @adamwaite.
@@ -28,23 +28,21 @@
 */
 
 import UIKit
+import Validator
 
-class StringExampleTableViewCell: ExampleTableViewCell {
+class NumericExampleTableViewCell: ExampleTableViewCell {
     
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var sliderValueLabel: UILabel!
     
-    var validationRuleSet: ValidationRuleSet<String>? {
-        didSet { textField.validationRules = validationRuleSet }
+    var validationRuleSet: ValidationRuleSet<Float>? {
+        didSet { slider.validationRules = validationRuleSet }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        textField.validateOnInputChange(true)
-        textField.validationHandler = { result in self.updateValidationState(result) }
-    }
-    
-    override func prepareForReuse() {
-        textField.text = ""
+        slider.validateOnInputChange(true)
+        slider.validationHandler = { result in self.updateValidationState(result) }
     }
     
 }

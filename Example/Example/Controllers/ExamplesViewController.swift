@@ -28,6 +28,7 @@
 */
 
 import UIKit
+import Validator
 
 class ExamplesViewController: UITableViewController {
    

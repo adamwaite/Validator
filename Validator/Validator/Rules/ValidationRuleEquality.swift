@@ -29,30 +29,28 @@
 
 import Foundation
 
-struct ValidationRuleEquality<T: Equatable>: ValidationRule {
+public struct ValidationRuleEquality<T: Equatable>: ValidationRule {
 
-    typealias InputType = T
+    public typealias InputType = T
     
     let target: T
     let dynamicTarget: (() -> T)?
-    let failureMessage: String
+    public let failureMessage: String
     
-    init(target: T, failureMessage: String) {
+    public init(target: T, failureMessage: String) {
         self.target = target
         self.failureMessage = failureMessage
         self.dynamicTarget = nil
     }
     
-    init(dynamicTarget: (() -> T), failureMessage: String) {
+    public init(dynamicTarget: (() -> T), failureMessage: String) {
         self.target = dynamicTarget()
         self.dynamicTarget = dynamicTarget
         self.failureMessage = failureMessage
     }
-    
-    func validateInput(input: T) -> Bool {
-        if let dT = dynamicTarget {
-            return input == dT()
-        }
+  
+    public func validateInput(input: T) -> Bool {
+        if let dT = dynamicTarget { return input == dT() }
         return input == target
     }
     

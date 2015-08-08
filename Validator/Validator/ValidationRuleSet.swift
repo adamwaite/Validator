@@ -28,11 +28,15 @@
 */
 import Foundation
 
-struct ValidationRuleSet<InputType> {
+public struct ValidationRuleSet<InputType> {
     
-    var rules = [AnyValidationRule<InputType>]()
+    public init() {
+        
+    }
     
-    mutating func addRule<R: ValidationRule where R.InputType == InputType>(rule: R) {
+    internal var rules = [AnyValidationRule<InputType>]()
+    
+    public mutating func addRule<R: ValidationRule where R.InputType == InputType>(rule: R) {
         let anyRule = AnyValidationRule(base: rule)
         rules.append(anyRule)
     }

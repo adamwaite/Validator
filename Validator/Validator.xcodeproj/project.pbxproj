@@ -7,270 +7,221 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		990DD5C31B6CDFC9009EAC19 /* Validatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DD5C21B6CDFC9009EAC19 /* Validatable.swift */; };
-		990DD5C71B6CE074009EAC19 /* ValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DD5C61B6CE074009EAC19 /* ValidatorTests.swift */; };
-		9915CE7A1B519F1E00A033CD /* ValidationRuleEquality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9915CE791B519F1E00A033CD /* ValidationRuleEquality.swift */; };
-		9915CE7C1B51A10700A033CD /* ValidationRuleEqualityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9915CE7B1B51A10700A033CD /* ValidationRuleEqualityTests.swift */; };
-		992FD3611B735592009DE772 /* ValidatableInterfaceElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992FD3601B735592009DE772 /* ValidatableInterfaceElement.swift */; };
-		992FD3641B735722009DE772 /* UITextField+ValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992FD3631B735722009DE772 /* UITextField+ValidatorTests.swift */; };
-		992FD3661B73576A009DE772 /* UITextField+Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992FD3651B73576A009DE772 /* UITextField+Validator.swift */; };
-		992FD3681B735BD0009DE772 /* ValidatableInterfaceElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992FD3671B735BD0009DE772 /* ValidatableInterfaceElementTests.swift */; };
-		992FD36A1B735D09009DE772 /* UISlider+ValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992FD3691B735D09009DE772 /* UISlider+ValidatorTests.swift */; };
-		992FD36C1B735D42009DE772 /* UISlider+Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992FD36B1B735D42009DE772 /* UISlider+Validator.swift */; };
-		9945DF8F1B582F37001F9B7D /* ValidatableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9945DF8E1B582F37001F9B7D /* ValidatableTests.swift */; };
-		994C19D31B585C8C009CE742 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C19D21B585C8C009CE742 /* Validator.swift */; };
-		994C74711B715A040024D1CD /* ExamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C74701B715A040024D1CD /* ExamplesViewController.swift */; };
-		994C74731B715C870024D1CD /* StringExampleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C74721B715C870024D1CD /* StringExampleTableViewCell.swift */; };
-		995D0FC01B511DEC004E2D4D /* ValidationRulePattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D0FBF1B511DEC004E2D4D /* ValidationRulePattern.swift */; };
-		995D0FC31B519AC5004E2D4D /* ValidationRulePatternTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D0FC21B519AC5004E2D4D /* ValidationRulePatternTests.swift */; };
-		99904A9E1B583C9500DBD266 /* ValidationRuleComparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99904A9D1B583C9500DBD266 /* ValidationRuleComparison.swift */; };
-		99904AA01B583FE300DBD266 /* ValidationRuleComparisonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99904A9F1B583FE300DBD266 /* ValidationRuleComparisonTests.swift */; };
-		9995A5281B6F6753000D5105 /* ValidationRuleSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9995A5271B6F6753000D5105 /* ValidationRuleSet.swift */; };
-		999A3E181B716E8E0059EE9A /* ExampleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999A3E171B716E8E0059EE9A /* ExampleTableViewCell.swift */; };
-		999A3E1A1B716FCA0059EE9A /* NumericExampleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999A3E191B716FCA0059EE9A /* NumericExampleTableViewCell.swift */; };
-		999F539B1B4E736900143184 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999F539A1B4E736900143184 /* AppDelegate.swift */; };
-		999F53A01B4E736900143184 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 999F539E1B4E736900143184 /* Main.storyboard */; };
-		999F53A21B4E736900143184 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 999F53A11B4E736900143184 /* Assets.xcassets */; };
-		999F53A51B4E736900143184 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 999F53A31B4E736900143184 /* LaunchScreen.storyboard */; };
-		999F53B01B4E736900143184 /* ValidationRuleLengthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999F53AF1B4E736900143184 /* ValidationRuleLengthTests.swift */; };
-		999F53BE1B4E740700143184 /* ValidationRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999F53BD1B4E740700143184 /* ValidationRule.swift */; };
-		999F53C01B4E744200143184 /* ValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999F53BF1B4E744200143184 /* ValidationResult.swift */; };
-		99B8EFE31B5044D700B1F323 /* ValidationRuleLength.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B8EFE21B5044D700B1F323 /* ValidationRuleLength.swift */; };
-		99B8EFE81B505BF700B1F323 /* ValidationRuleCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B8EFE71B505BF700B1F323 /* ValidationRuleCondition.swift */; };
-		99B8EFEA1B505F8200B1F323 /* ValidationRuleConditionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B8EFE91B505F8200B1F323 /* ValidationRuleConditionTests.swift */; };
+		9967E3A71B76822E00ACAF54 /* Validator.h in Headers */ = {isa = PBXBuildFile; fileRef = 9967E3A61B76822E00ACAF54 /* Validator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9967E3AE1B76822E00ACAF54 /* Validator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9967E3A31B76822E00ACAF54 /* Validator.framework */; };
+		9967E3DE1B76829D00ACAF54 /* ValidationRuleComparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E3D01B76829D00ACAF54 /* ValidationRuleComparison.swift */; };
+		9967E3DF1B76829D00ACAF54 /* ValidationRuleCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E3D11B76829D00ACAF54 /* ValidationRuleCondition.swift */; };
+		9967E3E01B76829D00ACAF54 /* ValidationRuleEquality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E3D21B76829D00ACAF54 /* ValidationRuleEquality.swift */; };
+		9967E3E11B76829D00ACAF54 /* ValidationRuleLength.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E3D31B76829D00ACAF54 /* ValidationRuleLength.swift */; };
+		9967E3E21B76829D00ACAF54 /* ValidationRulePattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E3D41B76829D00ACAF54 /* ValidationRulePattern.swift */; };
+		9967E3E31B76829D00ACAF54 /* UISlider+Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E3D61B76829D00ACAF54 /* UISlider+Validator.swift */; };
+		9967E3E41B76829D00ACAF54 /* UITextField+Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E3D71B76829D00ACAF54 /* UITextField+Validator.swift */; };
+		9967E3E51B76829D00ACAF54 /* ValidatableInterfaceElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E3D81B76829D00ACAF54 /* ValidatableInterfaceElement.swift */; };
+		9967E3E61B76829D00ACAF54 /* Validatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E3D91B76829D00ACAF54 /* Validatable.swift */; };
+		9967E3E71B76829D00ACAF54 /* ValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E3DA1B76829D00ACAF54 /* ValidationResult.swift */; };
+		9967E3E81B76829D00ACAF54 /* ValidationRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E3DB1B76829D00ACAF54 /* ValidationRule.swift */; };
+		9967E3E91B76829D00ACAF54 /* ValidationRuleSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E3DC1B76829D00ACAF54 /* ValidationRuleSet.swift */; };
+		9967E3EA1B76829D00ACAF54 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E3DD1B76829D00ACAF54 /* Validator.swift */; };
+		9967E3F91B7682C700ACAF54 /* ValidationRuleComparisonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E3EC1B7682C700ACAF54 /* ValidationRuleComparisonTests.swift */; };
+		9967E3FA1B7682C700ACAF54 /* ValidationRuleConditionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E3ED1B7682C700ACAF54 /* ValidationRuleConditionTests.swift */; };
+		9967E3FB1B7682C700ACAF54 /* ValidationRuleEqualityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E3EE1B7682C700ACAF54 /* ValidationRuleEqualityTests.swift */; };
+		9967E3FC1B7682C700ACAF54 /* ValidationRuleLengthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E3EF1B7682C700ACAF54 /* ValidationRuleLengthTests.swift */; };
+		9967E3FD1B7682C700ACAF54 /* ValidationRulePatternTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E3F01B7682C700ACAF54 /* ValidationRulePatternTests.swift */; };
+		9967E3FE1B7682C700ACAF54 /* UISlider+ValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E3F21B7682C700ACAF54 /* UISlider+ValidatorTests.swift */; };
+		9967E3FF1B7682C700ACAF54 /* UITextField+ValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E3F31B7682C700ACAF54 /* UITextField+ValidatorTests.swift */; };
+		9967E4001B7682C700ACAF54 /* ValidatableInterfaceElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E3F41B7682C700ACAF54 /* ValidatableInterfaceElementTests.swift */; };
+		9967E4011B7682C700ACAF54 /* ValidatableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E3F61B7682C700ACAF54 /* ValidatableTests.swift */; };
+		9967E4021B7682C700ACAF54 /* ValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E3F81B7682C700ACAF54 /* ValidatorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		999F53AC1B4E736900143184 /* PBXContainerItemProxy */ = {
+		9967E3AF1B76822E00ACAF54 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 999F538F1B4E736900143184 /* Project object */;
+			containerPortal = 9967E39A1B76822E00ACAF54 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 999F53961B4E736900143184;
+			remoteGlobalIDString = 9967E3A21B76822E00ACAF54;
 			remoteInfo = Validator;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		990DD5C21B6CDFC9009EAC19 /* Validatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validatable.swift; sourceTree = "<group>"; };
-		990DD5C61B6CE074009EAC19 /* ValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatorTests.swift; sourceTree = "<group>"; };
-		9915CE791B519F1E00A033CD /* ValidationRuleEquality.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleEquality.swift; sourceTree = "<group>"; };
-		9915CE7B1B51A10700A033CD /* ValidationRuleEqualityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleEqualityTests.swift; sourceTree = "<group>"; };
-		992FD35E1B73541F009DE772 /* Valdator.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Valdator.playground; sourceTree = "<group>"; };
-		992FD3601B735592009DE772 /* ValidatableInterfaceElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatableInterfaceElement.swift; sourceTree = "<group>"; };
-		992FD3631B735722009DE772 /* UITextField+ValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+ValidatorTests.swift"; sourceTree = "<group>"; };
-		992FD3651B73576A009DE772 /* UITextField+Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Validator.swift"; sourceTree = "<group>"; };
-		992FD3671B735BD0009DE772 /* ValidatableInterfaceElementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatableInterfaceElementTests.swift; sourceTree = "<group>"; };
-		992FD3691B735D09009DE772 /* UISlider+ValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISlider+ValidatorTests.swift"; sourceTree = "<group>"; };
-		992FD36B1B735D42009DE772 /* UISlider+Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISlider+Validator.swift"; sourceTree = "<group>"; };
-		9945DF8E1B582F37001F9B7D /* ValidatableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatableTests.swift; sourceTree = "<group>"; };
-		994C19D21B585C8C009CE742 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
-		994C74701B715A040024D1CD /* ExamplesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamplesViewController.swift; sourceTree = "<group>"; };
-		994C74721B715C870024D1CD /* StringExampleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExampleTableViewCell.swift; sourceTree = "<group>"; };
-		995D0FBF1B511DEC004E2D4D /* ValidationRulePattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRulePattern.swift; sourceTree = "<group>"; };
-		995D0FC21B519AC5004E2D4D /* ValidationRulePatternTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRulePatternTests.swift; sourceTree = "<group>"; };
-		99904A9D1B583C9500DBD266 /* ValidationRuleComparison.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleComparison.swift; sourceTree = "<group>"; };
-		99904A9F1B583FE300DBD266 /* ValidationRuleComparisonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleComparisonTests.swift; sourceTree = "<group>"; };
-		9995A5271B6F6753000D5105 /* ValidationRuleSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleSet.swift; sourceTree = "<group>"; };
-		999A3E171B716E8E0059EE9A /* ExampleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleTableViewCell.swift; sourceTree = "<group>"; };
-		999A3E191B716FCA0059EE9A /* NumericExampleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumericExampleTableViewCell.swift; sourceTree = "<group>"; };
-		999F53971B4E736900143184 /* Validator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Validator.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		999F539A1B4E736900143184 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		999F539F1B4E736900143184 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		999F53A11B4E736900143184 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		999F53A41B4E736900143184 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		999F53A61B4E736900143184 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		999F53AB1B4E736900143184 /* ValidatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ValidatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		999F53AF1B4E736900143184 /* ValidationRuleLengthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationRuleLengthTests.swift; sourceTree = "<group>"; };
-		999F53B11B4E736900143184 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		999F53BD1B4E740700143184 /* ValidationRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRule.swift; sourceTree = "<group>"; };
-		999F53BF1B4E744200143184 /* ValidationResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationResult.swift; sourceTree = "<group>"; };
-		99B8EFE21B5044D700B1F323 /* ValidationRuleLength.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleLength.swift; sourceTree = "<group>"; };
-		99B8EFE71B505BF700B1F323 /* ValidationRuleCondition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleCondition.swift; sourceTree = "<group>"; };
-		99B8EFE91B505F8200B1F323 /* ValidationRuleConditionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleConditionTests.swift; sourceTree = "<group>"; };
+		9967E3A31B76822E00ACAF54 /* Validator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Validator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9967E3A61B76822E00ACAF54 /* Validator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Validator.h; sourceTree = "<group>"; };
+		9967E3A81B76822E00ACAF54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9967E3AD1B76822E00ACAF54 /* ValidatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ValidatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9967E3B41B76822E00ACAF54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9967E3D01B76829D00ACAF54 /* ValidationRuleComparison.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleComparison.swift; sourceTree = "<group>"; };
+		9967E3D11B76829D00ACAF54 /* ValidationRuleCondition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleCondition.swift; sourceTree = "<group>"; };
+		9967E3D21B76829D00ACAF54 /* ValidationRuleEquality.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleEquality.swift; sourceTree = "<group>"; };
+		9967E3D31B76829D00ACAF54 /* ValidationRuleLength.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleLength.swift; sourceTree = "<group>"; };
+		9967E3D41B76829D00ACAF54 /* ValidationRulePattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRulePattern.swift; sourceTree = "<group>"; };
+		9967E3D61B76829D00ACAF54 /* UISlider+Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISlider+Validator.swift"; sourceTree = "<group>"; };
+		9967E3D71B76829D00ACAF54 /* UITextField+Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Validator.swift"; sourceTree = "<group>"; };
+		9967E3D81B76829D00ACAF54 /* ValidatableInterfaceElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatableInterfaceElement.swift; sourceTree = "<group>"; };
+		9967E3D91B76829D00ACAF54 /* Validatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validatable.swift; sourceTree = "<group>"; };
+		9967E3DA1B76829D00ACAF54 /* ValidationResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationResult.swift; sourceTree = "<group>"; };
+		9967E3DB1B76829D00ACAF54 /* ValidationRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRule.swift; sourceTree = "<group>"; };
+		9967E3DC1B76829D00ACAF54 /* ValidationRuleSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleSet.swift; sourceTree = "<group>"; };
+		9967E3DD1B76829D00ACAF54 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		9967E3EC1B7682C700ACAF54 /* ValidationRuleComparisonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleComparisonTests.swift; sourceTree = "<group>"; };
+		9967E3ED1B7682C700ACAF54 /* ValidationRuleConditionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleConditionTests.swift; sourceTree = "<group>"; };
+		9967E3EE1B7682C700ACAF54 /* ValidationRuleEqualityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleEqualityTests.swift; sourceTree = "<group>"; };
+		9967E3EF1B7682C700ACAF54 /* ValidationRuleLengthTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleLengthTests.swift; sourceTree = "<group>"; };
+		9967E3F01B7682C700ACAF54 /* ValidationRulePatternTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRulePatternTests.swift; sourceTree = "<group>"; };
+		9967E3F21B7682C700ACAF54 /* UISlider+ValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISlider+ValidatorTests.swift"; sourceTree = "<group>"; };
+		9967E3F31B7682C700ACAF54 /* UITextField+ValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+ValidatorTests.swift"; sourceTree = "<group>"; };
+		9967E3F41B7682C700ACAF54 /* ValidatableInterfaceElementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatableInterfaceElementTests.swift; sourceTree = "<group>"; };
+		9967E3F61B7682C700ACAF54 /* ValidatableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatableTests.swift; sourceTree = "<group>"; };
+		9967E3F81B7682C700ACAF54 /* ValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		999F53941B4E736900143184 /* Frameworks */ = {
+		9967E39F1B76822E00ACAF54 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		999F53A81B4E736900143184 /* Frameworks */ = {
+		9967E3AA1B76822E00ACAF54 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9967E3AE1B76822E00ACAF54 /* Validator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		990ACA5E1B725CD50067C5C7 /* Views */ = {
+		9967E3991B76822E00ACAF54 = {
 			isa = PBXGroup;
 			children = (
-				999A3E171B716E8E0059EE9A /* ExampleTableViewCell.swift */,
-				994C74721B715C870024D1CD /* StringExampleTableViewCell.swift */,
-				999A3E191B716FCA0059EE9A /* NumericExampleTableViewCell.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		990ACA5F1B725CDB0067C5C7 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				994C74701B715A040024D1CD /* ExamplesViewController.swift */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		990ACA611B725D070067C5C7 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				999F53A61B4E736900143184 /* Info.plist */,
-				999F53A31B4E736900143184 /* LaunchScreen.storyboard */,
-				999F53A11B4E736900143184 /* Assets.xcassets */,
-			);
-			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		990ACA621B725D190067C5C7 /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				999F539E1B4E736900143184 /* Main.storyboard */,
-			);
-			path = Storyboards;
-			sourceTree = "<group>";
-		};
-		990DD5C41B6CE050009EAC19 /* Validatable */ = {
-			isa = PBXGroup;
-			children = (
-				9945DF8E1B582F37001F9B7D /* ValidatableTests.swift */,
-			);
-			path = Validatable;
-			sourceTree = "<group>";
-		};
-		990DD5C51B6CE05A009EAC19 /* Validator */ = {
-			isa = PBXGroup;
-			children = (
-				990DD5C61B6CE074009EAC19 /* ValidatorTests.swift */,
-			);
-			path = Validator;
-			sourceTree = "<group>";
-		};
-		992FD35F1B735560009DE772 /* UIKit+Validator */ = {
-			isa = PBXGroup;
-			children = (
-				992FD3601B735592009DE772 /* ValidatableInterfaceElement.swift */,
-				992FD3651B73576A009DE772 /* UITextField+Validator.swift */,
-				992FD36B1B735D42009DE772 /* UISlider+Validator.swift */,
-			);
-			path = "UIKit+Validator";
-			sourceTree = "<group>";
-		};
-		992FD3621B735705009DE772 /* UIKit+Validator */ = {
-			isa = PBXGroup;
-			children = (
-				992FD3671B735BD0009DE772 /* ValidatableInterfaceElementTests.swift */,
-				992FD3631B735722009DE772 /* UITextField+ValidatorTests.swift */,
-				992FD3691B735D09009DE772 /* UISlider+ValidatorTests.swift */,
-			);
-			path = "UIKit+Validator";
-			sourceTree = "<group>";
-		};
-		995D0FC11B519A9F004E2D4D /* Rules */ = {
-			isa = PBXGroup;
-			children = (
-				999F53AF1B4E736900143184 /* ValidationRuleLengthTests.swift */,
-				99904A9F1B583FE300DBD266 /* ValidationRuleComparisonTests.swift */,
-				99B8EFE91B505F8200B1F323 /* ValidationRuleConditionTests.swift */,
-				995D0FC21B519AC5004E2D4D /* ValidationRulePatternTests.swift */,
-				9915CE7B1B51A10700A033CD /* ValidationRuleEqualityTests.swift */,
-			);
-			path = Rules;
-			sourceTree = "<group>";
-		};
-		999F538E1B4E736900143184 = {
-			isa = PBXGroup;
-			children = (
-				992FD35E1B73541F009DE772 /* Valdator.playground */,
-				999F53BA1B4E737500143184 /* Validator */,
-				999F53991B4E736900143184 /* ValidatorExample */,
-				999F53AE1B4E736900143184 /* ValidatorTests */,
-				999F53981B4E736900143184 /* Products */,
+				9967E3A51B76822E00ACAF54 /* Validator */,
+				9967E3B11B76822E00ACAF54 /* ValidatorTests */,
+				9967E3A41B76822E00ACAF54 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		999F53981B4E736900143184 /* Products */ = {
+		9967E3A41B76822E00ACAF54 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				999F53971B4E736900143184 /* Validator.app */,
-				999F53AB1B4E736900143184 /* ValidatorTests.xctest */,
+				9967E3A31B76822E00ACAF54 /* Validator.framework */,
+				9967E3AD1B76822E00ACAF54 /* ValidatorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		999F53991B4E736900143184 /* ValidatorExample */ = {
+		9967E3A51B76822E00ACAF54 /* Validator */ = {
 			isa = PBXGroup;
 			children = (
-				999F539A1B4E736900143184 /* AppDelegate.swift */,
-				990ACA621B725D190067C5C7 /* Storyboards */,
-				990ACA5F1B725CDB0067C5C7 /* Controllers */,
-				990ACA5E1B725CD50067C5C7 /* Views */,
-				990ACA611B725D070067C5C7 /* Supporting Files */,
-			);
-			path = ValidatorExample;
-			sourceTree = "<group>";
-		};
-		999F53AE1B4E736900143184 /* ValidatorTests */ = {
-			isa = PBXGroup;
-			children = (
-				999F53B11B4E736900143184 /* Info.plist */,
-				990DD5C51B6CE05A009EAC19 /* Validator */,
-				990DD5C41B6CE050009EAC19 /* Validatable */,
-				992FD3621B735705009DE772 /* UIKit+Validator */,
-				995D0FC11B519A9F004E2D4D /* Rules */,
-			);
-			path = ValidatorTests;
-			sourceTree = "<group>";
-		};
-		999F53BA1B4E737500143184 /* Validator */ = {
-			isa = PBXGroup;
-			children = (
-				994C19D21B585C8C009CE742 /* Validator.swift */,
-				990DD5C21B6CDFC9009EAC19 /* Validatable.swift */,
-				999F53BD1B4E740700143184 /* ValidationRule.swift */,
-				9995A5271B6F6753000D5105 /* ValidationRuleSet.swift */,
-				999F53BF1B4E744200143184 /* ValidationResult.swift */,
-				99B8EFE11B50415B00B1F323 /* Rules */,
-				992FD35F1B735560009DE772 /* UIKit+Validator */,
+				9967E3DD1B76829D00ACAF54 /* Validator.swift */,
+				9967E3DB1B76829D00ACAF54 /* ValidationRule.swift */,
+				9967E3DC1B76829D00ACAF54 /* ValidationRuleSet.swift */,
+				9967E3DA1B76829D00ACAF54 /* ValidationResult.swift */,
+				9967E3D91B76829D00ACAF54 /* Validatable.swift */,
+				9967E3CF1B76829D00ACAF54 /* Rules */,
+				9967E3D51B76829D00ACAF54 /* UIKit+Validator */,
+				9967E3A61B76822E00ACAF54 /* Validator.h */,
+				9967E3A81B76822E00ACAF54 /* Info.plist */,
 			);
 			path = Validator;
 			sourceTree = "<group>";
 		};
-		99B8EFE11B50415B00B1F323 /* Rules */ = {
+		9967E3B11B76822E00ACAF54 /* ValidatorTests */ = {
 			isa = PBXGroup;
 			children = (
-				9915CE791B519F1E00A033CD /* ValidationRuleEquality.swift */,
-				99904A9D1B583C9500DBD266 /* ValidationRuleComparison.swift */,
-				99B8EFE21B5044D700B1F323 /* ValidationRuleLength.swift */,
-				99B8EFE71B505BF700B1F323 /* ValidationRuleCondition.swift */,
-				995D0FBF1B511DEC004E2D4D /* ValidationRulePattern.swift */,
+				9967E3F71B7682C700ACAF54 /* Validator */,
+				9967E3F51B7682C700ACAF54 /* Validatable */,
+				9967E3EB1B7682C700ACAF54 /* Rules */,
+				9967E3F11B7682C700ACAF54 /* UIKit+Validator */,
+				9967E3B41B76822E00ACAF54 /* Info.plist */,
+			);
+			path = ValidatorTests;
+			sourceTree = "<group>";
+		};
+		9967E3CF1B76829D00ACAF54 /* Rules */ = {
+			isa = PBXGroup;
+			children = (
+				9967E3D01B76829D00ACAF54 /* ValidationRuleComparison.swift */,
+				9967E3D11B76829D00ACAF54 /* ValidationRuleCondition.swift */,
+				9967E3D21B76829D00ACAF54 /* ValidationRuleEquality.swift */,
+				9967E3D31B76829D00ACAF54 /* ValidationRuleLength.swift */,
+				9967E3D41B76829D00ACAF54 /* ValidationRulePattern.swift */,
 			);
 			path = Rules;
 			sourceTree = "<group>";
 		};
+		9967E3D51B76829D00ACAF54 /* UIKit+Validator */ = {
+			isa = PBXGroup;
+			children = (
+				9967E3D81B76829D00ACAF54 /* ValidatableInterfaceElement.swift */,
+				9967E3D71B76829D00ACAF54 /* UITextField+Validator.swift */,
+				9967E3D61B76829D00ACAF54 /* UISlider+Validator.swift */,
+			);
+			path = "UIKit+Validator";
+			sourceTree = "<group>";
+		};
+		9967E3EB1B7682C700ACAF54 /* Rules */ = {
+			isa = PBXGroup;
+			children = (
+				9967E3EC1B7682C700ACAF54 /* ValidationRuleComparisonTests.swift */,
+				9967E3ED1B7682C700ACAF54 /* ValidationRuleConditionTests.swift */,
+				9967E3EE1B7682C700ACAF54 /* ValidationRuleEqualityTests.swift */,
+				9967E3EF1B7682C700ACAF54 /* ValidationRuleLengthTests.swift */,
+				9967E3F01B7682C700ACAF54 /* ValidationRulePatternTests.swift */,
+			);
+			path = Rules;
+			sourceTree = "<group>";
+		};
+		9967E3F11B7682C700ACAF54 /* UIKit+Validator */ = {
+			isa = PBXGroup;
+			children = (
+				9967E3F21B7682C700ACAF54 /* UISlider+ValidatorTests.swift */,
+				9967E3F31B7682C700ACAF54 /* UITextField+ValidatorTests.swift */,
+				9967E3F41B7682C700ACAF54 /* ValidatableInterfaceElementTests.swift */,
+			);
+			path = "UIKit+Validator";
+			sourceTree = "<group>";
+		};
+		9967E3F51B7682C700ACAF54 /* Validatable */ = {
+			isa = PBXGroup;
+			children = (
+				9967E3F61B7682C700ACAF54 /* ValidatableTests.swift */,
+			);
+			path = Validatable;
+			sourceTree = "<group>";
+		};
+		9967E3F71B7682C700ACAF54 /* Validator */ = {
+			isa = PBXGroup;
+			children = (
+				9967E3F81B7682C700ACAF54 /* ValidatorTests.swift */,
+			);
+			path = Validator;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		9967E3A01B76822E00ACAF54 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9967E3A71B76822E00ACAF54 /* Validator.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		999F53961B4E736900143184 /* Validator */ = {
+		9967E3A21B76822E00ACAF54 /* Validator */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 999F53B41B4E736900143184 /* Build configuration list for PBXNativeTarget "Validator" */;
+			buildConfigurationList = 9967E3B71B76822E00ACAF54 /* Build configuration list for PBXNativeTarget "Validator" */;
 			buildPhases = (
-				999F53931B4E736900143184 /* Sources */,
-				999F53941B4E736900143184 /* Frameworks */,
-				999F53951B4E736900143184 /* Resources */,
+				9967E39E1B76822E00ACAF54 /* Sources */,
+				9967E39F1B76822E00ACAF54 /* Frameworks */,
+				9967E3A01B76822E00ACAF54 /* Headers */,
+				9967E3A11B76822E00ACAF54 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -278,76 +229,72 @@
 			);
 			name = Validator;
 			productName = Validator;
-			productReference = 999F53971B4E736900143184 /* Validator.app */;
-			productType = "com.apple.product-type.application";
+			productReference = 9967E3A31B76822E00ACAF54 /* Validator.framework */;
+			productType = "com.apple.product-type.framework";
 		};
-		999F53AA1B4E736900143184 /* ValidatorTests */ = {
+		9967E3AC1B76822E00ACAF54 /* ValidatorTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 999F53B71B4E736900143184 /* Build configuration list for PBXNativeTarget "ValidatorTests" */;
+			buildConfigurationList = 9967E3BA1B76822E00ACAF54 /* Build configuration list for PBXNativeTarget "ValidatorTests" */;
 			buildPhases = (
-				999F53A71B4E736900143184 /* Sources */,
-				999F53A81B4E736900143184 /* Frameworks */,
-				999F53A91B4E736900143184 /* Resources */,
+				9967E3A91B76822E00ACAF54 /* Sources */,
+				9967E3AA1B76822E00ACAF54 /* Frameworks */,
+				9967E3AB1B76822E00ACAF54 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				999F53AD1B4E736900143184 /* PBXTargetDependency */,
+				9967E3B01B76822E00ACAF54 /* PBXTargetDependency */,
 			);
 			name = ValidatorTests;
 			productName = ValidatorTests;
-			productReference = 999F53AB1B4E736900143184 /* ValidatorTests.xctest */;
+			productReference = 9967E3AD1B76822E00ACAF54 /* ValidatorTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		999F538F1B4E736900143184 /* Project object */ = {
+		9967E39A1B76822E00ACAF54 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = adamjwaite.co.uk;
 				TargetAttributes = {
-					999F53961B4E736900143184 = {
+					9967E3A21B76822E00ACAF54 = {
 						CreatedOnToolsVersion = 7.0;
 					};
-					999F53AA1B4E736900143184 = {
+					9967E3AC1B76822E00ACAF54 = {
 						CreatedOnToolsVersion = 7.0;
-						TestTargetID = 999F53961B4E736900143184;
 					};
 				};
 			};
-			buildConfigurationList = 999F53921B4E736900143184 /* Build configuration list for PBXProject "Validator" */;
+			buildConfigurationList = 9967E39D1B76822E00ACAF54 /* Build configuration list for PBXProject "Validator" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 			);
-			mainGroup = 999F538E1B4E736900143184;
-			productRefGroup = 999F53981B4E736900143184 /* Products */;
+			mainGroup = 9967E3991B76822E00ACAF54;
+			productRefGroup = 9967E3A41B76822E00ACAF54 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				999F53961B4E736900143184 /* Validator */,
-				999F53AA1B4E736900143184 /* ValidatorTests */,
+				9967E3A21B76822E00ACAF54 /* Validator */,
+				9967E3AC1B76822E00ACAF54 /* ValidatorTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		999F53951B4E736900143184 /* Resources */ = {
+		9967E3A11B76822E00ACAF54 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				999F53A51B4E736900143184 /* LaunchScreen.storyboard in Resources */,
-				999F53A21B4E736900143184 /* Assets.xcassets in Resources */,
-				999F53A01B4E736900143184 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		999F53A91B4E736900143184 /* Resources */ = {
+		9967E3AB1B76822E00ACAF54 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -357,81 +304,55 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		999F53931B4E736900143184 /* Sources */ = {
+		9967E39E1B76822E00ACAF54 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				992FD3611B735592009DE772 /* ValidatableInterfaceElement.swift in Sources */,
-				994C19D31B585C8C009CE742 /* Validator.swift in Sources */,
-				9995A5281B6F6753000D5105 /* ValidationRuleSet.swift in Sources */,
-				99904A9E1B583C9500DBD266 /* ValidationRuleComparison.swift in Sources */,
-				990DD5C31B6CDFC9009EAC19 /* Validatable.swift in Sources */,
-				992FD3661B73576A009DE772 /* UITextField+Validator.swift in Sources */,
-				9915CE7A1B519F1E00A033CD /* ValidationRuleEquality.swift in Sources */,
-				99B8EFE81B505BF700B1F323 /* ValidationRuleCondition.swift in Sources */,
-				994C74731B715C870024D1CD /* StringExampleTableViewCell.swift in Sources */,
-				999F53BE1B4E740700143184 /* ValidationRule.swift in Sources */,
-				995D0FC01B511DEC004E2D4D /* ValidationRulePattern.swift in Sources */,
-				999A3E1A1B716FCA0059EE9A /* NumericExampleTableViewCell.swift in Sources */,
-				999F53C01B4E744200143184 /* ValidationResult.swift in Sources */,
-				994C74711B715A040024D1CD /* ExamplesViewController.swift in Sources */,
-				999A3E181B716E8E0059EE9A /* ExampleTableViewCell.swift in Sources */,
-				99B8EFE31B5044D700B1F323 /* ValidationRuleLength.swift in Sources */,
-				999F539B1B4E736900143184 /* AppDelegate.swift in Sources */,
-				992FD36C1B735D42009DE772 /* UISlider+Validator.swift in Sources */,
+				9967E3E51B76829D00ACAF54 /* ValidatableInterfaceElement.swift in Sources */,
+				9967E3E61B76829D00ACAF54 /* Validatable.swift in Sources */,
+				9967E3E41B76829D00ACAF54 /* UITextField+Validator.swift in Sources */,
+				9967E3E71B76829D00ACAF54 /* ValidationResult.swift in Sources */,
+				9967E3EA1B76829D00ACAF54 /* Validator.swift in Sources */,
+				9967E3E21B76829D00ACAF54 /* ValidationRulePattern.swift in Sources */,
+				9967E3E91B76829D00ACAF54 /* ValidationRuleSet.swift in Sources */,
+				9967E3E01B76829D00ACAF54 /* ValidationRuleEquality.swift in Sources */,
+				9967E3DF1B76829D00ACAF54 /* ValidationRuleCondition.swift in Sources */,
+				9967E3E11B76829D00ACAF54 /* ValidationRuleLength.swift in Sources */,
+				9967E3DE1B76829D00ACAF54 /* ValidationRuleComparison.swift in Sources */,
+				9967E3E81B76829D00ACAF54 /* ValidationRule.swift in Sources */,
+				9967E3E31B76829D00ACAF54 /* UISlider+Validator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		999F53A71B4E736900143184 /* Sources */ = {
+		9967E3A91B76822E00ACAF54 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9915CE7C1B51A10700A033CD /* ValidationRuleEqualityTests.swift in Sources */,
-				992FD3681B735BD0009DE772 /* ValidatableInterfaceElementTests.swift in Sources */,
-				990DD5C71B6CE074009EAC19 /* ValidatorTests.swift in Sources */,
-				992FD36A1B735D09009DE772 /* UISlider+ValidatorTests.swift in Sources */,
-				999F53B01B4E736900143184 /* ValidationRuleLengthTests.swift in Sources */,
-				99904AA01B583FE300DBD266 /* ValidationRuleComparisonTests.swift in Sources */,
-				992FD3641B735722009DE772 /* UITextField+ValidatorTests.swift in Sources */,
-				99B8EFEA1B505F8200B1F323 /* ValidationRuleConditionTests.swift in Sources */,
-				9945DF8F1B582F37001F9B7D /* ValidatableTests.swift in Sources */,
-				995D0FC31B519AC5004E2D4D /* ValidationRulePatternTests.swift in Sources */,
+				9967E4001B7682C700ACAF54 /* ValidatableInterfaceElementTests.swift in Sources */,
+				9967E3FD1B7682C700ACAF54 /* ValidationRulePatternTests.swift in Sources */,
+				9967E3FF1B7682C700ACAF54 /* UITextField+ValidatorTests.swift in Sources */,
+				9967E4011B7682C700ACAF54 /* ValidatableTests.swift in Sources */,
+				9967E3FA1B7682C700ACAF54 /* ValidationRuleConditionTests.swift in Sources */,
+				9967E3FB1B7682C700ACAF54 /* ValidationRuleEqualityTests.swift in Sources */,
+				9967E4021B7682C700ACAF54 /* ValidatorTests.swift in Sources */,
+				9967E3FC1B7682C700ACAF54 /* ValidationRuleLengthTests.swift in Sources */,
+				9967E3F91B7682C700ACAF54 /* ValidationRuleComparisonTests.swift in Sources */,
+				9967E3FE1B7682C700ACAF54 /* UISlider+ValidatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		999F53AD1B4E736900143184 /* PBXTargetDependency */ = {
+		9967E3B01B76822E00ACAF54 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 999F53961B4E736900143184 /* Validator */;
-			targetProxy = 999F53AC1B4E736900143184 /* PBXContainerItemProxy */;
+			target = 9967E3A21B76822E00ACAF54 /* Validator */;
+			targetProxy = 9967E3AF1B76822E00ACAF54 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		999F539E1B4E736900143184 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				999F539F1B4E736900143184 /* Base */,
-			);
-			name = Main.storyboard;
-			path = .;
-			sourceTree = "<group>";
-		};
-		999F53A31B4E736900143184 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				999F53A41B4E736900143184 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			path = .;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		999F53B21B4E736900143184 /* Debug */ = {
+		9967E3B51B76822E00ACAF54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -450,6 +371,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -473,10 +395,12 @@
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		999F53B31B4E736900143184 /* Release */ = {
+		9967E3B61B76822E00ACAF54 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -495,12 +419,12 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -512,87 +436,97 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		999F53B51B4E736900143184 /* Debug */ = {
+		9967E3B81B76822E00ACAF54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "ValidatorExample/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Validator/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = adamjwaite.co.uk.Validator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		999F53B61B4E736900143184 /* Release */ = {
+		9967E3B91B76822E00ACAF54 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				INFOPLIST_FILE = "ValidatorExample/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Validator/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = adamjwaite.co.uk.Validator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
-		999F53B81B4E736900143184 /* Debug */ = {
+		9967E3BB1B76822E00ACAF54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = ValidatorTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = adamjwaite.co.uk.ValidatorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Validator.app/Validator";
 			};
 			name = Debug;
 		};
-		999F53B91B4E736900143184 /* Release */ = {
+		9967E3BC1B76822E00ACAF54 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = ValidatorTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = adamjwaite.co.uk.ValidatorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Validator.app/Validator";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		999F53921B4E736900143184 /* Build configuration list for PBXProject "Validator" */ = {
+		9967E39D1B76822E00ACAF54 /* Build configuration list for PBXProject "Validator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				999F53B21B4E736900143184 /* Debug */,
-				999F53B31B4E736900143184 /* Release */,
+				9967E3B51B76822E00ACAF54 /* Debug */,
+				9967E3B61B76822E00ACAF54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		999F53B41B4E736900143184 /* Build configuration list for PBXNativeTarget "Validator" */ = {
+		9967E3B71B76822E00ACAF54 /* Build configuration list for PBXNativeTarget "Validator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				999F53B51B4E736900143184 /* Debug */,
-				999F53B61B4E736900143184 /* Release */,
+				9967E3B81B76822E00ACAF54 /* Debug */,
+				9967E3B91B76822E00ACAF54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		999F53B71B4E736900143184 /* Build configuration list for PBXNativeTarget "ValidatorTests" */ = {
+		9967E3BA1B76822E00ACAF54 /* Build configuration list for PBXNativeTarget "ValidatorTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				999F53B81B4E736900143184 /* Debug */,
-				999F53B91B4E736900143184 /* Release */,
+				9967E3BB1B76822E00ACAF54 /* Debug */,
+				9967E3BC1B76822E00ACAF54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 999F538F1B4E736900143184 /* Project object */;
+	rootObject = 9967E39A1B76822E00ACAF54 /* Project object */;
 }

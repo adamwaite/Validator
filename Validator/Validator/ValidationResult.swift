@@ -29,14 +29,14 @@
 
 import Foundation
 
-enum ValidationResult {
+public enum ValidationResult {
     case Valid
     case Invalid([String])
     var isValid: Bool { return self == .Valid }
 }
 
 extension ValidationResult: Equatable {}
-func ==(lhs: ValidationResult, rhs: ValidationResult) -> Bool {
+public func ==(lhs: ValidationResult, rhs: ValidationResult) -> Bool {
     switch (lhs, rhs) {
     case (.Valid, .Valid): return true
     case (.Invalid(let a), .Invalid(let b)) where a == b: return true

@@ -29,7 +29,7 @@
 
 import Foundation
 
-struct Validator {
+public struct Validator {
     
     static func validate<InputType, R: ValidationRule where InputType == R.InputType>(input i: InputType, rule r: R) -> ValidationResult {
         var ruleSet = ValidationRuleSet<R.InputType>()

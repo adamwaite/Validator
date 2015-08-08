@@ -29,28 +29,28 @@
 
 import Foundation
 
-enum ValidationPattern: String {
+public enum ValidationPattern: String {
     case EmailAddress = "^[_A-Za-z0-9-+]+(\\.[_A-Za-z0-9-+]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z‌​]{2,4})$"
     case ContainsNumber = ".*\\d.*"
 }
 
-struct ValidationRulePattern: ValidationRule {
+public struct ValidationRulePattern: ValidationRule {
     
-    typealias InputType = String
+    public typealias InputType = String
     
-    let pattern: String
-    var failureMessage: String
+    public let pattern: String
+    public var failureMessage: String
     
-    init(pattern: String, failureMessage: String) {
+    public init(pattern: String, failureMessage: String) {
         self.pattern = pattern
         self.failureMessage = failureMessage
     }
     
-    init(pattern: ValidationPattern, failureMessage: String) {
+    public init(pattern: ValidationPattern, failureMessage: String) {
         self.init(pattern: pattern.rawValue, failureMessage: failureMessage)
     }
     
-    func validateInput(input: String) -> Bool {
+    public func validateInput(input: String) -> Bool {
         return NSPredicate(format: "SELF MATCHES %@", pattern).evaluateWithObject(input)
     }
     

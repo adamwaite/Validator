@@ -57,40 +57,5 @@ class UITextFieldValidatorTests: XCTestCase {
         XCTAssertTrue(valid.isValid)
         
     }
-
-    func testThatItValidateWhenInputValueChanges() {
-        
-        let textField = UITextField()
-        
-        var rules = ValidationRuleSet<String>()
-        rules.addRule(ValidationRuleLength(min: 5, failureMessage: "💣"))
-        rules.addRule(ValidationRuleCondition<String>(failureMessage: "💣") { $0.characters.contains("A") })
-        
-        textField.validationRules = rules
-        
-        var isValidFlag: Bool?
-        
-        textField.validationHandler = { result in
-            switch result {
-            case .Valid: isValidFlag = true
-            case.Invalid(_): isValidFlag = false
-            }
-        }
-        
-        textField.validateOnInputChange(true)
-        
-        XCTAssertNil(isValidFlag)
-        
-        textField.text = "Hello adam"
-        textField.sendActionsForControlEvents(.EditingChanged)
-        XCTAssertNotNil(isValidFlag)
-        XCTAssertFalse(isValidFlag!)
-        
-        textField.text = "Hello Adam"
-        textField.sendActionsForControlEvents(.EditingChanged)
-        XCTAssertNotNil(isValidFlag)
-        XCTAssertTrue(isValidFlag!)
-        
-    }
     
 }

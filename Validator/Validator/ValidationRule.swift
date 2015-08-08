@@ -29,7 +29,7 @@
 
 import Foundation
 
-protocol ValidationRule {
+public protocol ValidationRule {
     
     typealias InputType
     

@@ -31,18 +31,18 @@ import UIKit
 
 extension UITextField: ValidatableInterfaceElement {
     
-    typealias InputType = String
+    public typealias InputType = String
     
-    var inputValue: String { return text ?? "" }
+    public var inputValue: String { return text ?? "" }
     
-    func validateOnInputChange(validationEnabled: Bool) {
+    public func validateOnInputChange(validationEnabled: Bool) {
         switch validationEnabled {
         case true: addTarget(self, action: "validateInputChange:", forControlEvents: .EditingChanged)
         case false: removeTarget(self, action: "validateInputChange:", forControlEvents: .EditingChanged)
         }
     }
     
-    @objc private func validateInputChange(sender: UITextField) {
+    @objc internal func validateInputChange(sender: UITextField) {
         sender.validate()
     }
     

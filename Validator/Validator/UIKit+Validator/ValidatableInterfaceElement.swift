@@ -30,9 +30,9 @@
 import Foundation
 import ObjectiveC
 
-typealias ValidationHandler = ValidationResult -> ()
+public typealias ValidationHandler = ValidationResult -> ()
 
-protocol ValidatableInterfaceElement: AnyObject {
+public protocol ValidatableInterfaceElement: AnyObject {
     
     typealias InputType: Validatable
     
@@ -58,7 +58,7 @@ private final class Box<T>: NSObject {
 
 extension ValidatableInterfaceElement {
     
-    var validationRules: ValidationRuleSet<InputType>? {
+    public var validationRules: ValidationRuleSet<InputType>? {
         get {
             let boxed: Box<ValidationRuleSet<InputType>>? = objc_getAssociatedObject(self, &ValidatableInterfaceElementRulesKey) as! Box<ValidationRuleSet<InputType>>?
             return boxed?.thing
@@ -71,7 +71,7 @@ extension ValidatableInterfaceElement {
         }
     }
     
-    var validationHandler: ValidationHandler? {
+    public var validationHandler: ValidationHandler? {
         get {
             let boxed: Box<ValidationHandler>? = objc_getAssociatedObject(self, &ValidatableInterfaceElementHandlerKey) as! Box<ValidationHandler>?
             return boxed?.thing
@@ -84,19 +84,19 @@ extension ValidatableInterfaceElement {
         }
     }
     
-    func validate<R: ValidationRule where R.InputType == InputType>(rule r: R) -> ValidationResult {
+    public func validate<R: ValidationRule where R.InputType == InputType>(rule r: R) -> ValidationResult {
         let result = inputValue.validate(rule: r)
         if let h = validationHandler { h(result) }
         return result
     }
     
-    func validate(rules rs: ValidationRuleSet<InputType>) -> ValidationResult {
+    public func validate(rules rs: ValidationRuleSet<InputType>) -> ValidationResult {
         let result = inputValue.validate(rules: rs)
         if let h = validationHandler { h(result) }
         return result
     }
     
-    func validate() -> ValidationResult {
+    public func validate() -> ValidationResult {
         guard let attachedRules = validationRules else { fatalError("Validator Error: attempted to validate without attaching rules") }
         return validate(rules: attachedRules)
     }

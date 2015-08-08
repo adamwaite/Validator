@@ -29,21 +29,21 @@
 
 import Foundation
 
-struct ValidationRuleComparison<T: Comparable>: ValidationRule {
+public struct ValidationRuleComparison<T: Comparable>: ValidationRule {
     
-    typealias InputType = T
+    public typealias InputType = T
     
     let min: T
     let max: T
-    var failureMessage: String
+    public var failureMessage: String
     
-    init(min: T, max: T, failureMessage: String) {
+    public init(min: T, max: T, failureMessage: String) {
         self.min = min
         self.max = max
         self.failureMessage = failureMessage
     }
     
-    func validateInput(input: T) -> Bool {
+    public func validateInput(input: T) -> Bool {
         return input >= min && input <= max
     }
     
