@@ -3,12 +3,12 @@
 Validator is a user input validation library written in Swift.
 
 ```
-let rule = ValidationRulePattern(pattern: .EmailAddress, failureMessage: “Input must be a valid email address”)
+let rule = ValidationRulePattern(pattern: .EmailAddress, failureMessage: "Input must be a valid email address")
 
-let result = “invalid@email,com”.validate(rule: rule)
+let result = "invalid@email,com".validate(rule: rule)
 
 switch result {
-case .Valid: print(“😀”)
+case .Valid: print("😀")
 case .Invalid(let failures): print(failures.first?)
 }
 ```
@@ -37,9 +37,9 @@ Note - Embedded frameworks require a minimum deployment target of iOS 8.
 Validates an `Equatable` type is equal to another.
 
 ```
-let staticEqualityRule = ValidationRuleEquality<String>(target: “hello”, failureMessage: “Input does not equal ‘hello’”)
+let staticEqualityRule = ValidationRuleEquality<String>(target: "hello", failureMessage: "Input does not equal ‘hello’")
 
-let dynamicEqualityRule = ValidationRuleEquality<String>(dynamicTarget: { return textField.text ?? “” }, failureMessage: “Input does not equal the input in the previous field”)
+let dynamicEqualityRule = ValidationRuleEquality<String>(dynamicTarget: { return textField.text ?? "" }, failureMessage: "Input does not equal the input in the previous field")
 ```
 
 ### Comparison
@@ -47,7 +47,7 @@ let dynamicEqualityRule = ValidationRuleEquality<String>(dynamicTarget: { return
 Validates a `Comparable` type against a maximum and minimum.
 
 ```
-let comparisonRule = ValidationRuleComparison<Float>(min: 5, max: 7, failureMessage: “Input is not between 5 and 7”)
+let comparisonRule = ValidationRuleComparison<Float>(min: 5, max: 7, failureMessage: "Input is not between 5 and 7")
 ```
 
 ### Length
@@ -55,11 +55,11 @@ let comparisonRule = ValidationRuleComparison<Float>(min: 5, max: 7, failureMess
 Validates a `String` length satisfies a minimum, maximum or range.
 
 ```
-let minLengthRule = ValidationRuleLength(min: 5, failureMessage: “Input must be at least 5 characters”)
+let minLengthRule = ValidationRuleLength(min: 5, failureMessage: "Input must be at least 5 characters")
 
-let maxLengthRule = ValidationRuleLength(max: 5, failureMessage: “Input must be at most 5 characters”)
+let maxLengthRule = ValidationRuleLength(max: 5, failureMessage: "Input must be at most 5 characters")
 
-let rangeLengthRule = ValidationRuleLength(min: 5, max: 10, failureMessage: “Input must be between 5 and 10 characters”)
+let rangeLengthRule = ValidationRuleLength(min: 5, max: 10, failureMessage: "Input must be between 5 and 10 characters")
 ```
 
 ### Pattern
@@ -67,11 +67,11 @@ let rangeLengthRule = ValidationRuleLength(min: 5, max: 10, failureMessage: “I
 Validates a `String` against a pattern. Validator provides some common patterns in the `ValidationPattern` enum.
 
 ```
-let emailRule = ValidationRulePattern(pattern: .EmailAddress, failureMessage: “Input must be a valid email address”)
+let emailRule = ValidationRulePattern(pattern: .EmailAddress, failureMessage: "Input must be a valid email address")
 
-let digitRule = ValidationRulePattern(pattern: .ContainsDigit, failureMessage: “Input must contain a digit”)
+let digitRule = ValidationRulePattern(pattern: .ContainsDigit, failureMessage: "Input must contain a digit")
 
-let helloRule = ValidationRulePattern(pattern: ”.*hello.*”, failureMessage: “Input must contain the word hello”)
+let helloRule = ValidationRulePattern(pattern: ".*hello.*", failureMessage: "Input must contain the word hello")
 ```
 
 ### Condition
@@ -79,7 +79,7 @@ let helloRule = ValidationRulePattern(pattern: ”.*hello.*”, failureMessage: 
 Validates a `Validatable` type with a custom condition.
 
 ```
-let conditionRule = ValidationRuleCondition<[String]>(failureMessage: “Collection does not contain the string ‘Hello’”) { $0.contains(“Hello”) }
+let conditionRule = ValidationRuleCondition<[String]>(failureMessage: "Collection does not contain the string ‘Hello’") { $0.contains("Hello") }
 ```
 
 ### Create Your Own
@@ -99,9 +99,9 @@ Example:
 ```
 struct HappyRule {
 	typealias InputType = String
-	var failureMessage: String { return “U mad?” }
-	func validateInput(input: String) -> Bool { 
-		return input == “😀”
+	var failureMessage: String { return "U mad?" }
+	func validateInput(input: String) -> Bool {
+		return input == "😀"
 	}
 }
 ```
@@ -115,10 +115,10 @@ Validation rules can be combined into a `ValidationRuleSet` containing a collect
 ```
 var passwordRules = ValidationRuleSet<String>()
 
-let minLengthRule = ValidationRuleLength(min: 5, failureMessage: “Input must be at least 5 characters”)
+let minLengthRule = ValidationRuleLength(min: 5, failureMessage: "Input must be at least 5 characters")
 passwordRules.addRule(minLengthRule)
 
-let digitRule = ValidationRulePattern(pattern: .ContainsDigit, failureMessage: “Password must contain a digit”)
+let digitRule = ValidationRulePattern(pattern: .ContainsDigit, failureMessage: "Password must contain a digit")
 passwordRules.addRule(digitRule)
 ```
 
@@ -129,7 +129,7 @@ Any type that conforms to the `Validatable` protocol can be validated using the 
 ```
 // Validate with a single rule:
 
-let result = “some string”.validate(rule: aRule)
+let result = "some string".validate(rule: aRule)
 
 // Validate with a collection of rules:
 
@@ -138,7 +138,7 @@ let result = 42.validate(rules: aRuleSet)
 
 The `validate:` method returns a `ValidationResult` enum. `ValidationResult` can take one of two forms:
 
-1. `.Valid`: The input satisfies the validation rules. 
+1. `.Valid`: The input satisfies the validation rules.
 2. `.Invalid`: The input fails the validation rules. An `.Invalid` result has an associated array of strings containing the failure messages defined in the rules (in the `failureMessage`s).
 
 ### Extend Types As Validatable
@@ -155,7 +155,7 @@ UIKit elements that conform to `ValidatableInterfaceElement` can have their inpu
 
 ```
 let textField = UITextField()
-textField.text = “I’m going to be validated”
+textField.text = "I’m going to be validated"
 
 let slider = UISlider()
 slider.value = 0.3
@@ -185,11 +185,11 @@ textField.validationRules = rules
 2. Attach a closure to fire on input change:
 
 ```
-textField.validationHandler = { result in 
+textField.validationHandler = { result in
 	switch result {
-  case .Valid: 
+  case .Valid:
 		textField.textColor = UIColor.blackColor()
-  case .Invalid(let failureMessages): 
+  case .Invalid(let failureMessages):
 		print(failureMessages)
 		textField.textColor = UIColor.redColor()
   }
@@ -210,22 +210,22 @@ Example:
 
 ```
 extension UITextField: ValidatableInterfaceElement {
-    
+
     typealias InputType = String
-    
-    var inputValue: String { return text ?? “” }
-    
+
+    var inputValue: String { return text ?? "" }
+
     func validateOnInputChange(validationEnabled: Bool) {
         switch validationEnabled {
-        case true: addTarget(self, action: “validateInputChange:”, forControlEvents: .EditingChanged)
-        case false: removeTarget(self, action: “validateInputChange:”, forControlEvents: .EditingChanged)
+        case true: addTarget(self, action: "validateInputChange:", forControlEvents: .EditingChanged)
+        case false: removeTarget(self, action: "validateInputChange:", forControlEvents: .EditingChanged)
         }
     }
-    
+
     @objc private func validateInputChange(sender: UITextField) {
         sender.validate()
     }
-    
+
 }
 ```
 
@@ -249,8 +249,8 @@ Any contributions and suggestions are most welcome! Please ensure any new code i
 
 ## License
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
