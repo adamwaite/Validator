@@ -26,7 +26,7 @@ case .Invalid(let failures): print(failures.first?)
 
 Install Validator with [CocoaPods](http://cocoapods.org):
 
-`pod ‘Validator’`
+`pod 'Validator'`
 
 Note - Embedded frameworks require a minimum deployment target of iOS 8.
 
@@ -37,7 +37,7 @@ Note - Embedded frameworks require a minimum deployment target of iOS 8.
 Validates an `Equatable` type is equal to another.
 
 ```
-let staticEqualityRule = ValidationRuleEquality<String>(target: "hello", failureMessage: "Input does not equal ‘hello’")
+let staticEqualityRule = ValidationRuleEquality<String>(target: "hello", failureMessage: "Input does not equal 'hello'")
 
 let dynamicEqualityRule = ValidationRuleEquality<String>(dynamicTarget: { return textField.text ?? "" }, failureMessage: "Input does not equal the input in the previous field")
 ```
@@ -79,7 +79,7 @@ let helloRule = ValidationRulePattern(pattern: ".*hello.*", failureMessage: "Inp
 Validates a `Validatable` type with a custom condition.
 
 ```
-let conditionRule = ValidationRuleCondition<[String]>(failureMessage: "Collection does not contain the string ‘Hello’") { $0.contains("Hello") }
+let conditionRule = ValidationRuleCondition<[String]>(failureMessage: "Collection does not contain the string 'Hello'") { $0.contains("Hello") }
 ```
 
 ### Create Your Own
@@ -106,7 +106,7 @@ struct HappyRule {
 }
 ```
 
-> If your custom rule doesn’t already exist in the library and you think it might be useful for other people, then it’d be great if you added it in with a [pull request](https://github.com/adamwaite/AJWValidator/pulls).
+> If your custom rule doesn't already exist in the library and you think it might be useful for other people, then it'd be great if you added it in with a [pull request](https://github.com/adamwaite/AJWValidator/pulls).
 
 ## Multiple Validation Rules (`ValidationRuleSet`)
 
@@ -147,7 +147,7 @@ Extend the `Validatable` protocol to make a new type validatable.
 
 `extension Thing : Validatable { }`
 
-The implementation inside the protocol extension should mean that you don’t need to implement anything yourself.
+The implementation inside the protocol extension should mean that you don't need to implement anything yourself.
 
 ## Validate UIKit Elements
 
@@ -155,7 +155,7 @@ UIKit elements that conform to `ValidatableInterfaceElement` can have their inpu
 
 ```
 let textField = UITextField()
-textField.text = "I’m going to be validated"
+textField.text = "I'm going to be validated"
 
 let slider = UISlider()
 slider.value = 0.3
@@ -237,7 +237,7 @@ The implementation inside the protocol extension should mean that you should onl
 
 ## Examples
 
-There’s an example project in this repository.
+There's an example project in this repository.
 
 ## Contributing
 
