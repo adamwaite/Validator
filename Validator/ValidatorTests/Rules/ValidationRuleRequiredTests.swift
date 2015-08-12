@@ -32,16 +32,16 @@ import XCTest
 
 class ValidationRuleRequiredTests: XCTestCase {
     
-//    func testThatItCanValidateOptionalValues() {
-//
-//        let rule = ValidationRuleRequired<String?>(failureMessage: "💣")
-//
-//        let invalid = Validator.validate(input: nil, rule: rule)
-//        print(invalid)
-//        XCTAssertFalse(invalid.isValid)
-//
-////        let valid = Validator.validate(input: "hello", rule: rule)
-////        XCTAssertTrue(valid.isValid)
-//
-//    }
+    func testThatItCanValidateOptionalValues() {
+
+        let rule = ValidationRuleRequired<String?>(failureMessage: "💣")
+
+        let invalid = Validator.validate(input: nil, rule: rule)
+        print(invalid)
+        XCTAssertFalse(invalid.isValid)
+
+        let valid = Validator.validate(input: "hello", rule: rule)
+        XCTAssertTrue(valid.isValid)
+
+    }
 }
