@@ -30,9 +30,25 @@
 import Foundation
 
 public enum ValidationResult {
+    
     case Valid
     case Invalid([String])
-    var isValid: Bool { return self == .Valid }
+
+    public var isValid: Bool { return self == .Valid }
+
+    public func merge(another: ValidationResult) -> ValidationResult {
+        switch self {
+        case .Valid:
+            return another
+        case .Invalid(let errorMessages):
+            switch another {
+            case .Valid:
+                return self
+            case .Invalid(let errorMessagesAnother):
+                return .Invalid([errorMessages, errorMessagesAnother].flatMap { $0 })
+            }
+        }
+    }
 }
 
 extension ValidationResult: Equatable {}

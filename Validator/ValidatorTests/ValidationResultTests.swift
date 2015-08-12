@@ -1,6 +1,6 @@
 /*
 
- ValidatableTests.swift
+ ValidationResultTests.swift
  Validator
 
  Created by @adamwaite.
@@ -30,17 +30,34 @@
 import XCTest
 @testable import Validator
 
-class ValidatableTests: XCTestCase {
+class ValidationResultTests: XCTestCase {
     
-    func testThatItCanValidate() {
-        
-        let rule = ValidationRuleCondition<String>(failureMessage: "💣") { $0?.characters.count > 0 }
-        
-        let invalid = "".validate(rule: rule)
-        XCTAssertFalse(invalid.isValid)
-        
-        let valid = "😀".validate(rule: rule)
+    func testThatAValidResultIsDeemedValid() {
+        let valid = ValidationResult.Valid
         XCTAssertTrue(valid.isValid)
+       
+        let invalid = ValidationResult.Invalid(["💣"])
+        XCTAssertFalse(invalid.isValid)
+    }
+    
+    func testThatItCanBeMergedWithOtherValidationResults() {
+        
+        let success1 = ValidationResult.Valid
+        let success2 = ValidationResult.Valid
+        let fail1 = ValidationResult.Invalid(["💣"])
+        let fail2 = ValidationResult.Invalid(["💣💣"])
+        
+        let sbj1 = success1.merge(success2)
+        XCTAssertEqual(sbj1, ValidationResult.Valid)
+        
+        let sbj2 = success1.merge(fail1)
+        XCTAssertEqual(sbj2, ValidationResult.Invalid(["💣"]))
+
+        let sbj3 = fail1.merge(fail2)
+        XCTAssertEqual(sbj3, ValidationResult.Invalid(["💣", "💣💣"]))
+
+        let sbj4 = sbj3.merge(sbj3)
+        XCTAssertEqual(sbj4, ValidationResult.Invalid(["💣", "💣💣", "💣", "💣💣"]))
         
     }
     

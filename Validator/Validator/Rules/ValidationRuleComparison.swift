@@ -43,7 +43,7 @@ public struct ValidationRuleComparison<T: Comparable>: ValidationRule {
         self.failureMessage = failureMessage
     }
     
-    public func validateInput(input: T) -> Bool {
+    public func validateInput(input: T?) -> Bool {
         return input >= min && input <= max
     }
     

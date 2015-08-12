@@ -31,7 +31,6 @@ import Foundation
 public struct ValidationRuleSet<InputType> {
     
     public init() {
-        
     }
     
     internal var rules = [AnyValidationRule<InputType>]()

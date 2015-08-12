@@ -50,7 +50,7 @@ public struct ValidationRulePattern: ValidationRule {
         self.init(pattern: pattern.rawValue, failureMessage: failureMessage)
     }
     
-    public func validateInput(input: String) -> Bool {
+    public func validateInput(input: String?) -> Bool {
         return NSPredicate(format: "SELF MATCHES %@", pattern).evaluateWithObject(input)
     }
     

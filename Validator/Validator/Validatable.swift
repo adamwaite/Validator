@@ -31,6 +31,8 @@ import Foundation
 
 public protocol Validatable {
     
+    func validate() -> ValidationResult
+    
     func validate<R: ValidationRule where R.InputType == Self>(rule r: R) -> ValidationResult
     
     func validate(rules rs: ValidationRuleSet<Self>) -> ValidationResult
@@ -38,6 +40,10 @@ public protocol Validatable {
 }
 
 extension Validatable {
+    
+    public func validate() -> ValidationResult {
+        return .Valid
+    }
     
     public func validate<R: ValidationRule where R.InputType == Self>(rule r: R) -> ValidationResult {
         return Validator.validate(input: self, rule: r)

@@ -33,7 +33,7 @@ public protocol ValidationRule {
     
     typealias InputType
     
-    func validateInput(input: InputType) -> Bool
+    func validateInput(input: InputType?) -> Bool
     
     var failureMessage: String { get }
     
@@ -41,7 +41,7 @@ public protocol ValidationRule {
 
 internal struct AnyValidationRule<InputType>: ValidationRule {
     
-    private let baseValidateInput: (InputType) -> Bool
+    private let baseValidateInput: (InputType?) -> Bool
     
     let failureMessage: String
     
@@ -50,7 +50,7 @@ internal struct AnyValidationRule<InputType>: ValidationRule {
         failureMessage = base.failureMessage
     }
     
-    func validateInput(input: InputType) -> Bool {
+    func validateInput(input: InputType?) -> Bool {
         return baseValidateInput(input)
     }
     

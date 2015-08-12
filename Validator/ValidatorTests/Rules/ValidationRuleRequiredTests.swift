@@ -1,6 +1,6 @@
 /*
 
- ValidatableTests.swift
+ ValidationRuleRequiredTests.swift
  Validator
 
  Created by @adamwaite.
@@ -30,18 +30,18 @@
 import XCTest
 @testable import Validator
 
-class ValidatableTests: XCTestCase {
+class ValidationRuleRequiredTests: XCTestCase {
     
-    func testThatItCanValidate() {
-        
-        let rule = ValidationRuleCondition<String>(failureMessage: "💣") { $0?.characters.count > 0 }
-        
-        let invalid = "".validate(rule: rule)
-        XCTAssertFalse(invalid.isValid)
-        
-        let valid = "😀".validate(rule: rule)
-        XCTAssertTrue(valid.isValid)
-        
-    }
-    
+//    func testThatItCanValidateOptionalValues() {
+//
+//        let rule = ValidationRuleRequired<String?>(failureMessage: "💣")
+//
+//        let invalid = Validator.validate(input: nil, rule: rule)
+//        print(invalid)
+//        XCTAssertFalse(invalid.isValid)
+//
+////        let valid = Validator.validate(input: "hello", rule: rule)
+////        XCTAssertTrue(valid.isValid)
+//
+//    }
 }
