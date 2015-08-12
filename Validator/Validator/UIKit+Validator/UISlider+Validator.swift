@@ -33,7 +33,7 @@ extension UISlider: ValidatableInterfaceElement {
     
     public typealias InputType = Float
     
-    public var inputValue: Float { return value }
+    public var inputValue: Float? { return value }
     
     public func validateOnInputChange(validationEnabled: Bool) {
         switch validationEnabled {

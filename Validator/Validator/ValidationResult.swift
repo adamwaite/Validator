@@ -38,14 +38,11 @@ public enum ValidationResult {
 
     public func merge(another: ValidationResult) -> ValidationResult {
         switch self {
-        case .Valid:
-            return another
+        case .Valid: return another
         case .Invalid(let errorMessages):
             switch another {
-            case .Valid:
-                return self
-            case .Invalid(let errorMessagesAnother):
-                return .Invalid([errorMessages, errorMessagesAnother].flatMap { $0 })
+            case .Valid: return self
+            case .Invalid(let errorMessagesAnother): return .Invalid([errorMessages, errorMessagesAnother].flatMap { $0 })
             }
         }
     }

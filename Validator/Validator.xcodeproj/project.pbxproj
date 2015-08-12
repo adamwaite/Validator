@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		995B7A0B1B7BEB6700FB2AB7 /* ValidatableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B7A0A1B7BEB6700FB2AB7 /* ValidatableModel.swift */; };
 		995B7A0E1B7BEE5F00FB2AB7 /* ValidationResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B7A0D1B7BEE5F00FB2AB7 /* ValidationResultTests.swift */; };
 		995B7A141B7BF8C500FB2AB7 /* ValidationRuleRequiredTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B7A131B7BF8C500FB2AB7 /* ValidationRuleRequiredTests.swift */; };
 		995B7A161B7BF96E00FB2AB7 /* ValidationRuleRequired.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B7A151B7BF96E00FB2AB7 /* ValidationRuleRequired.swift */; };
@@ -49,7 +48,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		995B7A0A1B7BEB6700FB2AB7 /* ValidatableModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatableModel.swift; sourceTree = "<group>"; };
 		995B7A0D1B7BEE5F00FB2AB7 /* ValidationResultTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationResultTests.swift; sourceTree = "<group>"; };
 		995B7A131B7BF8C500FB2AB7 /* ValidationRuleRequiredTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleRequiredTests.swift; sourceTree = "<group>"; };
 		995B7A151B7BF96E00FB2AB7 /* ValidationRuleRequired.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleRequired.swift; sourceTree = "<group>"; };
@@ -136,7 +134,6 @@
 				9967E3DC1B76829D00ACAF54 /* ValidationRuleSet.swift */,
 				9967E3DA1B76829D00ACAF54 /* ValidationResult.swift */,
 				9967E3D91B76829D00ACAF54 /* Validatable.swift */,
-				995B7A0A1B7BEB6700FB2AB7 /* ValidatableModel.swift */,
 				9967E3CF1B76829D00ACAF54 /* Rules */,
 				9967E3D51B76829D00ACAF54 /* UIKit+Validator */,
 				9967E3A61B76822E00ACAF54 /* Validator.h */,
@@ -333,7 +330,6 @@
 				9967E3E41B76829D00ACAF54 /* UITextField+Validator.swift in Sources */,
 				9967E3E71B76829D00ACAF54 /* ValidationResult.swift in Sources */,
 				9967E3EA1B76829D00ACAF54 /* Validator.swift in Sources */,
-				995B7A0B1B7BEB6700FB2AB7 /* ValidatableModel.swift in Sources */,
 				9967E3E21B76829D00ACAF54 /* ValidationRulePattern.swift in Sources */,
 				995B7A161B7BF96E00FB2AB7 /* ValidationRuleRequired.swift in Sources */,
 				9967E3E91B76829D00ACAF54 /* ValidationRuleSet.swift in Sources */,

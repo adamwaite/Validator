@@ -33,7 +33,7 @@ extension UITextField: ValidatableInterfaceElement {
     
     public typealias InputType = String
     
-    public var inputValue: String { return text ?? "" }
+    public var inputValue: String? { return text }
     
     public func validateOnInputChange(validationEnabled: Bool) {
         switch validationEnabled {
