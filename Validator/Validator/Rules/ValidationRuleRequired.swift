@@ -35,6 +35,10 @@ public struct ValidationRuleRequired<T>: ValidationRule {
     
     public var failureMessage: String
     
+    public init(failureMessage: String) {
+        self.failureMessage = failureMessage
+    }
+    
     public func validateInput(input: T?) -> Bool {        
         return input != nil
     }
