@@ -1,6 +1,6 @@
 /*
 
- ValidationRuleRequired.swift
+ ValidationError.swift
  Validator
 
  Created by @adamwaite.
@@ -29,18 +29,16 @@
 
 import Foundation
 
-public struct ValidationRuleRequired<T>: ValidationRule {
+public protocol ValidationErrorType: ErrorType {
+    var message: String { get }
+}
 
-    public typealias InputType = T
+public struct ValidationError: ValidationErrorType {
     
-    public var failureError: ValidationErrorType
+    public let message: String
     
-    public init(failureError: ValidationErrorType) {
-        self.failureError = failureError
-    }
-    
-    public func validateInput(input: T?) -> Bool {        
-        return input != nil
+    public init(message m: String) {
+        message = m
     }
     
 }

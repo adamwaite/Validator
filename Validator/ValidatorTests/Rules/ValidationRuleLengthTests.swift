@@ -34,7 +34,7 @@ class ValidationRuleLengthTests: XCTestCase {
     
     func testThatItCanValidateMinLength() {
         
-        let rule = ValidationRuleLength(min: 5, failureMessage: "💣")
+        let rule = ValidationRuleLength(min: 5, failureError: ValidationError(message: "💣"))
         
         let tooShort = Validator.validate(input: "aaaa", rule: rule)
         XCTAssertFalse(tooShort.isValid)
@@ -46,7 +46,7 @@ class ValidationRuleLengthTests: XCTestCase {
     
     func testThatItCanValidateMaxLength() {
         
-        let rule = ValidationRuleLength(max: 5, failureMessage: "💣")
+        let rule = ValidationRuleLength(max: 5, failureError: ValidationError(message: "💣"))
         
         let tooLong = Validator.validate(input: "aaaaaa", rule: rule)
         XCTAssertFalse(tooLong.isValid)
@@ -58,7 +58,7 @@ class ValidationRuleLengthTests: XCTestCase {
     
     func testThatItCanValidateRangeLength() {
         
-        let rule = ValidationRuleLength(min: 5, max: 10, failureMessage: "💣")
+        let rule = ValidationRuleLength(min: 5, max: 10, failureError: ValidationError(message: "💣"))
         
         let tooShort = Validator.validate(input: "aaaa", rule: rule)
         XCTAssertFalse(tooShort.isValid)

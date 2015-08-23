@@ -35,7 +35,7 @@ public protocol ValidationRule {
     
     func validateInput(input: InputType?) -> Bool
     
-    var failureMessage: String { get }
+    var failureError: ValidationErrorType { get }
     
 }
 
@@ -43,11 +43,11 @@ internal struct AnyValidationRule<InputType>: ValidationRule {
     
     private let baseValidateInput: (InputType?) -> Bool
     
-    let failureMessage: String
+    let failureError: ValidationErrorType
     
     init<R: ValidationRule where R.InputType == InputType>(base: R) {
         baseValidateInput = base.validateInput
-        failureMessage = base.failureMessage
+        failureError = base.failureError
     }
     
     func validateInput(input: InputType?) -> Bool {

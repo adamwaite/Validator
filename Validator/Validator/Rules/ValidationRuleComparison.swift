@@ -35,12 +35,12 @@ public struct ValidationRuleComparison<T: Comparable>: ValidationRule {
     
     let min: T
     let max: T
-    public var failureMessage: String
+    public var failureError: ValidationErrorType
     
-    public init(min: T, max: T, failureMessage: String) {
+    public init(min: T, max: T, failureError: ValidationErrorType) {
         self.min = min
         self.max = max
-        self.failureMessage = failureMessage
+        self.failureError = failureError
     }
     
     public func validateInput(input: T?) -> Bool {

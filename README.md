@@ -2,25 +2,16 @@
 
 Validator is a user input validation library written in Swift.
 
-```
-let rule = ValidationRulePattern(pattern: .EmailAddress, failureMessage: "Input must be a valid email address")
-
-let result = "invalid@email,com".validate(rule: rule)
-
-switch result {
-case .Valid: print("😀")
-case .Invalid(let failures): print(failures.first?)
-}
-```
-
 ![demo-vid](resources/demo.mp4.gif)
 
 ## Features
 
 - [x] Validation rules
-- [x] Swift type extensions
+- [x] Swift standard library type extensions
 - [x] UIKit element extensions
-- [x] An easily extended protocol-oriented implementation
+- [x] Flexible validation error types
+- [x] An open protocol-oriented implementation
+- [x] Comprehensive test coverage
 
 ## Installation
 
@@ -30,59 +21,75 @@ Install Validator with [CocoaPods](http://cocoapods.org):
 
 Note - Embedded frameworks require a minimum deployment target of iOS 8.
 
-## Validation Rules
+## Usage
 
-### Equality
+`Validator` can validate any `Validatable` type using one or multiple `ValidationRule`s. A validation operation returns a `ValidationResult` which matches either `.Valid` or `.Invalid([ValidationErrorType])`, where `ValidationErrorType` extends `ErrorType`.
+
+```
+let rule = ValidationRulePattern(pattern: .EmailAddress, failureError: someValidationErrorType)
+
+let result = "invalid@email,com".validate(rule: rule)
+// Note: the above is equivalent to Validator.validate(input: "invalid@email,com", rule: rule)
+
+switch result {
+case .Valid: print("😀")
+case .Invalid(let failures): print(failures.first?.message)
+}
+```
+
+### Validation Rules
+
+#### Equality
 
 Validates an `Equatable` type is equal to another.
 
 ```
-let staticEqualityRule = ValidationRuleEquality<String>(target: "hello", failureMessage: "Input does not equal 'hello'")
+let staticEqualityRule = ValidationRuleEquality<String>(target: "hello", failureError: someValidationErrorType)
 
-let dynamicEqualityRule = ValidationRuleEquality<String>(dynamicTarget: { return textField.text ?? "" }, failureMessage: "Input does not equal the input in the previous field")
+let dynamicEqualityRule = ValidationRuleEquality<String>(dynamicTarget: { return textField.text ?? "" }, failureError: someValidationErrorType)
 ```
 
-### Comparison
+#### Comparison
 
 Validates a `Comparable` type against a maximum and minimum.
 
 ```
-let comparisonRule = ValidationRuleComparison<Float>(min: 5, max: 7, failureMessage: "Input is not between 5 and 7")
+let comparisonRule = ValidationRuleComparison<Float>(min: 5, max: 7, failureError: someValidationErrorType)
 ```
 
-### Length
+#### Length
 
 Validates a `String` length satisfies a minimum, maximum or range.
 
 ```
-let minLengthRule = ValidationRuleLength(min: 5, failureMessage: "Input must be at least 5 characters")
+let minLengthRule = ValidationRuleLength(min: 5, failureError: someValidationErrorType)
 
-let maxLengthRule = ValidationRuleLength(max: 5, failureMessage: "Input must be at most 5 characters")
+let maxLengthRule = ValidationRuleLength(max: 5, failureError: someValidationErrorType)
 
-let rangeLengthRule = ValidationRuleLength(min: 5, max: 10, failureMessage: "Input must be between 5 and 10 characters")
+let rangeLengthRule = ValidationRuleLength(min: 5, max: 10, failureError: someValidationErrorType)
 ```
 
-### Pattern
+#### Pattern
 
 Validates a `String` against a pattern. Validator provides some common patterns in the `ValidationPattern` enum.
 
 ```
-let emailRule = ValidationRulePattern(pattern: .EmailAddress, failureMessage: "Input must be a valid email address")
+let emailRule = ValidationRulePattern(pattern: .EmailAddress, failureError: someValidationErrorType)
 
-let digitRule = ValidationRulePattern(pattern: .ContainsDigit, failureMessage: "Input must contain a digit")
+let digitRule = ValidationRulePattern(pattern: .ContainsDigit, failureError: someValidationErrorType)
 
-let helloRule = ValidationRulePattern(pattern: ".*hello.*", failureMessage: "Input must contain the word hello")
+let helloRule = ValidationRulePattern(pattern: ".*hello.*", failureError: someValidationErrorType)
 ```
 
-### Condition
+#### Condition
 
 Validates a `Validatable` type with a custom condition.
 
 ```
-let conditionRule = ValidationRuleCondition<[String]>(failureMessage: "Collection does not contain the string 'Hello'") { $0.contains("Hello") }
+let conditionRule = ValidationRuleCondition<[String]>(failureError: someValidationErrorType) { $0.contains("Hello") }
 ```
 
-### Create Your Own
+#### Create Your Own
 
 Create your own validation rules by conforming to the `ValidationRule` protocol:
 
@@ -90,7 +97,7 @@ Create your own validation rules by conforming to the `ValidationRule` protocol:
 protocol ValidationRule {
     typealias InputType
     func validateInput(input: InputType) -> Bool
-    var failureMessage: String { get }
+    var failureError: ValidationErrorType { get }
 }
 ```
 
@@ -98,31 +105,31 @@ Example:
 
 ```
 struct HappyRule {
-	typealias InputType = String
-	var failureMessage: String { return "U mad?" }
-	func validateInput(input: String) -> Bool {
-		return input == "😀"
-	}
+    typealias InputType = String
+    var failureError: ValidationError(message: "U mad?") }
+    func validateInput(input: String) -> Bool {
+        return input == "😀"
+    }
 }
 ```
 
 > If your custom rule doesn't already exist in the library and you think it might be useful for other people, then it'd be great if you added it in with a [pull request](https://github.com/adamwaite/AJWValidator/pulls).
 
-## Multiple Validation Rules (`ValidationRuleSet`)
+### Multiple Validation Rules (`ValidationRuleSet`)
 
 Validation rules can be combined into a `ValidationRuleSet` containing a collection of rules that validate a type.
 
 ```
 var passwordRules = ValidationRuleSet<String>()
 
-let minLengthRule = ValidationRuleLength(min: 5, failureMessage: "Input must be at least 5 characters")
+let minLengthRule = ValidationRuleLength(min: 5, failureError: someValidationErrorType)
 passwordRules.addRule(minLengthRule)
 
-let digitRule = ValidationRulePattern(pattern: .ContainsDigit, failureMessage: "Password must contain a digit")
+let digitRule = ValidationRulePattern(pattern: .ContainsDigit, failureError: someValidationErrorType)
 passwordRules.addRule(digitRule)
 ```
 
-## Validate Types
+### Validatable
 
 Any type that conforms to the `Validatable` protocol can be validated using the `validate:` method.
 
@@ -136,20 +143,63 @@ let result = "some string".validate(rule: aRule)
 let result = 42.validate(rules: aRuleSet)
 ```
 
-The `validate:` method returns a `ValidationResult` enum. `ValidationResult` can take one of two forms:
-
-1. `.Valid`: The input satisfies the validation rules.
-2. `.Invalid`: The input fails the validation rules. An `.Invalid` result has an associated array of strings containing the failure messages defined in the rules (in the `failureMessage`s).
-
-### Extend Types As Validatable
+#### Extend Types As Validatable
 
 Extend the `Validatable` protocol to make a new type validatable.
 
 `extension Thing : Validatable { }`
 
-The implementation inside the protocol extension should mean that you don't need to implement anything yourself.
+Note: The implementation inside the protocol extension should mean that you don't need to implement anything yourself unless you need to validate multiple properties.
 
-## Validate UIKit Elements
+### ValidationResult
+
+The `validate:` method returns a `ValidationResult` enum. `ValidationResult` can take one of two forms:
+
+1. `.Valid`: The input satisfies the validation rules.
+2. `.Invalid`: The input fails the validation rules. An `.Invalid` result has an associated array of types conforming to `ValidationErrorType`.
+
+You can combine two or more `ValidationResult`s together with `merge:`.
+
+```
+let result1 = ValidationResult.Invalid([someError])
+let result2 = ValidationResult.Invalid([someError2])
+let allResults = result1.merge(result2) // = ValidationResult.Invalid([someError1, someError2])
+```
+
+### ValidationErrorType
+
+The `ValidationErrorType` extends `ErrorType` and adds a message property for holding a validation error message. This means that they're compatible with [Swift 2 error handling](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/ErrorHandling.html) and flexible for defining your own.
+
+```
+struct User: Validatable {
+
+    let email: String
+
+    enum ValidationErrors: String, ValidationErrorType {
+        case EmailInvalid = "Email address is invalid"
+        var message { return self.rawValue }
+    }
+
+    func validate() -> ValidationResult {
+        let rule ValidationRulePattern(pattern: .EmailAddress, failureError: ValidationErrors.EmailInvalid)
+        return email.validate(rule: rule)
+    }
+}
+
+```
+
+Validator also ships with a basic `ValidationError` struct if you'd prefer to use that. It implements `ValidationErrorType`:
+
+```
+public struct ValidationError: ValidationErrorType {
+    public let message: String
+    public init(message m: String) {
+        message = m
+    }
+}
+```
+
+### Validating UIKit Elements
 
 UIKit elements that conform to `ValidatableInterfaceElement` can have their input validated with the `validate:` method.
 
@@ -169,7 +219,7 @@ let result = textField.validate(rule: aRule)
 let result = slider.validate(rules: aRuleSet)
 ```
 
-### Validate On Input Change
+#### Validate On Input Change
 
 A `ValidatableInterfaceElement` can be configured to automatically validate when the input changes in 3 steps.
 
@@ -189,8 +239,9 @@ textField.validationHandler = { result in
 	switch result {
   case .Valid:
 		textField.textColor = UIColor.blackColor()
-  case .Invalid(let failureMessages):
-		print(failureMessages)
+  case .Invalid(let failureErrors):
+		let messages = failureErrors.map { $0.message }
+        print(messages)
 		textField.textColor = UIColor.redColor()
   }
 }
@@ -202,7 +253,7 @@ textField.validationHandler = { result in
 
 Note - Use `.validateOnInputChange(false)` to end observation.
 
-### Extend UI Elements As Validatable
+#### Extend UI Elements As Validatable
 
 Extend the `ValidatableInterfaceElement` protocol to make an interface element validatable.
 

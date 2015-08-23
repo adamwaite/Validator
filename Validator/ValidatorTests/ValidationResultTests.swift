@@ -36,7 +36,9 @@ class ValidationResultTests: XCTestCase {
         let valid = ValidationResult.Valid
         XCTAssertTrue(valid.isValid)
        
-        let invalid = ValidationResult.Invalid(["💣"])
+        let err = ValidationError(message: "💣")
+        
+        let invalid = ValidationResult.Invalid([err])
         XCTAssertFalse(invalid.isValid)
     }
     
@@ -44,20 +46,24 @@ class ValidationResultTests: XCTestCase {
         
         let success1 = ValidationResult.Valid
         let success2 = ValidationResult.Valid
-        let fail1 = ValidationResult.Invalid(["💣"])
-        let fail2 = ValidationResult.Invalid(["💣💣"])
+        
+        let err1 = ValidationError(message: "💣")
+        let err2 = ValidationError(message: "💣💣")
+        
+        let fail1 = ValidationResult.Invalid([err1])
+        let fail2 = ValidationResult.Invalid([err2])
         
         let sbj1 = success1.merge(success2)
         XCTAssertEqual(sbj1, ValidationResult.Valid)
         
         let sbj2 = success1.merge(fail1)
-        XCTAssertEqual(sbj2, ValidationResult.Invalid(["💣"]))
+        XCTAssertEqual(sbj2, ValidationResult.Invalid([err1]))
 
         let sbj3 = fail1.merge(fail2)
-        XCTAssertEqual(sbj3, ValidationResult.Invalid(["💣", "💣💣"]))
+        XCTAssertEqual(sbj3, ValidationResult.Invalid([err1, err2]))
 
         let sbj4 = sbj3.merge(sbj3)
-        XCTAssertEqual(sbj4, ValidationResult.Invalid(["💣", "💣💣", "💣", "💣💣"]))
+        XCTAssertEqual(sbj4, ValidationResult.Invalid([err1, err2, err1, err2]))
         
     }
     

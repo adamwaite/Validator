@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		995275911B8A03A4004A5C15 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995275901B8A03A4004A5C15 /* ValidationError.swift */; };
 		995B7A0E1B7BEE5F00FB2AB7 /* ValidationResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B7A0D1B7BEE5F00FB2AB7 /* ValidationResultTests.swift */; };
 		995B7A141B7BF8C500FB2AB7 /* ValidationRuleRequiredTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B7A131B7BF8C500FB2AB7 /* ValidationRuleRequiredTests.swift */; };
 		995B7A161B7BF96E00FB2AB7 /* ValidationRuleRequired.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B7A151B7BF96E00FB2AB7 /* ValidationRuleRequired.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		995275901B8A03A4004A5C15 /* ValidationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
 		995B7A0D1B7BEE5F00FB2AB7 /* ValidationResultTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationResultTests.swift; sourceTree = "<group>"; };
 		995B7A131B7BF8C500FB2AB7 /* ValidationRuleRequiredTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleRequiredTests.swift; sourceTree = "<group>"; };
 		995B7A151B7BF96E00FB2AB7 /* ValidationRuleRequired.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleRequired.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				9967E3DC1B76829D00ACAF54 /* ValidationRuleSet.swift */,
 				9967E3DA1B76829D00ACAF54 /* ValidationResult.swift */,
 				9967E3D91B76829D00ACAF54 /* Validatable.swift */,
+				995275901B8A03A4004A5C15 /* ValidationError.swift */,
 				9967E3CF1B76829D00ACAF54 /* Rules */,
 				9967E3D51B76829D00ACAF54 /* UIKit+Validator */,
 				9967E3A61B76822E00ACAF54 /* Validator.h */,
@@ -145,12 +148,12 @@
 		9967E3B11B76822E00ACAF54 /* ValidatorTests */ = {
 			isa = PBXGroup;
 			children = (
+				9967E3B41B76822E00ACAF54 /* Info.plist */,
 				9967E3F71B7682C700ACAF54 /* Validator */,
 				9967E3F51B7682C700ACAF54 /* Validatable */,
 				995B7A0C1B7BEE4D00FB2AB7 /* ValidationResult */,
 				9967E3EB1B7682C700ACAF54 /* Rules */,
 				9967E3F11B7682C700ACAF54 /* UIKit+Validator */,
-				9967E3B41B76822E00ACAF54 /* Info.plist */,
 			);
 			path = ValidatorTests;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				9967E3E01B76829D00ACAF54 /* ValidationRuleEquality.swift in Sources */,
 				9967E3DF1B76829D00ACAF54 /* ValidationRuleCondition.swift in Sources */,
 				9967E3E11B76829D00ACAF54 /* ValidationRuleLength.swift in Sources */,
+				995275911B8A03A4004A5C15 /* ValidationError.swift in Sources */,
 				9967E3DE1B76829D00ACAF54 /* ValidationRuleComparison.swift in Sources */,
 				9967E3E81B76829D00ACAF54 /* ValidationRule.swift in Sources */,
 				9967E3E31B76829D00ACAF54 /* UISlider+Validator.swift in Sources */,

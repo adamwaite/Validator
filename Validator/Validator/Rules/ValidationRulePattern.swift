@@ -39,15 +39,15 @@ public struct ValidationRulePattern: ValidationRule {
     public typealias InputType = String
     
     public let pattern: String
-    public var failureMessage: String
+    public var failureError: ValidationErrorType
     
-    public init(pattern: String, failureMessage: String) {
+    public init(pattern: String, failureError: ValidationErrorType) {
         self.pattern = pattern
-        self.failureMessage = failureMessage
+        self.failureError = failureError
     }
     
-    public init(pattern: ValidationPattern, failureMessage: String) {
-        self.init(pattern: pattern.rawValue, failureMessage: failureMessage)
+    public init(pattern: ValidationPattern, failureError: ValidationErrorType) {
+        self.init(pattern: pattern.rawValue, failureError: failureError)
     }
     
     public func validateInput(input: String?) -> Bool {

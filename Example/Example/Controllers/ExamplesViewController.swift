@@ -79,54 +79,54 @@ extension ExamplesViewController {
             case 0:
                 stringCell.titleLabel.text = "Minimum Length"
                 stringCell.summaryLabel.text = "Ensures the input is at least 5 characters long using ValidationRuleLength"
-                let minLengthRule = ValidationRuleLength(min: 5, failureMessage: "😫")
+                let minLengthRule = ValidationRuleLength(min: 5, failureError: ValidationError(message: "😫"))
                 stringCell.validationRuleSet?.addRule(minLengthRule)
             
             case 1:
                 stringCell.titleLabel.text = "Maximum Length"
                 stringCell.summaryLabel.text = "Ensures the input is at most 5 characters long using ValidationRuleLength"
-                let maxLengthRule = ValidationRuleLength(max: 5, failureMessage: "😫")
+                let maxLengthRule = ValidationRuleLength(max: 5, failureError: ValidationError(message: "😫"))
                 stringCell.validationRuleSet?.addRule(maxLengthRule)
                 
             case 2:
                 stringCell.titleLabel.text = "Range Length"
                 stringCell.summaryLabel.text = "Ensures the input is between 5 and 20 characters long using ValidationRuleLength"
-                let rangeLengthRule = ValidationRuleLength(min: 5, max: 10, failureMessage: "😫")
+                let rangeLengthRule = ValidationRuleLength(min: 5, max: 10, failureError: ValidationError(message: "😫"))
                 stringCell.validationRuleSet?.addRule(rangeLengthRule)
                 
             case 3:
                 stringCell.titleLabel.text = "Email Address"
                 stringCell.summaryLabel.text = "Ensures the input is a valid email address using ValidationRulePattern"
-                let emailRule = ValidationRulePattern(pattern: .EmailAddress, failureMessage: "😫")
+                let emailRule = ValidationRulePattern(pattern: .EmailAddress, failureError: ValidationError(message: "😫"))
                 stringCell.validationRuleSet?.addRule(emailRule)
             
             case 4:
                 stringCell.titleLabel.text = "Contains Digit"
                 stringCell.summaryLabel.text = "Ensures the input contains a digit using ValidationRulePattern"
-                let digitRule = ValidationRulePattern(pattern: .ContainsNumber, failureMessage: "😫")
+                let digitRule = ValidationRulePattern(pattern: .ContainsNumber, failureError: ValidationError(message: "😫"))
                 stringCell.validationRuleSet?.addRule(digitRule)
                 
-            case 5:
-                stringCell.titleLabel.text = "Is a Greeting"
-                stringCell.summaryLabel.text = "Ensures the input is one of the greetings 'hello', 'hey' or 'hi' using ValidationRuleConditiom"
-                let conditionRule = ValidationRuleCondition<String>(failureMessage: "😫") { ["hello", "hey", "hi"].contains($0) }
-                stringCell.validationRuleSet?.addRule(conditionRule)
+//            case 5:
+//                stringCell.titleLabel.text = "Is a Greeting"
+//                stringCell.summaryLabel.text = "Ensures the input is one of the greetings 'hello', 'hey' or 'hi' using ValidationRuleConditiom"
+//                let conditionRule = ValidationRuleCondition<String>(failureError: ValidationError(message: "😫")) { ["hello", "hey", "hi"].contains($0!) }
+//                stringCell.validationRuleSet?.addRule(conditionRule)
 
             case 6:
                 stringCell.titleLabel.text = "Dynamic Equality"
                 stringCell.summaryLabel.text = "Ensures the input is equal to a dynamic value (in this case just 'Password') using ValidationRuleEquality"
-                let equalityRule = ValidationRuleEquality<String>(dynamicTarget: { return "Password" }, failureMessage: "😫")
+                let equalityRule = ValidationRuleEquality<String>(dynamicTarget: { return "Password" }, failureError: ValidationError(message: "😫"))
                 stringCell.validationRuleSet?.addRule(equalityRule)
 
-            case 7:
-                stringCell.titleLabel.text = "Multiple Rules"
-                stringCell.summaryLabel.text = "Combines multiple validations into one rule set - range length, valid email and contains greeting"
-                let emailRule = ValidationRulePattern(pattern: .EmailAddress, failureMessage: "😫")
-                let rangeLengthRule = ValidationRuleLength(min: 5, max: 30, failureMessage: "😥")
-                let conditionRule = ValidationRuleCondition<String>(failureMessage: "😔") { input in ["hello", "hey", "hi"].filter { input.rangeOfString($0) != nil }.count > 0 }
-                stringCell.validationRuleSet?.addRule(emailRule)
-                stringCell.validationRuleSet?.addRule(rangeLengthRule)
-                stringCell.validationRuleSet?.addRule(conditionRule)
+//            case 7:
+//                stringCell.titleLabel.text = "Multiple Rules"
+//                stringCell.summaryLabel.text = "Combines multiple validations into one rule set - range length, valid email and contains greeting"
+//                let emailRule = ValidationRulePattern(pattern: .EmailAddress, failureError: ValidationError(message: "😫"))
+//                let rangeLengthRule = ValidationRuleLength(min: 5, max: 30, failureError: ValidationError(message: "😥"))
+//                let conditionRule = ValidationRuleCondition<String>(failureError: ValidationError(message: "😔")) { input in ["hello", "hey", "hi"].filter { input.rangeOfString($0!) != nil }.count > 0 }
+//                stringCell.validationRuleSet?.addRule(emailRule)
+//                stringCell.validationRuleSet?.addRule(rangeLengthRule)
+//                stringCell.validationRuleSet?.addRule(conditionRule)
                 
             default:
                 break
@@ -143,13 +143,13 @@ extension ExamplesViewController {
             case 0:
                 numericCell.titleLabel.text = "Comparison"
                 numericCell.summaryLabel.text = "Ensures the input is between 2 and 7 using ValidationRuleComparison"
-                let comparisonRule = ValidationRuleComparison<Float>(min: 5, max: 7, failureMessage: "😫")
+                let comparisonRule = ValidationRuleComparison<Float>(min: 5, max: 7, failureError: ValidationError(message: "😫"))
                 numericCell.validationRuleSet?.addRule(comparisonRule)
 
             case 1:
                 numericCell.titleLabel.text = "Equality"
                 numericCell.summaryLabel.text = "Ensures the input is equal to 5.0 using ValidationRuleEquality"
-                let comparisonRule = ValidationRuleEquality<Float>(target: 5.0, failureMessage: "😫")
+                let comparisonRule = ValidationRuleEquality<Float>(target: 5.0, failureError: ValidationError(message: "😫"))
                 numericCell.validationRuleSet?.addRule(comparisonRule)
                 
             default:

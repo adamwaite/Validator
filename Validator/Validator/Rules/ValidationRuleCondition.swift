@@ -34,11 +34,11 @@ public struct ValidationRuleCondition<T>: ValidationRule {
     public typealias InputType = T
     
     public let condition: T? -> Bool
-    public let failureMessage: String
+    public let failureError: ValidationErrorType
         
-    public init(failureMessage: String, condition: (T? -> Bool)) {
+    public init(failureError: ValidationErrorType, condition: (T? -> Bool)) {
         self.condition = condition
-        self.failureMessage = failureMessage
+        self.failureError = failureError
     }
     
     public func validateInput(input: T?) -> Bool {

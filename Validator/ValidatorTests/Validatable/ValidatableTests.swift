@@ -34,7 +34,7 @@ class ValidatableTests: XCTestCase {
     
     func testThatItCanValidate() {
         
-        let rule = ValidationRuleCondition<String>(failureMessage: "💣") { $0?.characters.count > 0 }
+        let rule = ValidationRuleCondition<String>(failureError: ValidationError(message: "💣")) { $0?.characters.count > 0 }
         
         let invalid = "".validate(rule: rule)
         XCTAssertFalse(invalid.isValid)
