@@ -25,7 +25,7 @@ Note - Embedded frameworks require a minimum deployment target of iOS 8.
 
 `Validator` can validate any `Validatable` type using one or multiple `ValidationRule`s. A validation operation returns a `ValidationResult` which matches either `.Valid` or `.Invalid([ValidationErrorType])`, where `ValidationErrorType` extends `ErrorType`.
 
-```
+```swift
 let rule = ValidationRulePattern(pattern: .EmailAddress, failureError: someValidationErrorType)
 
 let result = "invalid@email,com".validate(rule: rule)
@@ -43,7 +43,7 @@ case .Invalid(let failures): print(failures.first?.message)
 
 Validates an `Equatable` type is equal to another.
 
-```
+```swift
 let staticEqualityRule = ValidationRuleEquality<String>(target: "hello", failureError: someValidationErrorType)
 
 let dynamicEqualityRule = ValidationRuleEquality<String>(dynamicTarget: { return textField.text ?? "" }, failureError: someValidationErrorType)
@@ -53,7 +53,7 @@ let dynamicEqualityRule = ValidationRuleEquality<String>(dynamicTarget: { return
 
 Validates a `Comparable` type against a maximum and minimum.
 
-```
+```swift
 let comparisonRule = ValidationRuleComparison<Float>(min: 5, max: 7, failureError: someValidationErrorType)
 ```
 
@@ -61,7 +61,7 @@ let comparisonRule = ValidationRuleComparison<Float>(min: 5, max: 7, failureErro
 
 Validates a `String` length satisfies a minimum, maximum or range.
 
-```
+```swift
 let minLengthRule = ValidationRuleLength(min: 5, failureError: someValidationErrorType)
 
 let maxLengthRule = ValidationRuleLength(max: 5, failureError: someValidationErrorType)
@@ -73,7 +73,7 @@ let rangeLengthRule = ValidationRuleLength(min: 5, max: 10, failureError: someVa
 
 Validates a `String` against a pattern. Validator provides some common patterns in the `ValidationPattern` enum.
 
-```
+```swift
 let emailRule = ValidationRulePattern(pattern: .EmailAddress, failureError: someValidationErrorType)
 
 let digitRule = ValidationRulePattern(pattern: .ContainsDigit, failureError: someValidationErrorType)
@@ -85,7 +85,7 @@ let helloRule = ValidationRulePattern(pattern: ".*hello.*", failureError: someVa
 
 Validates a `Validatable` type with a custom condition.
 
-```
+```swift
 let conditionRule = ValidationRuleCondition<[String]>(failureError: someValidationErrorType) { $0.contains("Hello") }
 ```
 
@@ -93,7 +93,7 @@ let conditionRule = ValidationRuleCondition<[String]>(failureError: someValidati
 
 Create your own validation rules by conforming to the `ValidationRule` protocol:
 
-```
+```swift
 protocol ValidationRule {
     typealias InputType
     func validateInput(input: InputType) -> Bool
@@ -103,7 +103,7 @@ protocol ValidationRule {
 
 Example:
 
-```
+```swift
 struct HappyRule {
     typealias InputType = String
     var failureError: ValidationError(message: "U mad?") }
@@ -119,7 +119,7 @@ struct HappyRule {
 
 Validation rules can be combined into a `ValidationRuleSet` containing a collection of rules that validate a type.
 
-```
+```swift
 var passwordRules = ValidationRuleSet<String>()
 
 let minLengthRule = ValidationRuleLength(min: 5, failureError: someValidationErrorType)
@@ -133,7 +133,7 @@ passwordRules.addRule(digitRule)
 
 Any type that conforms to the `Validatable` protocol can be validated using the `validate:` method.
 
-```
+```swift
 // Validate with a single rule:
 
 let result = "some string".validate(rule: aRule)
@@ -160,7 +160,7 @@ The `validate:` method returns a `ValidationResult` enum. `ValidationResult` can
 
 You can combine two or more `ValidationResult`s together with `merge:`.
 
-```
+```swift
 let result1 = ValidationResult.Invalid([someError])
 let result2 = ValidationResult.Invalid([someError2])
 let allResults = result1.merge(result2) // = ValidationResult.Invalid([someError1, someError2])
@@ -170,7 +170,7 @@ let allResults = result1.merge(result2) // = ValidationResult.Invalid([someError
 
 The `ValidationErrorType` extends `ErrorType` and adds a message property for holding a validation error message. This means that they're compatible with [Swift 2 error handling](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/ErrorHandling.html) and flexible for defining your own.
 
-```
+```swift
 struct User: Validatable {
 
     let email: String
@@ -190,7 +190,7 @@ struct User: Validatable {
 
 Validator also ships with a basic `ValidationError` struct if you'd prefer to use that. It implements `ValidationErrorType`:
 
-```
+```swift
 public struct ValidationError: ValidationErrorType {
     public let message: String
     public init(message m: String) {
@@ -203,7 +203,7 @@ public struct ValidationError: ValidationErrorType {
 
 UIKit elements that conform to `ValidatableInterfaceElement` can have their input validated with the `validate:` method.
 
-```
+```swift
 let textField = UITextField()
 textField.text = "I'm going to be validated"
 
@@ -225,7 +225,7 @@ A `ValidatableInterfaceElement` can be configured to automatically validate when
 
 1. Attach a set of default rules:
 
-```
+```swift
 let textField = UITextField()
 let rules = ValidationRuleSet<String>()
 rules.addRule(someRule)
@@ -234,7 +234,7 @@ textField.validationRules = rules
 
 2. Attach a closure to fire on input change:
 
-```
+```swift
 textField.validationHandler = { result in
 	switch result {
   case .Valid:
@@ -249,7 +249,9 @@ textField.validationHandler = { result in
 
 3. Begin observation:
 
-`textField.validateOnInputChange(true)`
+```swift
+textField.validateOnInputChange(true)
+```
 
 Note - Use `.validateOnInputChange(false)` to end observation.
 
@@ -259,7 +261,7 @@ Extend the `ValidatableInterfaceElement` protocol to make an interface element v
 
 Example:
 
-```
+```swift
 extension UITextField: ValidatableInterfaceElement {
 
     typealias InputType = String
