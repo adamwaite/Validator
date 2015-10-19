@@ -4,6 +4,8 @@ Validator is a user input validation library written in Swift.
 
 ![demo-vid](resources/demo.mp4.gif)
 
+> 👴 If you're looking for the Objective-C implementation (AJWValidator) visit the [objc branch](https://github.com/adamwaite/Validator/tree/objc)
+
 ## Features
 
 - [x] Validation rules
@@ -19,7 +21,7 @@ Install Validator with [CocoaPods](http://cocoapods.org):
 
 `pod 'Validator'`
 
-Note - Embedded frameworks require a minimum deployment target of iOS 8.
+*Note - Embedded frameworks require a minimum deployment target of iOS 8.*
 
 ## Usage
 
