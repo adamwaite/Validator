@@ -227,33 +227,33 @@ A `ValidatableInterfaceElement` can be configured to automatically validate when
 
 1. Attach a set of default rules:
 
-```swift
-let textField = UITextField()
-let rules = ValidationRuleSet<String>()
-rules.addRule(someRule)
-textField.validationRules = rules
-```
+    ```swift
+    let textField = UITextField()
+    let rules = ValidationRuleSet<String>()
+    rules.addRule(someRule)
+    textField.validationRules = rules
+    ```
 
 2. Attach a closure to fire on input change:
 
-```swift
-textField.validationHandler = { result in
-	switch result {
-  case .Valid:
-		textField.textColor = UIColor.blackColor()
-  case .Invalid(let failureErrors):
-		let messages = failureErrors.map { $0.message }
+    ```swift
+    textField.validationHandler = { result in
+	    switch result {
+      case .Valid:
+		    textField.textColor = UIColor.blackColor()
+      case .Invalid(let failureErrors):
+		    let messages = failureErrors.map { $0.message }
         print(messages)
-		textField.textColor = UIColor.redColor()
-  }
-}
-```
+		    textField.textColor = UIColor.redColor()
+      }
+    }
+    ```
 
 3. Begin observation:
 
-```swift
-textField.validateOnInputChange(true)
-```
+    ```swift
+    textField.validateOnInputChange(true)
+    ```
 
 Note - Use `.validateOnInputChange(false)` to end observation.
 
