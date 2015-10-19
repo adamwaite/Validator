@@ -106,11 +106,11 @@ extension ExamplesViewController {
                 let digitRule = ValidationRulePattern(pattern: .ContainsNumber, failureError: ValidationError(message: "😫"))
                 stringCell.validationRuleSet?.addRule(digitRule)
                 
-//            case 5:
-//                stringCell.titleLabel.text = "Is a Greeting"
-//                stringCell.summaryLabel.text = "Ensures the input is one of the greetings 'hello', 'hey' or 'hi' using ValidationRuleConditiom"
-//                let conditionRule = ValidationRuleCondition<String>(failureError: ValidationError(message: "😫")) { ["hello", "hey", "hi"].contains($0!) }
-//                stringCell.validationRuleSet?.addRule(conditionRule)
+            case 5:
+                stringCell.titleLabel.text = "Is a Greeting"
+                stringCell.summaryLabel.text = "Ensures the input is one of the greetings 'hello', 'hey' or 'hi' using ValidationRuleCondition"
+                let conditionRule = ValidationRuleCondition<String>(failureError: ValidationError(message: "😫")) { ["hello", "hey", "hi"].contains($0!) }
+                stringCell.validationRuleSet?.addRule(conditionRule)
 
             case 6:
                 stringCell.titleLabel.text = "Dynamic Equality"
@@ -118,15 +118,15 @@ extension ExamplesViewController {
                 let equalityRule = ValidationRuleEquality<String>(dynamicTarget: { return "Password" }, failureError: ValidationError(message: "😫"))
                 stringCell.validationRuleSet?.addRule(equalityRule)
 
-//            case 7:
-//                stringCell.titleLabel.text = "Multiple Rules"
-//                stringCell.summaryLabel.text = "Combines multiple validations into one rule set - range length, valid email and contains greeting"
-//                let emailRule = ValidationRulePattern(pattern: .EmailAddress, failureError: ValidationError(message: "😫"))
-//                let rangeLengthRule = ValidationRuleLength(min: 5, max: 30, failureError: ValidationError(message: "😥"))
-//                let conditionRule = ValidationRuleCondition<String>(failureError: ValidationError(message: "😔")) { input in ["hello", "hey", "hi"].filter { input.rangeOfString($0!) != nil }.count > 0 }
-//                stringCell.validationRuleSet?.addRule(emailRule)
-//                stringCell.validationRuleSet?.addRule(rangeLengthRule)
-//                stringCell.validationRuleSet?.addRule(conditionRule)
+            case 7:
+                stringCell.titleLabel.text = "Multiple Rules"
+                stringCell.summaryLabel.text = "Combines multiple validations into one rule set - range length, contains a digit and contains a capital letter"
+                let rangeLengthRule = ValidationRuleLength(min: 5, max: 30, failureError: ValidationError(message: "😫"))
+                let digitRule = ValidationRulePattern(pattern: .ContainsNumber, failureError: ValidationError(message: "😥"))
+                let capitalRule = ValidationRulePattern(pattern: .ContainsCapital, failureError: ValidationError(message: "😞"))
+                stringCell.validationRuleSet?.addRule(rangeLengthRule)
+                stringCell.validationRuleSet?.addRule(digitRule)
+                stringCell.validationRuleSet?.addRule(capitalRule)
                 
             default:
                 break
