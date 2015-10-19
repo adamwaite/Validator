@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "AJWValidator"
-  s.version      = "0.0.7"
+  s.version      = "0.0.8"
   s.summary      = "Drop in user input validation for your iOS apps."
 
   s.description  = <<-DESC
@@ -33,7 +33,7 @@ DESC
   s.platform     = :ios
   s.platform     = :ios, '6.0'
 
-  s.source       = { :git => "https://github.com/adamwaite/AJWValidator.git", :tag => "v0.0.7" }
+  s.source       = { :git => "https://github.com/adamwaite/AJWValidator.git", :tag => "v0.0.8" }
   s.source_files  = 'AJWValidator', 'AJWValidator/**/*.{h,m}'
   s.public_header_files = 'AJWValidator/AJWValidator.h', 'AJWValidator/UIView+AJWValidator.h'
 
