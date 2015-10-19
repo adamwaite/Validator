@@ -23,7 +23,7 @@ Built in validations:
 
 DESC
 
-  s.homepage     = "https://github.com/adamwaite/AJWValidator"
+  s.homepage     = "https://github.com/adamwaite/Validator"
 
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
 
@@ -33,7 +33,7 @@ DESC
   s.platform     = :ios
   s.platform     = :ios, '6.0'
 
-  s.source       = { :git => "https://github.com/adamwaite/AJWValidator.git", :tag => "v0.0.8" }
+  s.source       = { :git => "https://github.com/adamwaite/Validator.git", :tag => "v0.0.8" }
   s.source_files  = 'AJWValidator', 'AJWValidator/**/*.{h,m}'
   s.public_header_files = 'AJWValidator/AJWValidator.h', 'AJWValidator/UIView+AJWValidator.h'
 
