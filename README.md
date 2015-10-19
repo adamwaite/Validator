@@ -1,277 +1,306 @@
-# AJWValidator
+# Validator
 
-> 💀 This library has been rewritten in Swift 2.0 and is no longer maintained in Objective-C (See [master](https://github.com/adamwaite/Validator/master). Here rests the final version (0.0.8).
-
-AJWValidator provides drop in user input validation for your iOS apps. It features a number of built in validation rules, some convenience methods to verify user input, a validation state change handler block, a public error messages collection, and a category on UIView to provide validate-as-input functionality to supported input view types. It's not opinionated, it's your app and it's up to you how you want handle validation errors on the UI.
-
-Built in validations:
-
-- Presence validation
-- Minimum length validation
-- Maximum length validation
-- Range validation (string character length and numeric)
-- Equality validation (for password confirmation and such)
-- Regular expression match validation
-- Email address validation
-- Custom block validation
-- Remote validation (remote web service validation)
-- Ensure string contains at least one digit
-- *More to come as encountered!*
+Validator is a user input validation library written in Swift.
 
 ![demo-vid](resources/demo.mp4.gif)
 
-*Note: the UI shown in the demo is nothing to do with the library, it's just some of the functionality on display.*
+## Features
+
+- [x] Validation rules
+- [x] Swift standard library type extensions
+- [x] UIKit element extensions
+- [x] Flexible validation error types
+- [x] An open protocol-oriented implementation
+- [x] Comprehensive test coverage
 
 ## Installation
 
-Install with [CocoaPods](http://cocoapods.org):
+Install Validator with [CocoaPods](http://cocoapods.org):
 
-`pod 'AJWValidator'`
+`pod 'Validator'`
+
+Note - Embedded frameworks require a minimum deployment target of iOS 8.
 
 ## Usage
 
-### Creating an AJWValidator
+`Validator` can validate any `Validatable` type using one or multiple `ValidationRule`s. A validation operation returns a `ValidationResult` which matches either `.Valid` or `.Invalid([ValidationErrorType])`, where `ValidationErrorType` extends `ErrorType`.
 
-1. Import:
+```swift
+let rule = ValidationRulePattern(pattern: .EmailAddress, failureError: someValidationErrorType)
 
-    `#import "AJWValidator.h"`
+let result = "invalid@email,com".validate(rule: rule)
+// Note: the above is equivalent to Validator.validate(input: "invalid@email,com", rule: rule)
 
-2. Create a string validator instance using:
-
-    `AJWValidator *validator = [AJWValidator validatorWithType:AJWValidatorTypeString];`
-
-    or a numeric validator:
-
-    `AJWValidator *validator = [AJWValidator validatorWithType:AJWValidatorTypeNumeric];`
-
-    or a generic validator:
-
-    `AJWValidator *validator = [AJWValidator validator];
-
-### Adding Validation Rules
-
-Validation rules are added with the `addRule` methods. When adding a rule you can supply an error message string as an argument, this will appear in the `errorMessages` array should the validation fail. Some of the `addRule` methods take additional parameters, they should be self explanatory. You can add as many validation rules to a validator as you like.
-
-- Presence validation:
-```
-- (void)addValidationToEnsurePresenceWithInvalidMessage:(NSString *)message;
-```
-
-- Minimum length validation:
-```
-- (void)addValidationToEnsureMinimumLength:(NSUInteger)minLength invalidMessage:(NSString message;
-```
-
-- Maximum length validation:
-```
-- (void)addValidationToEnsureMaximumLength:(NSUInteger)maxLength invalidMessage:(NSString *)message;
-```
-
-- Range validation:
-```
-- (void)addValidationToEnsureRangeWithMinimum:(NSNumber *)min maximum:(NSNumber *)max invalidMessage:(NSString *)message;
-```
-
-- Equality validation:
-```
-- (void)addValidationToEnsureInstanceIsTheSameAs:(id)otherInstance invalidMessage:(NSString *)message;
-```
-
-- Regular expression validation:
-```
-- (void)addValidationToEnsureRegularExpressionIsMetWithPattern:(NSString *)pattern invalidMessage:(NSString *)message;
-```
-
-- Valid email address validation:
-```
-- (void)addValidationToEnsureValidEmailWithInvalidMessage:(NSString *)message;
-```
-
-- Custom block validation (return `YES` or `NO` from the block):
-```
-- (void)addValidationToEnsureCustomConditionIsSatisfiedWithBlock:(AJWValidatorCustomRuleBlock)block invalidMessage:(NSString *)message;
-```
-
-- Remote validation:
-```
-- (void)addValidationToEnsureRemoteConditionIsSatisfiedAtURL:(NSURL *)url invalidMessage:(NSString *)message;
-```
-
-- String contains digit validation:
-```
-- (void)addValidationToEnsureStringContainsNumberWithInvalidMessage:(NSString *)message;
-```
-
-### Validating
-
-Use the `validate:` method to validate an instance:
-
-```
-AJWValidator *validator = [AJWValidator validatorWithType:AJWValidatorTypeString];
-[validator addValidationToEnsureValidEmailWithInvalidMessage:NSLocalizedString(@"That's not an email!", nil)];
-[validator validate:@"hey"];
-```
-
-This will change the `state` property of the validator to `AJWValidatorValidationStateInvalid` and the `isValid` method will return `NO`.
-
-To validate as the user types into a control you might do something such as this:
-
-```
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    [self.someTextField addTarget:self action:@selector(textFieldTextChanged:) forControlEvents:UIControlEventEditingChanged];
+switch result {
+case .Valid: print("😀")
+case .Invalid(let failures): print(failures.first?.message)
 }
+```
 
-- (void)textFieldTextChanged:(UITextField *)sender
-{
-    [self.someValidator validate:sender.text];
+### Validation Rules
+
+#### Equality
+
+Validates an `Equatable` type is equal to another.
+
+```swift
+let staticEqualityRule = ValidationRuleEquality<String>(target: "hello", failureError: someValidationErrorType)
+
+let dynamicEqualityRule = ValidationRuleEquality<String>(dynamicTarget: { return textField.text ?? "" }, failureError: someValidationErrorType)
+```
+
+#### Comparison
+
+Validates a `Comparable` type against a maximum and minimum.
+
+```swift
+let comparisonRule = ValidationRuleComparison<Float>(min: 5, max: 7, failureError: someValidationErrorType)
+```
+
+#### Length
+
+Validates a `String` length satisfies a minimum, maximum or range.
+
+```swift
+let minLengthRule = ValidationRuleLength(min: 5, failureError: someValidationErrorType)
+
+let maxLengthRule = ValidationRuleLength(max: 5, failureError: someValidationErrorType)
+
+let rangeLengthRule = ValidationRuleLength(min: 5, max: 10, failureError: someValidationErrorType)
+```
+
+#### Pattern
+
+Validates a `String` against a pattern. Validator provides some common patterns in the `ValidationPattern` enum.
+
+```swift
+let emailRule = ValidationRulePattern(pattern: .EmailAddress, failureError: someValidationErrorType)
+
+let digitRule = ValidationRulePattern(pattern: .ContainsDigit, failureError: someValidationErrorType)
+
+let helloRule = ValidationRulePattern(pattern: ".*hello.*", failureError: someValidationErrorType)
+```
+
+#### Condition
+
+Validates a `Validatable` type with a custom condition.
+
+```swift
+let conditionRule = ValidationRuleCondition<[String]>(failureError: someValidationErrorType) { $0.contains("Hello") }
+```
+
+#### Create Your Own
+
+Create your own validation rules by conforming to the `ValidationRule` protocol:
+
+```swift
+protocol ValidationRule {
+    typealias InputType
+    func validateInput(input: InputType) -> Bool
+    var failureError: ValidationErrorType { get }
 }
-
 ```
 
-Or alternatively use the `AJW_attachValidator:` method defined in the `UIView+AJWValidor` category to automatically configure validate-on-change functionality.
+Example:
 
-```
-[self.someTextField AJW_attachValidator:someStringValidator];
-```
-
-### Validation State Changed Handler
-
-Use the `validatorStateChangedHandler` to be notified for a change in validation state.
-
-```
-self.someValidator = [AJWValidator validatorWithType:AJWValidatorTypeString];
-self.someValidator.validatorStateChangedHandler = ^(AJWValidatorState newState) {
-    switch (newState) {
-
-        case AJWValidatorValidationStateValid:
-            // do happy things
-            break;
-
-        case AJWValidatorValidationStateInvalid:
-            // do unhappy things
-            break;
-
-        case AJWValidatorValidationStateWaitingForRemote:
-            // do loading indicator things
-            break;
-
+```swift
+struct HappyRule {
+    typealias InputType = String
+    var failureError: ValidationError(message: "U mad?") }
+    func validateInput(input: String) -> Bool {
+        return input == "😀"
     }
-};
-```
-
-See the example included in this repo for an idea on how to use the state change handler to update the UI with validation state as the user types into a control.
-
-### Validation Error Messages
-
-When a validator fails, any error messages passed when adding rules are added to the public `errorMessages` array. You could perhaps use this array to notify the user why their inputs aren't up to scratch.
-
-```
-AJWValidator *mixedValidator = [AJWValidator validatorWithType:AJWValidatorTypeString];
-
-[mixedValidator addValidationToEnsureMinimumLength:15 invalidMessage:NSLocalizedString(@"This is too short!", nil)];
-
-[mixedValidator addValidationToEnsureCustomConditionIsSatisfiedWithBlock:^BOOL(NSString *instance) {
-    return ([instance rangeOfString:@"A"].location == NSNotFound);
-} invalidMessage:NSLocalizedString(@"No capital As are allowed!", nil)];
-
-[mixedValidator addValidationToEnsureValidEmailWithInvalidMessage:NSLocalizedString(@"That's not an email address!", nil)];
-
-[mixedValidator validate:@"invA@lid,com"];
-
-NSLog(@"%@", mixedValidator);
-```
-
-The above will NSLog something similar to the following:
-
-```
-AJWStringValidator 0x10911ddc0: {
-    "_state" = 0;
-    errorMessages =     (
-        "This is too short!",
-        "No capital As are allowed!",
-        "That's not an email address!"
-    );
-    "state as string" = Invalid;
 }
 ```
 
-### UIView+AJWValidator
+> If your custom rule doesn't already exist in the library and you think it might be useful for other people, then it'd be great if you added it in with a [pull request](https://github.com/adamwaite/AJWValidator/pulls).
 
-The `UIView+AJWValidator` category extends `UIView` to provide validation on the fly as the user changes the value of the input.
+### Multiple Validation Rules (`ValidationRuleSet`)
 
-Use the `AJW_attachValidator:` to automatically configure the validator to call `validate:` (which fires the state change block) as the input changed.
+Validation rules can be combined into a `ValidationRuleSet` containing a collection of rules that validate a type.
 
-```
-[self.textField AJW_attachValidator:self.validator];
-```
+```swift
+var passwordRules = ValidationRuleSet<String>()
 
-Remove auto-validation with `AJW_removeValidators`.
+let minLengthRule = ValidationRuleLength(min: 5, failureError: someValidationErrorType)
+passwordRules.addRule(minLengthRule)
 
-See the example project which uses the UIView category to validate as you type.
-
-#### Supported
-
-- `UITextField`
-- `UITextView`
-
-### Remote Validation
-
-As with the [jQuery Validation](https://github.com/jzaefferer/jquery-validation) plug-in, AJWValidator supports remote validations. You can add a remote validation rule to a validator instance to ensure that a server-side condition is satisfied. This may for example be a condition that no two users can sign up to your service with the same username.
-
-Typically you might make a request to your registration service after a full sign up form has been populated and a button has been tapped. You would only then notify the user that their chosen username has been taken once the service has returned containing the error in a JSON response or suchlike. This experience is improved if these requests are made asynchronously as the user types and the UI is updated to tell the user in closer to real-time.
-
-```
-AJWValidator *remoteValidator = [AJWValidator validatorWithType:AJWValidatorTypeString];
-[remoteValidator addValidationToEnsureRemoteConditionIsSatisfiedAtURL:[NSURL URLWithString:@"http://app-backend.com/api/usernameavailable"] invalidMessage:NSLocalizedString(@"That username has been taken", nil)];
+let digitRule = ValidationRulePattern(pattern: .ContainsDigit, failureError: someValidationErrorType)
+passwordRules.addRule(digitRule)
 ```
 
-Now when `validate:` is called the validator will change the `state` property to `AJWValidatorValidationStateWaitingForRemote` until the server responds. It will then change to `AJWValidatorValidationStateValid` or `AJWValidatorValidationStateInvalid` based on the response.
+### Validatable
 
-If the response is JSON `true` then the validation rule passes, if JSON `false` or anything else it will fail. The validation will also fail if the server fails to respond through an error.
+Any type that conforms to the `Validatable` protocol can be validated using the `validate:` method.
 
-Optionally conform to `<AJWValidatorDelegate>` and set the `delegate` property to receive notifications when a server responds successfully or a request fails. The delegate methods you should implement for this information are defined in `<AJWValidatorDelegate>`:
+```swift
+// Validate with a single rule:
 
-```
-@protocol AJWValidatorDelegate <NSObject>
+let result = "some string".validate(rule: aRule)
 
-@optional
-- (void)validator:(AJWValidator *)validator remoteValidationAtURL:(NSURL *)url receivedResult:(BOOL)remoteConditionValid;
-- (void)validator:(AJWValidator *)validator remoteValidationAtURL:(NSURL *)url failedWithError:(NSError *)error;
+// Validate with a collection of rules:
 
-@end
+let result = 42.validate(rules: aRuleSet)
 ```
 
-You may want to supply extra parameters with the request, you can do such with the `validate:parameters:` method by supplying an `NSDictionary` containing any additional parameters.
+#### Extend Types As Validatable
 
-The remote validation request comes in the form of a HTTP POST request with an `application/json` content type. The HTTP body contains a JSON string containing the `"instance":` property (whatever you wish to validate) and an `"extras":` property (containing any additional parameters if an `NSDictionary` was passed). You should be able to grab these on your server side code and respond after some conditions have been evaluated.
+Extend the `Validatable` protocol to make a new type validatable.
+
+`extension Thing : Validatable { }`
+
+Note: The implementation inside the protocol extension should mean that you don't need to implement anything yourself unless you need to validate multiple properties.
+
+### ValidationResult
+
+The `validate:` method returns a `ValidationResult` enum. `ValidationResult` can take one of two forms:
+
+1. `.Valid`: The input satisfies the validation rules.
+2. `.Invalid`: The input fails the validation rules. An `.Invalid` result has an associated array of types conforming to `ValidationErrorType`.
+
+You can combine two or more `ValidationResult`s together with `merge:`.
+
+```swift
+let result1 = ValidationResult.Invalid([someError])
+let result2 = ValidationResult.Invalid([someError2])
+let allResults = result1.merge(result2) // = ValidationResult.Invalid([someError1, someError2])
+```
+
+### ValidationErrorType
+
+The `ValidationErrorType` extends `ErrorType` and adds a message property for holding a validation error message. This means that they're compatible with [Swift 2 error handling](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/ErrorHandling.html) and flexible for defining your own.
+
+```swift
+struct User: Validatable {
+
+    let email: String
+
+    enum ValidationErrors: String, ValidationErrorType {
+        case EmailInvalid = "Email address is invalid"
+        var message { return self.rawValue }
+    }
+
+    func validate() -> ValidationResult {
+        let rule ValidationRulePattern(pattern: .EmailAddress, failureError: ValidationErrors.EmailInvalid)
+        return email.validate(rule: rule)
+    }
+}
+
+```
+
+Validator also ships with a basic `ValidationError` struct if you'd prefer to use that. It implements `ValidationErrorType`:
+
+```swift
+public struct ValidationError: ValidationErrorType {
+    public let message: String
+    public init(message m: String) {
+        message = m
+    }
+}
+```
+
+### Validating UIKit Elements
+
+UIKit elements that conform to `ValidatableInterfaceElement` can have their input validated with the `validate:` method.
+
+```swift
+let textField = UITextField()
+textField.text = "I'm going to be validated"
+
+let slider = UISlider()
+slider.value = 0.3
+
+// Validate with a single rule:
+
+let result = textField.validate(rule: aRule)
+
+// Validate with a collection of rules:
+
+let result = slider.validate(rules: aRuleSet)
+```
+
+#### Validate On Input Change
+
+A `ValidatableInterfaceElement` can be configured to automatically validate when the input changes in 3 steps.
+
+1. Attach a set of default rules:
+
+```swift
+let textField = UITextField()
+let rules = ValidationRuleSet<String>()
+rules.addRule(someRule)
+textField.validationRules = rules
+```
+
+2. Attach a closure to fire on input change:
+
+```swift
+textField.validationHandler = { result in
+	switch result {
+  case .Valid:
+		textField.textColor = UIColor.blackColor()
+  case .Invalid(let failureErrors):
+		let messages = failureErrors.map { $0.message }
+        print(messages)
+		textField.textColor = UIColor.redColor()
+  }
+}
+```
+
+3. Begin observation:
+
+```swift
+textField.validateOnInputChange(true)
+```
+
+Note - Use `.validateOnInputChange(false)` to end observation.
+
+#### Extend UI Elements As Validatable
+
+Extend the `ValidatableInterfaceElement` protocol to make an interface element validatable.
+
+Example:
+
+```swift
+extension UITextField: ValidatableInterfaceElement {
+
+    typealias InputType = String
+
+    var inputValue: String { return text ?? "" }
+
+    func validateOnInputChange(validationEnabled: Bool) {
+        switch validationEnabled {
+        case true: addTarget(self, action: "validateInputChange:", forControlEvents: .EditingChanged)
+        case false: removeTarget(self, action: "validateInputChange:", forControlEvents: .EditingChanged)
+        }
+    }
+
+    @objc private func validateInputChange(sender: UITextField) {
+        sender.validate()
+    }
+
+}
+```
+
+The implementation inside the protocol extension should mean that you should only need to implement:
+
+1.  The `typealias`: the type of input to be validated (e.g `String` for `UITextField`).
+2.  The `inputValue`: the input value to be validated (e.g the `text` value for `UITextField`).
+3.  The `validateOnInputChange:` method: to configure input-change observation.
 
 ## Examples
 
-An Xcode project has been included in this repository containing an example for each validation rule and some other features. To test the remote validation start the [Sinatra](http://www.sinatrarb.com) server with the `ruby demo_server.rb` command.
-
-## Roadmap
-
-- File type validator (max size on images etc)
-- Phone number validation
-- Credit card validation
-- Postal code validation
-- Input exists in a collection validation (for select type inputs)
+There's an example project in this repository.
 
 ## Contributing
 
-Contributions welcome. Before making a pull request please ensure all of the [Kiwi](https://github.com/allending/Kiwi) specs pass if you're changing existing code, or you back new features up with new specs. Please also update the README with any new features. Thanks.
+Any contributions and suggestions are most welcome! Please ensure any new code is covered with unit tests, and that all existing tests pass. Please update the README with any new features. Thanks!
 
 ## Contact
 
 [@adamwaite](http://twitter.com/adamwaite)
 
-## Thanks
-
-AJWValidator is inspired by [jQuery Validation](https://github.com/jzaefferer/jquery-validation) and [ParsleyJS](http://parsleyjs.org), thanks.
-
-##License
+## License
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
