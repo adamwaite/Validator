@@ -41,7 +41,7 @@ class ValidationRulePatternTests: XCTestCase {
             XCTAssertFalse(invalid.isValid)
         }
         
-        for validEmail in ["user@valid.com", "user_1@valid.co.uk"] {
+        for validEmail in ["user@valid.com", "user_1@valid.co.uk", "user@valid.museum"] {
             let valid = Validator.validate(input: validEmail, rule: rule)
             XCTAssertTrue(valid.isValid)
         }
