@@ -36,7 +36,7 @@ class ValidationResultTests: XCTestCase {
         let valid = ValidationResult.Valid
         XCTAssertTrue(valid.isValid)
        
-        let err = ValidationError(message: "💣")
+        let err = testError
         
         let invalid = ValidationResult.Invalid([err])
         XCTAssertFalse(invalid.isValid)
@@ -47,7 +47,7 @@ class ValidationResultTests: XCTestCase {
         let success1 = ValidationResult.Valid
         let success2 = ValidationResult.Valid
         
-        let err1 = ValidationError(message: "💣")
+        let err1 = testError
         let err2 = ValidationError(message: "💣💣")
         
         let fail1 = ValidationResult.Invalid([err1])

@@ -8,8 +8,15 @@ Validator is a user input validation library written in Swift.
 
 ## Features
 
-- [x] Validation rules
-- [x] Swift standard library type extensions
+- [x] Validation rules:
+  - [x] Equality
+  - [x] Comparison
+  - [x] Length (min, max, range)
+  - [x] Pattern (email, password constraints and more...)
+  - [x] URL
+  - [x] Payment card (Luhn validated, accepted types)
+  - [x] Condition (quickly write your own)
+- [x] Swift standard library type extensions with one API (not just strings!)
 - [x] UIKit element extensions
 - [x] Flexible validation error types
 - [x] An open protocol-oriented implementation
@@ -81,6 +88,36 @@ let emailRule = ValidationRulePattern(pattern: .EmailAddress, failureError: some
 let digitRule = ValidationRulePattern(pattern: .ContainsDigit, failureError: someValidationErrorType)
 
 let helloRule = ValidationRulePattern(pattern: ".*hello.*", failureError: someValidationErrorType)
+```
+
+#### URL
+
+Validates a `String` to see if it's a valid URL conforming to RFC 2396.
+
+```swift
+let urlRule = ValidationRuleURL(failureError: someValidationErrorType)
+```
+
+#### Payment Card
+
+Validates a `String` to see if it's a valid payment card number by firstly running it through the [Luhn check algorithm](https://en.wikipedia.org/wiki/Luhn_algorithm), and secondly ensuring it follows the format of a number of payment card providers.
+
+```swift
+public enum PaymentCardType: Int {
+    case Amex, Mastercard, Visa, Maestro, DinersClub, JCB, Discover, UnionPay
+    ///...
+```
+
+To be validate against any card type (just the Luhn check):
+
+```swift
+let anyCardRule = ValidationRulePaymentCard(failureError: someValidationErrorType)
+```
+
+To be validate against a set of accepted card types (e.g Visa, Mastercard and American Express in this example):
+
+```swift
+let acceptedCardsRule = ValidationRulePaymentCard(acceptedTypes: [.Visa, .Mastercard, .Amex], failureError: someValidationErrorType)
 ```
 
 #### Condition

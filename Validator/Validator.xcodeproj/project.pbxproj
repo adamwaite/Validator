@@ -36,6 +36,11 @@
 		9967E4001B7682C700ACAF54 /* ValidatableInterfaceElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E3F41B7682C700ACAF54 /* ValidatableInterfaceElementTests.swift */; };
 		9967E4011B7682C700ACAF54 /* ValidatableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E3F61B7682C700ACAF54 /* ValidatableTests.swift */; };
 		9967E4021B7682C700ACAF54 /* ValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E3F81B7682C700ACAF54 /* ValidatorTests.swift */; };
+		99C457E91C1836AD0058EC4D /* ValidationRuleURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C457E81C1836AD0058EC4D /* ValidationRuleURL.swift */; };
+		99C457EB1C1836C30058EC4D /* ValidationRuleURLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C457EA1C1836C30058EC4D /* ValidationRuleURLTests.swift */; };
+		99C457ED1C183D960058EC4D /* ValidationRulePaymentCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C457EC1C183D960058EC4D /* ValidationRulePaymentCard.swift */; };
+		99C457EF1C183DB40058EC4D /* ValidationRulePaymentCardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C457EE1C183DB40058EC4D /* ValidationRulePaymentCardTests.swift */; };
+		99C4581D1C184AE00058EC4D /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C4581C1C184AE00058EC4D /* TestHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +86,11 @@
 		9967E3F41B7682C700ACAF54 /* ValidatableInterfaceElementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatableInterfaceElementTests.swift; sourceTree = "<group>"; };
 		9967E3F61B7682C700ACAF54 /* ValidatableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatableTests.swift; sourceTree = "<group>"; };
 		9967E3F81B7682C700ACAF54 /* ValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatorTests.swift; sourceTree = "<group>"; };
+		99C457E81C1836AD0058EC4D /* ValidationRuleURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleURL.swift; sourceTree = "<group>"; };
+		99C457EA1C1836C30058EC4D /* ValidationRuleURLTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleURLTests.swift; sourceTree = "<group>"; };
+		99C457EC1C183D960058EC4D /* ValidationRulePaymentCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRulePaymentCard.swift; sourceTree = "<group>"; };
+		99C457EE1C183DB40058EC4D /* ValidationRulePaymentCardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRulePaymentCardTests.swift; sourceTree = "<group>"; };
+		99C4581C1C184AE00058EC4D /* TestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				9967E3B41B76822E00ACAF54 /* Info.plist */,
+				99C4581C1C184AE00058EC4D /* TestHelpers.swift */,
 				9967E3F71B7682C700ACAF54 /* Validator */,
 				9967E3F51B7682C700ACAF54 /* Validatable */,
 				995B7A0C1B7BEE4D00FB2AB7 /* ValidationResult */,
@@ -167,6 +178,8 @@
 				9967E3D21B76829D00ACAF54 /* ValidationRuleEquality.swift */,
 				9967E3D31B76829D00ACAF54 /* ValidationRuleLength.swift */,
 				9967E3D41B76829D00ACAF54 /* ValidationRulePattern.swift */,
+				99C457E81C1836AD0058EC4D /* ValidationRuleURL.swift */,
+				99C457EC1C183D960058EC4D /* ValidationRulePaymentCard.swift */,
 			);
 			path = Rules;
 			sourceTree = "<group>";
@@ -190,6 +203,8 @@
 				9967E3EE1B7682C700ACAF54 /* ValidationRuleEqualityTests.swift */,
 				9967E3EF1B7682C700ACAF54 /* ValidationRuleLengthTests.swift */,
 				9967E3F01B7682C700ACAF54 /* ValidationRulePatternTests.swift */,
+				99C457EA1C1836C30058EC4D /* ValidationRuleURLTests.swift */,
+				99C457EE1C183DB40058EC4D /* ValidationRulePaymentCardTests.swift */,
 			);
 			path = Rules;
 			sourceTree = "<group>";
@@ -330,12 +345,14 @@
 			files = (
 				9967E3E51B76829D00ACAF54 /* ValidatableInterfaceElement.swift in Sources */,
 				9967E3E61B76829D00ACAF54 /* Validatable.swift in Sources */,
+				99C457ED1C183D960058EC4D /* ValidationRulePaymentCard.swift in Sources */,
 				9967E3E41B76829D00ACAF54 /* UITextField+Validator.swift in Sources */,
 				9967E3E71B76829D00ACAF54 /* ValidationResult.swift in Sources */,
 				9967E3EA1B76829D00ACAF54 /* Validator.swift in Sources */,
 				9967E3E21B76829D00ACAF54 /* ValidationRulePattern.swift in Sources */,
 				995B7A161B7BF96E00FB2AB7 /* ValidationRuleRequired.swift in Sources */,
 				9967E3E91B76829D00ACAF54 /* ValidationRuleSet.swift in Sources */,
+				99C457E91C1836AD0058EC4D /* ValidationRuleURL.swift in Sources */,
 				9967E3E01B76829D00ACAF54 /* ValidationRuleEquality.swift in Sources */,
 				9967E3DF1B76829D00ACAF54 /* ValidationRuleCondition.swift in Sources */,
 				9967E3E11B76829D00ACAF54 /* ValidationRuleLength.swift in Sources */,
@@ -357,8 +374,11 @@
 				9967E4011B7682C700ACAF54 /* ValidatableTests.swift in Sources */,
 				9967E3FA1B7682C700ACAF54 /* ValidationRuleConditionTests.swift in Sources */,
 				9967E3FB1B7682C700ACAF54 /* ValidationRuleEqualityTests.swift in Sources */,
+				99C457EF1C183DB40058EC4D /* ValidationRulePaymentCardTests.swift in Sources */,
+				99C457EB1C1836C30058EC4D /* ValidationRuleURLTests.swift in Sources */,
 				9967E4021B7682C700ACAF54 /* ValidatorTests.swift in Sources */,
 				9967E3FC1B7682C700ACAF54 /* ValidationRuleLengthTests.swift in Sources */,
+				99C4581D1C184AE00058EC4D /* TestHelpers.swift in Sources */,
 				995B7A141B7BF8C500FB2AB7 /* ValidationRuleRequiredTests.swift in Sources */,
 				9967E3F91B7682C700ACAF54 /* ValidationRuleComparisonTests.swift in Sources */,
 				9967E3FE1B7682C700ACAF54 /* UISlider+ValidatorTests.swift in Sources */,

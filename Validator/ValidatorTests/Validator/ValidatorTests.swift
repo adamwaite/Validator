@@ -34,7 +34,7 @@ class ValidatorTests: XCTestCase {
     
     func testThatItCanEvaluateRules() {
         
-        let err = ValidationError(message: "💣")
+        let err = testError
         
         let rule = ValidationRuleCondition<String>(failureError: err) { $0?.characters.count > 0 }
         
@@ -48,7 +48,7 @@ class ValidatorTests: XCTestCase {
     
     func testThatItCanEvaluateMultipleRules() {
 
-        let err1 = ValidationError(message: "💣")
+        let err1 = testError
         let err2 = ValidationError(message: "💣💣")
         
         var ruleSet = ValidationRuleSet<String>()

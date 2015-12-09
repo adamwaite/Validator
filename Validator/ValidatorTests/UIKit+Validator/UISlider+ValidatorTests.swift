@@ -49,7 +49,7 @@ class UISliderValidatorTests: XCTestCase {
         let slider = UISlider()
         slider.maximumValue = 10.0
 
-        let rule = ValidationRuleComparison<Float>(min: 2.0, max: 7.0, failureError: ValidationError(message: "💣"))
+        let rule = ValidationRuleComparison<Float>(min: 2.0, max: 7.0, failureError: testError)
 
         slider.value = 1.0
         

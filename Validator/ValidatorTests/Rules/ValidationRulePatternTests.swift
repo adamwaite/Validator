@@ -34,7 +34,7 @@ class ValidationRulePatternTests: XCTestCase {
 
     func testThatItCanValidateEmailAddresses() {
         
-        let rule = ValidationRulePattern(pattern: .EmailAddress, failureError: ValidationError(message: "💣"))
+        let rule = ValidationRulePattern(pattern: .EmailAddress, failureError: testError)
 
         for invalidEmail in ["user@invalid,com", "userinvalid.com", "invalid", "user@invalid@example.com", "user@in+valid.com"] {
             let invalid = Validator.validate(input: invalidEmail, rule: rule)
@@ -50,7 +50,7 @@ class ValidationRulePatternTests: XCTestCase {
     
     func testThatItCanValidateDigitPresence() {
         
-        let rule = ValidationRulePattern(pattern: .ContainsNumber, failureError: ValidationError(message: "💣"))
+        let rule = ValidationRulePattern(pattern: .ContainsNumber, failureError: testError)
         
         for noDigitString in ["invalid", "invali_d", "inv+alid"] {
             let invalid = Validator.validate(input: noDigitString, rule: rule)

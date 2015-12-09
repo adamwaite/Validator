@@ -1,6 +1,6 @@
 /*
 
- ValidationRuleRequired.swift
+ ValidationRuleURLTests.swift
  Validator
 
  Created by @adamwaite.
@@ -27,20 +27,24 @@
 
 */
 
-import Foundation
+import XCTest
+@testable import Validator
 
-public struct ValidationRuleRequired<T>: ValidationRule {
-
-    public typealias InputType = T
+class ValidationRuleURLTests: XCTestCase {
     
-    public let failureError: ValidationErrorType
-    
-    public init(failureError: ValidationErrorType) {
-        self.failureError = failureError
+    func testThatItCanValidateURL() {
+        
+        let rule = ValidationRuleURL(failureError: testError)
+        
+        for invalidURL in ["http:▷adamjwaite.co.uk", "http://adamjwaite.co.uk?hello=😋"] {
+            let invalid = Validator.validate(input: invalidURL, rule: rule)
+            XCTAssertFalse(invalid.isValid)
+        }
+        
+        for validURL in ["http://adamjwaite.co.uk", "http://google.com"] {
+            let valid = Validator.validate(input: validURL, rule: rule)
+            XCTAssertTrue(valid.isValid)
+        }
+        
     }
-    
-    public func validateInput(input: T?) -> Bool {        
-        return input != nil
-    }
-    
 }
