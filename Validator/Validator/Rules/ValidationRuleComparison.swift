@@ -35,7 +35,7 @@ public struct ValidationRuleComparison<T: Comparable>: ValidationRule {
     
     let min: T
     let max: T
-    public var failureError: ValidationErrorType
+    public let failureError: ValidationErrorType
     
     public init(min: T, max: T, failureError: ValidationErrorType) {
         self.min = min

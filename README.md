@@ -9,10 +9,12 @@ Validator is a user input validation library written in Swift.
 ## Features
 
 - [x] Validation rules:
+  - [x] Required
   - [x] Equality
   - [x] Comparison
   - [x] Length (min, max, range)
   - [x] Pattern (email, password constraints and more...)
+  - [x] Contains
   - [x] URL
   - [x] Payment card (Luhn validated, accepted types)
   - [x] Condition (quickly write your own)
@@ -47,6 +49,16 @@ case .Invalid(let failures): print(failures.first?.message)
 ```
 
 ### Validation Rules
+
+#### Required
+
+Validates any type exists (not-nil).
+
+```swift
+let stringRequiredRule = ValidationRuleRequired<String?>(failureError: someValidationErrorType)
+
+let floatRequiredRule = ValidationRuleRequired<Float?>(failureError: someValidationErrorType)
+```
 
 #### Equality
 
@@ -88,6 +100,16 @@ let emailRule = ValidationRulePattern(pattern: .EmailAddress, failureError: some
 let digitRule = ValidationRulePattern(pattern: .ContainsDigit, failureError: someValidationErrorType)
 
 let helloRule = ValidationRulePattern(pattern: ".*hello.*", failureError: someValidationErrorType)
+```
+
+#### Contains
+
+Validates an `Equatable` type is within a predefined `SequenceType` (where the `Element` of the `SequenceType` matches the input format.
+
+```swift
+let stringContainsRule = ValidationRuleContains<String, [String]>(sequence: ["hello", "hi", "hey"], failureError: someValidationErrorType)
+
+let rule = ValidationRuleContains<Int, [Int]>(sequence: [1, 2, 3], failureError: someValidationErrorType)
 ```
 
 #### URL

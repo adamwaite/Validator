@@ -40,7 +40,7 @@ public struct ValidationRulePattern: ValidationRule {
     public typealias InputType = String
     
     public let pattern: String
-    public var failureError: ValidationErrorType
+    public let failureError: ValidationErrorType
     
     public init(pattern: String, failureError: ValidationErrorType) {
         self.pattern = pattern
