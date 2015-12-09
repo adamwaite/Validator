@@ -1,6 +1,6 @@
 /*
 
- ValidationRuleRequiredTests.swift
+ ValidationRuleURLTests.swift
  Validator
 
  Created by @adamwaite.
@@ -30,17 +30,35 @@
 import XCTest
 @testable import Validator
 
-class ValidationRuleRequiredTests: XCTestCase {
+class ValidationRuleContainsTests: XCTestCase {
     
-    func testThatItCanValidateOptionalValues() {
-
-        let rule = ValidationRuleRequired<String?>(failureError: testError)
-
-        let invalid = Validator.validate(input: nil, rule: rule)
-        XCTAssertFalse(invalid.isValid)
-
-        let valid = Validator.validate(input: "hello", rule: rule)
-        XCTAssertTrue(valid.isValid)
-
+    func testThatItCanValidateContainsString() {
+        
+        let rule = ValidationRuleContains<String, [String]>(sequence: ["hello", "hi", "hey"], failureError: testError)
+        
+        for notInSequence in ["adam", "😋", "HEY"] {
+            let invalid = Validator.validate(input: notInSequence, rule: rule)
+            XCTAssertFalse(invalid.isValid)
+        }
+        
+        for inSequence in ["hello", "hi", "hey"] {
+            let valid = Validator.validate(input: inSequence, rule: rule)
+            XCTAssertTrue(valid.isValid)
+        }
+    }
+    
+    func testThatItCanValidateContainsInt() {
+        
+        let rule = ValidationRuleContains<Int, [Int]>(sequence: [1, 2, 3], failureError: testError)
+        
+        for notInSequence in [4, 5, 6] {
+            let invalid = Validator.validate(input: notInSequence, rule: rule)
+            XCTAssertFalse(invalid.isValid)
+        }
+        
+        for inSequence in [1, 2, 3] {
+            let valid = Validator.validate(input: inSequence, rule: rule)
+            XCTAssertTrue(valid.isValid)
+        }
     }
 }

@@ -41,6 +41,8 @@
 		99C457ED1C183D960058EC4D /* ValidationRulePaymentCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C457EC1C183D960058EC4D /* ValidationRulePaymentCard.swift */; };
 		99C457EF1C183DB40058EC4D /* ValidationRulePaymentCardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C457EE1C183DB40058EC4D /* ValidationRulePaymentCardTests.swift */; };
 		99C4581D1C184AE00058EC4D /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C4581C1C184AE00058EC4D /* TestHelpers.swift */; };
+		99C4581F1C18566D0058EC4D /* ValidationRuleContains.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C4581E1C18566D0058EC4D /* ValidationRuleContains.swift */; };
+		99C458221C18587F0058EC4D /* ValidationRuleContainsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C458211C18587F0058EC4D /* ValidationRuleContainsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,8 @@
 		99C457EC1C183D960058EC4D /* ValidationRulePaymentCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRulePaymentCard.swift; sourceTree = "<group>"; };
 		99C457EE1C183DB40058EC4D /* ValidationRulePaymentCardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRulePaymentCardTests.swift; sourceTree = "<group>"; };
 		99C4581C1C184AE00058EC4D /* TestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
+		99C4581E1C18566D0058EC4D /* ValidationRuleContains.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleContains.swift; sourceTree = "<group>"; };
+		99C458211C18587F0058EC4D /* ValidationRuleContainsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleContainsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +184,7 @@
 				9967E3D41B76829D00ACAF54 /* ValidationRulePattern.swift */,
 				99C457E81C1836AD0058EC4D /* ValidationRuleURL.swift */,
 				99C457EC1C183D960058EC4D /* ValidationRulePaymentCard.swift */,
+				99C4581E1C18566D0058EC4D /* ValidationRuleContains.swift */,
 			);
 			path = Rules;
 			sourceTree = "<group>";
@@ -205,6 +210,7 @@
 				9967E3F01B7682C700ACAF54 /* ValidationRulePatternTests.swift */,
 				99C457EA1C1836C30058EC4D /* ValidationRuleURLTests.swift */,
 				99C457EE1C183DB40058EC4D /* ValidationRulePaymentCardTests.swift */,
+				99C458211C18587F0058EC4D /* ValidationRuleContainsTests.swift */,
 			);
 			path = Rules;
 			sourceTree = "<group>";
@@ -350,6 +356,7 @@
 				9967E3E71B76829D00ACAF54 /* ValidationResult.swift in Sources */,
 				9967E3EA1B76829D00ACAF54 /* Validator.swift in Sources */,
 				9967E3E21B76829D00ACAF54 /* ValidationRulePattern.swift in Sources */,
+				99C4581F1C18566D0058EC4D /* ValidationRuleContains.swift in Sources */,
 				995B7A161B7BF96E00FB2AB7 /* ValidationRuleRequired.swift in Sources */,
 				9967E3E91B76829D00ACAF54 /* ValidationRuleSet.swift in Sources */,
 				99C457E91C1836AD0058EC4D /* ValidationRuleURL.swift in Sources */,
@@ -370,6 +377,7 @@
 				9967E4001B7682C700ACAF54 /* ValidatableInterfaceElementTests.swift in Sources */,
 				9967E3FD1B7682C700ACAF54 /* ValidationRulePatternTests.swift in Sources */,
 				995B7A0E1B7BEE5F00FB2AB7 /* ValidationResultTests.swift in Sources */,
+				99C458221C18587F0058EC4D /* ValidationRuleContainsTests.swift in Sources */,
 				9967E3FF1B7682C700ACAF54 /* UITextField+ValidatorTests.swift in Sources */,
 				9967E4011B7682C700ACAF54 /* ValidatableTests.swift in Sources */,
 				9967E3FA1B7682C700ACAF54 /* ValidationRuleConditionTests.swift in Sources */,

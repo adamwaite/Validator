@@ -29,18 +29,23 @@
 
 import Foundation
 
-public struct ValidationRuleURL: ValidationRule {
+public struct ValidationRuleContains<T: Equatable, S: SequenceType where S.Generator.Element == T>: ValidationRule {
     
-    public typealias InputType = String
+    public typealias InputType = T
     
-    public let failureError: ValidationErrorType
+    public var sequence: S
+    public var failureError: ValidationErrorType
     
-    public init(failureError: ValidationErrorType) {
+    public init(sequence: S, failureError: ValidationErrorType) {
+        self.sequence = sequence
         self.failureError = failureError
     }
     
-    public func validateInput(input: String?) -> Bool {
+    public func validateInput(input: T?) -> Bool {
         guard let input = input else { return false }
-        return NSURL(string: input) != nil
+        return sequence.contains(input)
     }
 }
+
+
+
