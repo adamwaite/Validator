@@ -60,6 +60,8 @@ let stringRequiredRule = ValidationRuleRequired<String?>(failureError: someValid
 let floatRequiredRule = ValidationRuleRequired<Float?>(failureError: someValidationErrorType)
 ```
 
+*Note - You can't use `validate` on an optional `Validatable` type (e.g. `myString?.validate(aRule...)` because the optional chaining mechanism will bypass the call. `"thing".validate(rule: aRule...)` is fine. To validate an optional for required in this way use: `Validator.validate(input: anOptional, rule: aRule)`.*
+
 #### Equality
 
 Validates an `Equatable` type is equal to another.
