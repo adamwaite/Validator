@@ -104,7 +104,7 @@ let helloRule = ValidationRulePattern(pattern: ".*hello.*", failureError: someVa
 
 #### Contains
 
-Validates an `Equatable` type is within a predefined `SequenceType` (where the `Element` of the `SequenceType` matches the input format.
+Validates an `Equatable` type is within a predefined `SequenceType`'s elements (where the `Element` of the `SequenceType` matches the input type).
 
 ```swift
 let stringContainsRule = ValidationRuleContains<String, [String]>(sequence: ["hello", "hi", "hey"], failureError: someValidationErrorType)
