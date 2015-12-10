@@ -30,8 +30,6 @@
 import Foundation
 import ObjectiveC
 
-public typealias ValidationHandler = ValidationResult -> ()
-
 public protocol ValidatableInterfaceElement: AnyObject {
     
     typealias InputType: Validatable
@@ -57,7 +55,9 @@ private final class Box<T>: NSObject {
 }
 
 extension ValidatableInterfaceElement {
-    
+
+    public typealias ValidationHandler = (ValidationResult, Self) -> ()
+
     public var validationRules: ValidationRuleSet<InputType>? {
         get {
             guard let boxed: Box<ValidationRuleSet<InputType>>? = objc_getAssociatedObject(self, &ValidatableInterfaceElementRulesKey) as? Box<ValidationRuleSet<InputType>>? else { return nil }
@@ -86,13 +86,13 @@ extension ValidatableInterfaceElement {
     
     public func validate<R: ValidationRule where R.InputType == InputType>(rule r: R) -> ValidationResult {
         let result = Validator.validate(input: inputValue, rule: r)
-        if let h = validationHandler { h(result) }
+        if let h = validationHandler { h(result, self) }
         return result
     }
     
     public func validate(rules rs: ValidationRuleSet<InputType>) -> ValidationResult {
         let result = Validator.validate(input: inputValue, rules: rs)
-        if let h = validationHandler { h(result) }
+        if let h = validationHandler { h(result, self) }
         return result
     }
     
