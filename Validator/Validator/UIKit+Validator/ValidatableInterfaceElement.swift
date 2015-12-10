@@ -60,7 +60,7 @@ extension ValidatableInterfaceElement {
     
     public var validationRules: ValidationRuleSet<InputType>? {
         get {
-            let boxed: Box<ValidationRuleSet<InputType>>? = objc_getAssociatedObject(self, &ValidatableInterfaceElementRulesKey) as! Box<ValidationRuleSet<InputType>>?
+            guard let boxed: Box<ValidationRuleSet<InputType>>? = objc_getAssociatedObject(self, &ValidatableInterfaceElementRulesKey) as? Box<ValidationRuleSet<InputType>>? else { return nil }
             return boxed?.thing
         }
         set(newValue) {
@@ -73,7 +73,7 @@ extension ValidatableInterfaceElement {
     
     public var validationHandler: ValidationHandler? {
         get {
-            let boxed: Box<ValidationHandler>? = objc_getAssociatedObject(self, &ValidatableInterfaceElementHandlerKey) as! Box<ValidationHandler>?
+            guard let boxed: Box<ValidationHandler>? = objc_getAssociatedObject(self, &ValidatableInterfaceElementHandlerKey) as! Box<ValidationHandler>? else { return nil }
             return boxed?.thing
         }
         set(newValue) {
