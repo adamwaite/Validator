@@ -298,14 +298,14 @@ A `ValidatableInterfaceElement` can be configured to automatically validate when
 2. Attach a closure to fire on input change:
 
     ```swift
-    textField.validationHandler = { result in
-	    switch result {
+    textField.validationHandler = { result, control in
+	  switch result {
       case .Valid:
-		    textField.textColor = UIColor.blackColor()
+		    control.textColor = UIColor.blackColor()
       case .Invalid(let failureErrors):
 		    let messages = failureErrors.map { $0.message }
-        print(messages)
-		    textField.textColor = UIColor.redColor()
+            print(messages)
+		    control.textColor = UIColor.redColor()
       }
     }
     ```
