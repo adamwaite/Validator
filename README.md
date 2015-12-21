@@ -30,6 +30,10 @@ Install Validator with [CocoaPods](http://cocoapods.org):
 
 `pod 'Validator'`
 
+Install Validator with [Carthage](https://github.com/Carthage/Carthage):
+
+`github "adamwaite/Validator"`
+
 *Note - Embedded frameworks require a minimum deployment target of iOS 8.*
 
 ## Usage
