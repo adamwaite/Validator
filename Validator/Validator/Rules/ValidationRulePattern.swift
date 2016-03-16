@@ -33,6 +33,7 @@ public enum ValidationPattern: String {
     case EmailAddress = "^[_A-Za-z0-9-+]+(\\.[_A-Za-z0-9-+]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z‌​]{2,})$"
     case ContainsNumber = ".*\\d.*"
     case ContainsCapital = "^.*?[A-Z].*?$"
+    case ContainsLowercase = "^.*?[a-z].*?$"
 }
 
 public struct ValidationRulePattern: ValidationRule {
