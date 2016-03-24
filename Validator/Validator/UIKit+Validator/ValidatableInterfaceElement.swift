@@ -32,7 +32,7 @@ import ObjectiveC
 
 public protocol ValidatableInterfaceElement: AnyObject {
     
-    typealias InputType: Validatable
+    associatedtype InputType: Validatable
     
     var inputValue: InputType? { get }
     

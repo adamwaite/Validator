@@ -31,7 +31,7 @@ import Foundation
 
 public protocol ValidationRule {
     
-    typealias InputType
+    associatedtype InputType
     
     func validateInput(input: InputType?) -> Bool
     
