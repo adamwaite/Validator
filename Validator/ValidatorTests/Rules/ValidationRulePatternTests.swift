@@ -67,12 +67,13 @@ class ValidationRulePatternTests: XCTestCase {
     func testThatItCanValidateUKPostcodes() {
         let rule = ValidationRulePattern(pattern: .UKPostcode, failureError: testError)
 
-        for invalidPostcode in ["AA9AAAA", "A9A", "99A9 A99", "A", "9A A99"] {
+        for invalidPostcode in ["AA9AAAA", "A9A", "99A9 A99", "A", "9A A99", "A9A  9AA"] {
             let invalid = Validator.validate(input: invalidPostcode, rule: rule)
             XCTAssertFalse(invalid.isValid)
         }
 
-        for validPostcode in ["AA9A 9AA", "A9A 9AA", "A9 9AA", "A99 9AA", "AA9 9AA", "AA99 9AA"] {
+        for validPostcode in ["AA9A 9AA", "A9A 9AA", "A9 9AA", "A99 9AA", "AA9 9AA", "AA99 9AA",
+                              "AA9A9AA", "A9A9AA", "A99AA", "A999AA", "AA99AA", "AA999AA"] {
             let valid = Validator.validate(input: validPostcode, rule: rule)
             XCTAssertTrue(valid.isValid)
         }
