@@ -52,7 +52,7 @@ const NSString * NSStringFromAJWValidatorState(AJWValidatorState state) {
     }
 }
 
-NSString * const AJWValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(\\.[_A-Za-z0-9-+]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z‌​]{2,4})$";
+NSString * const AJWValidatorRegularExpressionPatternEmail = @"^[_A-Za-z0-9-+]+(\\.[_A-Za-z0-9-+]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z‌​]{2,6})$";
 
 NSString * const AJWValidatorRegularExpressionPatternContainsNumber = @".*\\d.*";
 
