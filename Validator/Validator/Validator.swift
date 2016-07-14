@@ -31,13 +31,13 @@ import Foundation
 
 public struct Validator {
     
-    static func validate<R: ValidationRule>(input i: R.InputType?, rule r: R) -> ValidationResult {
+    public static func validate<R: ValidationRule>(input i: R.InputType?, rule r: R) -> ValidationResult {
         var ruleSet = ValidationRuleSet<R.InputType>()
         ruleSet.addRule(r)
         return Validator.validate(input: i, rules: ruleSet)
     }
     
-    static func validate<T>(input i: T?, rules rs: ValidationRuleSet<T>) -> ValidationResult {
+    public static func validate<T>(input i: T?, rules rs: ValidationRuleSet<T>) -> ValidationResult {
         let errors = rs.rules.filter { !$0.validateInput(i) }.map { $0.failureError }
         return errors.isEmpty ? ValidationResult.Valid : ValidationResult.Invalid(errors)
     }

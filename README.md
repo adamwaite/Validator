@@ -30,6 +30,10 @@ Install Validator with [CocoaPods](http://cocoapods.org):
 
 `pod 'Validator'`
 
+Install Validator with [Carthage](https://github.com/Carthage/Carthage):
+
+`github "adamwaite/Validator"`
+
 *Note - Embedded frameworks require a minimum deployment target of iOS 8.*
 
 ## Usage
@@ -59,6 +63,8 @@ let stringRequiredRule = ValidationRuleRequired<String?>(failureError: someValid
 
 let floatRequiredRule = ValidationRuleRequired<Float?>(failureError: someValidationErrorType)
 ```
+
+*Note - You can't use `validate` on an optional `Validatable` type (e.g. `myString?.validate(aRule...)` because the optional chaining mechanism will bypass the call. `"thing".validate(rule: aRule...)` is fine. To validate an optional for required in this way use: `Validator.validate(input: anOptional, rule: aRule)`.*
 
 #### Equality
 
@@ -104,7 +110,7 @@ let helloRule = ValidationRulePattern(pattern: ".*hello.*", failureError: someVa
 
 #### Contains
 
-Validates an `Equatable` type is within a predefined `SequenceType` (where the `Element` of the `SequenceType` matches the input format.
+Validates an `Equatable` type is within a predefined `SequenceType`'s elements (where the `Element` of the `SequenceType` matches the input type).
 
 ```swift
 let stringContainsRule = ValidationRuleContains<String, [String]>(sequence: ["hello", "hi", "hey"], failureError: someValidationErrorType)
@@ -296,14 +302,14 @@ A `ValidatableInterfaceElement` can be configured to automatically validate when
 2. Attach a closure to fire on input change:
 
     ```swift
-    textField.validationHandler = { result in
-	    switch result {
+    textField.validationHandler = { result, control in
+	  switch result {
       case .Valid:
-		    textField.textColor = UIColor.blackColor()
+		    control.textColor = UIColor.blackColor()
       case .Invalid(let failureErrors):
 		    let messages = failureErrors.map { $0.message }
-        print(messages)
-		    textField.textColor = UIColor.redColor()
+            print(messages)
+		    control.textColor = UIColor.redColor()
       }
     }
     ```

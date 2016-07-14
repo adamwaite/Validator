@@ -91,7 +91,7 @@ extension ExamplesViewController {
             case 2:
                 stringCell.titleLabel.text = "Range Length"
                 stringCell.summaryLabel.text = "Ensures the input is between 5 and 20 characters long using ValidationRuleLength"
-                let rangeLengthRule = ValidationRuleLength(min: 5, max: 10, failureError: ValidationError(message: "😫"))
+                let rangeLengthRule = ValidationRuleLength(min: 5, max: 20, failureError: ValidationError(message: "😫"))
                 stringCell.validationRuleSet?.addRule(rangeLengthRule)
                 
             case 3:

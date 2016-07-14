@@ -41,7 +41,7 @@ class StringExampleTableViewCell: ExampleTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         textField.validateOnInputChange(true)
-        textField.validationHandler = { result in self.updateValidationState(result) }
+        textField.validationHandler = { result, sender in self.updateValidationState(result) }
     }
     
     override func prepareForReuse() {
