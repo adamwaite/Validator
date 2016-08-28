@@ -40,8 +40,8 @@ class StringExampleTableViewCell: ExampleTableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        textField.validateOnInputChange(true)
-        textField.validationHandler = { result, sender in self.updateValidationState(result) }
+        textField.validateOnInputChange(validationEnabled: true)
+        textField.validationHandler = { result, sender in self.updateValidationState(result: result) }
     }
     
     override func prepareForReuse() {
