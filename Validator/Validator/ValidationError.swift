@@ -29,7 +29,7 @@
 
 import Foundation
 
-public protocol ValidationErrorType: ErrorType {
+public protocol ValidationErrorType: Error {
     var message: String { get }
 }
 

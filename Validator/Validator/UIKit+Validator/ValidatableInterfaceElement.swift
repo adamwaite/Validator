@@ -36,7 +36,7 @@ public protocol ValidatableInterfaceElement: AnyObject {
     
     var inputValue: InputType? { get }
     
-    func validate<R: ValidationRule where R.InputType == InputType>(rule r: R) -> ValidationResult
+    func validate<R: ValidationRule>(rule r: R) -> ValidationResult where R.InputType == InputType
     
     func validate(rules rs: ValidationRuleSet<InputType>) -> ValidationResult
 
@@ -60,13 +60,11 @@ extension ValidatableInterfaceElement {
 
     public var validationRules: ValidationRuleSet<InputType>? {
         get {
-            guard let boxed: Box<ValidationRuleSet<InputType>>? = objc_getAssociatedObject(self, &ValidatableInterfaceElementRulesKey) as? Box<ValidationRuleSet<InputType>>? else { return nil }
-            return boxed?.thing
+            return objc_getAssociatedObject(self, &ValidatableInterfaceElementRulesKey) as? ValidationRuleSet<InputType>
         }
         set(newValue) {
             if let n = newValue {
-                let boxed = Box<ValidationRuleSet<InputType>>(thing: n)
-                objc_setAssociatedObject(self, &ValidatableInterfaceElementRulesKey, boxed, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                objc_setAssociatedObject(self, &ValidatableInterfaceElementRulesKey, n, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             }
         }
     }
@@ -84,7 +82,7 @@ extension ValidatableInterfaceElement {
         }
     }
     
-    public func validate<R: ValidationRule where R.InputType == InputType>(rule r: R) -> ValidationResult {
+    public func validate<R: ValidationRule>(rule r: R) -> ValidationResult where R.InputType == InputType {
         let result = Validator.validate(input: inputValue, rule: r)
         if let h = validationHandler { h(result, self) }
         return result

@@ -44,7 +44,8 @@ public struct ValidationRuleLength: ValidationRule {
     }
     
     public func validateInput(input: String?) -> Bool {
-        return input?.characters.count >= min && input?.characters.count <= max
+        guard let input = input else { return false }
+        return input.characters.count >= min && input.characters.count <= max
     }
 
 }

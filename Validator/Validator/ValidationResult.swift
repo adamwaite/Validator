@@ -31,18 +31,18 @@ import Foundation
 
 public enum ValidationResult {
     
-    case Valid
-    case Invalid([ValidationErrorType])
+    case valid
+    case invalid([ValidationErrorType])
 
-    public var isValid: Bool { return self == .Valid }
+    public var isValid: Bool { return self == .valid }
 
     public func merge(another: ValidationResult) -> ValidationResult {
         switch self {
-        case .Valid: return another
-        case .Invalid(let errorMessages):
+        case .valid: return another
+        case .invalid(let errorMessages):
             switch another {
-            case .Valid: return self
-            case .Invalid(let errorMessagesAnother): return .Invalid([errorMessages, errorMessagesAnother].flatMap { $0 })
+            case .valid: return self
+            case .invalid(let errorMessagesAnother): return .invalid([errorMessages, errorMessagesAnother].flatMap { $0 })
             }
         }
     }
@@ -51,8 +51,8 @@ public enum ValidationResult {
 extension ValidationResult: Equatable {}
 public func ==(lhs: ValidationResult, rhs: ValidationResult) -> Bool {
     switch (lhs, rhs) {
-    case (.Valid, .Valid): return true
-    case (.Invalid(_), .Invalid(_)): return true
+    case (.valid, .valid): return true
+    case (.invalid(_), .invalid(_)): return true
     default: return false
     }
 }
