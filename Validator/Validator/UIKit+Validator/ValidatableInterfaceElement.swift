@@ -92,7 +92,12 @@ extension ValidatableInterfaceElement {
     
     public func validate(rules rs: ValidationRuleSet<InputType>) -> ValidationResult {
         let result = Validator.validate(input: inputValue, rules: rs)
-        if let h = validationHandler { h(result, self) }
+        if let h = validationHandler {
+            // This is the method that is causing a crash.
+            // We've received the handler closure as an associated object,
+            // but calling it causes exc_bad_access.
+            h(result, self)
+        }
         return result
     }
     
