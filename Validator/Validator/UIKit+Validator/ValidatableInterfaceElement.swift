@@ -71,8 +71,10 @@ extension ValidatableInterfaceElement {
     
     public var validationHandler: ValidationHandler? {
         get {
-            guard let boxed: Box<ValidationHandler>? = objc_getAssociatedObject(self, &ValidatableInterfaceElementHandlerKey) as! Box<ValidationHandler>? else { return nil }
-            return boxed?.thing
+            if let boxed = objc_getAssociatedObject(self, &ValidatableInterfaceElementHandlerKey) as! Box<ValidationHandler>? {
+                return boxed.thing
+            }
+            return nil
         }
         set(newValue) {
             if let n = newValue {
