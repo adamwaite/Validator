@@ -49,11 +49,6 @@ public protocol ValidatableInterfaceElement: AnyObject {
 private var ValidatableInterfaceElementRulesKey: UInt8 = 0
 private var ValidatableInterfaceElementHandlerKey: UInt8 = 0
 
-private final class Box<T>: NSObject {
-    let thing: T
-    init(thing t: T) { thing = t }
-}
-
 extension ValidatableInterfaceElement {
 
     public typealias ValidationHandler = (ValidationResult, Self) -> ()
@@ -71,14 +66,14 @@ extension ValidatableInterfaceElement {
     
     public var validationHandler: ValidationHandler? {
         get {
-            if let boxed = objc_getAssociatedObject(self, &ValidatableInterfaceElementHandlerKey) as! Box<ValidationHandler>? {
-                return boxed.thing
+            if let boxed = objc_getAssociatedObject(self, &ValidatableInterfaceElementHandlerKey) as! ValidationHandler? {
+                return boxed
             }
             return nil
         }
         set(newValue) {
             if let n = newValue {
-                let boxed = Box<ValidationHandler>(thing: n)
+                let boxed = n as AnyObject
                 objc_setAssociatedObject(self, &ValidatableInterfaceElementHandlerKey, boxed, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             }
         }
