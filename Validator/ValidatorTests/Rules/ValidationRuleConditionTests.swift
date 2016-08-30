@@ -34,7 +34,7 @@ class ValidationRuleConditionTests: XCTestCase {
     
     func testThatItCanValidateCustomConditions() {
 
-        let ruleA = ValidationRuleCondition<String>(failureError: testError) { $0?.rangeOfString("A") == nil }
+        let ruleA = ValidationRuleCondition<String>(failureError: testError) { $0?.range(of: "A") == nil }
         
         let invalidA = Validator.validate(input: "invAlid", rule: ruleA)
         XCTAssertFalse(invalidA.isValid)
@@ -42,8 +42,8 @@ class ValidationRuleConditionTests: XCTestCase {
         let validA = Validator.validate(input: "😀", rule: ruleA)
         XCTAssertTrue(validA.isValid)
         
-        let ruleB = ValidationRuleCondition<[Int]>(failureError: testError) { $0?.reduce(0, combine: +) > 50 }
-        
+        let ruleB = ValidationRuleCondition<[Int]>(failureError: testError) { $0!.reduce(0, +) > 50 }
+
         let invalidB = Validator.validate(input: [40, 1, 5], rule: ruleB)
         XCTAssertFalse(invalidB.isValid)
         

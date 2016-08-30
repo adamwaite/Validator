@@ -19,7 +19,7 @@ extension Array {
 }
 
 extension Int {
-    func times(closure: (Int) -> ()) {
+    func times(_ closure: (Int) -> ()) {
         for i in 0..<self {
             closure(i)
         }
