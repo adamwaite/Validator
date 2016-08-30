@@ -33,7 +33,7 @@ public struct Validator {
 
     public static func validate<R: ValidationRule>(input i: R.InputType?, rule r: R) -> ValidationResult {
         var ruleSet = ValidationRuleSet<R.InputType>()
-        ruleSet.addRule(rule: r)
+        ruleSet.add(rule: r)
         return Validator.validate(input: i, rules: ruleSet)
     }
     
