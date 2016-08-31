@@ -46,7 +46,6 @@ class ValidationResultTests: XCTestCase {
         
         let success1 = ValidationResult.Valid
         let success2 = ValidationResult.Valid
-        
         let err1 = testError
         let err2 = ValidationError(message: "💣💣")
         
@@ -65,6 +64,19 @@ class ValidationResultTests: XCTestCase {
         let sbj4 = sbj3.merge(sbj3)
         XCTAssertEqual(sbj4, ValidationResult.Invalid([err1, err2, err1, err2]))
         
+    }
+    
+    func testThatMultipleResultsCanBeCombined() {
+        let success1 = ValidationResult.Valid
+        let success2 = ValidationResult.Valid
+        let err1 = testError
+        let err2 = ValidationError(message: "💣💣")
+        let fail1 = ValidationResult.Invalid([err1])
+        let fail2 = ValidationResult.Invalid([err2])
+
+        let results: [ValidationResult] = [success1, success2, fail1, fail2]
+        let combined = ValidationResult.combine(results)
+        XCTAssertEqual(combined, ValidationResult.Invalid([err1, err2]))
     }
     
 }
