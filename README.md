@@ -225,12 +225,13 @@ The `validate:` method returns a `ValidationResult` enum. `ValidationResult` can
 1. `.Valid`: The input satisfies the validation rules.
 2. `.Invalid`: The input fails the validation rules. An `.Invalid` result has an associated array of types conforming to `ValidationErrorType`.
 
-You can combine two or more `ValidationResult`s together with `merge:`.
+You can combine two or more `ValidationResult`s together with `merge:`, `mergeMany:` and `ValidationResult.combine:`.
 
 ```swift
 let result1 = ValidationResult.Invalid([someError])
 let result2 = ValidationResult.Invalid([someError2])
 let allResults = result1.merge(result2) // = ValidationResult.Invalid([someError1, someError2])
+let allResultsAgain = ValidationResult.combine([result1, result2]) // = ValidationResult.Invalid([someError1, someError2])
 ```
 
 ### ValidationErrorType
@@ -302,14 +303,13 @@ A `ValidatableInterfaceElement` can be configured to automatically validate when
 2. Attach a closure to fire on input change:
 
     ```swift
-    textField.validationHandler = { result, control in
+    textField.validationHandler = { result in
 	  switch result {
       case .Valid:
-		    control.textColor = UIColor.blackColor()
+		    print("valid!")
       case .Invalid(let failureErrors):
 		    let messages = failureErrors.map { $0.message }
-            print(messages)
-		    control.textColor = UIColor.redColor()
+        print("invalid!", messages)
       }
     }
     ```
@@ -362,6 +362,10 @@ There's an example project in this repository.
 ## Contributing
 
 Any contributions and suggestions are most welcome! Please ensure any new code is covered with unit tests, and that all existing tests pass. Please update the README with any new features. Thanks!
+
+## Thanks
+
+- Thanks to [@jedmund](https://github.com/jedmund) for converting this project to Swift 3.
 
 ## Contact
 
