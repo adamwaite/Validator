@@ -33,7 +33,7 @@ public protocol Validatable {
     
     func validate() -> ValidationResult
     
-    func validate<R: ValidationRule where R.InputType == Self>(rule r: R) -> ValidationResult
+    func validate<R: ValidationRule>(rule r: R) -> ValidationResult where R.InputType == Self
     
     func validate(rules rs: ValidationRuleSet<Self>) -> ValidationResult
     
@@ -42,10 +42,10 @@ public protocol Validatable {
 extension Validatable {
     
     public func validate() -> ValidationResult {
-        return .Valid
+        return .valid
     }
     
-    public func validate<R: ValidationRule where R.InputType == Self>(rule r: R) -> ValidationResult {
+    public func validate<R: ValidationRule>(rule r: R) -> ValidationResult where R.InputType == Self {
         return Validator.validate(input: self, rule: r)
     }
     

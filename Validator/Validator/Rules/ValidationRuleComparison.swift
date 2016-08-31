@@ -44,6 +44,7 @@ public struct ValidationRuleComparison<T: Comparable>: ValidationRule {
     }
     
     public func validateInput(input: T?) -> Bool {
+        guard let input = input else { return false }
         return input >= min && input <= max
     }
     

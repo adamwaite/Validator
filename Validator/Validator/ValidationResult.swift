@@ -31,36 +31,36 @@ import Foundation
 
 public enum ValidationResult {
     
-    case Valid
-    case Invalid([ValidationErrorType])
+    case valid
+    case invalid([ValidationErrorType])
 
-    public var isValid: Bool { return self == .Valid }
+    public var isValid: Bool { return self == .valid }
 
     public func merge(result: ValidationResult) -> ValidationResult {
         switch self {
-        case .Valid: return result
-        case .Invalid(let errorMessages):
+        case .valid: return result
+        case .invalid(let errorMessages):
             switch result {
-            case .Valid: return self
-            case .Invalid(let errorMessagesAnother): return .Invalid([errorMessages, errorMessagesAnother].flatMap { $0 })
+            case .valid: return self
+            case .invalid(let errorMessagesAnother): return .invalid([errorMessages, errorMessagesAnother].flatMap { $0 })
             }
         }
     }
     
     public func mergeWithMany(results: [ValidationResult]) -> ValidationResult {
-        return results.reduce(self) { return $0.merge($1) }
+        return results.reduce(self) { return $0.merge(result: $1) }
     }
     
     public static func combine(results: [ValidationResult]) -> ValidationResult {
-        return ValidationResult.Valid.mergeWithMany(results)
+        return ValidationResult.valid.mergeWithMany(results: results)
     }
 }
 
 extension ValidationResult: Equatable {}
 public func ==(lhs: ValidationResult, rhs: ValidationResult) -> Bool {
     switch (lhs, rhs) {
-    case (.Valid, .Valid): return true
-    case (.Invalid(_), .Invalid(_)): return true
+    case (.valid, .valid): return true
+    case (.invalid(_), .invalid(_)): return true
     default: return false
     }
 }

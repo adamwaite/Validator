@@ -30,16 +30,16 @@
 import Foundation
 
 public struct Validator {
-    
+
     public static func validate<R: ValidationRule>(input i: R.InputType?, rule r: R) -> ValidationResult {
         var ruleSet = ValidationRuleSet<R.InputType>()
-        ruleSet.addRule(r)
+        ruleSet.add(rule: r)
         return Validator.validate(input: i, rules: ruleSet)
     }
     
-    public static func validate<T>(input i: T?, rules rs: ValidationRuleSet<T>) -> ValidationResult {
-        let errors = rs.rules.filter { !$0.validateInput(i) }.map { $0.failureError }
-        return errors.isEmpty ? ValidationResult.Valid : ValidationResult.Invalid(errors)
+    public static func validate<T>(input i: T?, rules rs: ValidationRuleSet<T>) -> ValidationResult {        
+        let errors = rs.rules.filter { !$0.validateInput(input: i) }.map { $0.failureError }
+        return errors.isEmpty ? ValidationResult.valid : ValidationResult.invalid(errors)
     }
     
 }
