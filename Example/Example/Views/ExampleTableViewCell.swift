@@ -32,9 +32,9 @@ import Validator
 
 class ExampleTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var summaryLabel: UILabel!
-    @IBOutlet weak var stateLabel: UILabel!
+    @IBOutlet private(set) var titleLabel: UILabel!
+    @IBOutlet private(set) var summaryLabel: UILabel!
+    @IBOutlet private(set) var stateLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

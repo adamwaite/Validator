@@ -30,9 +30,9 @@
 import UIKit
 import Validator
 
-class StringExampleTableViewCell: ExampleTableViewCell {
+final class StringExampleTableViewCell: ExampleTableViewCell {
     
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet private(set) var textField: TextField!
     
     var validationRuleSet: ValidationRuleSet<String>? {
         didSet { textField.validationRules = validationRuleSet }
@@ -41,7 +41,7 @@ class StringExampleTableViewCell: ExampleTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         textField.validateOnInputChange(true)
-        textField.validationHandler = { result, sender in self.updateValidationState(result) }
+        textField.validationHandler = { result in self.updateValidationState(result) }
     }
     
     override func prepareForReuse() {

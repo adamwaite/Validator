@@ -30,7 +30,7 @@
 import UIKit
 import Validator
 
-class ExamplesViewController: UITableViewController {
+final class ExamplesViewController: UITableViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()

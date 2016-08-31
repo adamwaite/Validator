@@ -56,7 +56,7 @@ private final class Box<T>: NSObject {
 
 extension ValidatableInterfaceElement {
 
-    public typealias ValidationHandler = (ValidationResult, Self) -> ()
+    public typealias ValidationHandler = ValidationResult -> Void
 
     public var validationRules: ValidationRuleSet<InputType>? {
         get {
@@ -73,7 +73,7 @@ extension ValidatableInterfaceElement {
     
     public var validationHandler: ValidationHandler? {
         get {
-            guard let boxed: Box<ValidationHandler>? = objc_getAssociatedObject(self, &ValidatableInterfaceElementHandlerKey) as! Box<ValidationHandler>? else { return nil }
+            guard let boxed: Box<ValidationHandler>? = objc_getAssociatedObject(self, &ValidatableInterfaceElementHandlerKey) as? Box<ValidationHandler>? else { fatalError("") }
             return boxed?.thing
         }
         set(newValue) {
@@ -86,13 +86,13 @@ extension ValidatableInterfaceElement {
     
     public func validate<R: ValidationRule where R.InputType == InputType>(rule r: R) -> ValidationResult {
         let result = Validator.validate(input: inputValue, rule: r)
-        if let h = validationHandler { h(result, self) }
+        if let h = validationHandler { h(result) }
         return result
     }
     
     public func validate(rules rs: ValidationRuleSet<InputType>) -> ValidationResult {
         let result = Validator.validate(input: inputValue, rules: rs)
-        if let h = validationHandler { h(result, self) }
+        if let h = validationHandler { h(result) }
         return result
     }
     

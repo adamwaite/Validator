@@ -70,7 +70,7 @@ class UITextFieldValidatorTests: XCTestCase {
         let actions = textField.actionsForTarget(textField, forControlEvent: .EditingChanged) ?? []
         XCTAssertFalse(actions.isEmpty)
 
-        textField.validationHandler = { result, control in
+        textField.validationHandler = { result in
             switch result {
             case .Valid: didRegisterValid = true
             case .Invalid(_): didRegisterInvalid = true

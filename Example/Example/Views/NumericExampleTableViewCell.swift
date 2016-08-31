@@ -30,10 +30,10 @@
 import UIKit
 import Validator
 
-class NumericExampleTableViewCell: ExampleTableViewCell {
+final class NumericExampleTableViewCell: ExampleTableViewCell {
     
-    @IBOutlet weak var slider: UISlider!
-    @IBOutlet weak var sliderValueLabel: UILabel!
+    @IBOutlet private(set) var slider: UISlider!
+    @IBOutlet private(set) var sliderValueLabel: UILabel!
     
     var validationRuleSet: ValidationRuleSet<Float>? {
         didSet { slider.validationRules = validationRuleSet }
@@ -42,7 +42,7 @@ class NumericExampleTableViewCell: ExampleTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         slider.validateOnInputChange(true)
-        slider.validationHandler = { result, sender in self.updateValidationState(result) }
+        slider.validationHandler = { result in self.updateValidationState(result) }
     }
     
 }
