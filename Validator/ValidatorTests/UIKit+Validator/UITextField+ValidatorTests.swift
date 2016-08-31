@@ -30,32 +30,61 @@
 import XCTest
 @testable import Validator
 
+private final class TextField: UITextField {
+    
+}
+
 class UITextFieldValidatorTests: XCTestCase {
     
     func testThatItProvidesAnInputValue() {
-
         let textField = UITextField()
         textField.text = "Hello"
-        
         XCTAssertTrue(textField.inputValue == "Hello")
-        
     }
     
     func testThatItCanValidateInputText() {
-        
         let textField = UITextField()
         textField.text = "Hello"
-        
         let rule = ValidationRuleCondition<String>(failureError: testError) { ($0?.characters.contains("A"))! }
-        
         let invalid = textField.validate(rule: rule)
         XCTAssertFalse(invalid.isValid)
-        
         textField.text = "Hello Adam"
-        
         let valid = textField.validate(rule: rule)
         XCTAssertTrue(valid.isValid)
-        
     }
     
+    func testThatItCanValidateOnInputChange() {
+        let textField = UITextField()
+        
+        var rules = ValidationRuleSet<String>()
+        let rule = ValidationRuleCondition<String>(failureError: testError) { ($0?.characters.contains("A"))! }
+        rules.addRule(rule)
+        
+        var didRegisterInvalid = false
+        var didRegisterValid = false
+        
+        textField.validationRules = rules
+        XCTAssertNotNil(textField.validationRules)
+        
+        textField.validateOnInputChange(true)
+        let actions = textField.actionsForTarget(textField, forControlEvent: .EditingChanged) ?? []
+        XCTAssertFalse(actions.isEmpty)
+
+        textField.validationHandler = { result, control in
+            switch result {
+            case .Valid: didRegisterValid = true
+            case .Invalid(_): didRegisterInvalid = true
+            }
+        }
+        
+        textField.text = "BCDE"
+        textField.validate() // textField.sendActionsForControlEvents(.EditingChanged) doesn't seem to work in test env
+        XCTAssert(didRegisterInvalid)
+        XCTAssertFalse(didRegisterValid)
+        
+        textField.text = "ABCDE"
+        textField.validate()
+        XCTAssert(didRegisterInvalid)
+        XCTAssert(didRegisterValid)
+    }
 }

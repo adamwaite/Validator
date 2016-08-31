@@ -17,6 +17,7 @@
 		9967E41B1B7682FA00ACAF54 /* StringExampleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E4121B7682FA00ACAF54 /* StringExampleTableViewCell.swift */; };
 		9967E4261B76965500ACAF54 /* Validator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9967E4221B768E9500ACAF54 /* Validator.framework */; };
 		9967E42A1B76985E00ACAF54 /* Validator.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9967E4221B768E9500ACAF54 /* Validator.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		99E8DEE81D771B0800362402 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E8DEE71D771B0800362402 /* TextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		9967E41C1B768E9500ACAF54 /* Validator.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Validator.xcodeproj; path = ../Validator/Validator.xcodeproj; sourceTree = "<group>"; };
 		999F53971B4E736900143184 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		999F53AB1B4E736900143184 /* Example.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Example.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		99E8DEE71D771B0800362402 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 		9967E40F1B7682FA00ACAF54 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				99E8DEE71D771B0800362402 /* TextField.swift */,
 				9967E4101B7682FA00ACAF54 /* ExampleTableViewCell.swift */,
 				9967E4111B7682FA00ACAF54 /* NumericExampleTableViewCell.swift */,
 				9967E4121B7682FA00ACAF54 /* StringExampleTableViewCell.swift */,
@@ -300,6 +303,7 @@
 				9967E4131B7682FA00ACAF54 /* AppDelegate.swift in Sources */,
 				9967E4141B7682FA00ACAF54 /* ExamplesViewController.swift in Sources */,
 				9967E41A1B7682FA00ACAF54 /* NumericExampleTableViewCell.swift in Sources */,
+				99E8DEE81D771B0800362402 /* TextField.swift in Sources */,
 				9967E41B1B7682FA00ACAF54 /* StringExampleTableViewCell.swift in Sources */,
 				9967E4191B7682FA00ACAF54 /* ExampleTableViewCell.swift in Sources */,
 			);

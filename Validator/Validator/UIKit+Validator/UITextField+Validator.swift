@@ -37,15 +37,19 @@ extension UITextField: ValidatableInterfaceElement {
     
     public func validateOnInputChange(validationEnabled: Bool) {
         switch validationEnabled {
-        case true: addTarget(self, action: #selector(UITextField.validateInput(_:)), forControlEvents: .EditingChanged)
-        case false: removeTarget(self, action: #selector(UITextField.validateInput(_:)), forControlEvents: .EditingChanged)
+        case true:
+            addTarget(self, action: #selector(UITextField.validateInput(_:)), forControlEvents: .EditingChanged)
+        case false:
+            removeTarget(self, action: #selector(UITextField.validateInput(_:)), forControlEvents: .EditingChanged)
         }
     }
     
     public func validateOnEditingEnd(validationEnabled: Bool) {
         switch validationEnabled {
-        case true: addTarget(self, action: #selector(UITextField.validateInput(_:)), forControlEvents: .EditingDidEnd)
-        case false: removeTarget(self, action: #selector(UITextField.validateInput(_:)), forControlEvents: .EditingDidEnd)
+        case true:
+            addTarget(self, action: #selector(UITextField.validateInput(_:)), forControlEvents: .EditingDidEnd)
+        case false:
+            removeTarget(self, action: #selector(UITextField.validateInput(_:)), forControlEvents: .EditingDidEnd)
         }
     }
     
