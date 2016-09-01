@@ -61,7 +61,7 @@ extension ValidatableInterfaceElement {
         set(newValue) {
             return
             if let n = newValue {
-                objc_setAssociatedObject(self, &ValidatableInterfaceElementRulesKey, n as! AnyObject, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                objc_setAssociatedObject(self, &ValidatableInterfaceElementRulesKey, n as AnyObject, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             }
         }
     }
@@ -77,7 +77,7 @@ extension ValidatableInterfaceElement {
         set(newValue) {
             return
             if let n = newValue {
-                objc_setAssociatedObject(self, &ValidatableInterfaceElementHandlerKey, n as! AnyObject, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                objc_setAssociatedObject(self, &ValidatableInterfaceElementHandlerKey, n as AnyObject, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             }
         }
     }

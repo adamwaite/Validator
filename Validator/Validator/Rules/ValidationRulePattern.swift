@@ -54,7 +54,7 @@ public struct ValidationRulePattern: ValidationRule {
     }
     
     public func validateInput(input: String?) -> Bool {
-        return Predicate(format: "SELF MATCHES %@", pattern).evaluate(with: input)
+        return NSPredicate(format: "SELF MATCHES %@", pattern).evaluate(with: input)
     }
     
 }

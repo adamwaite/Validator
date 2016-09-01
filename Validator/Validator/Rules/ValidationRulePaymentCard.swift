@@ -68,7 +68,7 @@ public enum PaymentCardType: Int {
     private static func typeForCardNumber(string: String?) -> PaymentCardType? {
         guard let string = string else { return nil }
         for type in PaymentCardType.all {
-            let predicate = Predicate(format: "SELF MATCHES %@", type.identifyingExpression)
+            let predicate = NSPredicate(format: "SELF MATCHES %@", type.identifyingExpression)
             if predicate.evaluate(with: string) {
                 return type
             }
