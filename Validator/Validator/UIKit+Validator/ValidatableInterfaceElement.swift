@@ -55,11 +55,9 @@ extension ValidatableInterfaceElement {
 
     public var validationRules: ValidationRuleSet<InputType>? {
         get {
-            return nil
             return objc_getAssociatedObject(self, &ValidatableInterfaceElementRulesKey) as? ValidationRuleSet<InputType>
         }
         set(newValue) {
-            return
             if let n = newValue {
                 objc_setAssociatedObject(self, &ValidatableInterfaceElementRulesKey, n as AnyObject, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             }
@@ -68,14 +66,9 @@ extension ValidatableInterfaceElement {
     
     public var validationHandler: ValidationHandler? {
         get {
-            return nil
-            if let boxed = objc_getAssociatedObject(self, &ValidatableInterfaceElementHandlerKey) as! ValidationHandler? {
-                return boxed
-            }
-            return nil
+            return objc_getAssociatedObject(self, &ValidatableInterfaceElementHandlerKey) as? ValidationHandler
         }
         set(newValue) {
-            return
             if let n = newValue {
                 objc_setAssociatedObject(self, &ValidatableInterfaceElementHandlerKey, n as AnyObject, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             }
@@ -91,16 +84,12 @@ extension ValidatableInterfaceElement {
     public func validate(rules rs: ValidationRuleSet<InputType>) -> ValidationResult {
         let result = Validator.validate(input: inputValue, rules: rs)
         if let h = validationHandler {
-            // This is the method that is causing a crash.
-            // We've received the handler closure as an associated object,
-            // but calling it causes exc_bad_access.
             h(result)
         }
         return result
     }
     
-    public func validate() -> ValidationResult {
-        return .valid
+    @discardableResult public func validate() -> ValidationResult {
         guard let attachedRules = validationRules else { fatalError("Validator Error: attempted to validate without attaching rules") }
         return validate(rules: attachedRules)
     }
