@@ -43,7 +43,7 @@ public struct ValidationRuleEquality<T: Equatable>: ValidationRule {
         self.dynamicTarget = nil
     }
     
-    public init(dynamicTarget: (() -> T), failureError: ValidationErrorType) {
+    public init(dynamicTarget: @escaping (() -> T), failureError: ValidationErrorType) {
         self.target = dynamicTarget()
         self.dynamicTarget = dynamicTarget
         self.failureError = failureError
