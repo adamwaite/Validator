@@ -41,8 +41,8 @@ final class NumericExampleTableViewCell: ExampleTableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        slider.validateOnInputChange(true)
-        slider.validationHandler = { result in self.updateValidationState(result) }
+        slider.validateOnInputChange(validationEnabled: true)
+        slider.validationHandler = { result in self.updateValidationState(result: result) }
     }
     
 }

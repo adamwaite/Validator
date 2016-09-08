@@ -69,7 +69,7 @@ public enum PaymentCardType: Int {
         guard let string = string else { return nil }
         for type in PaymentCardType.all {
             let predicate = NSPredicate(format: "SELF MATCHES %@", type.identifyingExpression)
-            if predicate.evaluateWithObject(string) {
+            if predicate.evaluate(with: string) {
                 return type
             }
         }
@@ -77,7 +77,7 @@ public enum PaymentCardType: Int {
     }
     
     public init?(cardNumber: String) {
-        guard let type = PaymentCardType.typeForCardNumber(cardNumber) else { return nil }
+        guard let type = PaymentCardType.typeForCardNumber(string: cardNumber) else { return nil }
         self.init(rawValue: type.rawValue)
     }
 }
@@ -100,15 +100,15 @@ public struct ValidationRulePaymentCard: ValidationRule {
     
     public func validateInput(input: String?) -> Bool {
         guard let cardNum = input else { return false }
-        guard ValidationRulePaymentCard.luhnCheck(cardNum) else { return false }
+        guard ValidationRulePaymentCard.luhnCheck(cardNumber: cardNum) else { return false }
         guard let cardType = PaymentCardType(cardNumber: cardNum) else { return false }
         return acceptedTypes.contains(cardType)
     }
     
     private static func luhnCheck(cardNumber: String) -> Bool {
         var sum = 0
-        let reversedCharacters = cardNumber.characters.reverse().map { String($0) }
-        for (idx, element) in reversedCharacters.enumerate() {
+        let reversedCharacters = cardNumber.characters.reversed().map { String($0) }
+        for (idx, element) in reversedCharacters.enumerated() {
             guard let digit = Int(element) else { return false }
             switch ((idx % 2 == 1), digit) {
             case (true, 9): sum += 9

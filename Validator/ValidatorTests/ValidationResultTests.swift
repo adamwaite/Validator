@@ -33,50 +33,50 @@ import XCTest
 class ValidationResultTests: XCTestCase {
     
     func testThatAValidResultIsDeemedValid() {
-        let valid = ValidationResult.Valid
+        let valid = ValidationResult.valid
         XCTAssertTrue(valid.isValid)
        
         let err = testError
         
-        let invalid = ValidationResult.Invalid([err])
+        let invalid = ValidationResult.invalid([err])
         XCTAssertFalse(invalid.isValid)
     }
     
     func testThatItCanBeMergedWithOtherValidationResults() {
-        
-        let success1 = ValidationResult.Valid
-        let success2 = ValidationResult.Valid
+        let success1 = ValidationResult.valid
+        let success2 = ValidationResult.valid
+
         let err1 = testError
         let err2 = ValidationError(message: "💣💣")
         
-        let fail1 = ValidationResult.Invalid([err1])
-        let fail2 = ValidationResult.Invalid([err2])
+        let fail1 = ValidationResult.invalid([err1])
+        let fail2 = ValidationResult.invalid([err2])
         
-        let sbj1 = success1.merge(success2)
-        XCTAssertEqual(sbj1, ValidationResult.Valid)
+        let sbj1 = success1.merge(result: success2)
+        XCTAssertEqual(sbj1, ValidationResult.valid)
         
-        let sbj2 = success1.merge(fail1)
-        XCTAssertEqual(sbj2, ValidationResult.Invalid([err1]))
+        let sbj2 = success1.merge(result: fail1)
+        XCTAssertEqual(sbj2, ValidationResult.invalid([err1]))
 
-        let sbj3 = fail1.merge(fail2)
-        XCTAssertEqual(sbj3, ValidationResult.Invalid([err1, err2]))
+        let sbj3 = fail1.merge(result: fail2)
+        XCTAssertEqual(sbj3, ValidationResult.invalid([err1, err2]))
 
-        let sbj4 = sbj3.merge(sbj3)
-        XCTAssertEqual(sbj4, ValidationResult.Invalid([err1, err2, err1, err2]))
+        let sbj4 = sbj3.merge(result: sbj3)
+        XCTAssertEqual(sbj4, ValidationResult.invalid([err1, err2, err1, err2]))
         
     }
     
     func testThatMultipleResultsCanBeCombined() {
-        let success1 = ValidationResult.Valid
-        let success2 = ValidationResult.Valid
+        let success1 = ValidationResult.valid
+        let success2 = ValidationResult.valid
         let err1 = testError
         let err2 = ValidationError(message: "💣💣")
-        let fail1 = ValidationResult.Invalid([err1])
-        let fail2 = ValidationResult.Invalid([err2])
+        let fail1 = ValidationResult.invalid([err1])
+        let fail2 = ValidationResult.invalid([err2])
 
         let results: [ValidationResult] = [success1, success2, fail1, fail2]
-        let combined = ValidationResult.combine(results)
-        XCTAssertEqual(combined, ValidationResult.Invalid([err1, err2]))
+        let combined = ValidationResult.combine(results: results)
+        XCTAssertEqual(combined, ValidationResult.invalid([err1, err2]))
     }
     
 }
