@@ -55,7 +55,7 @@ public enum PaymentCardType: Int {
     private var identifyingExpression: String {
         switch self {
         case .Amex: return "^3[47][0-9]{5,}$"
-        case .Mastercard: return "^5[1-5][0-9]{5,}$"
+        case .Mastercard: return "^(5[1-5]|2[2-7])[0-9]{5,}$"
         case .Visa: return "^4[0-9]{6,}$"
         case .Maestro: return "^(?:5[0678]\\d\\d|6304|6390|67\\d\\d)\\d{8,15}$"
         case .DinersClub: return "^3(?:0[0-5]|[68][0-9])[0-9]{4,}$"
