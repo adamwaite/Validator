@@ -301,7 +301,7 @@ A `ValidatableInterfaceElement` can be configured to automatically validate when
 
     ```swift
     let textField = UITextField()
-    let rules = ValidationRuleSet<String>()
+    var rules = ValidationRuleSet<String>()
     rules.add(rule: someRule)
     textField.validationRules = rules
     ```
@@ -323,10 +323,10 @@ A `ValidatableInterfaceElement` can be configured to automatically validate when
 3. Begin observation:
 
     ```swift
-    textField.validateOnInputChange(true)
+    textField.validateOnInputChange(validationEnabled: true)
     ```
 
-Note - Use `.validateOnInputChange(false)` to end observation.
+Note - Use `.validateOnInputChange(validationEnabled: false)` to end observation.
 
 #### Extend UI Elements As Validatable
 
