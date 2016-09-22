@@ -29,7 +29,7 @@
 
 import Foundation
 
-public struct ValidationRuleContains<T: Equatable, S: SequenceType where S.Generator.Element == T>: ValidationRule {
+public struct ValidationRuleContains<T: Equatable, S: Sequence>: ValidationRule where S.Iterator.Element == T {
     
     public typealias InputType = T
     

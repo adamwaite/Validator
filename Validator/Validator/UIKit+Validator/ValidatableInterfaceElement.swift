@@ -36,7 +36,7 @@ public protocol ValidatableInterfaceElement: AnyObject {
     
     var inputValue: InputType? { get }
     
-    func validate<R: ValidationRule where R.InputType == InputType>(rule r: R) -> ValidationResult
+    func validate<R: ValidationRule>(rule r: R) -> ValidationResult where R.InputType == InputType
     
     func validate(rules rs: ValidationRuleSet<InputType>) -> ValidationResult
 
@@ -49,42 +49,33 @@ public protocol ValidatableInterfaceElement: AnyObject {
 private var ValidatableInterfaceElementRulesKey: UInt8 = 0
 private var ValidatableInterfaceElementHandlerKey: UInt8 = 0
 
-private final class Box<T>: NSObject {
-    let thing: T
-    init(thing t: T) { thing = t }
-}
-
 extension ValidatableInterfaceElement {
 
-    public typealias ValidationHandler = ValidationResult -> Void
+    public typealias ValidationHandler = (ValidationResult) -> Void
 
     public var validationRules: ValidationRuleSet<InputType>? {
         get {
-            guard let boxed: Box<ValidationRuleSet<InputType>>? = objc_getAssociatedObject(self, &ValidatableInterfaceElementRulesKey) as? Box<ValidationRuleSet<InputType>>? else { return nil }
-            return boxed?.thing
+            return objc_getAssociatedObject(self, &ValidatableInterfaceElementRulesKey) as? ValidationRuleSet<InputType>
         }
         set(newValue) {
             if let n = newValue {
-                let boxed = Box<ValidationRuleSet<InputType>>(thing: n)
-                objc_setAssociatedObject(self, &ValidatableInterfaceElementRulesKey, boxed, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                objc_setAssociatedObject(self, &ValidatableInterfaceElementRulesKey, n as AnyObject, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             }
         }
     }
     
     public var validationHandler: ValidationHandler? {
         get {
-            guard let boxed: Box<ValidationHandler>? = objc_getAssociatedObject(self, &ValidatableInterfaceElementHandlerKey) as? Box<ValidationHandler>? else { fatalError("") }
-            return boxed?.thing
+            return objc_getAssociatedObject(self, &ValidatableInterfaceElementHandlerKey) as? ValidationHandler
         }
         set(newValue) {
             if let n = newValue {
-                let boxed = Box<ValidationHandler>(thing: n)
-                objc_setAssociatedObject(self, &ValidatableInterfaceElementHandlerKey, boxed, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                objc_setAssociatedObject(self, &ValidatableInterfaceElementHandlerKey, n as AnyObject, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             }
         }
     }
     
-    public func validate<R: ValidationRule where R.InputType == InputType>(rule r: R) -> ValidationResult {
+    public func validate<R: ValidationRule>(rule r: R) -> ValidationResult where R.InputType == InputType {
         let result = Validator.validate(input: inputValue, rule: r)
         if let h = validationHandler { h(result) }
         return result
@@ -92,11 +83,13 @@ extension ValidatableInterfaceElement {
     
     public func validate(rules rs: ValidationRuleSet<InputType>) -> ValidationResult {
         let result = Validator.validate(input: inputValue, rules: rs)
-        if let h = validationHandler { h(result) }
+        if let h = validationHandler {
+            h(result)
+        }
         return result
     }
     
-    public func validate() -> ValidationResult {
+    @discardableResult public func validate() -> ValidationResult {
         guard let attachedRules = validationRules else { fatalError("Validator Error: attempted to validate without attaching rules") }
         return validate(rules: attachedRules)
     }

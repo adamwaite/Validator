@@ -45,7 +45,7 @@ internal struct AnyValidationRule<InputType>: ValidationRule {
     
     let failureError: ValidationErrorType
     
-    init<R: ValidationRule where R.InputType == InputType>(base: R) {
+    init<R: ValidationRule>(base: R) where R.InputType == InputType {
         baseValidateInput = base.validateInput
         failureError = base.failureError
     }
@@ -53,5 +53,5 @@ internal struct AnyValidationRule<InputType>: ValidationRule {
     func validateInput(input: InputType?) -> Bool {
         return baseValidateInput(input)
     }
-    
+
 }

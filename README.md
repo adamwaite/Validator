@@ -42,7 +42,7 @@ Install Validator with [Carthage](https://github.com/Carthage/Carthage):
 
 ## Usage
 
-`Validator` can validate any `Validatable` type using one or multiple `ValidationRule`s. A validation operation returns a `ValidationResult` which matches either `.Valid` or `.Invalid([ValidationErrorType])`, where `ValidationErrorType` extends `ErrorType`.
+`Validator` can validate any `Validatable` type using one or multiple `ValidationRule`s. A validation operation returns a `ValidationResult` which matches either `.valid` or `.invalid([ValidationErrorType])`, where `ValidationErrorType` extends `ErrorType`.
 
 ```swift
 let rule = ValidationRulePattern(pattern: .EmailAddress, failureError: someValidationErrorType)
@@ -51,8 +51,8 @@ let result = "invalid@email,com".validate(rule: rule)
 // Note: the above is equivalent to Validator.validate(input: "invalid@email,com", rule: rule)
 
 switch result {
-case .Valid: print("😀")
-case .Invalid(let failures): print(failures.first?.message)
+case .valid: print("😀")
+case .invalid(let failures): print(failures.first?.message)
 }
 ```
 
@@ -194,10 +194,10 @@ Validation rules can be combined into a `ValidationRuleSet` containing a collect
 var passwordRules = ValidationRuleSet<String>()
 
 let minLengthRule = ValidationRuleLength(min: 5, failureError: someValidationErrorType)
-passwordRules.addRule(minLengthRule)
+passwordRules.add(rule: minLengthRule)
 
 let digitRule = ValidationRulePattern(pattern: .ContainsDigit, failureError: someValidationErrorType)
-passwordRules.addRule(digitRule)
+passwordRules.add(rule: digitRule)
 ```
 
 ### Validatable
@@ -226,16 +226,16 @@ Note: The implementation inside the protocol extension should mean that you don'
 
 The `validate:` method returns a `ValidationResult` enum. `ValidationResult` can take one of two forms:
 
-1. `.Valid`: The input satisfies the validation rules.
-2. `.Invalid`: The input fails the validation rules. An `.Invalid` result has an associated array of types conforming to `ValidationErrorType`.
+1. `.valid`: The input satisfies the validation rules.
+2. `.invalid`: The input fails the validation rules. An `.invalid` result has an associated array of types conforming to `ValidationErrorType`.
 
 You can combine two or more `ValidationResult`s together with `merge:`, `mergeMany:` and `ValidationResult.combine:`.
 
 ```swift
-let result1 = ValidationResult.Invalid([someError])
-let result2 = ValidationResult.Invalid([someError2])
-let allResults = result1.merge(result2) // = ValidationResult.Invalid([someError1, someError2])
-let allResultsAgain = ValidationResult.combine([result1, result2]) // = ValidationResult.Invalid([someError1, someError2])
+let result1 = ValidationResult.invalid([someError])
+let result2 = ValidationResult.invalid([someError2])
+let allResults = result1.merge(result2) // = ValidationResult.invalid([someError1, someError2])
+let allResultsAgain = ValidationResult.combine([result1, result2]) // = ValidationResult.invalid([someError1, someError2])
 ```
 
 ### ValidationErrorType
@@ -299,8 +299,8 @@ A `ValidatableInterfaceElement` can be configured to automatically validate when
 
     ```swift
     let textField = UITextField()
-    let rules = ValidationRuleSet<String>()
-    rules.addRule(someRule)
+    var rules = ValidationRuleSet<String>()
+    rules.add(rule: someRule)
     textField.validationRules = rules
     ```
 
@@ -309,9 +309,9 @@ A `ValidatableInterfaceElement` can be configured to automatically validate when
     ```swift
     textField.validationHandler = { result in
 	  switch result {
-      case .Valid:
+      case .valid:
 		    print("valid!")
-      case .Invalid(let failureErrors):
+      case .invalid(let failureErrors):
 		    let messages = failureErrors.map { $0.message }
         print("invalid!", messages)
       }
@@ -321,10 +321,10 @@ A `ValidatableInterfaceElement` can be configured to automatically validate when
 3. Begin observation:
 
     ```swift
-    textField.validateOnInputChange(true)
+    textField.validateOnInputChange(validationEnabled: true)
     ```
 
-Note - Use `.validateOnInputChange(false)` to end observation.
+Note - Use `.validateOnInputChange(validationEnabled: false)` to end observation.
 
 #### Extend UI Elements As Validatable
 

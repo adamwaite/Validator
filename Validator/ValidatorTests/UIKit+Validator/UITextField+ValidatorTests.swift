@@ -58,7 +58,7 @@ class UITextFieldValidatorTests: XCTestCase {
         
         var rules = ValidationRuleSet<String>()
         let rule = ValidationRuleCondition<String>(failureError: testError) { ($0?.characters.contains("A"))! }
-        rules.addRule(rule)
+        rules.add(rule: rule)
         
         var didRegisterInvalid = false
         var didRegisterValid = false
@@ -66,24 +66,24 @@ class UITextFieldValidatorTests: XCTestCase {
         textField.validationRules = rules
         XCTAssertNotNil(textField.validationRules)
         
-        textField.validateOnInputChange(true)
-        let actions = textField.actionsForTarget(textField, forControlEvent: .EditingChanged) ?? []
+        textField.validateOnInputChange(validationEnabled: true)
+        let actions = textField.actions(forTarget: textField, forControlEvent: .editingChanged) ?? []
         XCTAssertFalse(actions.isEmpty)
 
         textField.validationHandler = { result in
             switch result {
-            case .Valid: didRegisterValid = true
-            case .Invalid(_): didRegisterInvalid = true
+            case .valid: didRegisterValid = true
+            case .invalid(_): didRegisterInvalid = true
             }
         }
         
         textField.text = "BCDE"
-        textField.validate() // textField.sendActionsForControlEvents(.EditingChanged) doesn't seem to work in test env
+        let _ = textField.validate() // textField.sendActionsForControlEvents(.EditingChanged) doesn't seem to work in test env
         XCTAssert(didRegisterInvalid)
         XCTAssertFalse(didRegisterValid)
         
         textField.text = "ABCDE"
-        textField.validate()
+        let _ = textField.validate()
         XCTAssert(didRegisterInvalid)
         XCTAssert(didRegisterValid)
     }

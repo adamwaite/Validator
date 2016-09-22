@@ -34,13 +34,13 @@ public struct ValidationRuleSet<InputType> {
     
     }
     
-    public init<R: ValidationRule where R.InputType == InputType>(rules: [R]) {
+    public init<R: ValidationRule>(rules: [R]) where R.InputType == InputType {
         self.rules = rules.map(AnyValidationRule.init)
     }
     
     internal var rules = [AnyValidationRule<InputType>]()
     
-    public mutating func addRule<R: ValidationRule where R.InputType == InputType>(rule: R) {
+    public mutating func add<R: ValidationRule>(rule: R) where R.InputType == InputType {
         let anyRule = AnyValidationRule(base: rule)
         rules.append(anyRule)
     }
