@@ -4,14 +4,6 @@ Validator is a user input validation library written in Swift.
 
 ![demo-vid](resources/demo.mp4.gif)
 
-> 👴 If you're looking for the old Objective-C implementation (AJWValidator) visit the [objc branch](https://github.com/adamwaite/Validator/tree/objc).
-
-## Swift 3
-
-A Swift 3 implementation is available on the [swift-3 branch](https://github.com/adamwaite/Validator/tree/swift-3).
-
-Special thanks to [@jedmund](https://github.com/jedmund) for doing the conversion.
-
 ## Features
 
 - [x] Validation rules:
@@ -29,6 +21,12 @@ Special thanks to [@jedmund](https://github.com/jedmund) for doing the conversio
 - [x] Flexible validation error types
 - [x] An open protocol-oriented implementation
 - [x] Comprehensive test coverage
+
+## Implementations
+
+- The Swift 3 implementation is the actively maintained version on the master branch, releases starting at version 2.0.
+- A Swift 2.3 implemtation is in version 1.2.1 [swift-3 branch](https://github.com/adamwaite/Validator/tree/swift-3).
+- The old Objective-C implementation is on the [objc branch](https://github.com/adamwaite/Validator/tree/objc).
 
 ## Installation
 
