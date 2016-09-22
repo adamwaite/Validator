@@ -226,9 +226,11 @@
 				TargetAttributes = {
 					999F53961B4E736900143184 = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0800;
 					};
 					999F53AA1B4E736900143184 = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0800;
 						TestTargetID = 999F53961B4E736900143184;
 					};
 				};
@@ -443,6 +445,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = adamjwaite.co.uk.ValidatorExample;
 				PRODUCT_NAME = Example;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -455,6 +458,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = adamjwaite.co.uk.ValidatorExample;
 				PRODUCT_NAME = Example;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -466,6 +470,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = adamjwaite.co.uk.ValidatorTests;
 				PRODUCT_NAME = Example;
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
 			};
 			name = Debug;
@@ -478,6 +483,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = adamjwaite.co.uk.ValidatorTests;
 				PRODUCT_NAME = Example;
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
 			};
 			name = Release;
