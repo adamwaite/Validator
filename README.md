@@ -24,7 +24,7 @@ Validator is a user input validation library written in Swift.
 
 ## Implementations
 
-- The Swift 3 implementation is the actively maintained version on the master branch, releases starting at version 2.0.
+- The Swift 3 implementation is the actively maintained version on the [master branch](https://github.com/adamwaite/Validator), releases starting at version 2.0.
 - A Swift 2.3 implemtation is in version [1.2.1](https://github.com/adamwaite/Validator/releases/tag/v1.2.1).
 - The old Objective-C implementation is on the [objc branch](https://github.com/adamwaite/Validator/tree/objc).
 
