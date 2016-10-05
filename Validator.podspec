@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
   s.name = 'Validator'
   s.platform = :ios
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '8.0'
   s.version = '2.0.0'
   s.summary = 'Validator is a user input validation library written in Swift.'
   s.description  = <<-DESC
