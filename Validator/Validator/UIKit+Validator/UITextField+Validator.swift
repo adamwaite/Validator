@@ -33,16 +33,16 @@ extension UITextField: ValidatableInterfaceElement {
     
     public typealias InputType = String
     
-    public var inputValue: String? { return text }
+    open var inputValue: String? { return text }
     
-    public func validateOnInputChange(validationEnabled: Bool) {
+    open func validateOnInputChange(validationEnabled: Bool) {
         switch validationEnabled {
         case true: addTarget(self, action: #selector(UITextField.validateInput), for: .editingChanged)
         case false: removeTarget(self, action: #selector(UITextField.validateInput), for: .editingChanged)
         }
     }
     
-    public func validateOnEditingEnd(validationEnabled: Bool) {
+    open func validateOnEditingEnd(validationEnabled: Bool) {
         switch validationEnabled {
         case true: addTarget(self, action: #selector(UITextField.validateInput), for: .editingDidEnd)
         case false: removeTarget(self, action: #selector(UITextField.validateInput), for: .editingDidEnd)
