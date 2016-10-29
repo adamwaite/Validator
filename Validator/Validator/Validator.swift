@@ -29,16 +29,47 @@
 
 import Foundation
 
+/**
+ 
+ `Validator` provides a set of static functions to validate a given input
+ against a validation rule, or multiple validation rules.
+ 
+ */
 public struct Validator {
-
-    public static func validate<R: ValidationRule>(input i: R.InputType?, rule r: R) -> ValidationResult {
+    
+    /**
+     
+     Validates a given input against a validation rule.
+     
+     - Parameters:
+        - input: The input to be validated.
+        - rule: The validation rule.
+     
+     - Returns:
+     A validation result.
+     
+     */
+    public static func validate<R: ValidationRule>(input: R.InputType?, rule: R) -> ValidationResult {
+        
         var ruleSet = ValidationRuleSet<R.InputType>()
-        ruleSet.add(rule: r)
-        return Validator.validate(input: i, rules: ruleSet)
+        ruleSet.add(rule: rule)
+        return Validator.validate(input: input, rules: ruleSet)
     }
     
-    public static func validate<T>(input i: T?, rules rs: ValidationRuleSet<T>) -> ValidationResult {        
-        let errors = rs.rules.filter { !$0.validateInput(input: i) }.map { $0.failureError }
+    /**
+     
+     Validates a given input against mutiple validation rules in a set.
+     
+     - Parameters:
+        - input: The input to be validated.
+        - rules: Multiple validation rules in a set.
+     
+     - Returns:
+     A validation result.
+     
+     */
+    public static func validate<T>(input: T?, rules: ValidationRuleSet<T>) -> ValidationResult {
+        let errors = rules.rules.filter { !$0.validateInput(input: input) }.map { $0.failureError }
         return errors.isEmpty ? ValidationResult.valid : ValidationResult.invalid(errors)
     }
     

@@ -29,30 +29,96 @@
 
 import Foundation
 
+/**
+ 
+ The ValidationResult enum desribes the result of a validation. It may take one 
+ of two forms: valid (a passed validation), or invalid (a failed validation).
+ 
+ */
 public enum ValidationResult {
     
+    /**
+     
+     A successful validation (an input satisfies the condition in a rule).
+    
+     */
     case valid
-    case invalid([ValidationErrorType])
+    
+    /**
+     
+     A failed validation (an input does not satisfy the condition in a rule). 
 
+     The .invalid case has an associated collection of validation errors.
+     
+     */
+    case invalid([ValidationErrorType])
+    
+    /**
+ 
+     True if the result is valid
+     
+     */
     public var isValid: Bool { return self == .valid }
 
-    public func merge(result: ValidationResult) -> ValidationResult {
+    
+    /**
+     
+     Merges the receiving validation rule with another.
+     
+     ```
+     .valid.merge(.valid) // = .valid
+     .valid.merge(.invalid([err])) // = .invalid([err])
+     .invalid([err1]).merge(.invalid([err2]) // = .invalid([err1, err2])
+     ```
+     
+     - Parameters:
+        - result: The result to merge into the receiver.
+     
+     - Returns:
+     Merged validation result.
+     
+     */
+    public func merge(with result: ValidationResult) -> ValidationResult {
         switch self {
         case .valid: return result
         case .invalid(let errorMessages):
             switch result {
-            case .valid: return self
-            case .invalid(let errorMessagesAnother): return .invalid([errorMessages, errorMessagesAnother].flatMap { $0 })
+            case .valid:
+                return self
+            case .invalid(let errorMessagesAnother):
+                return .invalid([errorMessages, errorMessagesAnother].flatMap { $0 })
             }
         }
     }
     
-    public func mergeWithMany(results: [ValidationResult]) -> ValidationResult {
-        return results.reduce(self) { return $0.merge(result: $1) }
+    /**
+     
+     Merges the receiving validation rule with multiple others.
+     
+     - Parameters:
+        - results: The results to merge the receiver.
+     
+     - Returns:
+     Merged validation result.
+     
+     */
+    public func merge(with results: [ValidationResult]) -> ValidationResult {
+        return results.reduce(self) { return $0.merge(with: $1) }
     }
     
-    public static func combine(results: [ValidationResult]) -> ValidationResult {
-        return ValidationResult.valid.mergeWithMany(results: results)
+    /**
+     
+     Merges multiple validation rules together.
+     
+     - Parameters:
+        - results: The results to merge.
+     
+     - Returns:
+     Merged validation result.
+     
+     */
+    public static func merge(results: [ValidationResult]) -> ValidationResult {
+        return ValidationResult.valid.merge(with: results)
     }
 }
 

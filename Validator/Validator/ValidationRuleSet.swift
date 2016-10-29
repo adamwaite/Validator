@@ -28,18 +28,52 @@
 */
 import Foundation
 
+/**
+ 
+ The `ValidationRuleSet` struct contains multiple validation rules with the same
+ associated type (`InputType`).
+ 
+ */
 public struct ValidationRuleSet<InputType> {
     
+    /**
+     
+     Initialises an empty validation rule set.
+     
+     */
     public init() {
     
     }
     
+    /**
+     
+     Initialises a `ValidationRuleSet` with a set of validation rules.
+     
+     - Parameters:
+        - rules: An array of `ValidationRule`s where the associated type matches
+        the `InputType` of the rule set under initialization.
+     
+     */
     public init<R: ValidationRule>(rules: [R]) where R.InputType == InputType {
         self.rules = rules.map(AnyValidationRule.init)
     }
     
+    /**
+     
+     An array of type erased validation rules.
+     
+     */
     internal var rules = [AnyValidationRule<InputType>]()
     
+    
+    /**
+     
+     Appends a validation rule to the set.
+     
+     - Parameters:
+        - rule: Validation rule to be appended.
+     
+     */
     public mutating func add<R: ValidationRule>(rule: R) where R.InputType == InputType {
         let anyRule = AnyValidationRule(base: rule)
         rules.append(anyRule)
