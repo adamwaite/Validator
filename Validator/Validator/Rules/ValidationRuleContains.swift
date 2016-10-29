@@ -34,11 +34,11 @@ public struct ValidationRuleContains<T: Equatable, S: Sequence>: ValidationRule 
     public typealias InputType = T
     
     public var sequence: S
-    public var failureError: ValidationErrorType
+    public var error: Error
     
-    public init(sequence: S, failureError: ValidationErrorType) {
+    public init(sequence: S, error: Error) {
         self.sequence = sequence
-        self.failureError = failureError
+        self.error = error
     }
     
     public func validateInput(input: T?) -> Bool {

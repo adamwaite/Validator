@@ -35,18 +35,18 @@ public struct ValidationRuleEquality<T: Equatable>: ValidationRule {
     
     let target: T
     let dynamicTarget: (() -> T)?
-    public let failureError: ValidationErrorType
+    public let error: Error
     
-    public init(target: T, failureError: ValidationErrorType) {
+    public init(target: T, error: Error) {
         self.target = target
-        self.failureError = failureError
+        self.error = error
         self.dynamicTarget = nil
     }
     
-    public init(dynamicTarget: @escaping (() -> T), failureError: ValidationErrorType) {
+    public init(dynamicTarget: @escaping (() -> T), error: Error) {
         self.target = dynamicTarget()
         self.dynamicTarget = dynamicTarget
-        self.failureError = failureError
+        self.error = error
     }
   
     public func validateInput(input: T?) -> Bool {

@@ -46,7 +46,7 @@ class ExampleTableViewCell: UITableViewCell {
         case .valid:
             stateLabel.text = "😀"
         case .invalid(let failures):
-            let messages = failures.map { $0.message }
+            let messages = failures.flatMap { $0 as? ValidationError }.map { $0.message }
             stateLabel.text = messages.joined(separator: "")
         }
     }

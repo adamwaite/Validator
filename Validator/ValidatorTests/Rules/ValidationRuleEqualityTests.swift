@@ -34,7 +34,7 @@ class ValidationRuleEqualityTests: XCTestCase {
 
     func testThatItCanValidateEqualityInStrings() {
         
-        let rule = ValidationRuleEquality<String>(target: "password", failureError: testError)
+        let rule = ValidationRuleEquality<String>(target: "password", error: testError)
         
         let invalid = Validator.validate(input: "p@ssword", rule: rule)
         XCTAssertFalse(invalid.isValid)
@@ -46,7 +46,7 @@ class ValidationRuleEqualityTests: XCTestCase {
 
     func testThatItCanValidateEqualityInNumbers() {
         
-        let rule = ValidationRuleEquality<Double>(target: 1.0, failureError: testError)
+        let rule = ValidationRuleEquality<Double>(target: 1.0, error: testError)
         
         let invalid = Validator.validate(input: 2.0, rule: rule)
         XCTAssertFalse(invalid.isValid)
@@ -62,7 +62,7 @@ class ValidationRuleEqualityTests: XCTestCase {
         textField.text = "password"
         let getter: (() -> String) = { return textField.text ?? "" }
         
-        let rule = ValidationRuleEquality<String>(dynamicTarget: getter, failureError: testError)
+        let rule = ValidationRuleEquality<String>(dynamicTarget: getter, error: testError)
         
         let invalid = Validator.validate(input: "p@ssword", rule: rule)
         XCTAssertFalse(invalid.isValid)

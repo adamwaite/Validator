@@ -37,7 +37,7 @@ class ValidatableInterfaceElementTests: XCTestCase {
         let textField = UITextField()
         textField.text = "Hello"
         
-        let rule = ValidationRuleCondition<String>(failureError: testError) { $0!.characters.contains("A") }
+        let rule = ValidationRuleCondition<String>(error: testError) { $0!.characters.contains("A") }
         
         let invalid = textField.validate(rule: rule)
         XCTAssertFalse(invalid.isValid)
@@ -55,8 +55,8 @@ class ValidatableInterfaceElementTests: XCTestCase {
         textField.text = "Hi"
         
         var rules = ValidationRuleSet<String>()
-        rules.add(rule: ValidationRuleLength(min: 5, failureError: testError))
-        rules.add(rule: ValidationRuleCondition<String>(failureError: testError) { ($0?.characters.contains("A"))! })
+        rules.add(rule: ValidationRuleLength(min: 5, error: testError))
+        rules.add(rule: ValidationRuleCondition<String>(error: testError) { ($0?.characters.contains("A"))! })
         
         let definitelyInvalid = textField.validate(rules: rules)
         XCTAssertFalse(definitelyInvalid.isValid)
@@ -78,8 +78,8 @@ class ValidatableInterfaceElementTests: XCTestCase {
         let textField = UITextField()
         
         var rules = ValidationRuleSet<String>()
-        rules.add(rule: ValidationRuleLength(min: 5, failureError: testError))
-        rules.add(rule: ValidationRuleCondition<String>(failureError: testError) { ($0?.characters.contains("A"))! })
+        rules.add(rule: ValidationRuleLength(min: 5, error: testError))
+        rules.add(rule: ValidationRuleCondition<String>(error: testError) { ($0?.characters.contains("A"))! })
         
         textField.validationRules = rules
         

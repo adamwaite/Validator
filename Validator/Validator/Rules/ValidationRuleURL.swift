@@ -33,10 +33,10 @@ public struct ValidationRuleURL: ValidationRule {
     
     public typealias InputType = String
     
-    public let failureError: ValidationErrorType
+    public let error: Error
     
-    public init(failureError: ValidationErrorType) {
-        self.failureError = failureError
+    public init(error: Error) {
+        self.error = error
     }
     
     public func validateInput(input: String?) -> Bool {

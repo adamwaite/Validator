@@ -35,12 +35,12 @@ public struct ValidationRuleLength: ValidationRule {
     
     public let min: Int
     public let max: Int
-    public var failureError: ValidationErrorType
+    public var error: Error
     
-    public init(min: Int = 0, max: Int = Int.max, failureError: ValidationErrorType) {
+    public init(min: Int = 0, max: Int = Int.max, error: Error) {
         self.min = min
         self.max = max
-        self.failureError = failureError
+        self.error = error
     }
     
     public func validateInput(input: String?) -> Bool {

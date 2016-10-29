@@ -87,15 +87,15 @@ public struct ValidationRulePaymentCard: ValidationRule {
     public typealias InputType = String
     
     public let acceptedTypes: [PaymentCardType]
-    public let failureError: ValidationErrorType
+    public let error: Error
     
-    public init(acceptedTypes: [PaymentCardType], failureError: ValidationErrorType) {
+    public init(acceptedTypes: [PaymentCardType], error: Error) {
         self.acceptedTypes = acceptedTypes
-        self.failureError = failureError
+        self.error = error
     }
     
-    public init(failureError: ValidationErrorType) {
-        self.init(acceptedTypes: PaymentCardType.all, failureError: failureError)
+    public init(error: Error) {
+        self.init(acceptedTypes: PaymentCardType.all, error: error)
     }
     
     public func validateInput(input: String?) -> Bool {

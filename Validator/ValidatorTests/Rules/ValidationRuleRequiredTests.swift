@@ -34,7 +34,7 @@ class ValidationRuleRequiredTests: XCTestCase {
     
     func testThatItCanValidateOptionalValues() {
 
-        let rule = ValidationRuleRequired<String?>(failureError: testError)
+        let rule = ValidationRuleRequired<String?>(error: testError)
 
         let invalid = Validator.validate(input: nil, rule: rule)
         XCTAssertFalse(invalid.isValid)

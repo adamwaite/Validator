@@ -17,6 +17,7 @@
 		9967E41B1B7682FA00ACAF54 /* StringExampleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E4121B7682FA00ACAF54 /* StringExampleTableViewCell.swift */; };
 		9967E4261B76965500ACAF54 /* Validator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9967E4221B768E9500ACAF54 /* Validator.framework */; };
 		9967E42A1B76985E00ACAF54 /* Validator.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9967E4221B768E9500ACAF54 /* Validator.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		99A7C55C1DC5413500022281 /* ValidationErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A7C55B1DC5413500022281 /* ValidationErrorType.swift */; };
 		99E8DEE81D771B0800362402 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E8DEE71D771B0800362402 /* TextField.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,7 @@
 		9967E41C1B768E9500ACAF54 /* Validator.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Validator.xcodeproj; path = ../Validator/Validator.xcodeproj; sourceTree = "<group>"; };
 		999F53971B4E736900143184 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		999F53AB1B4E736900143184 /* Example.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Example.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		99A7C55B1DC5413500022281 /* ValidationErrorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationErrorType.swift; sourceTree = "<group>"; };
 		99E8DEE71D771B0800362402 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,6 +106,7 @@
 			children = (
 				9967E4041B7682FA00ACAF54 /* AppDelegate.swift */,
 				9967E4071B7682FA00ACAF54 /* Storyboards */,
+				99A7C5591DC5412400022281 /* Model */,
 				9967E4051B7682FA00ACAF54 /* Controllers */,
 				9967E40F1B7682FA00ACAF54 /* Views */,
 				9967E40A1B7682FA00ACAF54 /* Supporting Files */,
@@ -173,6 +176,14 @@
 				999F53AB1B4E736900143184 /* Example.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		99A7C5591DC5412400022281 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				99A7C55B1DC5413500022281 /* ValidationErrorType.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,6 +317,7 @@
 				99E8DEE81D771B0800362402 /* TextField.swift in Sources */,
 				9967E41B1B7682FA00ACAF54 /* StringExampleTableViewCell.swift in Sources */,
 				9967E4191B7682FA00ACAF54 /* ExampleTableViewCell.swift in Sources */,
+				99A7C55C1DC5413500022281 /* ValidationErrorType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

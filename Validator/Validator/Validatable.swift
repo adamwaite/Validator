@@ -29,28 +29,60 @@
 
 import Foundation
 
+/**
+ 
+ A type conforming to `Validatable` can be validated against a `ValidationRule`
+ or a `ValidationRuleSet` (with an equal `InputType`).
+ 
+ ```
+ extension String : Validatable {}
+ 
+ "Hello world!".validate(rule: someRule)
+ ```
+ 
+ - Important:
+ The protocol extension implements the desired behaviour.
+ Methods should not be implemented explicitly in the conforming type.
+ 
+ */
 public protocol Validatable {
     
-    func validate() -> ValidationResult
+    /**
+     
+     Validates the receiver against a `ValidationRule`.
+     
+     - Parameters:
+        - rule: The rule used to validate the receiver.
+     
+     - Returns:
+     A validation result.
+     
+     */
+    func validate<R: ValidationRule>(rule: R) -> ValidationResult where R.InputType == Self
     
-    func validate<R: ValidationRule>(rule r: R) -> ValidationResult where R.InputType == Self
-    
-    func validate(rules rs: ValidationRuleSet<Self>) -> ValidationResult
+    /**
+     
+     Validates the receiver against a `ValidationRuleSet`.
+     
+     - Parameters:
+        - rules: The rules used to validate the receiver.
+     
+     - Returns:
+     A validation result.
+     
+     */
+    func validate(rules: ValidationRuleSet<Self>) -> ValidationResult
     
 }
 
 extension Validatable {
     
-    public func validate() -> ValidationResult {
-        return .valid
+    public func validate<R: ValidationRule>(rule: R) -> ValidationResult where R.InputType == Self {
+        return Validator.validate(input: self, rule: rule)
     }
     
-    public func validate<R: ValidationRule>(rule r: R) -> ValidationResult where R.InputType == Self {
-        return Validator.validate(input: self, rule: r)
-    }
-    
-    public func validate(rules rs: ValidationRuleSet<Self>) -> ValidationResult {
-        return Validator.validate(input: self, rules: rs)
+    public func validate(rules: ValidationRuleSet<Self>) -> ValidationResult {
+        return Validator.validate(input: self, rules: rules)
     }
     
 }

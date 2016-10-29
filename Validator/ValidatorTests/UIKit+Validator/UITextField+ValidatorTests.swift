@@ -45,7 +45,7 @@ class UITextFieldValidatorTests: XCTestCase {
     func testThatItCanValidateInputText() {
         let textField = UITextField()
         textField.text = "Hello"
-        let rule = ValidationRuleCondition<String>(failureError: testError) { ($0?.characters.contains("A"))! }
+        let rule = ValidationRuleCondition<String>(error: testError) { ($0?.characters.contains("A"))! }
         let invalid = textField.validate(rule: rule)
         XCTAssertFalse(invalid.isValid)
         textField.text = "Hello Adam"
@@ -57,7 +57,7 @@ class UITextFieldValidatorTests: XCTestCase {
         let textField = UITextField()
         
         var rules = ValidationRuleSet<String>()
-        let rule = ValidationRuleCondition<String>(failureError: testError) { ($0?.characters.contains("A"))! }
+        let rule = ValidationRuleCondition<String>(error: testError) { ($0?.characters.contains("A"))! }
         rules.add(rule: rule)
         
         var didRegisterInvalid = false

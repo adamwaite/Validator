@@ -51,7 +51,7 @@ public enum ValidationResult {
      The .invalid case has an associated collection of validation errors.
      
      */
-    case invalid([ValidationErrorType])
+    case invalid([Error])
     
     /**
  

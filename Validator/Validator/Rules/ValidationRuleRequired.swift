@@ -33,10 +33,10 @@ public struct ValidationRuleRequired<T>: ValidationRule {
 
     public typealias InputType = T
     
-    public let failureError: ValidationErrorType
+    public let error: Error
     
-    public init(failureError: ValidationErrorType) {
-        self.failureError = failureError
+    public init(error: Error) {
+        self.error = error
     }
     
     public func validateInput(input: T?) -> Bool {        

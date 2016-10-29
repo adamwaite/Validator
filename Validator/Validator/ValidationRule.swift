@@ -63,7 +63,7 @@ public protocol ValidationRule {
      An error to to be contained in a failed validation result.
      
      */
-    var failureError: ValidationErrorType { get }
+    var error: Error { get }
     
 }
 
@@ -71,11 +71,11 @@ internal struct AnyValidationRule<InputType>: ValidationRule {
     
     private let baseValidateInput: (InputType?) -> Bool
     
-    let failureError: ValidationErrorType
+    let error: Error
     
     init<R: ValidationRule>(base: R) where R.InputType == InputType {
         baseValidateInput = base.validateInput
-        failureError = base.failureError
+        error = base.error
     }
     
     func validateInput(input: InputType?) -> Bool {

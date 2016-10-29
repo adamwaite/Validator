@@ -52,16 +52,16 @@ class ValidationResultTests: XCTestCase {
         let fail1 = ValidationResult.invalid([err1])
         let fail2 = ValidationResult.invalid([err2])
         
-        let sbj1 = success1.merge(result: success2)
+        let sbj1 = success1.merge(with: success2)
         XCTAssertEqual(sbj1, ValidationResult.valid)
         
-        let sbj2 = success1.merge(result: fail1)
+        let sbj2 = success1.merge(with: fail1)
         XCTAssertEqual(sbj2, ValidationResult.invalid([err1]))
 
-        let sbj3 = fail1.merge(result: fail2)
+        let sbj3 = fail1.merge(with: fail2)
         XCTAssertEqual(sbj3, ValidationResult.invalid([err1, err2]))
 
-        let sbj4 = sbj3.merge(result: sbj3)
+        let sbj4 = sbj3.merge(with: sbj3)
         XCTAssertEqual(sbj4, ValidationResult.invalid([err1, err2, err1, err2]))
         
     }
@@ -75,7 +75,7 @@ class ValidationResultTests: XCTestCase {
         let fail2 = ValidationResult.invalid([err2])
 
         let results: [ValidationResult] = [success1, success2, fail1, fail2]
-        let combined = ValidationResult.combine(results: results)
+        let combined = ValidationResult.merge(results: results)
         XCTAssertEqual(combined, ValidationResult.invalid([err1, err2]))
     }
     

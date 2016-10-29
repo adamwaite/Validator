@@ -103,7 +103,7 @@ class ValidationRulePaymentCardTests: XCTestCase {
     
     func testThatItCanValidateCardsBasedOnTheLuhnCheck() {
         
-        let rule = ValidationRulePaymentCard(failureError: testError)
+        let rule = ValidationRulePaymentCard(error: testError)
         
         for invalidLuhn in ["5716347184862961", "49927398717"] {
             let invalid = Validator.validate(input: invalidLuhn, rule: rule)
@@ -128,8 +128,8 @@ class ValidationRulePaymentCardTests: XCTestCase {
     }
     
     func testThatItCanValidateCardsBasedOnASetOfAcceptedTypes() {
-        let amexOnlyRule = ValidationRulePaymentCard(acceptedTypes: [.Amex], failureError: testError)
-        let visaOrMasterCardRule = ValidationRulePaymentCard(acceptedTypes: [.Visa, .Mastercard], failureError: testError)
+        let amexOnlyRule = ValidationRulePaymentCard(acceptedTypes: [.Amex], error: testError)
+        let visaOrMasterCardRule = ValidationRulePaymentCard(acceptedTypes: [.Visa, .Mastercard], error: testError)
         
         let visa = visaCardNumbers.random
         let amex = amexCardNumbers.random

@@ -34,7 +34,7 @@ class ValidationRuleURLTests: XCTestCase {
     
     func testThatItCanValidateURL() {
         
-        let rule = ValidationRuleURL(failureError: testError)
+        let rule = ValidationRuleURL(error: testError)
         
         for invalidURL in ["http:▷adamjwaite.co.uk", "http://adamjwaite.co.uk?hello=😋"] {
             let invalid = Validator.validate(input: invalidURL, rule: rule)

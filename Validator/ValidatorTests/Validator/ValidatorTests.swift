@@ -36,7 +36,7 @@ class ValidatorTests: XCTestCase {
         
         let err = testError
         
-        let rule = ValidationRuleCondition<String>(failureError: err) { ($0?.characters.count)! > 0 }
+        let rule = ValidationRuleCondition<String>(error: err) { ($0?.characters.count)! > 0 }
         
         let invalid = Validator.validate(input: "", rule: rule)
         XCTAssertEqual(invalid, ValidationResult.invalid([err]))
@@ -52,8 +52,8 @@ class ValidatorTests: XCTestCase {
         let err2 = ValidationError(message: "💣💣")
         
         var ruleSet = ValidationRuleSet<String>()
-        ruleSet.add(rule: ValidationRuleLength(min: 1, failureError: err1))
-        ruleSet.add(rule: ValidationRuleCondition<String>(failureError: err2) { $0 == "😀" })
+        ruleSet.add(rule: ValidationRuleLength(min: 1, error: err1))
+        ruleSet.add(rule: ValidationRuleCondition<String>(error: err2) { $0 == "😀" })
         
         let definitelyInvalid = Validator.validate(input: "", rules: ruleSet)
         XCTAssertEqual(definitelyInvalid, ValidationResult.invalid([err1, err2]))

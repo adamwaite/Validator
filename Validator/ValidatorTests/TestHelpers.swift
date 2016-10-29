@@ -9,6 +9,13 @@
 import Foundation
 @testable import Validator
 
+struct ValidationError: Error {
+    let message: String
+    init(message m: String) {
+        message = m
+    }
+}
+
 let testError = ValidationError(message: "💣")
 
 extension Array {
