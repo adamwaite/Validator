@@ -29,13 +29,21 @@
 
 import Foundation
 
+/**
+ 
+ `ValidationRuleComparison` validates a `Comparable` type `T` is greater than a
+ minimum, less than a maximum, or sits beween a minimum and a maximum.
+ 
+ */
 public struct ValidationRuleComparison<T: Comparable>: ValidationRule {
     
     public typealias InputType = T
     
-    let min: T
-    let max: T
     public let error: Error
+    
+    let min: T
+    
+    let max: T
     
     public init(min: T, max: T, error: Error) {
         self.min = min

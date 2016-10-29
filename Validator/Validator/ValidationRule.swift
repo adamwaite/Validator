@@ -60,7 +60,9 @@ public protocol ValidationRule {
     
     /**
      
-     An error to to be contained in a failed validation result.
+     An error to be contained in an `.invalid` `ValidationResult` should an 
+     input not satify the condition of the validation described by 
+     `validateInput(input:)`
      
      */
     var error: Error { get }
