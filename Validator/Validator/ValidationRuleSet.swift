@@ -38,7 +38,7 @@ public struct ValidationRuleSet<InputType> {
     
     /**
      
-     Initialises an empty validation rule set.
+     Initializes an empty validation rule set.
      
      */
     public init() {
@@ -47,7 +47,7 @@ public struct ValidationRuleSet<InputType> {
     
     /**
      
-     Initialises a `ValidationRuleSet` with a set of validation rules.
+     Initializes a `ValidationRuleSet` with a set of validation rules.
      
      - Parameters:
         - rules: An array of `ValidationRule`s where the associated type matches

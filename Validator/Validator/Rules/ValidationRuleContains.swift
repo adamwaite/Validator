@@ -41,7 +41,7 @@ public struct ValidationRuleContains<T: Equatable, S: Sequence>: ValidationRule 
         self.error = error
     }
     
-    public func validateInput(input: T?) -> Bool {
+    public func validate(input: T?) -> Bool {
         guard let input = input else { return false }
         return sequence.contains(input)
     }

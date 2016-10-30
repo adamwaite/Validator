@@ -29,19 +29,59 @@
 
 import Foundation
 
+/**
+ 
+ `ValidationRuleCondition` validates a type `T` satisfies a condition.
+ 
+ ```
+ let rule = ValidationRuleCondition<String>(error: someError) { 
+    $0.contains("a") 
+ }
+ 
+ "Adam".validate(rule) // .valid
+ ```
+ 
+ */
 public struct ValidationRuleCondition<T>: ValidationRule {
     
     public typealias InputType = T
-    
-    public let condition: (T?) -> Bool
+
     public let error: Error
-        
+    
+    /**
+ 
+     Condition used to validate the input.
+     
+     */
+    public let condition: (T?) -> Bool
+    
+    /**
+     
+     Initializes a `ValidationRuleCondition` with a condition used to validate
+     an input, and an error describing a failed validation.
+     
+     - Parameters:
+        - error: An error describing a failed validation.
+        - condition: Condition used to validate an input.
+     
+     */
     public init(error: Error, condition: @escaping ((T?) -> Bool)) {
         self.condition = condition
         self.error = error
     }
     
-    public func validateInput(input: T?) -> Bool {
+    /**
+     
+     Validates the input.
+     
+     - Parameters:
+        - input: Input to validate.
+     
+     - Returns:
+     true if the input satisifies the condition.
+     
+     */
+    public func validate(input: T?) -> Bool {
         return condition(input)
     }
     

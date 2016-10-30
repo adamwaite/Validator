@@ -29,21 +29,63 @@
 
 import Foundation
 
+/**
+ 
+ `ValidationRuleLength` validates a `String`'s character count is greater than 
+ or equal to a minimum, less than or equal to a maximum, or sits on or between 
+ a minimum and maximum.
+ 
+ */
 public struct ValidationRuleLength: ValidationRule {
     
     public typealias InputType = String
-    
-    public let min: Int
-    public let max: Int
+
     public var error: Error
     
+    /**
+     
+     The minimum character count an input must have (default 0).
+     
+     */
+    public let min: Int
+
+    /**
+     
+     The maximum character count an input must have (default Int.max).
+     
+     */
+    public let max: Int
+    
+    /**
+     
+     Initializes a `ValidationRuleLength` with an optionally supplied minimum 
+     character count, an optionally supplied maximum character count, and an 
+     error describing a failed validation.
+     
+     - Parameters:
+        - min: A minimum character count an input must have (default 0).
+        - max: A maximum character count an input must have (default Int.max).
+        - error: An error describing a failed validation.
+     
+     */
     public init(min: Int = 0, max: Int = Int.max, error: Error) {
         self.min = min
         self.max = max
         self.error = error
     }
     
-    public func validateInput(input: String?) -> Bool {
+    /**
+     
+     Validates the input.
+     
+     - Parameters:
+        - input: Input to validate.
+     
+     - Returns:
+     true if the input character count is between the minimum and maximum.
+     
+     */
+    public func validate(input: String?) -> Bool {
         guard let input = input else { return false }
         return input.characters.count >= min && input.characters.count <= max
     }

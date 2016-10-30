@@ -39,7 +39,7 @@ public struct ValidationRuleURL: ValidationRule {
         self.error = error
     }
     
-    public func validateInput(input: String?) -> Bool {
+    public func validate(input: String?) -> Bool {
         guard let input = input else { return false }
         return NSURL(string: input) != nil
     }

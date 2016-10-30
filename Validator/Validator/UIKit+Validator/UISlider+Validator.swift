@@ -37,12 +37,12 @@ extension UISlider: ValidatableInterfaceElement {
     
     open func validateOnInputChange(validationEnabled: Bool) {
         switch validationEnabled {
-        case true: addTarget(self, action: #selector(UISlider.validateInput), for: .valueChanged)
-        case false: removeTarget(self, action: #selector(UISlider.validateInput), for: .valueChanged)
+        case true: addTarget(self, action: #selector(UISlider.validate), for: .valueChanged)
+        case false: removeTarget(self, action: #selector(UISlider.validate), for: .valueChanged)
         }
     }
     
-    @objc private func validateInput(sender: UISlider) {
+    @objc private func validate(sender: UISlider) {
         sender.validate()
     }
     

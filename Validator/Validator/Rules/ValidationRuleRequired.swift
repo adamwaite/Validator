@@ -45,6 +45,9 @@ public struct ValidationRuleRequired<T>: ValidationRule {
     
     /** 
      
+     Initializes a `ValidationRuleComparison` with an error describing a failed
+     validation.
+     
      - Parameters:
         - error: An error describing a failed validation.
      
@@ -55,7 +58,7 @@ public struct ValidationRuleRequired<T>: ValidationRule {
     
     /**
      
-     Returns true if the input is not nil.
+     Validates the input.
      
      - Parameters:
         - input: Input to validate.
@@ -64,7 +67,7 @@ public struct ValidationRuleRequired<T>: ValidationRule {
      true if non-nil.
      
      */
-    public func validateInput(input: T?) -> Bool {        
+    public func validate(input: T?) -> Bool {        
         return input != nil
     }
     

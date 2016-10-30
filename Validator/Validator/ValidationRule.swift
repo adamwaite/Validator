@@ -46,7 +46,7 @@ public protocol ValidationRule {
     
     /**
      
-     The validateInput method validates the associated type against a condition, 
+     The validate method validates the associated type against a condition, 
      returning true if the validation passes.
      
      - Parameters:
@@ -56,13 +56,13 @@ public protocol ValidationRule {
      true if valid.
      
      */
-    func validateInput(input: InputType?) -> Bool
+    func validate(input: InputType?) -> Bool
     
     /**
      
      An error to be contained in an `.invalid` `ValidationResult` should an 
      input not satify the condition of the validation described by 
-     `validateInput(input:)`
+     `validate(input:)`
      
      */
     var error: Error { get }
@@ -76,11 +76,11 @@ internal struct AnyValidationRule<InputType>: ValidationRule {
     let error: Error
     
     init<R: ValidationRule>(base: R) where R.InputType == InputType {
-        baseValidateInput = base.validateInput
+        baseValidateInput = base.validate
         error = base.error
     }
     
-    func validateInput(input: InputType?) -> Bool {
+    func validate(input: InputType?) -> Bool {
         return baseValidateInput(input)
     }
 

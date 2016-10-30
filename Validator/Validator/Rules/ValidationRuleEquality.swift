@@ -29,28 +29,93 @@
 
 import Foundation
 
+/**
+ 
+ `ValidationRuleEquality` validates a `Equatable` type `T` is equal to another
+ value. A value may be passed with the initialiser to compare against, or a
+ closure may be passed to return a value to compare against if it's likely to 
+ change (like a text field's text).
+ 
+ ```
+ // Concrete
+ ValidationRuleEquality<Int>(target: 3, error: error)
+ 
+ // Dynamic:
+ func getPassword() -> String { return passwordField.text ?? "" }
+ let passwordsMatch = ValidationRuleEquality<String>(dynamicTarget: getPassword, error: nonMatchError)
+ ```
+ 
+ */
+
 public struct ValidationRuleEquality<T: Equatable>: ValidationRule {
 
     public typealias InputType = T
     
-    let target: T
-    let dynamicTarget: (() -> T)?
     public let error: Error
     
+    /**
+     
+     A value to compare an input against.
+     
+     */
+    let target: T?
+    
+    /**
+     
+     A closure that returns a value to compare an input against.
+     
+     */
+    let dynamicTarget: (() -> T)?
+    
+    /**
+     
+     Initializes a `ValidationRuleEquality` with a value to compare an input 
+     against, and an error describing a failed validation.
+     
+     - Parameters:
+        - target: A value to compare an input against.
+        - error: An error describing a failed validation.
+     
+     */
     public init(target: T, error: Error) {
         self.target = target
         self.error = error
         self.dynamicTarget = nil
     }
     
+    /**
+     
+     Initializes a `ValidationRuleEquality` with a closure that returns a value 
+     to compare an input against, and an error describing a failed validation.
+     
+     - Parameters:
+     - target: A closure that returns a value to compare an input against.
+     - error: An error describing a failed validation.
+     
+     */
     public init(dynamicTarget: @escaping (() -> T), error: Error) {
-        self.target = dynamicTarget()
         self.dynamicTarget = dynamicTarget
         self.error = error
+        self.target = nil
     }
   
-    public func validateInput(input: T?) -> Bool {
-        if let dT = dynamicTarget { return input == dT() }
+    /**
+     
+     Validates the input.
+     
+     - Parameters:
+        - input: Input to validate.
+     
+     - Returns:
+     true if the input equals the target.
+     
+     */
+    public func validate(input: T?) -> Bool {
+        if let dynamicTarget = dynamicTarget {
+            return input == dynamicTarget()
+        }
+        
+        guard let target = target else { return false }
         return input == target
     }
     

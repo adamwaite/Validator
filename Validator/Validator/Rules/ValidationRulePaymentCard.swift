@@ -98,7 +98,7 @@ public struct ValidationRulePaymentCard: ValidationRule {
         self.init(acceptedTypes: PaymentCardType.all, error: error)
     }
     
-    public func validateInput(input: String?) -> Bool {
+    public func validate(input: String?) -> Bool {
         guard let cardNum = input else { return false }
         guard ValidationRulePaymentCard.luhnCheck(cardNumber: cardNum) else { return false }
         guard let cardType = PaymentCardType(cardNumber: cardNum) else { return false }

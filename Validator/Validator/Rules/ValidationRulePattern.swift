@@ -29,13 +29,54 @@
 
 import Foundation
 
+/**
+ 
+ The `ValidationPattern` enum defines common user input validation regular 
+ expressions to be used alongside the `ValidationRulePattern` rule.
+ 
+ Important:
+ There are plans to change this implementaion. 
+ See https://github.com/adamwaite/Validator/issues/30
+ 
+ */
 public enum ValidationPattern: String {
+    
+    /**
+     
+     Regular expression to evaluate a target is a valid email address.
+     
+     */
     case EmailAddress = "^[_A-Za-z0-9-+]+(\\.[_A-Za-z0-9-+]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z‌​]{2,})$"
+    
+    /**
+     
+     Regular expression to evaluate a target contains a numeric digit.
+     
+     */
     case ContainsNumber = ".*\\d.*"
+    
+    /**
+     
+     Regular expression to evaluate a target contains an uppercase letter.
+     
+     */
     case ContainsCapital = "^.*?[A-Z].*?$"
+    
+    /**
+     
+     Regular expression to evaluate a target contains a lowercase letter.
+     
+     */
     case ContainsLowercase = "^.*?[a-z].*?$"
+    
+    /**
+     
+     Regular expression to evaluate a target is a valid UK postcode.
+     
+     */
     case UKPostcode = "(GIR 0AA)|((([A-Z-[QVX]][0-9][0-9]?)|(([A-Z-[QVX]][A-Z-[IJZ]][0-9][0-9]?)|(([A-Z-[QVX]][0-9][A-HJKPSTUW])|([A-Z-[QVX]][A-Z-[IJZ]][0-9][ABEHMNPRVWXY]))))[ ]?[0-9][A-Z-[CIKMOV]]{2})"
 }
+
 
 public struct ValidationRulePattern: ValidationRule {
     
@@ -53,7 +94,7 @@ public struct ValidationRulePattern: ValidationRule {
         self.init(pattern: pattern.rawValue, error: error)
     }
     
-    public func validateInput(input: String?) -> Bool {
+    public func validate(input: String?) -> Bool {
         return NSPredicate(format: "SELF MATCHES %@", pattern).evaluate(with: input)
     }
     
