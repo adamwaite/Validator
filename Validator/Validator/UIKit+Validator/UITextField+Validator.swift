@@ -35,8 +35,8 @@ extension UITextField: ValidatableInterfaceElement {
     
     open var inputValue: String? { return text }
     
-    open func validateOnInputChange(validationEnabled: Bool) {
-        switch validationEnabled {
+    open func validateOnInputChange(enabled: Bool) {
+        switch enabled {
         case true: addTarget(self, action: #selector(UITextField.validate), for: .editingChanged)
         case false: removeTarget(self, action: #selector(UITextField.validate), for: .editingChanged)
         }

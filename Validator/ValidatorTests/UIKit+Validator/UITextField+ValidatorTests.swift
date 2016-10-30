@@ -66,7 +66,7 @@ class UITextFieldValidatorTests: XCTestCase {
         textField.validationRules = rules
         XCTAssertNotNil(textField.validationRules)
         
-        textField.validateOnInputChange(validationEnabled: true)
+        textField.validateOnInputChange(enabled: true)
         let actions = textField.actions(forTarget: textField, forControlEvent: .editingChanged) ?? []
         XCTAssertFalse(actions.isEmpty)
 

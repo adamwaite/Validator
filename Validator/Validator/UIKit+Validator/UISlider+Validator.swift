@@ -35,8 +35,8 @@ extension UISlider: ValidatableInterfaceElement {
     
     open var inputValue: Float? { return value }
     
-    open func validateOnInputChange(validationEnabled: Bool) {
-        switch validationEnabled {
+    open func validateOnInputChange(enabled: Bool) {
+        switch enabled {
         case true: addTarget(self, action: #selector(UISlider.validate), for: .valueChanged)
         case false: removeTarget(self, action: #selector(UISlider.validate), for: .valueChanged)
         }
