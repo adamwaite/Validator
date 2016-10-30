@@ -88,16 +88,16 @@ class ValidationRulePaymentCardTests: XCTestCase {
         
         5.times { _ in
             let amex = PaymentCardType(cardNumber: self.amexCardNumbers.random)
-            XCTAssertEqual(amex, PaymentCardType.Amex)
+            XCTAssertEqual(amex, PaymentCardType.amex)
 
             let visa = PaymentCardType(cardNumber: self.visaCardNumbers.random)
-            XCTAssertEqual(visa, PaymentCardType.Visa)
+            XCTAssertEqual(visa, PaymentCardType.visa)
         
             let master = PaymentCardType(cardNumber: self.mastercardCardNumbers.random)
-            XCTAssertEqual(master, PaymentCardType.Mastercard)
+            XCTAssertEqual(master, PaymentCardType.mastercard)
             
             let maestro = PaymentCardType(cardNumber: self.maestroCardNumbers.random)
-            XCTAssertEqual(maestro, PaymentCardType.Maestro)
+            XCTAssertEqual(maestro, PaymentCardType.maestro)
         }
     }
     
@@ -128,8 +128,8 @@ class ValidationRulePaymentCardTests: XCTestCase {
     }
     
     func testThatItCanValidateCardsBasedOnASetOfAcceptedTypes() {
-        let amexOnlyRule = ValidationRulePaymentCard(acceptedTypes: [.Amex], error: testError)
-        let visaOrMasterCardRule = ValidationRulePaymentCard(acceptedTypes: [.Visa, .Mastercard], error: testError)
+        let amexOnlyRule = ValidationRulePaymentCard(acceptedTypes: [.amex], error: testError)
+        let visaOrMasterCardRule = ValidationRulePaymentCard(acceptedTypes: [.visa, .mastercard], error: testError)
         
         let visa = visaCardNumbers.random
         let amex = amexCardNumbers.random

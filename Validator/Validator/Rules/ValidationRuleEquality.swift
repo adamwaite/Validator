@@ -46,7 +46,6 @@ import Foundation
  ```
  
  */
-
 public struct ValidationRuleEquality<T: Equatable>: ValidationRule {
 
     public typealias InputType = T

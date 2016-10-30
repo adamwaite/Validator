@@ -29,16 +29,41 @@
 
 import Foundation
 
+/**
+ 
+ `ValidationRuleURL` validates a `String` is a valid URL conforming to RFC 2396.
+ 
+ */
 public struct ValidationRuleURL: ValidationRule {
     
     public typealias InputType = String
     
     public let error: Error
     
+    /**
+     
+     Initializes a `ValidationRuleURL` with an error describing a failed
+     validation.
+     
+     - Parameters:
+        - error: An error describing a failed validation.
+     
+     */
     public init(error: Error) {
         self.error = error
     }
     
+    /**
+     
+     Validates the input.
+     
+     - Parameters:
+        - input: Input to validate.
+     
+     - Returns:
+     true if the input is a valid URL.
+     
+     */
     public func validate(input: String?) -> Bool {
         guard let input = input else { return false }
         return NSURL(string: input) != nil

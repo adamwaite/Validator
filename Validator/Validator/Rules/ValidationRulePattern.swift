@@ -77,23 +77,67 @@ public enum ValidationPattern: String {
     case UKPostcode = "(GIR 0AA)|((([A-Z-[QVX]][0-9][0-9]?)|(([A-Z-[QVX]][A-Z-[IJZ]][0-9][0-9]?)|(([A-Z-[QVX]][0-9][A-HJKPSTUW])|([A-Z-[QVX]][A-Z-[IJZ]][0-9][ABEHMNPRVWXY]))))[ ]?[0-9][A-Z-[CIKMOV]]{2})"
 }
 
-
+/**
+ 
+ `ValidationRulePattern` validates a `String`' against a regular expression.
+ 
+ */
 public struct ValidationRulePattern: ValidationRule {
     
     public typealias InputType = String
-    
-    public let pattern: String
     public let error: Error
+
+    /**
+     
+     A regular expression to evaluate an input against.
+     
+     */
+    public let pattern: String
     
+    /**
+     
+     Initializes a `ValidationRulePattern` with a regular expression in string 
+     format, and an error describing a failed
+     validation.
+     
+     - Parameters:
+        - pattern: A regular expression in string format to evaluate an input 
+        against.
+        - error: An error describing a failed validation.
+     
+     */
     public init(pattern: String, error: Error) {
         self.pattern = pattern
         self.error = error
     }
     
+    /**
+     
+     Initializes a `ValidationRulePattern` with a regular expression in 
+     ValidationPattern format, and an error describing a failed validation.
+     
+     - Parameters:
+        - pattern: A regular expression in `ValidationPattern` format to
+        evaluate an input against. The string value of the pattern is used for
+        evaluation.
+        - error: An error describing a failed validation.
+     
+     */
     public init(pattern: ValidationPattern, error: Error) {
         self.init(pattern: pattern.rawValue, error: error)
     }
     
+    /**
+     
+     Validates the input.
+     
+     - Parameters:
+     - input: Input to validate.
+     
+     - Returns:
+     true if the input matched the regular expression.
+     
+     */
     public func validate(input: String?) -> Bool {
         return NSPredicate(format: "SELF MATCHES %@", pattern).evaluate(with: input)
     }
