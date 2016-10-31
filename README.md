@@ -3,7 +3,7 @@
 Validator is a user input validation library written in Swift. It's comprehensive, designed for extension, and leaves error handling and the UI up to you (as it should be).
 
 ```swift
-let emailRule = ValidationRulePattern(pattern: .emailAddress, error: someValidationErrorType)
+let emailRule = ValidationRulePattern(pattern: EmailValidationPattern.simple, error: someValidationErrorType)
 "invalid@email,com".validate(emailRule)
 ```
 
@@ -55,7 +55,7 @@ Install Validator with [CocoaPods](http://cocoapods.org):
 `Validator` can validate any `Validatable` type using one or multiple `ValidationRule`s. A validation operation returns a `ValidationResult` which matches either `.valid` or `.invalid([Error])`.
 
 ```swift
-let rule = ValidationRulePattern(pattern: .EmailAddress, error: someValidationErrorType)
+let rule = ValidationRulePattern(pattern: EmailValidationPattern.simple, error: someValidationErrorType)
 
 let result = "invalid@email,com".validate(rule: rule)
 // Note: the above is equivalent to Validator.validate(input: "invalid@email,com", rule: rule)
@@ -112,12 +112,14 @@ let rangeLengthRule = ValidationRuleLength(min: 5, max: 10, error: someValidatio
 
 #### Pattern
 
-Validates a `String` against a pattern. Validator provides some common patterns in the `ValidationPattern` enum.
+Validates a `String` against a pattern.
+
+`ValidationRulePattern` can be initialized with a `String` pattern or a type conforming to `ValidationPattern`. Validator provides some common patterns in the Patterns directory.
 
 ```swift
-let emailRule = ValidationRulePattern(pattern: .emailAddress, error: someValidationErrorType)
+let emailRule = ValidationRulePattern(pattern: EmailValidationPattern.simple, error: someValidationErrorType)
 
-let digitRule = ValidationRulePattern(pattern: .containsDigit, error: someValidationErrorType)
+let digitRule = ValidationRulePattern(pattern: ContainsNumberValidationPattern(), error: someValidationErrorType)
 
 let helloRule = ValidationRulePattern(pattern: ".*hello.*", error: someValidationErrorType)
 ```

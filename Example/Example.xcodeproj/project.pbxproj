@@ -44,13 +44,6 @@
 			remoteGlobalIDString = 9967E3A21B76822E00ACAF54;
 			remoteInfo = Validator;
 		};
-		999F53AC1B4E736900143184 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 999F538F1B4E736900143184 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 999F53961B4E736900143184;
-			remoteInfo = Validator;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -79,7 +72,6 @@
 		9967E4121B7682FA00ACAF54 /* StringExampleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExampleTableViewCell.swift; sourceTree = "<group>"; };
 		9967E41C1B768E9500ACAF54 /* Validator.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Validator.xcodeproj; path = ../Validator/Validator.xcodeproj; sourceTree = "<group>"; };
 		999F53971B4E736900143184 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		999F53AB1B4E736900143184 /* Example.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Example.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		99A7C55B1DC5413500022281 /* ValidationErrorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationErrorType.swift; sourceTree = "<group>"; };
 		99E8DEE71D771B0800362402 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,13 +82,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9967E4261B76965500ACAF54 /* Validator.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		999F53A81B4E736900143184 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,7 +161,6 @@
 			isa = PBXGroup;
 			children = (
 				999F53971B4E736900143184 /* Example.app */,
-				999F53AB1B4E736900143184 /* Example.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -211,24 +195,6 @@
 			productReference = 999F53971B4E736900143184 /* Example.app */;
 			productType = "com.apple.product-type.application";
 		};
-		999F53AA1B4E736900143184 /* ExampleTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 999F53B71B4E736900143184 /* Build configuration list for PBXNativeTarget "ExampleTests" */;
-			buildPhases = (
-				999F53A71B4E736900143184 /* Sources */,
-				999F53A81B4E736900143184 /* Frameworks */,
-				999F53A91B4E736900143184 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				999F53AD1B4E736900143184 /* PBXTargetDependency */,
-			);
-			name = ExampleTests;
-			productName = ValidatorTests;
-			productReference = 999F53AB1B4E736900143184 /* Example.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -241,10 +207,6 @@
 					999F53961B4E736900143184 = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = PNRPD9DG72;
-					};
-					999F53AA1B4E736900143184 = {
-						CreatedOnToolsVersion = 7.0;
-						TestTargetID = 999F53961B4E736900143184;
 					};
 				};
 			};
@@ -268,7 +230,6 @@
 			projectRoot = "";
 			targets = (
 				999F53961B4E736900143184 /* Example */,
-				999F53AA1B4E736900143184 /* ExampleTests */,
 			);
 		};
 /* End PBXProject section */
@@ -301,13 +262,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		999F53A91B4E736900143184 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -326,13 +280,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		999F53A71B4E736900143184 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -340,11 +287,6 @@
 			isa = PBXTargetDependency;
 			name = Validator;
 			targetProxy = 9967E4271B76983800ACAF54 /* PBXContainerItemProxy */;
-		};
-		999F53AD1B4E736900143184 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 999F53961B4E736900143184 /* Example */;
-			targetProxy = 999F53AC1B4E736900143184 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -484,30 +426,6 @@
 			};
 			name = Release;
 		};
-		999F53B81B4E736900143184 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = ValidatorTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = adamjwaite.co.uk.ValidatorTests;
-				PRODUCT_NAME = Example;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
-			};
-			name = Debug;
-		};
-		999F53B91B4E736900143184 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = ValidatorTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = adamjwaite.co.uk.ValidatorTests;
-				PRODUCT_NAME = Example;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -525,15 +443,6 @@
 			buildConfigurations = (
 				999F53B51B4E736900143184 /* Debug */,
 				999F53B61B4E736900143184 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		999F53B71B4E736900143184 /* Build configuration list for PBXNativeTarget "ExampleTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				999F53B81B4E736900143184 /* Debug */,
-				999F53B91B4E736900143184 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

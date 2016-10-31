@@ -31,55 +31,9 @@ import Foundation
 
 /**
  
- The `ValidationPattern` enum defines common user input validation regular 
- expressions to be used alongside the `ValidationRulePattern` rule.
- 
- Important:
- There are plans to change this implementaion. 
- See https://github.com/adamwaite/Validator/issues/30
- 
- */
-public enum ValidationPattern: String {
-    
-    /**
-     
-     Regular expression to evaluate a target is a valid email address.
-     
-     */
-    case emailAddress = "^[_A-Za-z0-9-+]+(\\.[_A-Za-z0-9-+]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z‌​]{2,})$"
-    
-    /**
-     
-     Regular expression to evaluate a target contains a numeric digit.
-     
-     */
-    case containsNumber = ".*\\d.*"
-    
-    /**
-     
-     Regular expression to evaluate a target contains an uppercase letter.
-     
-     */
-    case containsUppercase = "^.*?[A-Z].*?$"
-    
-    /**
-     
-     Regular expression to evaluate a target contains a lowercase letter.
-     
-     */
-    case containsLowercase = "^.*?[a-z].*?$"
-    
-    /**
-     
-     Regular expression to evaluate a target is a valid UK postcode.
-     
-     */
-    case ukPostcode = "(GIR 0AA)|((([A-Z-[QVX]][0-9][0-9]?)|(([A-Z-[QVX]][A-Z-[IJZ]][0-9][0-9]?)|(([A-Z-[QVX]][0-9][A-HJKPSTUW])|([A-Z-[QVX]][A-Z-[IJZ]][0-9][ABEHMNPRVWXY]))))[ ]?[0-9][A-Z-[CIKMOV]]{2})"
-}
-
-/**
- 
- `ValidationRulePattern` validates a `String`' against a regular expression.
+ `ValidationRulePattern` validates a `String`' against a regular expression which
+ may be provided in the form of a `String` or a type conforming to 
+ `ValidationRulePattern`.
  
  */
 public struct ValidationRulePattern: ValidationRule {
@@ -124,7 +78,7 @@ public struct ValidationRulePattern: ValidationRule {
      
      */
     public init(pattern: ValidationPattern, error: Error) {
-        self.init(pattern: pattern.rawValue, error: error)
+        self.init(pattern: pattern.pattern, error: error)
     }
     
     /**

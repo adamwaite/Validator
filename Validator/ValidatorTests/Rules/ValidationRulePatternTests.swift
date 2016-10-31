@@ -34,11 +34,11 @@ class ValidationRulePatternTests: XCTestCase {
 
     func testThatItCanValidateEmailAddresses() {
         
-        let rule = ValidationRulePattern(pattern: .emailAddress, error: testError)
+        let rule = ValidationRulePattern(pattern: EmailValidationPattern.standard, error: testError)
 
-        for invalidEmail in ["user@invalid,com", "userinvalid.com", "invalid", "user@invalid@example.com", "user@in+valid.com"] {
+        for invalidEmail in ["user@invalid,com", "userinvalid.com", "invalid", "user@invalid@example.com"] {
             let invalid = Validator.validate(input: invalidEmail, rule: rule)
-            XCTAssertFalse(invalid.isValid)
+            XCTAssertFalse(invalid.isValid, invalidEmail)
         }
         
         for validEmail in ["user@valid.com", "user_1@valid.co.uk", "user@valid.museum"] {
@@ -50,7 +50,7 @@ class ValidationRulePatternTests: XCTestCase {
     
     func testThatItCanValidateDigitPresence() {
         
-        let rule = ValidationRulePattern(pattern: .containsNumber, error: testError)
+        let rule = ValidationRulePattern(pattern: ContainsNumberValidationPattern(), error: testError)
         
         for noDigitString in ["invalid", "invali_d", "inv+alid"] {
             let invalid = Validator.validate(input: noDigitString, rule: rule)
@@ -62,20 +62,5 @@ class ValidationRulePatternTests: XCTestCase {
             XCTAssertTrue(valid.isValid)
         }
         
-    }
-
-    func testThatItCanValidateUKPostcodes() {
-        let rule = ValidationRulePattern(pattern: .ukPostcode, error: testError)
-
-        for invalidPostcode in ["AA9AAAA", "A9A", "99A9 A99", "A", "9A A99", "A9A  9AA"] {
-            let invalid = Validator.validate(input: invalidPostcode, rule: rule)
-            XCTAssertFalse(invalid.isValid)
-        }
-
-        for validPostcode in ["AA9A 9AA", "A9A 9AA", "A9 9AA", "A99 9AA", "AA9 9AA", "AA99 9AA",
-                              "AA9A9AA", "A9A9AA", "A99AA", "A999AA", "AA99AA", "AA999AA"] {
-            let valid = Validator.validate(input: validPostcode, rule: rule)
-            XCTAssertTrue(valid.isValid)
-        }
     }
 }

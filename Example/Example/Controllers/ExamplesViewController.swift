@@ -98,7 +98,8 @@ extension ExamplesViewController {
             case 3:
                 stringCell.titleLabel.text = "Email Address"
                 stringCell.summaryLabel.text = "Ensures the input is a valid email address using ValidationRulePattern"
-                let emailRule = ValidationRulePattern(pattern: .emailAddress, error: ValidationError(message: "😫"))
+                let emailPattern = EmailValidationPattern.simple
+                let emailRule = ValidationRulePattern(pattern: emailPattern, error: ValidationError(message: "😫"))
                 stringCell.validationRuleSet?.add(rule: emailRule)
             
             case 4:
@@ -117,8 +118,10 @@ extension ExamplesViewController {
                 stringCell.titleLabel.text = "Multiple Rules"
                 stringCell.summaryLabel.text = "Combines multiple validations into one rule set - range length, contains a digit and contains a capital letter"
                 let rangeLengthRule = ValidationRuleLength(min: 5, max: 30, error: ValidationError(message: "😫"))
-                let digitRule = ValidationRulePattern(pattern: .containsNumber, error: ValidationError(message: "😥"))
-                let capitalRule = ValidationRulePattern(pattern: .containsUppercase, error: ValidationError(message: "😞"))
+                let digitPattern = ContainsNumberValidationPattern()
+                let digitRule = ValidationRulePattern(pattern: digitPattern, error: ValidationError(message: "😥"))
+                let casePattern = CaseValidationPattern.uppercase
+                let capitalRule = ValidationRulePattern(pattern: casePattern, error: ValidationError(message: "😞"))
                 stringCell.validationRuleSet?.add(rule: rangeLengthRule)
                 stringCell.validationRuleSet?.add(rule: digitRule)
                 stringCell.validationRuleSet?.add(rule: capitalRule)
