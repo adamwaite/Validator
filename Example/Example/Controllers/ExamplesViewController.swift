@@ -43,21 +43,23 @@ final class ExamplesViewController: UITableViewController {
 extension ExamplesViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
-        case 0: return "String Examples"
-        case 1: return "Numeric Examples"
+        case 0: return "String (with UITextField)"
+        case 1: return "Numeric (with UISlider)"
+        case 2: return "String (with UITextView)"
         default: return nil
         }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0: return 8
+        case 0: return 7
         case 1: return 1
+        case 2: return 1
         default: return 0
         }
     }
@@ -96,33 +98,27 @@ extension ExamplesViewController {
             case 3:
                 stringCell.titleLabel.text = "Email Address"
                 stringCell.summaryLabel.text = "Ensures the input is a valid email address using ValidationRulePattern"
-                let emailRule = ValidationRulePattern(pattern: .EmailAddress, error: ValidationError(message: "😫"))
+                let emailRule = ValidationRulePattern(pattern: .emailAddress, error: ValidationError(message: "😫"))
                 stringCell.validationRuleSet?.add(rule: emailRule)
             
             case 4:
-                stringCell.titleLabel.text = "Contains Digit"
-                stringCell.summaryLabel.text = "Ensures the input contains a digit using ValidationRulePattern"
-                let digitRule = ValidationRulePattern(pattern: .ContainsNumber, error: ValidationError(message: "😫"))
-                stringCell.validationRuleSet?.add(rule: digitRule)
-                
-            case 5:
-                stringCell.titleLabel.text = "Is a Greeting"
-                stringCell.summaryLabel.text = "Ensures the input is one of the greetings 'hello', 'hey' or 'hi' using ValidationRuleCondition"
-                let conditionRule = ValidationRuleCondition<String>(error: ValidationError(message: "😫")) { ["hello", "hey", "hi"].contains($0!) }
-                stringCell.validationRuleSet?.add(rule: conditionRule)
+                stringCell.titleLabel.text = "Contains"
+                stringCell.summaryLabel.text = "Ensures the input is one of the greetings 'hello', 'hey' or 'hi' using ValidationRuleContains"
+                let containsRule = ValidationRuleContains<String, Array<String>>(sequence: ["hello", "hey", "hi"], error: ValidationError(message: "😫"))
+                stringCell.validationRuleSet?.add(rule: containsRule)
 
-            case 6:
+            case 5:
                 stringCell.titleLabel.text = "Dynamic Equality"
                 stringCell.summaryLabel.text = "Ensures the input is equal to a dynamic value (in this case just 'Password') using ValidationRuleEquality"
                 let equalityRule = ValidationRuleEquality<String>(dynamicTarget: { return "Password" }, error: ValidationError(message: "😫"))
                 stringCell.validationRuleSet?.add(rule: equalityRule)
 
-            case 7:
+            case 6:
                 stringCell.titleLabel.text = "Multiple Rules"
                 stringCell.summaryLabel.text = "Combines multiple validations into one rule set - range length, contains a digit and contains a capital letter"
                 let rangeLengthRule = ValidationRuleLength(min: 5, max: 30, error: ValidationError(message: "😫"))
-                let digitRule = ValidationRulePattern(pattern: .ContainsNumber, error: ValidationError(message: "😥"))
-                let capitalRule = ValidationRulePattern(pattern: .ContainsCapital, error: ValidationError(message: "😞"))
+                let digitRule = ValidationRulePattern(pattern: .containsNumber, error: ValidationError(message: "😥"))
+                let capitalRule = ValidationRulePattern(pattern: .containsUppercase, error: ValidationError(message: "😞"))
                 stringCell.validationRuleSet?.add(rule: rangeLengthRule)
                 stringCell.validationRuleSet?.add(rule: digitRule)
                 stringCell.validationRuleSet?.add(rule: capitalRule)
@@ -154,6 +150,25 @@ extension ExamplesViewController {
             default:
                 break
             }
+            
+        case 2:
+            
+            let longStringCell = tableView.dequeueReusableCell(withIdentifier: "LongStringExample", for: indexPath) as! LongStringExampleTableViewCell
+            longStringCell.validationRuleSet = ValidationRuleSet<String>()
+            cell = longStringCell
+            
+            switch indexPath.row {
+                
+            case 0:
+                longStringCell.titleLabel.text = "Condition"
+                longStringCell.summaryLabel.text = "Ensures the input contains the word 'Hello' using ValidationRuleCondition"
+                let comparisonRule = ValidationRuleCondition<String>(error: ValidationError(message: "😫")) { $0?.contains("Hello") ?? false }
+                longStringCell.validationRuleSet?.add(rule: comparisonRule)
+                
+            default:
+                break
+            }
+
             
         default:
             break

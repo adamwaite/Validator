@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		996600B21DC7AB3300F7C750 /* LongStringExampleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996600B11DC7AB3300F7C750 /* LongStringExampleTableViewCell.swift */; };
 		9967E4131B7682FA00ACAF54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E4041B7682FA00ACAF54 /* AppDelegate.swift */; };
 		9967E4141B7682FA00ACAF54 /* ExamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E4061B7682FA00ACAF54 /* ExamplesViewController.swift */; };
 		9967E4151B7682FA00ACAF54 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9967E4081B7682FA00ACAF54 /* Main.storyboard */; };
@@ -66,6 +67,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		996600B11DC7AB3300F7C750 /* LongStringExampleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LongStringExampleTableViewCell.swift; sourceTree = "<group>"; };
 		9967E4041B7682FA00ACAF54 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9967E4061B7682FA00ACAF54 /* ExamplesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamplesViewController.swift; sourceTree = "<group>"; };
 		9967E4091B7682FA00ACAF54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				9967E4101B7682FA00ACAF54 /* ExampleTableViewCell.swift */,
 				9967E4111B7682FA00ACAF54 /* NumericExampleTableViewCell.swift */,
 				9967E4121B7682FA00ACAF54 /* StringExampleTableViewCell.swift */,
+				996600B11DC7AB3300F7C750 /* LongStringExampleTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 				TargetAttributes = {
 					999F53961B4E736900143184 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = PNRPD9DG72;
 					};
 					999F53AA1B4E736900143184 = {
 						CreatedOnToolsVersion = 7.0;
@@ -316,6 +320,7 @@
 				9967E41A1B7682FA00ACAF54 /* NumericExampleTableViewCell.swift in Sources */,
 				99E8DEE81D771B0800362402 /* TextField.swift in Sources */,
 				9967E41B1B7682FA00ACAF54 /* StringExampleTableViewCell.swift in Sources */,
+				996600B21DC7AB3300F7C750 /* LongStringExampleTableViewCell.swift in Sources */,
 				9967E4191B7682FA00ACAF54 /* ExampleTableViewCell.swift in Sources */,
 				99A7C55C1DC5413500022281 /* ValidationErrorType.swift in Sources */,
 			);
@@ -458,6 +463,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = PNRPD9DG72;
 				INFOPLIST_FILE = "$(SRCROOT)/Example/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = adamjwaite.co.uk.ValidatorExample;
@@ -469,6 +475,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = PNRPD9DG72;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "$(SRCROOT)/Example/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
