@@ -52,7 +52,7 @@ Install Validator with [CocoaPods](http://cocoapods.org):
 
 Install Validator with [Carthage](https://github.com/Carthage/Carthage):
 
-`github "adamwaite/Validator"
+`github "adamwaite/Validator"`
 
 ## Usage
 
