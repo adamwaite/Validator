@@ -1,4 +1,4 @@
-# Validator
+# Validator [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 Validator is a user input validation library written in Swift. It's comprehensive, designed for extension, and leaves error handling and the UI up to you (as it should be).
 
@@ -52,7 +52,7 @@ Install Validator with [CocoaPods](http://cocoapods.org):
 
 Install Validator with [Carthage](https://github.com/Carthage/Carthage):
 
-`github "adamwaite/Validator"
+`github "adamwaite/Validator"`
 
 ## Usage
 
