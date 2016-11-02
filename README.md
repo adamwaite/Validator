@@ -3,7 +3,7 @@
 Validator is a user input validation library written in Swift. It's comprehensive, designed for extension, and leaves error handling and the UI up to you (as it should be).
 
 ```swift
-let emailRule = ValidationRulePattern(pattern: EmailValidationPattern.simple, error: someValidationErrorType)
+let emailRule = ValidationRulePattern(pattern: EmailValidationPattern.standard, error: someValidationErrorType)
 "invalid@email,com".validate(emailRule)
 ```
 
@@ -50,12 +50,16 @@ Install Validator with [CocoaPods](http://cocoapods.org):
 
 `pod 'Validator'`
 
+Install Validator with [Carthage](https://github.com/Carthage/Carthage):
+
+`github "adamwaite/Validator"
+
 ## Usage
 
 `Validator` can validate any `Validatable` type using one or multiple `ValidationRule`s. A validation operation returns a `ValidationResult` which matches either `.valid` or `.invalid([Error])`.
 
 ```swift
-let rule = ValidationRulePattern(pattern: EmailValidationPattern.simple, error: someValidationErrorType)
+let rule = ValidationRulePattern(pattern: EmailValidationPattern.standard, error: someValidationErrorType)
 
 let result = "invalid@email,com".validate(rule: rule)
 // Note: the above is equivalent to Validator.validate(input: "invalid@email,com", rule: rule)
@@ -117,7 +121,7 @@ Validates a `String` against a pattern.
 `ValidationRulePattern` can be initialized with a `String` pattern or a type conforming to `ValidationPattern`. Validator provides some common patterns in the Patterns directory.
 
 ```swift
-let emailRule = ValidationRulePattern(pattern: EmailValidationPattern.simple, error: someValidationErrorType)
+let emailRule = ValidationRulePattern(pattern: EmailValidationPattern.standard, error: someValidationErrorType)
 
 let digitRule = ValidationRulePattern(pattern: ContainsNumberValidationPattern(), error: someValidationErrorType)
 
