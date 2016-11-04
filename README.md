@@ -55,7 +55,7 @@ paymentCardTextField.validate(cardRule) // -> .valid or .invalid(someValidationE
 
 ### CocoaPods
 
-[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Validator.svg)](https://github.com/CocoaPods/CocoaPods)[![CocoaPods Compatible](https://img.shields.io/cocoapods/dt/Validator.svg)](https://github.com/CocoaPods/CocoaPods)
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Validator.svg)](https://github.com/CocoaPods/CocoaPods) [![CocoaPods Compatible](https://img.shields.io/cocoapods/dt/Validator.svg)](https://github.com/CocoaPods/CocoaPods)
 
 Install Validator with [CocoaPods](http://cocoapods.org):
 
