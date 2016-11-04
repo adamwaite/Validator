@@ -42,8 +42,8 @@ extension UITextField: ValidatableInterfaceElement {
         }
     }
     
-    open func validateOnEditingEnd(validationEnabled: Bool) {
-        switch validationEnabled {
+    open func validateOnEditingEnd(enabled: Bool) {
+        switch enabled {
         case true: addTarget(self, action: #selector(validate), for: .editingDidEnd)
         case false: removeTarget(self, action: #selector(validate), for: .editingDidEnd)
         }
