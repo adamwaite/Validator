@@ -1,7 +1,5 @@
 # Validator
 
-[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Validator.svg)](https://github.com/CocoaPods/CocoaPods) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-
 Validator is a user input validation library written in Swift. It's comprehensive, designed for extension, and leaves error handling and the UI up to you (as it should be).
 
 ```swift
@@ -55,9 +53,17 @@ paymentCardTextField.validate(cardRule) // -> .valid or .invalid(someValidationE
 
 ## Installation
 
+### CocoaPods
+
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Validator.svg)](https://github.com/CocoaPods/CocoaPods)[![CocoaPods Compatible](https://img.shields.io/cocoapods/dt/Validator.svg)](https://github.com/CocoaPods/CocoaPods)
+
 Install Validator with [CocoaPods](http://cocoapods.org):
 
 `pod 'Validator'`
+
+### Carthage
+
+ [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 Install Validator with [Carthage](https://github.com/Carthage/Carthage):
 
