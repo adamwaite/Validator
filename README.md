@@ -3,18 +3,25 @@
 Validator is a user input validation library written in Swift. It's comprehensive, designed for extension, and leaves error handling and the UI up to you (as it should be).
 
 ```swift
-let emailRule = ValidationRulePattern(pattern: EmailValidationPattern.standard, error: someValidationErrorType)
-"invalid@email,com".validate(emailRule)
+let emailRule = ValidationRulePattern(pattern: EmailValidationPattern.standard, error: someValidationError)
+"invalid@email,com".validate(emailRule) // -> .invalid(someValidationError)
 ```
 
 ```swift
-let drinkingAgeRule = ValidationRuleComparison<Int>(min: 18, max: Int.max, error: someValidationErrorType)
-17.validate(drinkingAgeRule)
+let eighteenYearsAgo = Date().addingTimeInterval(-568024668)
+let drinkingAgeRule = ValidationRuleComparison<Date>(min: eighteenYearsAgo, error: someValidationError)
+let dateOfBirth = Date().addingTimeInterval(-662695446) // 21 years old
+dateOfBirth.validate(rule: rule) // -> .valid
 ```
 
 ```swift
-let cardRule = ValidationRulePaymentCard(availableTypes: [.visa, .amex], error: someValidationErrorType)
-paymentCardTextField.validate(cardRule)
+let numericRule = ValidationRuleComparison<Int>(min: 50, max: Int.max, error: someValidationError)
+17.validate(drinkingAgeRule) // -> .invalid(someValidationError)
+```
+
+```swift
+let cardRule = ValidationRulePaymentCard(availableTypes: [.visa, .amex], error: someValidationError)
+paymentCardTextField.validate(cardRule) // -> .valid or .invalid(someValidationError) dpeending on what's in paymentCardTextField
 ```
 
 ![demo-vid](resources/demo.mp4.gif)
