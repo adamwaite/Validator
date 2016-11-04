@@ -23,7 +23,7 @@ let numericRule = ValidationRuleComparison<Int>(min: 50, max: Int.max, error: so
 
 ```swift
 let cardRule = ValidationRulePaymentCard(availableTypes: [.visa, .amex], error: someValidationError)
-paymentCardTextField.validate(cardRule) // -> .valid or .invalid(someValidationError) dpeending on what's in paymentCardTextField
+paymentCardTextField.validate(cardRule) // -> .valid or .invalid(someValidationError) depending on what's in paymentCardTextField
 ```
 
 ![demo-vid](resources/demo.mp4.gif)
