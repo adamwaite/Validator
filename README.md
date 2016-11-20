@@ -15,8 +15,8 @@ dateOfBirth.validate(rule: rule) // -> .valid
 ```
 
 ```swift
-let numericRule = ValidationRuleComparison<Int>(min: 50, max: Int.max, error: someValidationError)
-17.validate(drinkingAgeRule) // -> .invalid(someValidationError)
+let numericRule = ValidationRuleComparison<Int>(min: 50, max: 100, error: someValidationError)
+42.validate(numericRule) // -> .invalid(someValidationError)
 ```
 
 ```swift
