@@ -153,7 +153,12 @@ extension ValidatableInterfaceElement {
     }
     
     @discardableResult public func validate() -> ValidationResult {
-        guard let attachedRules = validationRules else { fatalError("Validator Error: attempted to validate without attaching rules") }
+        guard let attachedRules = validationRules else {
+            #if DEBUG
+                print("Validator Error: attempted to validate without attaching rules")
+            #endif
+            return .valid
+        }
         return validate(rules: attachedRules)
     }
     
