@@ -29,6 +29,7 @@
 
 import UIKit
 
+#if os(iOS)
 extension UISlider: ValidatableInterfaceElement {
     
     public typealias InputType = Float
@@ -47,3 +48,4 @@ extension UISlider: ValidatableInterfaceElement {
     }
     
 }
+#endif
