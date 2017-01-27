@@ -37,6 +37,18 @@ import Foundation
  
  */
 public struct ValidationRuleLength: ValidationRule {
+
+    /**
+     
+     `String` text count type.
+
+     */
+    public enum LengthType {
+        case characters
+        case utf8
+        case utf16
+        case unicodeScalars
+    }
     
     public typealias InputType = String
 
@@ -55,7 +67,14 @@ public struct ValidationRuleLength: ValidationRule {
      
      */
     public let max: Int
-    
+
+    /**
+
+     The `String` text count type an input most have (default .characters).
+
+     */
+    public let lengthType: LengthType
+
     /**
      
      Initializes a `ValidationRuleLength` with an optionally supplied minimum 
@@ -65,12 +84,14 @@ public struct ValidationRuleLength: ValidationRule {
      - Parameters:
         - min: A minimum character count an input must have (default 0).
         - max: A maximum character count an input must have (default Int.max).
+        - lengthType: A `String` text count type an input most have (default .characters).
         - error: An error describing a failed validation.
      
      */
-    public init(min: Int = 0, max: Int = Int.max, error: Error) {
+    public init(min: Int = 0, max: Int = Int.max, lengthType: LengthType = .characters, error: Error) {
         self.min = min
         self.max = max
+        self.lengthType = lengthType
         self.error = error
     }
     
@@ -80,14 +101,23 @@ public struct ValidationRuleLength: ValidationRule {
      
      - Parameters:
         - input: Input to validate.
-     
+
      - Returns:
      true if the input character count is between the minimum and maximum.
      
      */
     public func validate(input: String?) -> Bool {
         guard let input = input else { return false }
-        return input.characters.count >= min && input.characters.count <= max
+
+        let length: Int
+        switch lengthType {
+        case .characters: length = input.characters.count
+        case .utf8: length = input.utf8.count
+        case .utf16: length = input.utf16.count
+        case .unicodeScalars: length = input.unicodeScalars.count
+        }
+
+        return length >= min && length <= max
     }
 
 }
