@@ -1,11 +1,15 @@
 # Validator
 
-Validator is a user input validation library written in Swift. It's comprehensive, designed for extension, and leaves error handling and the UI up to you (as it should be).
+Validator is a user input validation library written in Swift. It's comprehensive, designed for extension, and leaves the UI up to you.
+
+Here's how you might validate an email address:
 
 ```swift
-let emailRule = ValidationRulePattern(pattern: EmailValidationPattern.standard, error: someValidationError)
+let emailRule = ValidationRulePattern(pattern: .standard, error: someValidationError)
 "invalid@email,com".validate(emailRule) // -> .invalid(someValidationError)
 ```
+
+... or that a user is over the age of 18:
 
 ```swift
 let eighteenYearsAgo = Date().addingTimeInterval(-568024668)
@@ -14,10 +18,14 @@ let dateOfBirth = Date().addingTimeInterval(-662695446) // 21 years old
 dateOfBirth.validate(rule: rule) // -> .valid
 ```
 
+... or that a number is within a specified range:
+
 ```swift
 let numericRule = ValidationRuleComparison<Int>(min: 50, max: 100, error: someValidationError)
 42.validate(numericRule) // -> .invalid(someValidationError)
 ```
+
+.. or that a text field contains a valid Visa or American Express card number:
 
 ```swift
 let cardRule = ValidationRulePaymentCard(availableTypes: [.visa, .amex], error: someValidationError)
@@ -47,9 +55,10 @@ paymentCardTextField.validate(cardRule) // -> .valid or .invalid(someValidationE
 
 ## Implementations
 
-- The Swift 3 implementation is the actively maintained version on the [master branch](https://github.com/adamwaite/Validator), releases starting at version 2.0.
-- A Swift 2.3 implemtation is in version [1.2.1](https://github.com/adamwaite/Validator/releases/tag/v1.2.1).
-- Objective-C implementation is on the [objc branch](https://github.com/adamwaite/Validator/tree/objc).
+- Swift 4: [master](https://github.com/adamwaite/Validator)
+- Swift 3.2: [2.1.1](https://github.com/adamwaite/Validator/releases/tag/v2.1.1)
+- Swift 2.3: [1.2.1](https://github.com/adamwaite/Validator/releases/tag/v1.2.1)
+- Objective-C: on the [objc branch](https://github.com/adamwaite/Validator/tree/objc)
 
 ## Installation
 
@@ -57,15 +66,11 @@ paymentCardTextField.validate(cardRule) // -> .valid or .invalid(someValidationE
 
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Validator.svg)](https://github.com/CocoaPods/CocoaPods) [![CocoaPods Compatible](https://img.shields.io/cocoapods/dt/Validator.svg)](https://github.com/CocoaPods/CocoaPods)
 
-Install Validator with [CocoaPods](http://cocoapods.org):
-
 `pod 'Validator'`
 
 ### Carthage
 
  [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-
-Install Validator with [Carthage](https://github.com/Carthage/Carthage):
 
 `github "adamwaite/Validator"`
 
@@ -388,10 +393,6 @@ There's an example project in this repository.
 ## Contributing
 
 Any contributions and suggestions are most welcome! Please ensure any new code is covered with unit tests, and that all existing tests pass. Please update the README with any new features. Thanks!
-
-## Thanks
-
-- Thanks to [@jedmund](https://github.com/jedmund) for converting this project to Swift 3.
 
 ## Contact
 
