@@ -5,7 +5,7 @@ Validator is a user input validation library written in Swift. It's comprehensiv
 Here's how you might validate an email address:
 
 ```swift
-let emailRule = ValidationRulePattern(pattern: .standard, error: someValidationError)
+let emailRule = ValidationRulePattern(pattern: EmailValidationPattern.standard, error: someValidationError)
 "invalid@email,com".validate(emailRule) // -> .invalid(someValidationError)
 ```
 
