@@ -82,7 +82,7 @@ class ValidationRuleLengthTests: XCTestCase {
         XCTAssertFalse(tooShort.isValid)
 
         let valid = Validator.validate(input: "🇯🇵🇯🇵", rule: rule)
-        XCTAssertFalse(valid.isValid)
+        XCTAssertTrue(valid.isValid)
     }
 
     func testThatItCanValidateEmojiCharacthersMaxLength() {
@@ -91,7 +91,7 @@ class ValidationRuleLengthTests: XCTestCase {
         let rule = ValidationRuleLength(max: 2, error: testError)
 
         let tooLong = Validator.validate(input: "🇯🇵🇯🇵🇯🇵", rule: rule)
-        XCTAssertTrue(tooLong.isValid)
+        XCTAssertFalse(tooLong.isValid)
 
         let valid = Validator.validate(input: "🇯🇵🇯🇵", rule: rule)
         XCTAssertTrue(valid.isValid)
