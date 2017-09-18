@@ -31,8 +31,9 @@ let numericRule = ValidationRuleComparison<Int>(min: 50, max: 100, error: someVa
 let cardRule = ValidationRulePaymentCard(availableTypes: [.visa, .amex], error: someValidationError)
 paymentCardTextField.validate(cardRule) // -> .valid or .invalid(someValidationError) depending on what's in paymentCardTextField
 ```
+ 
 
-![demo-vid](resources/demo.mov.gif)
+![demo-vid](resources/validator-example.mov.gif)
 
 ## Features
 
