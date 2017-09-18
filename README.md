@@ -32,7 +32,7 @@ let cardRule = ValidationRulePaymentCard(availableTypes: [.visa, .amex], error: 
 paymentCardTextField.validate(cardRule) // -> .valid or .invalid(someValidationError) depending on what's in paymentCardTextField
 ```
 
-![demo-vid](resources/demo.mp4.gif)
+![demo-vid](resources/demo.mov.gif)
 
 ## Features
 

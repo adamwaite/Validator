@@ -45,4 +45,8 @@ final class NumericExampleTableViewCell: ExampleTableViewCell {
         slider.validationHandler = { result in self.updateValidationState(result: result) }
     }
     
+    @IBAction private func sliderChanged(_ sender: UISlider) {
+        sliderValueLabel.text = "\(Int(sender.value))"
+    }
+    
 }
