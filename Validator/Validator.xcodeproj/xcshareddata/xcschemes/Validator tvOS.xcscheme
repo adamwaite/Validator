@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "17B70F591F7B0CF900FD1CF9"
-               BuildableName = "Validator_tvOS.framework"
+               BuildableName = "Validator.framework"
                BlueprintName = "Validator tvOS"
                ReferencedContainer = "container:Validator.xcodeproj">
             </BuildableReference>
@@ -48,7 +48,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "17B70F591F7B0CF900FD1CF9"
-            BuildableName = "Validator_tvOS.framework"
+            BuildableName = "Validator.framework"
             BlueprintName = "Validator tvOS"
             ReferencedContainer = "container:Validator.xcodeproj">
          </BuildableReference>
@@ -66,7 +66,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "17B70F591F7B0CF900FD1CF9"
-            BuildableName = "Validator_tvOS.framework"
+            BuildableName = "Validator.framework"
             BlueprintName = "Validator tvOS"
             ReferencedContainer = "container:Validator.xcodeproj">
          </BuildableReference>
