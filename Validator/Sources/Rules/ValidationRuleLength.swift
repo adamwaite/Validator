@@ -111,7 +111,7 @@ public struct ValidationRuleLength: ValidationRule {
 
         let length: Int
         switch lengthType {
-        case .characters: length = input.characters.count
+        case .characters: length = input.count
         case .utf8: length = input.utf8.count
         case .utf16: length = input.utf16.count
         case .unicodeScalars: length = input.unicodeScalars.count
