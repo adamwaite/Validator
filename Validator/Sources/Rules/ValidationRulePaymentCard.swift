@@ -247,7 +247,7 @@ public struct ValidationRulePaymentCard: ValidationRule {
     
     private static func luhnCheck(cardNumber: String) -> Bool {
         var sum = 0
-        let reversedCharacters = cardNumber.characters.reversed().map { String($0) }
+        let reversedCharacters = cardNumber.reversed().map { String($0) }
         for (idx, element) in reversedCharacters.enumerated() {
             guard let digit = Int(element) else { return false }
             switch ((idx % 2 == 1), digit) {

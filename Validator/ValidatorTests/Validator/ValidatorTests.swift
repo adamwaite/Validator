@@ -36,7 +36,7 @@ class ValidatorTests: XCTestCase {
         
         let err = testError
         
-        let rule = ValidationRuleCondition<String>(error: err) { ($0?.characters.count)! > 0 }
+        let rule = ValidationRuleCondition<String>(error: err) { ($0?.count)! > 0 }
         
         let invalid = Validator.validate(input: "", rule: rule)
         XCTAssertEqual(invalid, ValidationResult.invalid([err]))
