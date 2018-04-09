@@ -23,6 +23,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		994E7FAC207BF69500DB8578 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9967E41C1B768E9500ACAF54 /* Validator.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 17B70F5A1F7B0CF900FD1CF9;
+			remoteInfo = "Validator tvOS";
+		};
 		9967E4211B768E9500ACAF54 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9967E41C1B768E9500ACAF54 /* Validator.xcodeproj */;
@@ -144,6 +151,7 @@
 			children = (
 				9967E4221B768E9500ACAF54 /* Validator.framework */,
 				9967E4241B768E9500ACAF54 /* ValidatorTests.xctest */,
+				994E7FAD207BF69500DB8578 /* Validator.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -201,7 +209,7 @@
 		999F538F1B4E736900143184 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = adamjwaite.co.uk;
 				TargetAttributes = {
 					999F53961B4E736900143184 = {
@@ -236,6 +244,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		994E7FAD207BF69500DB8578 /* Validator.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Validator.framework;
+			remoteRef = 994E7FAC207BF69500DB8578 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		9967E4221B768E9500ACAF54 /* Validator.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -323,12 +338,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -377,12 +394,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

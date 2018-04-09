@@ -84,7 +84,7 @@ public protocol ValidatableInterfaceElement: AnyObject {
      A validation result.
      
      */
-    func validate<R: ValidationRule>(rule r: R) -> ValidationResult where R.InputType == InputType
+    func validate<R: ValidationRule>(rule r: R) -> ValidationResult
     
     /**
      
@@ -138,17 +138,16 @@ extension ValidatableInterfaceElement {
         }
     }
     
-    public func validate<R: ValidationRule>(rule r: R) -> ValidationResult where R.InputType == InputType {
-        let result = Validator.validate(input: inputValue, rule: r)
-        if let h = validationHandler { h(result) }
+    public func validate<R: ValidationRule>(rule r: R) -> ValidationResult {
+        guard let value = inputValue as? R.InputType else { return .invalid([r.error]) }
+        let result = Validator.validate(input: value, rule: r)
+        validationHandler?(result)
         return result
     }
     
     public func validate(rules rs: ValidationRuleSet<InputType>) -> ValidationResult {
         let result = Validator.validate(input: inputValue, rules: rs)
-        if let h = validationHandler {
-            h(result)
-        }
+        validationHandler?(result)
         return result
     }
     
