@@ -57,7 +57,7 @@ paymentCardTextField.validate(cardRule) // -> .valid or .invalid(someValidationE
 
 ## Implementations
 
-- Swift 4: [master](https://github.com/adamwaite/Validator)
+- Swift 4.2: [master](https://github.com/adamwaite/Validator)
 - Swift 3.2: [2.1.1](https://github.com/adamwaite/Validator/releases/tag/v2.1.1)
 - Swift 2.3: [1.2.1](https://github.com/adamwaite/Validator/releases/tag/v1.2.1)
 - Objective-C: on the [objc branch](https://github.com/adamwaite/Validator/tree/objc)
