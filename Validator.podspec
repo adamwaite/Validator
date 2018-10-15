@@ -32,7 +32,7 @@ Pod::Spec.new do |s|
   s.author = { 'Adam Waite' => 'adam@adamjwaite.co.uk' }
   s.social_media_url = 'http://twitter.com/AdamWaite'
 
-  s.source = { :git => 'https://github.com/adamwaite/Validator.git', :tag => 'v3.1.0' }
+  s.source = { :git => 'https://github.com/adamwaite/Validator.git', :tag => 'v3.1.1' }
   s.source_files = 'Validator', 'Validator/Sources/**/*.swift'
   s.framework = 'UIKit'
 
