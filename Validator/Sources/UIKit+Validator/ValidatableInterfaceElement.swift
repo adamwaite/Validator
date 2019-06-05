@@ -17,7 +17,7 @@ public protocol ValidatableInterfaceElement {
 private var ValidatableInterfaceElementRulesKey: UInt8 = 0
 private var ValidatableInterfaceElementHandlerKey: UInt8 = 0
 
-extension ValidatableInterfaceElement where Self: Hashable {
+extension ValidatableInterfaceElement {
 
     public func validate<Rule: ValidationRule>(rule: Rule) -> ValidationResult {
         
