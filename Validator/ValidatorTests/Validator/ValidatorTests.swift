@@ -3,35 +3,47 @@ import XCTest
 
 class ValidatorTests: XCTestCase {
     
-    func testThatItCanEvaluateRules() {
+    func test_validate_singleRule_valid() {
         
-        let err = testError
-        
-        let rule = ValidationRuleCondition<String>(error: err) { ($0?.count)! > 0 }
-        
-        let invalid = Validator.validate(input: "", rule: rule)
-        XCTAssertEqual(invalid, ValidationResult.invalid([err]))
-        
+        let rule = ValidationRuleCondition<String>(error: "💣") { _ in return true }
         let valid = Validator.validate(input: "😀", rule: rule)
-        XCTAssertEqual(valid, ValidationResult.valid)
+        XCTAssertEqual(valid, .valid)
     }
     
-    func testThatItCanEvaluateMultipleRules() {
-
-        let err1 = testError
-        let err2 = "💣💣"
+    func test_validate_singleRule_invalid() {
+        
+        let rule = ValidationRuleCondition<String>(error: "💣") { _ in return false }
+        let valid = Validator.validate(input: "😀", rule: rule)
+        XCTAssertEqual(valid, .invalid(["💣"]))
+    }
+    
+    func test_validate_multipleRules_valid() {
         
         var ruleSet = ValidationRuleSet<String>()
-        ruleSet.add(rule: ValidationRuleLength(min: 1, error: err1))
-        ruleSet.add(rule: ValidationRuleCondition<String>(error: err2) { $0 == "😀" })
+        ruleSet.add(rule: ValidationRuleLength(min: 1, error: "💣"))
+        ruleSet.add(rule: ValidationRuleCondition<String>(error: "🧨") { $0 == "😀" })
         
-        let definitelyInvalid = Validator.validate(input: "", rules: ruleSet)
-        XCTAssertEqual(definitelyInvalid, ValidationResult.invalid([err1, err2]))
+        let valid = "😀".validate(rules: ruleSet)
+        XCTAssertEqual(valid, .valid)
+    }
+    
+    func test_validate_multipleRules_partiallyInvalid() {
+        
+        var ruleSet = ValidationRuleSet<String>()
+        ruleSet.add(rule: ValidationRuleLength(min: 1, error: "💣"))
+        ruleSet.add(rule: ValidationRuleCondition<String>(error: "🧨") { $0 == "😀" })
         
         let partiallyValid = "😁".validate(rules: ruleSet)
-        XCTAssertEqual(partiallyValid, ValidationResult.invalid([err2]))
-
-        let valid = "😀".validate(rules: ruleSet)
-        XCTAssertEqual(valid, ValidationResult.valid)
+        XCTAssertEqual(partiallyValid, ValidationResult.invalid(["🧨"]))
+    }
+    
+    func test_validate_multipleRules_definitelyInvalid() {
+        
+        var ruleSet = ValidationRuleSet<String>()
+        ruleSet.add(rule: ValidationRuleLength(min: 1, error: "💣"))
+        ruleSet.add(rule: ValidationRuleCondition<String>(error: "🧨") { $0 == "😀" })
+        
+        let definitelyInvalid = Validator.validate(input: "", rules: ruleSet)
+        XCTAssertEqual(definitelyInvalid, ValidationResult.invalid(["💣", "🧨"]))
     }
 }

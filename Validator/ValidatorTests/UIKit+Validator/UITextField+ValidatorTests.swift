@@ -1,36 +1,45 @@
 import XCTest
 @testable import Validator
 
+#if os(iOS)
 private final class TextField: UITextField {
     
 }
 
 class UITextFieldValidatorTests: XCTestCase {
     
-    func testThatItProvidesAnInputValue() {
+    func test_inputValue() {
+        
         let textField = UITextField()
         textField.text = "Hello"
         XCTAssertTrue(textField.inputValue == "Hello")
     }
-    
-    func testThatItCanValidateInputText() {
+
+    func test_validate() {
+        
         let textField = UITextField()
         textField.text = "Hello"
+        
         let noRulesValidation = textField.validate()
         XCTAssertTrue(noRulesValidation.isValid)
-        let rule = ValidationRuleCondition<String>(error: testError) { ($0?.contains("A"))! }
+        
+        let rule = ValidationRuleCondition<String>(error: "💣") { ($0?.contains("A"))! }
+        
         let invalid = textField.validate(rule: rule)
         XCTAssertFalse(invalid.isValid)
+        
         textField.text = "Hello Adam"
+        
         let valid = textField.validate(rule: rule)
         XCTAssertTrue(valid.isValid)
     }
     
-    func testThatItCanValidateOnInputChange() {
+    func test_validateOnInputChange() {
+       
         let textField = UITextField()
         
         var rules = ValidationRuleSet<String>()
-        let rule = ValidationRuleCondition<String>(error: testError) { ($0?.contains("A"))! }
+        let rule = ValidationRuleCondition<String>(error: "💣") { ($0?.contains("A"))! }
         rules.add(rule: rule)
         
         var didRegisterInvalid = false
@@ -61,3 +70,4 @@ class UITextFieldValidatorTests: XCTestCase {
         XCTAssert(didRegisterValid)
     }
 }
+#endif

@@ -9,8 +9,6 @@ extension String: ValidationError {
     }
 }
 
-let testError = "💣"
-
 extension Array {
     
     var random: Element {

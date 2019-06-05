@@ -11,9 +11,9 @@ public protocol ValidationRule {
 
 internal struct AnyValidationRule<InputType>: ValidationRule {
     
-    private let baseValidateInput: (InputType?) -> Bool
-    
     let error: ValidationError
+    
+    private let baseValidateInput: (InputType?) -> Bool
     
     init<Rule: ValidationRule>(base: Rule) where Rule.InputType == InputType {
         

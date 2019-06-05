@@ -3,13 +3,15 @@ import XCTest
 
 class ValidationResultTests: XCTestCase {
     
-    func testThatAValidResultIsDeemedValid() {
-        let valid = ValidationResult.valid
+    func test_isValid_valid() {
+
+        let valid: ValidationResult = .valid
         XCTAssertTrue(valid.isValid)
-       
-        let err = testError
+    }
+    
+    func test_isValid_invalid() {
         
-        let invalid = ValidationResult.invalid([err])
+        let invalid = ValidationResult.invalid(["💣"])
         XCTAssertFalse(invalid.isValid)
     }
 }

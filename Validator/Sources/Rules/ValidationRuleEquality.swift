@@ -2,12 +2,10 @@ import Foundation
 
 public struct ValidationRuleEquality<T: Equatable>: ValidationRule {
     
+    public let target: T?
+    public let dynamicTarget: (() -> T)?
     public let error: ValidationError
-    
-    let target: T?
-    
-    let dynamicTarget: (() -> T)?
-    
+
     public init(target: T, error: ValidationError) {
 
         self.target = target

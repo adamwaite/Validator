@@ -2,9 +2,8 @@ import Foundation
 
 public struct ValidationRuleContains<T: Equatable, S: Sequence>: ValidationRule where S.Iterator.Element == T {
         
-    public let error: ValidationError
-
     public var sequence: S
+    public let error: ValidationError
     
     public init(sequence: S, error: ValidationError) {
 

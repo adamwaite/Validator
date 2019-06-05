@@ -3,6 +3,7 @@ import Foundation
 public enum ValidationResult {
     
     case valid
+    
     case invalid([ValidationError])
     
     public var isValid: Bool {

@@ -2,9 +2,8 @@ import Foundation
 
 public struct ValidationRulePattern: ValidationRule {
     
-    public let error: ValidationError
-
     public let pattern: String
+    public let error: ValidationError
     
     public init(pattern: String, error: ValidationError) {
 

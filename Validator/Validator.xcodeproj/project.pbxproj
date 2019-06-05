@@ -209,12 +209,13 @@
 			path = "UIKit+Validator";
 			sourceTree = "<group>";
 		};
-		995B7A0C1B7BEE4D00FB2AB7 /* ValidationResult */ = {
+		992FE37B22A86BB0004C83FC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				995B7A0D1B7BEE5F00FB2AB7 /* ValidationResultTests.swift */,
+				9967E3B41B76822E00ACAF54 /* Info.plist */,
+				99C4581C1C184AE00058EC4D /* TestHelpers.swift */,
 			);
-			name = ValidationResult;
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		9967E3991B76822E00ACAF54 = {
@@ -250,13 +251,10 @@
 		9967E3B11B76822E00ACAF54 /* ValidatorTests */ = {
 			isa = PBXGroup;
 			children = (
-				9967E3B41B76822E00ACAF54 /* Info.plist */,
-				99C4581C1C184AE00058EC4D /* TestHelpers.swift */,
 				9967E3F71B7682C700ACAF54 /* Validator */,
-				9967E3F51B7682C700ACAF54 /* Validatable */,
-				995B7A0C1B7BEE4D00FB2AB7 /* ValidationResult */,
 				9967E3EB1B7682C700ACAF54 /* Rules */,
 				9967E3F11B7682C700ACAF54 /* UIKit+Validator */,
+				992FE37B22A86BB0004C83FC /* Supporting Files */,
 			);
 			path = ValidatorTests;
 			sourceTree = "<group>";
@@ -286,18 +284,12 @@
 			path = "UIKit+Validator";
 			sourceTree = "<group>";
 		};
-		9967E3F51B7682C700ACAF54 /* Validatable */ = {
-			isa = PBXGroup;
-			children = (
-				9967E3F61B7682C700ACAF54 /* ValidatableTests.swift */,
-			);
-			path = Validatable;
-			sourceTree = "<group>";
-		};
 		9967E3F71B7682C700ACAF54 /* Validator */ = {
 			isa = PBXGroup;
 			children = (
 				9967E3F81B7682C700ACAF54 /* ValidatorTests.swift */,
+				9967E3F61B7682C700ACAF54 /* ValidatableTests.swift */,
+				995B7A0D1B7BEE5F00FB2AB7 /* ValidationResultTests.swift */,
 			);
 			path = Validator;
 			sourceTree = "<group>";
@@ -410,7 +402,7 @@
 					};
 					9967E3AC1B76822E00ACAF54 = {
 						CreatedOnToolsVersion = 7.0;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1100;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -778,11 +770,12 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = ValidatorTests/Info.plist;
+				INFOPLIST_FILE = "ValidatorTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = adamjwaite.co.uk.ValidatorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -792,12 +785,13 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = ValidatorTests/Info.plist;
+				INFOPLIST_FILE = "ValidatorTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = adamjwaite.co.uk.ValidatorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

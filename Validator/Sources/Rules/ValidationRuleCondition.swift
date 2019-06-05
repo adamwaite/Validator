@@ -3,7 +3,6 @@ import Foundation
 public struct ValidationRuleCondition<T>: ValidationRule {
     
     public let error: ValidationError
-    
     public let condition: (T?) -> Bool
     
     public init(error: ValidationError, condition: @escaping ((T?) -> Bool)) {
