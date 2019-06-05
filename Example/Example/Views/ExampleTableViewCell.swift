@@ -37,17 +37,20 @@ class ExampleTableViewCell: UITableViewCell {
     @IBOutlet private(set) var stateLabel: UILabel!
     
     override func awakeFromNib() {
+        
         super.awakeFromNib()
         stateLabel.text = "😐"
     }
         
     func updateValidationState(result: ValidationResult) {
+ 
         switch result {
+
         case .valid:
             stateLabel.text = "😀"
+
         case .invalid(let failures):
-            let messages = failures.compactMap { $0 as? ValidationError }.map { $0.message }
-            stateLabel.text = messages.joined(separator: "")
+            stateLabel.text = failures.map { $0.message }.joined()
         }
     }
     
