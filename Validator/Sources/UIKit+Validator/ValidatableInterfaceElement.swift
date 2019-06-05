@@ -4,23 +4,54 @@ import ObjectiveC
 public protocol ValidatableInterfaceElement {
     
     associatedtype InputType: Validatable
-    
     var inputValue: InputType? { get }
     
-    var validationHandler: ((ValidationResult) -> Void)? { get set }
-    
     func validate<R: ValidationRule>(rule r: R) -> ValidationResult
-    
     func validate(rules: ValidationRuleSet<InputType>) -> ValidationResult
     
+    var validationHandler: ((ValidationResult) -> Void)? { get set }
+
     func validateOnInputChange(enabled: Bool)
 }
 
 private var ValidatableInterfaceElementRulesKey: UInt8 = 0
 private var ValidatableInterfaceElementHandlerKey: UInt8 = 0
 
-extension ValidatableInterfaceElement {
+extension ValidatableInterfaceElement where Self: Hashable {
 
+    public func validate<Rule: ValidationRule>(rule: Rule) -> ValidationResult {
+        
+        guard let value = inputValue as? Rule.InputType else {
+            
+            return .invalid([rule.error])
+        }
+        
+        let result = Validator.validate(input: value, rule: rule)
+        validationHandler?(result)
+        return result
+    }
+    
+    public func validate(rules: ValidationRuleSet<InputType>) -> ValidationResult {
+        
+        let result = Validator.validate(input: inputValue, rules: rules)
+        validationHandler?(result)
+        return result
+    }
+    
+    @discardableResult
+    public func validate() -> ValidationResult {
+        
+        guard let attachedRules = validationRules else {
+            
+            #if DEBUG
+            print("Validator Error: attempted to validate without attaching rules")
+            #endif
+            return .valid
+        }
+        
+        return validate(rules: attachedRules)
+    }
+    
     public var validationRules: ValidationRuleSet<InputType>? {
         
         get {
@@ -51,38 +82,5 @@ extension ValidatableInterfaceElement {
                 objc_setAssociatedObject(self, &ValidatableInterfaceElementHandlerKey, n as AnyObject, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             }
         }
-    }
-    
-    public func validate<Rule: ValidationRule>(rule: Rule) -> ValidationResult {
-        
-        guard let value = inputValue as? Rule.InputType else {
-            
-            return .invalid([rule.error])
-        }
-        
-        let result = Validator.validate(input: value, rule: rule)
-        validationHandler?(result)
-        return result
-    }
-    
-    public func validate(rules: ValidationRuleSet<InputType>) -> ValidationResult {
-        
-        let result = Validator.validate(input: inputValue, rules: rules)
-        validationHandler?(result)
-        return result
-    }
-    
-    @discardableResult
-    public func validate() -> ValidationResult {
-       
-        guard let attachedRules = validationRules else {
-        
-            #if DEBUG
-            print("Validator Error: attempted to validate without attaching rules")
-            #endif
-            return .valid
-        }
-        
-        return validate(rules: attachedRules)
     }
 }
