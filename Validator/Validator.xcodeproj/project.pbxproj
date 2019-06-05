@@ -169,17 +169,12 @@
 		17B70F621F7B0D4800FD1CF9 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				17B70F631F7B0D6E00FD1CF9 /* Rules */,
-				17B70F6D1F7B0D6E00FD1CF9 /* UIKit+Validator */,
-				17B70F781F7B0D6E00FD1CF9 /* CaseValidationPattern.swift */,
-				17B70F721F7B0D6E00FD1CF9 /* ContainsNumberValidationPattern.swift */,
-				17B70F791F7B0D6E00FD1CF9 /* EmailValidationPattern.swift */,
-				17B70F7A1F7B0D6E00FD1CF9 /* Validatable.swift */,
-				17B70F771F7B0D6E00FD1CF9 /* ValidationPattern.swift */,
-				17B70F731F7B0D6E00FD1CF9 /* ValidationResult.swift */,
-				17B70F741F7B0D6E00FD1CF9 /* ValidationRule.swift */,
-				17B70F751F7B0D6E00FD1CF9 /* ValidationRuleSet.swift */,
 				17B70F761F7B0D6E00FD1CF9 /* Validator.swift */,
+				17B70F7A1F7B0D6E00FD1CF9 /* Validatable.swift */,
+				17B70F731F7B0D6E00FD1CF9 /* ValidationResult.swift */,
+				17B70F631F7B0D6E00FD1CF9 /* Rules */,
+				99B2B57821B493C600245D50 /* Patterns */,
+				17B70F6D1F7B0D6E00FD1CF9 /* UIKit+Validator */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -187,6 +182,8 @@
 		17B70F631F7B0D6E00FD1CF9 /* Rules */ = {
 			isa = PBXGroup;
 			children = (
+				17B70F741F7B0D6E00FD1CF9 /* ValidationRule.swift */,
+				17B70F751F7B0D6E00FD1CF9 /* ValidationRuleSet.swift */,
 				17B70F641F7B0D6E00FD1CF9 /* ValidationRuleComparison.swift */,
 				17B70F651F7B0D6E00FD1CF9 /* ValidationRuleCondition.swift */,
 				17B70F661F7B0D6E00FD1CF9 /* ValidationRuleContains.swift */,
@@ -303,6 +300,17 @@
 				9967E3F81B7682C700ACAF54 /* ValidatorTests.swift */,
 			);
 			path = Validator;
+			sourceTree = "<group>";
+		};
+		99B2B57821B493C600245D50 /* Patterns */ = {
+			isa = PBXGroup;
+			children = (
+				17B70F771F7B0D6E00FD1CF9 /* ValidationPattern.swift */,
+				17B70F781F7B0D6E00FD1CF9 /* CaseValidationPattern.swift */,
+				17B70F721F7B0D6E00FD1CF9 /* ContainsNumberValidationPattern.swift */,
+				17B70F791F7B0D6E00FD1CF9 /* EmailValidationPattern.swift */,
+			);
+			path = Patterns;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -1,13 +1,6 @@
-//
-//  UITextView+Validator.swift
-//  Validator
-//
-//  Created by Adam Waite on 31/10/2016.
-//  Copyright © 2016 adamjwaite.co.uk. All rights reserved.
-//
-
 import UIKit
 
+#if os(iOS)
 extension UITextView: ValidatableInterfaceElement {
     
     public typealias InputType = String
@@ -15,14 +8,20 @@ extension UITextView: ValidatableInterfaceElement {
     open var inputValue: String? { return text }
     
     open func validateOnInputChange(enabled: Bool) {
+        
         switch enabled {
-        case true: NotificationCenter.default.addObserver(self, selector: #selector(validate), name: UITextView.textDidChangeNotification, object: self)
-        case false: NotificationCenter.default.removeObserver(self, name: UITextView.textDidChangeNotification, object: self)
+        
+        case true:
+            NotificationCenter.default.addObserver(self, selector: #selector(performValidation), name: UITextView.textDidChangeNotification, object: self)
+        
+        case false:
+            NotificationCenter.default.removeObserver(self, name: UITextView.textDidChangeNotification, object: self)
         }
     }
     
-    @objc internal func validate(_ sender: Notification) {
+    @objc internal func performValidation(_ sender: Notification) {
+        
         validate()
     }
-    
 }
+#endif
