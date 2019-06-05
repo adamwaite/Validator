@@ -36,7 +36,7 @@ class UITextFieldValidatorTests: XCTestCase {
     
     func test_validateOnInputChange() {
        
-        let textField = UITextField()
+        var textField = UITextField()
         
         var rules = ValidationRuleSet<String>()
         let rule = ValidationRuleCondition<String>(error: "💣") { ($0?.contains("A"))! }

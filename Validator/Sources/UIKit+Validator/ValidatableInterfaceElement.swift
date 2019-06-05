@@ -1,7 +1,7 @@
 import Foundation
 import ObjectiveC
 
-public protocol ValidatableInterfaceElement: AnyObject {
+public protocol ValidatableInterfaceElement {
     
     associatedtype InputType: Validatable
     
@@ -53,26 +53,27 @@ extension ValidatableInterfaceElement {
         }
     }
     
-    public func validate<R: ValidationRule>(rule r: R) -> ValidationResult {
+    public func validate<Rule: ValidationRule>(rule: Rule) -> ValidationResult {
         
-        guard let value = inputValue as? R.InputType else {
+        guard let value = inputValue as? Rule.InputType else {
             
-            return .invalid([r.error])
+            return .invalid([rule.error])
         }
         
-        let result = Validator.validate(input: value, rule: r)
+        let result = Validator.validate(input: value, rule: rule)
         validationHandler?(result)
         return result
     }
     
-    public func validate(rules rs: ValidationRuleSet<InputType>) -> ValidationResult {
+    public func validate(rules: ValidationRuleSet<InputType>) -> ValidationResult {
         
-        let result = Validator.validate(input: inputValue, rules: rs)
+        let result = Validator.validate(input: inputValue, rules: rules)
         validationHandler?(result)
         return result
     }
     
-    @discardableResult public func validate() -> ValidationResult {
+    @discardableResult
+    public func validate() -> ValidationResult {
        
         guard let attachedRules = validationRules else {
         
