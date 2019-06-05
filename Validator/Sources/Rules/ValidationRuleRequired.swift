@@ -1,12 +1,10 @@
 import Foundation
 
 public struct ValidationRuleRequired<T>: ValidationRule {
-
-    public typealias InputType = T
     
-    public let error: Error
+    public let error: ValidationError
     
-    public init(error: Error) {
+    public init(error: ValidationError) {
     
         self.error = error
     }

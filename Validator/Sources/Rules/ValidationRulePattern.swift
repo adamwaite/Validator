@@ -2,19 +2,17 @@ import Foundation
 
 public struct ValidationRulePattern: ValidationRule {
     
-    public typealias InputType = String
-
-    public let error: Error
+    public let error: ValidationError
 
     public let pattern: String
     
-    public init(pattern: String, error: Error) {
+    public init(pattern: String, error: ValidationError) {
 
         self.pattern = pattern
         self.error = error
     }
     
-    public init(pattern: ValidationPattern, error: Error) {
+    public init(pattern: ValidationPattern, error: ValidationError) {
 
         self.init(pattern: pattern.pattern, error: error)
     }

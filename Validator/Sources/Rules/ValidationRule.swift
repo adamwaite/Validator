@@ -6,16 +6,16 @@ public protocol ValidationRule {
     
     func validate(input: InputType?) -> Bool
     
-    var error: Error { get }
+    var error: ValidationError { get }
 }
 
 internal struct AnyValidationRule<InputType>: ValidationRule {
     
     private let baseValidateInput: (InputType?) -> Bool
     
-    let error: Error
+    let error: ValidationError
     
-    init<R: ValidationRule>(base: R) where R.InputType == InputType {
+    init<Rule: ValidationRule>(base: Rule) where Rule.InputType == InputType {
         
         baseValidateInput = base.validate
         error = base.error

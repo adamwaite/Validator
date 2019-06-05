@@ -10,17 +10,13 @@ public struct ValidationRuleLength: ValidationRule {
         case unicodeScalars
     }
     
-    public typealias InputType = String
-
-    public var error: Error
+    public let error: ValidationError
     
     public let min: Int
-
     public let max: Int
-
     public let lengthType: LengthType
 
-    public init(min: Int = 0, max: Int = Int.max, lengthType: LengthType = .characters, error: Error) {
+    public init(min: Int = 0, max: Int = Int.max, lengthType: LengthType = .characters, error: ValidationError) {
         
         self.min = min
         self.max = max

@@ -54,6 +54,7 @@
 		17B70FA61F7B0D8600FD1CF9 /* ValidatableInterfaceElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B70F711F7B0D6E00FD1CF9 /* ValidatableInterfaceElement.swift */; };
 		995B7A0E1B7BEE5F00FB2AB7 /* ValidationResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B7A0D1B7BEE5F00FB2AB7 /* ValidationResultTests.swift */; };
 		995B7A141B7BF8C500FB2AB7 /* ValidationRuleRequiredTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B7A131B7BF8C500FB2AB7 /* ValidationRuleRequiredTests.swift */; };
+		9963087822A85ED4002011A0 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9963087722A85ED4002011A0 /* ValidationError.swift */; };
 		9967E3A71B76822E00ACAF54 /* Validator.h in Headers */ = {isa = PBXBuildFile; fileRef = 9967E3A61B76822E00ACAF54 /* Validator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9967E3AE1B76822E00ACAF54 /* Validator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9967E3A31B76822E00ACAF54 /* Validator.framework */; };
 		9967E3F91B7682C700ACAF54 /* ValidationRuleComparisonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E3EC1B7682C700ACAF54 /* ValidationRuleComparisonTests.swift */; };
@@ -63,7 +64,6 @@
 		9967E3FD1B7682C700ACAF54 /* ValidationRulePatternTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E3F01B7682C700ACAF54 /* ValidationRulePatternTests.swift */; };
 		9967E3FE1B7682C700ACAF54 /* UISlider+ValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E3F21B7682C700ACAF54 /* UISlider+ValidatorTests.swift */; };
 		9967E3FF1B7682C700ACAF54 /* UITextField+ValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E3F31B7682C700ACAF54 /* UITextField+ValidatorTests.swift */; };
-		9967E4001B7682C700ACAF54 /* ValidatableInterfaceElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E3F41B7682C700ACAF54 /* ValidatableInterfaceElementTests.swift */; };
 		9967E4011B7682C700ACAF54 /* ValidatableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E3F61B7682C700ACAF54 /* ValidatableTests.swift */; };
 		9967E4021B7682C700ACAF54 /* ValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967E3F81B7682C700ACAF54 /* ValidatorTests.swift */; };
 		99C457EB1C1836C30058EC4D /* ValidationRuleURLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C457EA1C1836C30058EC4D /* ValidationRuleURLTests.swift */; };
@@ -110,6 +110,7 @@
 		17B70F7A1F7B0D6E00FD1CF9 /* Validatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validatable.swift; sourceTree = "<group>"; };
 		995B7A0D1B7BEE5F00FB2AB7 /* ValidationResultTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationResultTests.swift; sourceTree = "<group>"; };
 		995B7A131B7BF8C500FB2AB7 /* ValidationRuleRequiredTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleRequiredTests.swift; sourceTree = "<group>"; };
+		9963087722A85ED4002011A0 /* ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
 		9967E3A31B76822E00ACAF54 /* Validator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Validator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9967E3A61B76822E00ACAF54 /* Validator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Validator.h; sourceTree = "<group>"; };
 		9967E3A81B76822E00ACAF54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -122,7 +123,6 @@
 		9967E3F01B7682C700ACAF54 /* ValidationRulePatternTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRulePatternTests.swift; sourceTree = "<group>"; };
 		9967E3F21B7682C700ACAF54 /* UISlider+ValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISlider+ValidatorTests.swift"; sourceTree = "<group>"; };
 		9967E3F31B7682C700ACAF54 /* UITextField+ValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+ValidatorTests.swift"; sourceTree = "<group>"; };
-		9967E3F41B7682C700ACAF54 /* ValidatableInterfaceElementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatableInterfaceElementTests.swift; sourceTree = "<group>"; };
 		9967E3F61B7682C700ACAF54 /* ValidatableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatableTests.swift; sourceTree = "<group>"; };
 		9967E3F81B7682C700ACAF54 /* ValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatorTests.swift; sourceTree = "<group>"; };
 		99C457EA1C1836C30058EC4D /* ValidationRuleURLTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleURLTests.swift; sourceTree = "<group>"; };
@@ -172,6 +172,7 @@
 				17B70F761F7B0D6E00FD1CF9 /* Validator.swift */,
 				17B70F7A1F7B0D6E00FD1CF9 /* Validatable.swift */,
 				17B70F731F7B0D6E00FD1CF9 /* ValidationResult.swift */,
+				9963087722A85ED4002011A0 /* ValidationError.swift */,
 				17B70F631F7B0D6E00FD1CF9 /* Rules */,
 				99B2B57821B493C600245D50 /* Patterns */,
 				17B70F6D1F7B0D6E00FD1CF9 /* UIKit+Validator */,
@@ -200,10 +201,10 @@
 		17B70F6D1F7B0D6E00FD1CF9 /* UIKit+Validator */ = {
 			isa = PBXGroup;
 			children = (
+				17B70F711F7B0D6E00FD1CF9 /* ValidatableInterfaceElement.swift */,
 				17B70F6E1F7B0D6E00FD1CF9 /* UISlider+Validator.swift */,
 				17B70F6F1F7B0D6E00FD1CF9 /* UITextField+Validator.swift */,
 				17B70F701F7B0D6E00FD1CF9 /* UITextView+Validator.swift */,
-				17B70F711F7B0D6E00FD1CF9 /* ValidatableInterfaceElement.swift */,
 			);
 			path = "UIKit+Validator";
 			sourceTree = "<group>";
@@ -281,7 +282,6 @@
 			children = (
 				9967E3F21B7682C700ACAF54 /* UISlider+ValidatorTests.swift */,
 				9967E3F31B7682C700ACAF54 /* UITextField+ValidatorTests.swift */,
-				9967E3F41B7682C700ACAF54 /* ValidatableInterfaceElementTests.swift */,
 			);
 			path = "UIKit+Validator";
 			sourceTree = "<group>";
@@ -396,7 +396,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = adamjwaite.co.uk;
 				TargetAttributes = {
 					17B70F591F7B0CF900FD1CF9 = {
@@ -406,7 +406,7 @@
 					};
 					9967E3A21B76822E00ACAF54 = {
 						CreatedOnToolsVersion = 7.0;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1100;
 					};
 					9967E3AC1B76822E00ACAF54 = {
 						CreatedOnToolsVersion = 7.0;
@@ -417,10 +417,11 @@
 			};
 			buildConfigurationList = 9967E39D1B76822E00ACAF54 /* Build configuration list for PBXProject "Validator" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 9967E3991B76822E00ACAF54;
 			productRefGroup = 9967E3A41B76822E00ACAF54 /* Products */;
@@ -495,6 +496,7 @@
 				17B70F7F1F7B0D7800FD1CF9 /* ValidationPattern.swift in Sources */,
 				17B70F981F7B0D7F00FD1CF9 /* ValidationRuleContains.swift in Sources */,
 				17B70FA51F7B0D8600FD1CF9 /* UITextView+Validator.swift in Sources */,
+				9963087822A85ED4002011A0 /* ValidationError.swift in Sources */,
 				17B70F9D1F7B0D7F00FD1CF9 /* ValidationRuleRequired.swift in Sources */,
 				17B70FA31F7B0D8600FD1CF9 /* UISlider+Validator.swift in Sources */,
 				17B70F9A1F7B0D7F00FD1CF9 /* ValidationRuleLength.swift in Sources */,
@@ -521,7 +523,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9967E4001B7682C700ACAF54 /* ValidatableInterfaceElementTests.swift in Sources */,
 				9967E3FD1B7682C700ACAF54 /* ValidationRulePatternTests.swift in Sources */,
 				995B7A0E1B7BEE5F00FB2AB7 /* ValidationResultTests.swift in Sources */,
 				99C458221C18587F0058EC4D /* ValidationRuleContainsTests.swift in Sources */,
@@ -618,6 +619,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -678,6 +680,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -744,6 +747,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -764,6 +768,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

@@ -68,19 +68,17 @@ public enum PaymentCardType: Int, CaseIterable {
 
 public struct ValidationRulePaymentCard: ValidationRule {
     
-    public typealias InputType = String
-
-    public let error: Error
+    public let error: ValidationError
 
     public let acceptedTypes: [PaymentCardType]
     
-    public init(acceptedTypes: [PaymentCardType], error: Error) {
+    public init(acceptedTypes: [PaymentCardType], error: ValidationError) {
         
         self.acceptedTypes = acceptedTypes
         self.error = error
     }
     
-    public init(error: Error) {
+    public init(error: ValidationError) {
     
         self.init(acceptedTypes: PaymentCardType.allCases, error: error)
     }

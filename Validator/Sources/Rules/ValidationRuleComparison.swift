@@ -1,16 +1,13 @@
 import Foundation
 
 public struct ValidationRuleComparison<T: Comparable>: ValidationRule {
-    
-    public typealias InputType = T
-    
-    public let error: Error
+        
+    public let error: ValidationError
     
     let min: T
-    
     let max: T
     
-    public init(min: T, max: T, error: Error) {
+    public init(min: T, max: T, error: ValidationError) {
 
         self.min = min
         self.max = max

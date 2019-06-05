@@ -2,7 +2,7 @@ import Foundation
 
 public protocol Validatable {
 
-    func validate<R: ValidationRule>(rule: R) -> ValidationResult where R.InputType == Self
+    func validate<Rule: ValidationRule>(rule: Rule) -> ValidationResult where Rule.InputType == Self
     
     func validate(rules: ValidationRuleSet<Self>) -> ValidationResult
 }
@@ -21,25 +21,19 @@ extension Validatable {
 }
 
 extension String : Validatable {
-    
 }
 
 extension Int : Validatable {
-    
 }
 
 extension Double : Validatable {
-    
 }
 
 extension Float : Validatable {
-    
 }
 
 extension Array : Validatable {
-    
 }
 
 extension Date : Validatable {
-    
 }

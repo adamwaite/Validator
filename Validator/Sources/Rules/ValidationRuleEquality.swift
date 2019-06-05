@@ -1,23 +1,21 @@
 import Foundation
 
 public struct ValidationRuleEquality<T: Equatable>: ValidationRule {
-
-    public typealias InputType = T
     
-    public let error: Error
+    public let error: ValidationError
     
     let target: T?
     
     let dynamicTarget: (() -> T)?
     
-    public init(target: T, error: Error) {
+    public init(target: T, error: ValidationError) {
 
         self.target = target
         self.error = error
         self.dynamicTarget = nil
     }
     
-    public init(dynamicTarget: @escaping (() -> T), error: Error) {
+    public init(dynamicTarget: @escaping (() -> T), error: ValidationError) {
 
         self.dynamicTarget = dynamicTarget
         self.error = error

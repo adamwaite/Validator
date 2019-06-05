@@ -1,12 +1,10 @@
 import Foundation
 
 public struct ValidationRuleURL: ValidationRule {
-    
-    public typealias InputType = String
-    
-    public let error: Error
+        
+    public let error: ValidationError
 
-    public init(error: Error) {
+    public init(error: ValidationError) {
 
         self.error = error
     }
