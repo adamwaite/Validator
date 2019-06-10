@@ -8,7 +8,7 @@ public enum ValidationResult {
     
     public var isValid: Bool {
         
-        self == .valid
+        return self == .valid
     }
 }
 
