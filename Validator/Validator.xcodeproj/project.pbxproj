@@ -70,6 +70,7 @@
 		99C457EF1C183DB40058EC4D /* ValidationRulePaymentCardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C457EE1C183DB40058EC4D /* ValidationRulePaymentCardTests.swift */; };
 		99C4581D1C184AE00058EC4D /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C4581C1C184AE00058EC4D /* TestHelpers.swift */; };
 		99C458221C18587F0058EC4D /* ValidationRuleContainsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C458211C18587F0058EC4D /* ValidationRuleContainsTests.swift */; };
+		DF83F93D2347497300E489B9 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9963087722A85ED4002011A0 /* ValidationError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -459,6 +460,7 @@
 				17B70F881F7B0D7900FD1CF9 /* ValidationPattern.swift in Sources */,
 				17B70F8F1F7B0D7F00FD1CF9 /* ValidationRuleContains.swift in Sources */,
 				17B70FA11F7B0D8500FD1CF9 /* UITextView+Validator.swift in Sources */,
+				DF83F93D2347497300E489B9 /* ValidationError.swift in Sources */,
 				17B70F941F7B0D7F00FD1CF9 /* ValidationRuleRequired.swift in Sources */,
 				17B70F9F1F7B0D8500FD1CF9 /* UISlider+Validator.swift in Sources */,
 				17B70F911F7B0D7F00FD1CF9 /* ValidationRuleLength.swift in Sources */,
